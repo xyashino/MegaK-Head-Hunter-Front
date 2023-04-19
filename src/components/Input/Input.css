@@ -21,6 +21,14 @@ input::placeholder {
   opacity: 0.5;
 }
 
-input:focus-visible {
+.error {
   outline: 3px solid var(--megakRed);
+  color: var(--colorInput);
+}
+
+.error-message {
+  color: var(--megakRed);
+  padding: 0;
+  margin: 0;
+  font-weight: bolder;
 }
