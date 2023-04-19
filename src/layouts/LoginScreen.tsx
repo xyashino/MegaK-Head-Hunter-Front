@@ -9,8 +9,8 @@ export const LoginScreen = () => {
   return (
     <div className="login-container">
       <Logo />
-      <Input />
-      <Input />
+      <Input placeholder="E-mail" />
+      <Input placeholder="Password" />
       <Paragraph />
       <Button>Zaloguj się</Button>
     </div>
