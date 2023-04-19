@@ -1,8 +1,12 @@
-import React, { HTMLAttributes } from "react";
-import "./Button.css"
+import React, { HTMLAttributes, PropsWithChildren } from "react";
+import "./Button.css";
 
-type Props = HTMLAttributes<HTMLButtonElement>;
+interface Props extends HTMLAttributes<HTMLButtonElement>, PropsWithChildren {}
 
-export const Button = ({ className, ...rest }: Props) => {
-  return <button {...rest} className=""></button>;
+export const Button = ({ className, style, children, ...rest }: Props) => {
+  return (
+    <button {...rest} className="">
+      {children}
+    </button>
+  );
 };
