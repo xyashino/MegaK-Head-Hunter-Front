@@ -11,8 +11,23 @@ export const LoginPage = () => {
       <Logo />
       <Input placeholder="E-mail" type="email" isError={true} message="ERROR" />
       <Input placeholder="Password" type="password" />
-      <Paragraph style={{marginLeft: "auto"}}>Zapomniałeś hasła?</Paragraph>
-      <Button>Zaloguj się</Button>
+      <Paragraph style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Paragraph>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          width: "100%",
+          alignItems: "center",
+        }}
+      >
+        <Paragraph>
+          Nie masz konta?{" "}
+          <u>
+            <b>Zarejestruj się</b>
+          </u>
+        </Paragraph>
+        <Button>Zaloguj się</Button>
+      </div>
     </div>
   );
 };
