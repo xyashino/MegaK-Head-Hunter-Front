@@ -76,7 +76,22 @@ export const LoginPage = () => {
             />
             {loginError && <Error title={loginError}/>}
             <Paragraph style={{marginLeft: "auto"}}>Zapomniałeś hasła?</Paragraph>
-            <Button>Zaloguj się</Button>
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    width: "100%",
+                    alignItems: "center",
+                }}
+            >
+                <Paragraph>
+                    Nie masz konta?{" "}
+                    <u>
+                        <b>Zarejestruj się</b>
+                    </u>
+                </Paragraph>
+                <Button>Zaloguj się</Button>
+            </div>
         </div>
     );
 };
