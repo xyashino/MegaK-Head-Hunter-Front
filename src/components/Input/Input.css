@@ -1,12 +1,13 @@
 :root {
   --bgInput: #292a2b;
   --colorInput: #7e7e7e;
+  --megakRed: #e02635;
 }
 
 input {
   background: var(--bgInput) 0% 0% no-repeat padding-box;
   opacity: 1;
-  border: 0; 
+  border: 0;
   width: 100%;
   max-width: 280px;
   padding: 6.5px 17px;
@@ -18,4 +19,8 @@ input::placeholder {
   color: var(--colorInput);
   font-weight: 200;
   opacity: 0.5;
+}
+
+input:focus-visible {
+  outline: 3px solid var(--megakRed);
 }
