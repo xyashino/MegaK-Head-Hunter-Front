@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from "react";
-import "./Button.scss"
+import "./Button.css"
 
 type Props = HTMLAttributes<HTMLButtonElement>;
 
