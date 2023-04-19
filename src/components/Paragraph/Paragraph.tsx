@@ -1,10 +1,14 @@
-import React from "react";
+import React, { HTMLAttributes, PropsWithChildren } from "react";
 import "./Paragraph.css";
 
-export const Paragraph = () => {
+interface Props
+  extends HTMLAttributes<HTMLParagraphElement>,
+    PropsWithChildren {}
+
+export const Paragraph = ({ className, style, children, ...rest }: Props) => {
   return (
     <>
-      <p></p>
+      <p {...rest}>{children}</p>
     </>
   );
 };
