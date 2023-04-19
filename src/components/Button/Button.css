@@ -1,5 +1,5 @@
 :root {
-  --white: #fff;
+  --white: #f7f7f7;
   --megakRed: #e02635;
 }
 
@@ -7,5 +7,7 @@ button {
   background-color: var(--megakRed);
   border: 0;
   color: var(--white);
-  padding: 10px;
+  padding: 6px 10px;
+  letter-spacing: 0px;
+  font: normal normal normal 16px/27px Catamaran;
 }
