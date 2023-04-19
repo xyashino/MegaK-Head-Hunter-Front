@@ -11,7 +11,7 @@ export const LoginScreen = () => {
       <Logo />
       <Input placeholder="E-mail" />
       <Input placeholder="Password" />
-      <Paragraph />
+      <Paragraph>Zapomniałeś hasła?</Paragraph>
       <Button>Zaloguj się</Button>
     </div>
   );
