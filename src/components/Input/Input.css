@@ -17,4 +17,5 @@ input {
 input::placeholder {
   color: var(--colorInput);
   font-weight: 200;
+  opacity: 0.5;
 }
