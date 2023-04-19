@@ -15,6 +15,7 @@ interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
   type?: InputType;
   isError?: boolean;
   message?: string;
+  value:string;
 }
 
 export const Input = ({
