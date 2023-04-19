@@ -5,7 +5,7 @@ interface Props
   extends HTMLAttributes<HTMLParagraphElement>,
     PropsWithChildren {}
 
-export const Paragraph = ({ className, style, children, ...rest }: Props) => {
+export const Paragraph = ({ className, children, ...rest }: Props) => {
   return (
     <>
       <p {...rest}>{children}</p>
