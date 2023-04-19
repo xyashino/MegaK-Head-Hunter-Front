@@ -1,10 +1,12 @@
-import React from "react";
+import React, { HTMLAttributes, PropsWithChildren } from "react";
 import "./Input.css";
 
-export const Input = () => {
+interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {}
+
+export const Input = ({ className, style, children, ...rest }: Props) => {
   return (
     <>
-      <input type="text" />
+      <input {...rest} />
     </>
   );
 };
