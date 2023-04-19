@@ -9,7 +9,7 @@ input {
   opacity: 1;
   border: 0;
   width: 100%;
-  max-width: 280px;
+  max-width: -webkit-fill-available;
   padding: 6.5px 17px;
   color: var(--colorInput);
   font: normal normal normal 16px/27px Catamaran;
