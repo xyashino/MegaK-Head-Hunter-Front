@@ -1,0 +1,12 @@
+.img-logo {
+    height: 7vh;
+    width: 5vw;
+    margin-bottom: 3vh;
+}
+
+.div-img-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
