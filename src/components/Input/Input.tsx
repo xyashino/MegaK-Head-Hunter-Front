@@ -1,12 +1,34 @@
 import React, { HTMLAttributes, PropsWithChildren } from "react";
 import "./Input.css";
 
-interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {}
+type InputType =
+  | "email"
+  | "password"
+  | "text"
+  | "number"
+  | "date"
+  | "checkbox"
+  | "radio"
+  | "file";
 
-export const Input = ({ className, style, children, ...rest }: Props) => {
+interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
+  type?: InputType;
+  isError?: boolean;
+  message?: string;
+}
+
+export const Input = ({
+  className,
+  style,
+  children,
+  isError = false,
+  message,
+  ...rest
+}: Props) => {
   return (
     <>
-      <input {...rest} />
+      <input className={isError ? "error" : ""} {...rest} />
+      {isError && <p className="error-message">{message}</p>}
     </>
   );
 };
