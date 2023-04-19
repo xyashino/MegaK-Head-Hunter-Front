@@ -12,6 +12,7 @@ button {
   font: normal normal normal 16px/27px Catamaran;
   cursor: pointer;
   opacity: 1;
+  font-weight: 200;
 }
 
 button:hover {
