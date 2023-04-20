@@ -1,0 +1,9 @@
+:root {
+  --colorInput: #f7f7f7;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+  color: var(--colorInput);
+}

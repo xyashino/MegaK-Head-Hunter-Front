@@ -1,0 +1,11 @@
+.img-logo {
+  height: 76px;
+  margin-bottom: 1rem;
+}
+
+.div-img-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
