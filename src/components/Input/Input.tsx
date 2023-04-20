@@ -1,4 +1,4 @@
-import React, {HTMLAttributes, PropsWithChildren} from "react";
+import React, { HTMLAttributes, PropsWithChildren } from "react";
 import "./Input.css";
 
 type InputType =
@@ -15,7 +15,7 @@ interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
   type?: InputType;
   isError?: boolean;
   message?: string;
-  value: string;
+  value:string;
 }
 
 export const Input = ({
