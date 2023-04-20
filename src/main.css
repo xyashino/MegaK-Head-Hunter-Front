@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+:root {
+  --white: #f7f7f7;
+  --megakRed: #e02635;
+  --colorInput: #f7f7f7;
+  --bgInput: #292a2b;
+
+}
+
 body {
   margin: 0;
   background-color: #222224;

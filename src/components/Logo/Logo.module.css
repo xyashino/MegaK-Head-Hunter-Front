@@ -1,9 +1,9 @@
-.img-logo {
+.img_logo {
   height: 76px;
   margin-bottom: 1rem;
 }
 
-.div-img-wrapper {
+.div_img_wrapper {
   display: flex;
   align-items: center;
   justify-content: center;

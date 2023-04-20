@@ -1,11 +1,11 @@
 import React from "react";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
-import "./LoginPage.css";
+import classes from "./LoginInPage.module.css";
 
 export const LoginInPage = () => {
   return (
-    <div className="login-container">
-      <Paragraph style={{fontSize:'80px'}}>Zalogowano!!</Paragraph>
+    <div className={classes.login_in_container}>
+      <Paragraph style={{fontSize:'72px'}}>Zalogowano!!</Paragraph>
     </div>
   );
 };

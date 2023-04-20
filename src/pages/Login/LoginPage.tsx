@@ -3,7 +3,7 @@ import { Logo } from "../../components/Logo/Logo";
 import { Input } from "../../components/Input/Input";
 import { Paragraph } from "../../components/Paragraph/Paragraph";
 import { Button } from "../../components/Button/Button";
-import "./LoginPage.css";
+import classes from "./LoginPage.module.css";
 import {useValidationState} from "@hooks/useValidationState";
 import {AxiosBase} from "../../utils/axios-base";
 import {useNavigate} from "react-router-dom";
@@ -56,7 +56,7 @@ export const LoginPage = () => {
     };
     const hideAlert= () => setIsError(false);
     return (
-        <div className="login-container">
+        <div className={classes.login_container}>
             <Logo />
             <Input
                 placeholder="E-mail"

@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, PropsWithChildren } from "react";
-import "./Input.css";
+import classes from "./Input.module.css";
 
 type InputType =
   | "email"
@@ -26,10 +26,11 @@ export const Input = ({
   message,
   ...rest
 }: Props) => {
+
   return (
     <>
-      <input className={isError ? "error" : ""} {...rest} />
-      {isError && <p className="error-message">{message}</p>}
+      <input className={`${classes.input} ${isError && classes.error}`} {...rest}/>
+      {isError && <p className={classes.error_message}>{message}</p>}
     </>
   );
 };
