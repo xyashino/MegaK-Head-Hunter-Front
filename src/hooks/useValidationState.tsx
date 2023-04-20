@@ -1,4 +1,4 @@
-import {useLayoutEffect, useState} from "react";
+import { useLayoutEffect, useState } from "react";
 
 interface ValidationData {
     minLength: number;
@@ -8,8 +8,8 @@ interface ValidationData {
 }
 
 function validateInputValue(inputValue: string, inputName: string, validationData: ValidationData) {
-    const {minLength, maxLength, specialChars, sameAs} = validationData;
-    const {length} = inputValue;
+    const { minLength, maxLength, specialChars, sameAs } = validationData;
+    const { length } = inputValue;
 
     switch (true) {
         case length < minLength:
@@ -67,6 +67,6 @@ export const useValidationState = (
         setValue,
         isEmpty,
         isValid,
-        error: {show: showError, message: errorMessage},
+        error: { show: showError, message: errorMessage },
     };
 };
