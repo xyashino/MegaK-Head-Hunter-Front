@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import { LoginPage } from "./pages/Login/LoginPage";
+import {Avatar} from "./components/Avatar/Avatar";
 
 export const App = () => {
   return (
     <>
-      <LoginPage />
+      <Avatar />
     </>
   );
 };
