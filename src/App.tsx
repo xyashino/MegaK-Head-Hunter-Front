@@ -1,7 +1,7 @@
 import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {LoginPage} from "@pages/Login/LoginPage";
-import { NotFound404 } from "@pages/NotFound404/NotFound404";
+import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 
 const routers = createBrowserRouter([
     {
@@ -10,7 +10,7 @@ const routers = createBrowserRouter([
     },
     {
         path:'/404',
-        element: <NotFound404 message="Page not found - 404"/>
+        element: <NotFoundPage message="Page not found - 404"/>
     }
 ]);
 export const App = () =>  <RouterProvider router={routers} />;
