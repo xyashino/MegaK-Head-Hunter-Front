@@ -1,0 +1,50 @@
+:root {
+  --succesColor: #28cc13;
+  --failureColor: #e02635;
+  --warningColor: #d69200;
+}
+
+.Alert {
+  position: fixed;
+  top: 10%;
+  right: 10px;
+  bottom: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  width: 200px;
+  animation-duration: .6s;
+  animation-name: slidein;
+  animation-timing-function: linear;
+}
+img {
+  color: white;
+  filter: brightness(0) invert(1);
+}
+.success {
+  background-color: var(--succesColor);
+}
+.fail {
+  background-color: var(--failureColor);
+}
+.warning {
+  background-color: var(--warningColor);
+}
+
+@media (max-width: 767px) {
+  .Alert {
+    top: auto;
+    bottom: 10%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    right: -250px;
+  }
+
+  to {
+    right: 10px;
+  }
+}
