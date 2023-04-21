@@ -7,9 +7,9 @@ import classes from "./Navbar.module.css"
 export const Navbar = () => {
   return (
     <nav>
-      <div className={classes.navbar_container}>
+      <div className={classes.nav_container}>
         <Logo />
-        <div className={classes.navbar_user}>
+        <div className={classes.nav_user}>
           <Avatar />
           <Paragraph></Paragraph>
         </div>
