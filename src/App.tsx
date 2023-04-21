@@ -1,11 +1,11 @@
 import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Avatar, size} from "@components/Avatar/Avatar";
+import {LoginPage} from "@pages/Login/LoginPage";
 
 const routers = createBrowserRouter([
     {
         path:'*',
-        element: <Avatar type={size.Large} githubUsername='Ami777'/>,
+        element: <LoginPage/>,
     }
 ]);
 export const App = () =>  <RouterProvider router={routers} />;

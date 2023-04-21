@@ -2,17 +2,15 @@ import React from 'react';
 import classes from "./Avatar.module.css";
 import img from "@assets/no-avatar.jpg";
 
-export enum size {
-    Small,
-    Large
-}
-
-export type AvatarProps = {
-    type: size;
+interface AvatarProps {
+    type?: 'small' | 'large';
     githubUsername?: string;
 }
 
-export const Avatar = ({type, githubUsername}: AvatarProps) => {
+export const Avatar = ({type = 'small', githubUsername}: AvatarProps) => {
+
+    const avatarType = type === 'large' ? classes.img_avatar_large : classes.img_avatar_small;
+
     return (
         <>
             {
@@ -20,7 +18,7 @@ export const Avatar = ({type, githubUsername}: AvatarProps) => {
                     ?
                     <div>
                         <img
-                            className={type === size.Large ? classes.img_avatar_large : classes.img_avatar_small}
+                            className={avatarType}
                             src={`https://github.com/${githubUsername}.png`}
                             alt="Avatar kursanta - ustawione przez niego zdjęcie"
                             draggable={false}
@@ -29,10 +27,11 @@ export const Avatar = ({type, githubUsername}: AvatarProps) => {
                     :
                     <div>
                         <img
-                            className={type === size.Large ? classes.img_avatar_large : classes.img_avatar_small}
+                            className={avatarType}
                             src={img}
                             alt="Domyślny avatar kursanta, który nie ma ustawionego zdjęcia"
-                            draggable={false}/>
+                            draggable={false}
+                        />
                     </div>
             }
         </>
