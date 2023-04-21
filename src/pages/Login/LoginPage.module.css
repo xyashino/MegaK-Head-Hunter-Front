@@ -9,3 +9,11 @@
   padding-inline: 1rem;
   padding-block: 1rem;
 }
+
+
+.login_text_container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}

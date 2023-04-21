@@ -1,17 +1,10 @@
 import React from "react";
-import { LoginPage } from "./pages/Login/LoginPage";
+import { LoginPage } from "@pages/Login/LoginPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {checkAuth} from "./utils/check-auth";
-import {LoginInPage} from "./pages/LoginIn/LoginInPage";
 
 const routers = createBrowserRouter([
     {
-        path: "/",
-        loader: checkAuth,
-        element: <LoginInPage />
-    },
-    {
-        path:'/login',
+        path:'*',
         element: <LoginPage />,
     }
 ]);
