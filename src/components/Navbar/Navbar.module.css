@@ -1,5 +1,5 @@
 nav {
-  background-color: #1e1e1f;
+  background-color: var(--bgNav);
   position: absolute;
   top: 0;
   width: 100%;
