@@ -2,7 +2,7 @@ nav {
   background-color: #1e1e1f;
 }
 
-.navbar_container {
+.nav_container {
   height: 80px;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -12,4 +12,51 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+}
+
+.nav_user {
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.nav_user .info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 80px;
+  cursor: pointer;
+}
+
+.nav_user .info:hover {
+  opacity: 0.8;
+}
+
+.nav_user .modal {
+  position: absolute;
+  width: 229px;
+  right: 0px;
+  top: 76px;
+  padding: 1rem;
+  background-color: #1e1e1f;
+}
+
+.nav_user .modal {
+  display: none;
+  overflow: hidden;
+}
+
+.nav_user .modal a {
+  text-decoration: none;
+  color: white;
+}
+
+.nav_user .modal a:hover {
+  opacity: 0.8;
+}
+
+.showmenu .modal {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
