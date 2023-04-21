@@ -1,0 +1,15 @@
+nav {
+  background-color: #1e1e1f;
+}
+
+.navbar_container {
+  height: 80px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 1152px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
