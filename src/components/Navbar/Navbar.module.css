@@ -1,6 +1,10 @@
 nav {
   background-color: #1e1e1f;
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
+
 
 .nav_container {
   height: 80px;
