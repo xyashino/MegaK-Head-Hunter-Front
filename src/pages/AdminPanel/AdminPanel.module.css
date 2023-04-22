@@ -1,0 +1,23 @@
+.admin_panel_header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 72px;
+    background: var(--bgInput) 0% 0% no-repeat padding-box;
+    margin-bottom: 3px;
+}
+
+.div_admin_panel_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.admin_panel_main {
+    width: 80%;
+    height: 70vh;
+    background: var(--bgInput) 0% 0% no-repeat padding-box;
+}

@@ -1,0 +1,19 @@
+.link_add {
+    text-align: left;
+    font: normal normal normal 18px/30px Catamaran;
+    letter-spacing: 0px;
+    color: var(--inactiveBookmark);
+    opacity: 1;
+    padding: 20px 2vw 16px 2vw;
+    border-top: 3px solid var(--bgInput);
+    border-bottom: 3px solid var(--bgInput);
+}
+
+.clicked {
+    color: var(--white);
+    text-align: left;
+    font: normal normal normal 18px/30px Catamaran;
+    letter-spacing: 0px;
+    opacity: 1;
+    border-bottom: 3px solid var(--megakRed);
+}
