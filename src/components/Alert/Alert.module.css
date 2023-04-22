@@ -6,20 +6,20 @@
 
 .Alert {
   position: fixed;
-  top: 10%;
+  top: auto;
   right: 10px;
-  bottom: auto;
+  bottom: 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
   width: 200px;
+  border-radius: 2px;
   animation-duration: .6s;
   animation-name: slidein;
   animation-timing-function: linear;
 }
 img {
-  color: white;
   filter: brightness(0) invert(1);
 }
 .success {
@@ -32,10 +32,10 @@ img {
   background-color: var(--warningColor);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .Alert {
-    top: auto;
-    bottom: 10%;
+    top: 10%;
+    bottom: auto;
   }
 }
 

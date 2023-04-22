@@ -9,22 +9,22 @@ type Props = {
   message: string
 }
 
-export const Alert = (props: Props) => {
+export const Alert = ({kind, message}: Props) => {
 
-  switch (props.kind) {
+  switch (kind) {
     case 'success':
       return <div className={`${styles.Alert} ${styles.success}`}>
-        <p>{props.message}</p>
+        <p>{message}</p>
         <img src={successIcon} alt="success" />
       </div>;
     case 'fail': 
       return <div className={`${styles.Alert} ${styles.fail}`}>
-        <p>{props.message}</p>
+        <p>{message}</p>
         <img src={failIcon} alt="fail" />
       </div>;
     case 'warning': 
       return <div className={`${styles.Alert} ${styles.warning}`}>
-        <p>{props.message}</p>
+        <p>{message}</p>
         <img src={warningIcon} alt="warning" />
       </div>;
   }
