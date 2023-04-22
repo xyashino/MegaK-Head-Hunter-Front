@@ -15,9 +15,9 @@ export const ErrorPage = ({title, message}: Props) => {
     <p className={classes.message}>{message}</p>
     <div className={classes.container}>
       <div className={classes.link}>
-        <Link to='/' className={classes.backLink}>back to main site</Link>
+        <Link to='/'>back to main site</Link>
       </div>
-      <div className={classes.imageContainer}>
+      <div className={classes.image_container}>
         <img src={img} alt="error image"/>
       </div>
     </div>
