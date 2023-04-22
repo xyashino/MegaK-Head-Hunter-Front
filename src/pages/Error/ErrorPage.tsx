@@ -8,11 +8,11 @@ type Props = {
   message: string,
 }
 
-export const ErrorPage = (props: Props) => {
+export const ErrorPage = ({title, message}: Props) => {
   return <div className={classes.ErrorPage}>
-    <div className={classes.title}><h2>{props.title}</h2></div>
+    <div className={classes.title}><h2>{title}</h2></div>
     <hr />
-    <p className={classes.message}>{props.message}</p>
+    <p className={classes.message}>{message}</p>
     <div className={classes.container}>
       <div className={classes.link}>
         <Link to='/' className={classes.backLink}>back to main site</Link>
