@@ -6,9 +6,9 @@ type Props = {
   message: string,
 }
 
-export const NotFoundPage = (props: Props) => {
+export const NotFoundPage = ({message}: Props) => {
   return <div className={classes.container}>
-    <p className={classes.message}>{props.message}</p>
+    <p className={classes.message}>{message}</p>
       <div className={classes.link}>
         <Link to='/'>Back to main side</Link>
       </div>
