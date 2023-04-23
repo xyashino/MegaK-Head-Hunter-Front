@@ -20,10 +20,10 @@ export const Navbar = () => {
           showMenu ? classes.showmenu : ""
         }`}
       >
-        <Paragraph>Logo</Paragraph>
+        <Logo style={{ marginBottom: 0, justifyContent: "start", height: "55px" }} />
         <div className={classes.nav_user}>
           <button className={classes.info} onClick={toggleMenu}>
-            <Avatar/>
+            <Avatar />
             <Paragraph
               style={{
                 font: "normal normal normal 18px/30px Catamaran;",
