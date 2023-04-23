@@ -6,7 +6,7 @@ type Props = HTMLAttributes<HTMLImageElement>
 
 export const Logo = ({ ...rest }: Props) => {
   return (
-    <div className={classes.div_img_wrapper}>
+    <div className={classes.div_img_wrapper} {...rest}>
       <img
         className={classes.img_logo}
         src={img}
