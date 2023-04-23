@@ -67,8 +67,17 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  text-align: right;
+  padding-right: 2rem;
 }
 
 .material-icons {
   color: var(--grey) !important;
+}
+
+@media (min-width: 768px) {
+  .showmenu .modal {
+    text-align: left;
+    padding-right: 1rem;
+  }
 }
