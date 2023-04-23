@@ -2,15 +2,15 @@ import React from 'react';
 import classes from "./Avatar.module.css";
 import img from "@assets/no-avatar.jpg";
 
-// W CSS są dwie klasy: img-avatar-small i img-avatar-large
+interface AvatarProps {
+    type?: 'small' | 'large';
+    githubUsername?: string;
+}
 
-// Trzeba zaimportować githubUsername z BE/formularza FE
+export const Avatar = ({type = 'small', githubUsername}: AvatarProps) => {
 
-const githubUsername = 'Ami777'; // to trzeba zastąpić githubUsername z BE/formularza FE
+    const avatarType = type === 'large' ? classes.img_avatar_large : classes.img_avatar_small;
 
-const link = `https://github.com/${githubUsername}.png`
-
-export const Avatar = () => {
     return (
         <>
             {
@@ -18,8 +18,8 @@ export const Avatar = () => {
                     ?
                     <div>
                         <img
-                            className={`${classes.img_avatar} ${classes.img_avatar_large}`}
-                            src={link}
+                            className={avatarType}
+                            src={`https://github.com/${githubUsername}.png`}
                             alt="Avatar kursanta - ustawione przez niego zdjęcie"
                             draggable={false}
                         />
@@ -27,10 +27,11 @@ export const Avatar = () => {
                     :
                     <div>
                         <img
-                            className={`${classes.img_avatar} ${classes.img_avatar_large}`}
+                            className={avatarType}
                             src={img}
                             alt="Domyślny avatar kursanta, który nie ma ustawionego zdjęcia"
-                            draggable={false}/>
+                            draggable={false}
+                        />
                     </div>
             }
         </>
