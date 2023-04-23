@@ -74,10 +74,17 @@ nav {
 .material-icons {
   color: var(--grey) !important;
 }
+.nav_user .info p {
+  display: none;
+}
 
 @media (min-width: 768px) {
   .showmenu .modal {
     text-align: left;
     padding-right: 1rem;
+  }
+
+  .nav_user .info p {
+    display: block;
   }
 }

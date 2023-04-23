@@ -26,7 +26,7 @@ export const Navbar = () => {
             <Avatar />
             <Paragraph
               style={{
-                font: "normal normal normal 18px/30px Catamaran;",
+                font: "normal normal normal 18px/30px Catamaran",
                 marginRight: "auto",
               }}
             >
