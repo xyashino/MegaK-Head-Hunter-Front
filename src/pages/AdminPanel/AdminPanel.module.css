@@ -20,4 +20,5 @@
     width: 80%;
     height: 70vh;
     background: var(--bgInput) 0% 0% no-repeat padding-box;
+    color: var(--white);
 }

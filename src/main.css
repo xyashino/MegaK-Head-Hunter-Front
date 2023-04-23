@@ -29,7 +29,6 @@ body {
   width: 100%;
 }
 
-/* Usuwa domyślne pokdreślenie w komponentach <LinkToBookmark/> */
 a {
   text-decoration: none;
 }
