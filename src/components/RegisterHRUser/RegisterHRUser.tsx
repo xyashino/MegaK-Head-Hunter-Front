@@ -1,9 +1,8 @@
 import React, { SyntheticEvent } from "react";
-import { useValidationState } from "@hooks/useValidationState";
-import classes from "./RegisterHRUser.css";
-import { Paragraph } from "@components/Paragraph/Paragraph";
+import { useValidationState } from "@hooks/useValidationState"; 
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
+import classes from "./RegisterHRUser.module.css"
 
 export const RegisterHRUser = () => {
   const {
@@ -20,7 +19,7 @@ export const RegisterHRUser = () => {
     value: companyValue,
     error: companyError,
     setValue: setCompany,
-  } = useValidationState("Company", {
+  } = useValidationState("Nazwa firmy", {
     minLength: 3,
     maxLength: 255,
   });
@@ -29,7 +28,7 @@ export const RegisterHRUser = () => {
     value: fullNameValue,
     error: fullNameError,
     setValue: setFullName,
-  } = useValidationState("Full name", {
+  } = useValidationState("Imię i nazwisko", {
     minLength: 3,
     maxLength: 255,
   });
@@ -38,12 +37,14 @@ export const RegisterHRUser = () => {
     value: maxReservedStudentsValue,
     error: maxReservedStudentsError,
     setValue: setMaxReservedStudents,
-  } = useValidationState("", {
+  } = useValidationState("Liczba studentów", {
+    min: 1,
+    max: 999, 
     minLength: 1,
   });
 
   return (
-    <>
+    <div className={classes.register_hr_form} >
       <Input
         type="email"
         placeholder="E-mail"
@@ -56,7 +57,7 @@ export const RegisterHRUser = () => {
       />
       <Input
         type="text"
-        placeholder="Full name"
+        placeholder="Imię i nazwisko"
         value={fullNameValue}
         isError={fullNameError.show}
         message={fullNameError.message}
@@ -66,7 +67,7 @@ export const RegisterHRUser = () => {
       />
       <Input
         type="text"
-        placeholder="Company"
+        placeholder="Firma"
         value={companyValue}
         isError={companyError.show}
         message={companyError.message}
@@ -74,9 +75,9 @@ export const RegisterHRUser = () => {
           setCompany((e.target as HTMLInputElement).value as string)
         }
       />
-      <Input
+      <Input 
         type="number"
-        placeholder="Max reserved students"
+        placeholder="Liczba studentów"
         value={maxReservedStudentsValue}
         isError={maxReservedStudentsError.show}
         message={maxReservedStudentsError.message}
@@ -85,6 +86,6 @@ export const RegisterHRUser = () => {
         }
       />
       <Button>Dodaj użytkownika</Button>
-    </>
+    </div>
   );
 };
