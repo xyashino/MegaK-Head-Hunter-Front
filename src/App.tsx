@@ -10,7 +10,7 @@ const routers = createBrowserRouter([
     },
     {
         path:'/error',
-        element: <ErrorPage title="Błąd" message="błąd krytyczny, wyrzuć komputer przez okno"/>
+        element: <ErrorPage title="Błąd 500" message="Wystąpił problem, spróbuj ponownie za chwilę." buttonMessage="Powrót do strony głównej"/>
     }
 ]);
 export const App = () =>  <RouterProvider router={routers} />;

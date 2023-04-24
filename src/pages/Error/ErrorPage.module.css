@@ -9,10 +9,15 @@
   margin: 20px;
   color: var(--white);
 }
+
 .message {
   margin: 10px;
   text-align: center;
   color: var(--white);
+}
+
+.default {
+  cursor: default;
 }
 
 .container {
@@ -21,14 +26,18 @@
 }
 
 .link {
+  align-self: center;
   text-align: center;
+  margin: 0 10px;
+  color: var(--white);
+  background-color: var(--megakRed);
+  border: 1px solid;
+  border-radius: 2px;
 }
 
 .link a {
   padding: 5px;
   color: var(--white);
-  border: 1px solid;
-  border-radius: 2px;
   text-decoration: none;
   transition: .2s;
 }
@@ -40,7 +49,7 @@
   min-height: calc(100vh - 167px);
 }
 
-img {
+.image {
   width: 90%;
   max-width: 600px;
 }
@@ -52,7 +61,11 @@ img {
     flex-direction: row-reverse;
   }
 
-  .link a:hover {
-    background-color: var(--megakRed);
+  .link {
+    align-self: flex-start;
+  }
+
+  .link:hover {
+    background-color: transparent;
   }
 }
