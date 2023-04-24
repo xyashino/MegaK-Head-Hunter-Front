@@ -1,0 +1,11 @@
+.img_avatar_small {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+}
+
+.img_avatar_large {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
