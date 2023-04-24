@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useLayoutEffect} from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 
 axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
@@ -47,7 +47,7 @@ export const useAxios = ({ url, method, body = null, headers = null }: AxiosProp
             });
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         fetchData();
     }, [method, url, body, headers]);
 
