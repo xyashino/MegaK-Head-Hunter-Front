@@ -47,12 +47,10 @@ nav {
   background-color: #1e1e1f;
   flex-direction: column;
   gap: 1rem;
-}
-
-.nav_user .modal {
   display: none;
   overflow: hidden;
 }
+ 
 
 .nav_user .modal a {
   text-decoration: none;
