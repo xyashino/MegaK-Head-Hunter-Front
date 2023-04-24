@@ -1,8 +1,21 @@
-.bookmark_nav_link {
+.pending {
     text-align: left;
     font: normal normal normal 18px/30px Catamaran;
     letter-spacing: 0px;
     opacity: 1;
     padding: 23px 1.5vw 16px 1.5vw;
     border-bottom: 3px solid var(--bgInput);
+    color: var(--inactiveBookmark);
+    border-bottom: 3px solid var(--bgInput);
+}
+
+.active {
+    text-align: left;
+    font: normal normal normal 18px/30px Catamaran;
+    letter-spacing: 0px;
+    opacity: 1;
+    padding: 23px 1.5vw 16px 1.5vw;
+    border-bottom: 3px solid var(--bgInput);
+    color: var(--white);
+    border-bottom: 3px solid var(--megakRed);
 }
