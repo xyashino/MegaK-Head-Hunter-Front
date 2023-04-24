@@ -1,8 +1,8 @@
-import React, { SyntheticEvent } from "react";
-import { useValidationState } from "@hooks/useValidationState"; 
+import React, { SyntheticEvent, useState } from "react";
+import { useValidationState } from "@hooks/useValidationState";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
-import classes from "./RegisterHRUser.module.css"
+import classes from "./RegisterHRUser.module.css";
 
 export const RegisterHRUser = () => {
   const {
@@ -31,20 +31,18 @@ export const RegisterHRUser = () => {
   } = useValidationState("Imię i nazwisko", {
     minLength: 3,
     maxLength: 255,
-  });
+  }); 
 
-  const {
-    value: maxReservedStudentsValue,
-    error: maxReservedStudentsError,
-    setValue: setMaxReservedStudents,
-  } = useValidationState("Liczba studentów", {
-    min: 1,
-    max: 999, 
-    minLength: 1,
-  });
+  const [numVal, setNumVal] = useState("1");
+
+  const handleNumberInput = (e: SyntheticEvent) => {
+    const { value } = e.target as HTMLInputElement;
+    if (Number(value) > 1 && Number(value) > 999) return;
+    setNumVal(value);
+  };
 
   return (
-    <div className={classes.register_hr_form} >
+    <div className={classes.register_hr_form}>
       <Input
         type="email"
         placeholder="E-mail"
@@ -75,15 +73,11 @@ export const RegisterHRUser = () => {
           setCompany((e.target as HTMLInputElement).value as string)
         }
       />
-      <Input 
+      <Input
         type="number"
         placeholder="Liczba studentów"
-        value={maxReservedStudentsValue}
-        isError={maxReservedStudentsError.show}
-        message={maxReservedStudentsError.message}
-        onChange={(e: SyntheticEvent) =>
-          setMaxReservedStudents((e.target as HTMLInputElement).value as string)
-        }
+        value={numVal}
+        onChange={handleNumberInput}
       />
       <Button>Dodaj użytkownika</Button>
     </div>
