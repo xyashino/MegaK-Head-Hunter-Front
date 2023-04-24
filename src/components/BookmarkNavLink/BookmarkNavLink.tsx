@@ -2,6 +2,11 @@ import React from 'react';
 import classes from './BookmarkNavLink.module.css';
 import {NavLink} from 'react-router-dom';
 
+const red = "var(--megakRed)";
+const bgInput = "var(--bgInput)";
+const white = "var(--white)";
+const inactive = "var(--inactiveBookmark)";
+
 interface LinkToBookmarkProps {
     text?: string;
     to: string;
@@ -15,8 +20,8 @@ export const BookmarkNavLink = ({ text, to }: LinkToBookmarkProps) => {
             className={classes.bookmark_nav_link}
             style={({ isActive }) => {
                 return {
-                    borderColor: isActive ? "var(--megakRed)" : "var(--bgInput)",
-                    color: isActive ? "var(--white)" : "var(--inactiveBookmark)",
+                    borderColor: isActive ? red : bgInput,
+                    color: isActive ? white : inactive,
                 };
             }}
         >
