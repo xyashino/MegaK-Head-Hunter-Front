@@ -1,24 +1,21 @@
 import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import { ErrorPage } from "@pages/Error/ErrorPage";
 import {LoginPage} from "@pages/Login/LoginPage";
-import {AdminPanel} from "@pages/AdminPanel/AdminPanel";
+import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 
 const routers = createBrowserRouter([
     {
-        path: '*',
-        element: <LoginPage/>,
+        path:'*',
+        element: <LoginPage />,
     },
     {
-        path:'admin',
-        element: <AdminPanel/>
+        path:'/error',
+        element: <ErrorPage title="Błąd 500" message="Wystąpił problem, spróbuj ponownie za chwilę." buttonMessage="Powrót do strony głównej"/>
     },
     {
-        path:'admin/students',
-        element: <AdminPanel/>
-    },
-    {
-        path:'admin/hr',
-        element: <AdminPanel/>
-    },
+        path:'/404',
+        element: <NotFoundPage message="Page not found - 404"/>
+    }
 ]);
 export const App = () =>  <RouterProvider router={routers} />;
