@@ -1,9 +1,4 @@
-:root {
-  --white: #f7f7f7;
-  --megakRed: #e02635;
-}
-
-button {
+.button {
   background-color: var(--megakRed);
   border: 0;
   color: var(--white);
@@ -15,10 +10,10 @@ button {
   font-weight: 200;
 }
 
-button:hover {
+.button:hover {
   opacity: 0.9;
 }
 
-button:focus-visible {
+.button:focus-visible {
   outline: 2px solid hotpink;
 }

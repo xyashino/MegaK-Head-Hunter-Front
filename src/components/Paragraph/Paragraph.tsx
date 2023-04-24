@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, PropsWithChildren } from "react";
-import "./Paragraph.css";
+import classes from "./Paragraph.module.css";
 
 interface Props
   extends HTMLAttributes<HTMLParagraphElement>,
@@ -8,7 +8,7 @@ interface Props
 export const Paragraph = ({ className, children, ...rest }: Props) => {
   return (
     <>
-      <p {...rest}>{children}</p>
+      <p className={classes.p} {...rest}>{children}</p>
     </>
   );
 };

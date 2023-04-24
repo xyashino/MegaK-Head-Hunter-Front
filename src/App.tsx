@@ -1,11 +1,16 @@
 import React from "react";
-import "./App.css";
-import { LoginPage } from "./pages/Login/LoginPage";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
+import {LoginPage} from "@pages/Login/LoginPage";
+import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 
-export const App = () => {
-  return (
-    <>
-      <LoginPage />
-    </>
-  );
-};
+const routers = createBrowserRouter([
+    {
+        path:'*',
+        element: <LoginPage/>,
+    },
+    {
+        path:'/404',
+        element: <NotFoundPage message="Page not found - 404"/>
+    }
+]);
+export const App = () =>  <RouterProvider router={routers} />;
