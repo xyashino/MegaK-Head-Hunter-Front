@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { ReactNode, useState} from 'react';
 import axios from "axios";
 import Dropzone from 'react-dropzone';
 import classes from "./DragAndDrop.module.css"
@@ -14,7 +14,7 @@ const http = axios.create({
 
 
 
-const upload = (file: File, onUploadProgress?: (progressEvent: AxiosProgressEvent) => void): Promise<any> => {
+const uploadOnServer = (file: File, onUploadProgress?: (progressEvent: AxiosProgressEvent) => void): Promise<any> => {
   let formData = new FormData();
 
   formData.append("uploadStudents", file);
@@ -27,11 +27,7 @@ const upload = (file: File, onUploadProgress?: (progressEvent: AxiosProgressEven
   });
 };
 
-const UploadService = {
-  upload,
-};
-
-interface IFile {
+interface FileData {
   url: string,
   name: string,
 }
@@ -40,8 +36,8 @@ export const DragAndDrop = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
   const [currentFile, setCurrentFile] = useState<File | undefined>(undefined);
   const [progress, setProgress] = useState<number>(0);
-  const [message, setMessage] = useState<string>("");
-  const [fileInfos, setFileInfos] = useState<IFile[]>([]);
+  const [message, setMessage] = useState<ReactNode | string>("");
+  const [fileInfos, setFileInfos] = useState<FileData[]>([]);
 
   const onDrop = (files: File[]) => {
     if (files.length > 0) {
@@ -55,15 +51,15 @@ export const DragAndDrop = () => {
     if (selectedFiles && selectedFiles.length > 0){
     let currentFile = selectedFiles[0];
     
-    const fileUploadedMsg: any = <p className={classes.green}>File uploaded</p>
-    const fileUploadError: any = <p className={classes.red}>Could not upload the file!</p>
+    const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>
+    const fileUploadError = <p className={classes.red}>Wystąpił problem z wysłaniem pliku, spróbuj ponownie</p>
 
     setProgress(0);
     setCurrentFile(currentFile);
 
     
 
-    UploadService.upload(currentFile, (event: AxiosProgressEvent) => {
+    uploadOnServer(currentFile, (event: AxiosProgressEvent) => {
       const total = event.total ?? 0;
       setProgress(Math.round((100 * event.loaded?? 0) / total));
     })
@@ -93,7 +89,7 @@ export const DragAndDrop = () => {
                   {selectedFiles[0].name}
                 </div>
               ) : (
-                "Drag and drop file here, or click to select file"
+                "Przeciągnij i upuść plik tutaj lub kliknij, aby wybrać plik"
               )}
             </div>
             <aside>
@@ -102,7 +98,7 @@ export const DragAndDrop = () => {
                 disabled={!selectedFiles}
                 onClick={upload}
               >
-                Upload
+                Prześlij
               </button>
             </aside>
           </section>
