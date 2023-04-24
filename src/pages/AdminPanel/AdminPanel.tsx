@@ -1,15 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './AdminPanel.module.css';
-import { BookmarkNavLink } from '@components/BookmarkNavLink/BookmarkNavLink';
+import {BookmarkNavLink} from '@components/BookmarkNavLink/BookmarkNavLink';
+import {Outlet} from "react-router-dom";
 
 export const AdminPanel = () => {
-    const [clickedIndex, setClickedIndex] = useState(-1);
-    const [selectedOption, setSelectedOption] = useState('');
-
-    const handleClick = (index: number, option: string) => {
-        setClickedIndex(index);
-        setSelectedOption(option);
-    };
 
     return (
         <>
@@ -17,23 +11,16 @@ export const AdminPanel = () => {
                 <header className={classes.admin_panel_header}>
                     <BookmarkNavLink
                         text="Dodaj kursantów"
-                        index={0}
-                        clickedIndex={clickedIndex}
-                        handleClick={handleClick}
-                        option="Kursanci"
+                        to="/admin/students"
                     />
                     <BookmarkNavLink
                         text="Dodaj użytkowników HR"
-                        index={1}
-                        clickedIndex={clickedIndex}
-                        handleClick={handleClick}
-                        option="Użytkownicy HR"
+                        to="/admin/hr"
                     />
                 </header>
-                <main className={classes.admin_panel_main}>
-                    {selectedOption === 'Kursanci' && <div>drag&drop</div>}
-                    {selectedOption === 'Użytkownicy HR' && <div>formularz</div>}
-                </main>
+                <div className={classes.admin_panel_main}>
+                <Outlet/>
+                </div>
             </div>
         </>
     );

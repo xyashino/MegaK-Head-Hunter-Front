@@ -11,6 +11,14 @@ const routers = createBrowserRouter([
     {
         path:'admin',
         element: <AdminPanel/>
-    }
+    },
+    {
+        path:'admin/students',
+        element: <AdminPanel/>
+    },
+    {
+        path:'admin/hr',
+        element: <AdminPanel/>
+    },
 ]);
 export const App = () =>  <RouterProvider router={routers} />;

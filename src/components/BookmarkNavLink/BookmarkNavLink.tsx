@@ -3,22 +3,26 @@ import classes from './BookmarkNavLink.module.css';
 import {NavLink} from 'react-router-dom';
 
 interface LinkToBookmarkProps {
-    text: string;
-    index: number;
-    clickedIndex: number;
-    handleClick: (index: number, option: string) => void;
-    option: string;
+    text?: string;
+    to: string;
 }
 
-export const BookmarkNavLink = ({ text, index, clickedIndex, handleClick, option}: LinkToBookmarkProps) => {
+export const BookmarkNavLink = ({ text, to }: LinkToBookmarkProps) => {
     return (
+
         <NavLink
-            onClick={() => handleClick(index, option)}
-            className={`${classes.bookmark_nav_link} ${clickedIndex === index ? classes.clicked_bookmark_nav_link: classes.bookmark_nav_link}`}
-            to="/admin"
+            to={to}
+            className={classes.bookmark_nav_link}
+            style={({ isActive }) => {
+                return {
+                    borderColor: isActive ? "var(--megakRed)" : "var(--bgInput)",
+                    color: isActive ? "var(--white)" : "var(--inactiveBookmark)",
+                };
+            }}
         >
             {text}
         </NavLink>
+
     );
 };
 
