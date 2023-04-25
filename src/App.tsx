@@ -17,10 +17,6 @@ const routers = createBrowserRouter([
     {
         path:'/404',
         element: <NotFoundPage message="Page not found - 404"/>
-    },
-    {
-        path: '/drop',
-        element: <DragAndDrop/>
     }
 ]);
 export const App = () =>  <RouterProvider router={routers} />;
