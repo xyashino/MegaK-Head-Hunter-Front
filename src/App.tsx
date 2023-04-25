@@ -8,10 +8,6 @@ import { AdminPanel } from "@layouts/AdminPanel/AdminPanel";
 
 const routers = createBrowserRouter([
   {
-    path: "*",
-    element: <NotFoundPage message="Page not found - 404" />,
-  },
-  {
     path: "/",
     element: <AppLayout />,
     children: [
@@ -44,6 +40,10 @@ const routers = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "*",
+    element: <NotFoundPage message="Page not found - 404" />,
   },
 ]);
 export const App = () => <RouterProvider router={routers} />;

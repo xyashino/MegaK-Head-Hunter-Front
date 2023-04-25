@@ -1,6 +1,6 @@
 
 
-.AppLayout {
+.app_layout {
     display: flex;
     flex-direction: column;
     align-items: center;
