@@ -5,7 +5,9 @@
   --megakRed: #e02635;
   --colorInput: #f7f7f7;
   --bgInput: #292a2b;
-
+  --succesColor: #28cc13;
+  --failureColor: #e02635;
+  --warningColor: #d69200;
 }
 
 body {

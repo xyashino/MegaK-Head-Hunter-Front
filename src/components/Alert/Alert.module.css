@@ -1,33 +1,37 @@
-:root {
-  --succesColor: #28cc13;
-  --failureColor: #e02635;
-  --warningColor: #d69200;
-}
-
 .Alert {
   position: fixed;
-  top: auto;
-  right: 10px;
-  bottom: 10%;
+  top: 10%;
+  left: 0;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
-  width: 200px;
+  padding: 5px;
+  z-index: 100;
+  color: var(--white);
   border-radius: 2px;
+  cursor: pointer;
   animation-duration: .6s;
-  animation-name: slidein;
+  animation-name: slideLeft;
   animation-timing-function: linear;
 }
-img {
+
+.message {
+  margin: 5px;
+}
+
+.image {
   filter: brightness(0) invert(1);
 }
+
 .success {
   background-color: var(--succesColor);
 }
+
 .fail {
   background-color: var(--failureColor);
 }
+
 .warning {
   background-color: var(--warningColor);
 }
@@ -35,16 +39,29 @@ img {
 @media (min-width: 768px) {
   .Alert {
     top: 10%;
-    bottom: auto;
+    left: auto;
+    right: 0;
+    animation-name: slideRight;
   }
+
 }
 
-@keyframes slidein {
+@keyframes slideLeft {
   from {
-    right: -250px;
+    left: -100%;
   }
 
   to {
-    right: 10px;
+    left: 0;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    right: -100%;
+  }
+
+  to {
+    right: 0;
   }
 }
