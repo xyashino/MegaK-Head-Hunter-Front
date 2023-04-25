@@ -3,6 +3,7 @@ import { useValidationState } from "@hooks/useValidationState";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import classes from "./RegisterHRUser.module.css";
+import { useAxios } from "@hooks/useAxios";
 
 export const RegisterHRUser = () => {
   const {
@@ -31,14 +32,29 @@ export const RegisterHRUser = () => {
   } = useValidationState("Imię i nazwisko", {
     minLength: 3,
     maxLength: 255,
-  }); 
-
+  });
   const [numVal, setNumVal] = useState("1");
 
   const handleNumberInput = (e: SyntheticEvent) => {
     const { value } = e.target as HTMLInputElement;
     if (Number(value) > 1 && Number(value) > 999) return;
     setNumVal(value);
+  };
+
+  const { response, error, loading } = useAxios({
+    url: "/users",
+    method: "POST",
+    body: {
+      email: emailValue,
+      company: companyValue,
+      fullName: fullNameValue,
+      numVal: numVal,
+    },
+  });
+
+  const handleSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    console.log(response?.data);
   };
 
   return (
@@ -79,7 +95,11 @@ export const RegisterHRUser = () => {
         value={numVal}
         onChange={handleNumberInput}
       />
-      <Button>Dodaj użytkownika</Button>
+      <Button onClick={handleSubmit}>Dodaj użytkownika</Button>
+
+      {response && (
+        <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
+      )}
     </div>
   );
 };
