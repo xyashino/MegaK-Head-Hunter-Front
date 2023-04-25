@@ -81,7 +81,7 @@ export const DragAndDrop = () => {
       <Dropzone onDrop={onDrop} multiple={false}>
         {({ getRootProps, getInputProps }) => (
           <section>
-            <div  className={classes.dropBox} {...getRootProps()}>
+            <div  className={classes.drop_box} {...getRootProps()}>
               <input {...getInputProps()} />
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>
