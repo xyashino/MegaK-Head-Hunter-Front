@@ -1,5 +1,5 @@
 .input {
-  background: var(--bgInput) 0% 0% no-repeat padding-box;
+  background: var(--bgInput) 0 0 no-repeat padding-box;
   opacity: 1;
   border: 0;
   width: 100%;
