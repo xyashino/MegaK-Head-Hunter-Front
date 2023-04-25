@@ -3,7 +3,6 @@ import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import { ErrorPage } from "@pages/Error/ErrorPage";
 import {LoginPage} from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
-import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 
 const routers = createBrowserRouter([
     {
