@@ -5,6 +5,7 @@
   width: 100%;
   background: var(--bgInput) 0% 0% no-repeat padding-box;
   margin-bottom: 3px;
+  border-bottom: 4px solid #202122;
 }
 .admin_panel_main {
   padding: 5px;
@@ -13,7 +14,7 @@
   align-items: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .admin_panel_header {
     justify-content: start;
   }

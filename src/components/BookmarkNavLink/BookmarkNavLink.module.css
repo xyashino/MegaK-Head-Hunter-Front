@@ -1,21 +1,45 @@
-.pending {
+.inactive {
     text-align: left;
-    font: normal normal normal 18px/30px Catamaran;
-    letter-spacing: 0px;
+    font: normal normal normal 14px/30px Catamaran;
+    letter-spacing: 0;
     opacity: 1;
     padding: 23px 1.5vw 16px 1.5vw;
     border-bottom: 3px solid var(--bgInput);
     color: var(--inactiveBookmark);
     border-bottom: 3px solid var(--bgInput);
+    flex-grow: 1;
+    text-align: center;
+
 }
 
 .active {
     text-align: left;
-    font: normal normal normal 18px/30px Catamaran;
-    letter-spacing: 0px;
+    font: normal normal normal 14px/30px Catamaran;
+    letter-spacing: 0;
     opacity: 1;
     padding: 23px 1.5vw 16px 1.5vw;
     border-bottom: 3px solid var(--bgInput);
     color: var(--white);
     border-bottom: 3px solid var(--megakRed);
+    flex-grow: 1;
+    text-align: center;
+
+}
+
+@media (min-width: 1024px) {
+    .active {
+        font: normal normal normal 18px/30px Catamaran;
+    }
+    .inactive {
+        font: normal normal normal 18px/30px Catamaran;
+    }
+}
+
+@media (min-width: 768px) {
+    .active {
+      flex-grow: 0;
+    }
+    .inactive {
+        flex-grow: 0;
+    }
 }
