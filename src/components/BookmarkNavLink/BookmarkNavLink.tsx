@@ -14,6 +14,7 @@ export const BookmarkNavLink = ({ text, to }: LinkToBookmarkProps) => {
       className={({ isActive }) =>
         isActive ? classes.active : classes.inactive
       }
+      draggable={false}
     >
       {text}
     </NavLink>
