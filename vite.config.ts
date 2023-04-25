@@ -12,6 +12,9 @@ export default defineConfig({
       "@hooks": resolve(__dirname, "./src/hooks"),
       "@components": resolve(__dirname, "./src/components"),
       "@layouts": resolve(__dirname, "./src/layouts"),
+      "@context": resolve(__dirname, "./src/context"),
+      "@utils": resolve(__dirname, "./src/utils"),
+      "@enums": resolve(__dirname, "./src/enums"),
     },
   },
 });
