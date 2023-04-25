@@ -2,18 +2,24 @@
   position: fixed;
   top: 10%;
   left: 0;
-  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 5px;
   padding: 5px;
-  z-index: 100;
+  max-width: 500px;
   color: var(--white);
   border-radius: 2px;
   cursor: pointer;
-  animation-duration: .6s;
   animation-name: slideLeft;
+  animation-duration: 1s;
   animation-timing-function: linear;
+}
+.back {
+  animation-name: backToLeft;
+  animation-duration: 1.3s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
 }
 
 .message {
@@ -44,11 +50,14 @@
     animation-name: slideRight;
   }
 
+  .back {
+    animation-name: backToRight;
+  }
 }
 
 @keyframes slideLeft {
   from {
-    left: -100%;
+    left: -500px;
   }
 
   to {
@@ -58,10 +67,29 @@
 
 @keyframes slideRight {
   from {
-    right: -100%;
+    right: -500px;
   }
 
   to {
     right: 0;
+  }
+}
+
+@keyframes backToRight {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -500px;
+  }
+}
+@keyframes backToLeft{
+  from {
+    left: 0;
+  }
+
+  to {
+    left: -500px;
   }
 }

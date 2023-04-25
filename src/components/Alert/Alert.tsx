@@ -15,7 +15,16 @@ export const Alert = ({kind, message}: Props) => {
 
   const portal = document.getElementById('portal') as HTMLElement;
 
-  const handleClick = () => setDisplay(false)
+  const handleClick = () => {
+    const alert = document.getElementById('Alert');
+    if(alert) {
+      alert.classList.add(classes.back);
+    }
+
+    setTimeout(() => {
+      setDisplay(false)
+    }, 2000);
+  }
 
   if (!display) {
     return null
@@ -24,7 +33,7 @@ export const Alert = ({kind, message}: Props) => {
   switch (kind) {
     case 'success':
       return ReactDOM.createPortal(
-        <div className={`${classes.Alert} ${classes.success}`} onClick={handleClick}>
+        <div id="Alert" className={`${classes.Alert} ${classes.success}`} onClick={handleClick}>
           <p className={classes.message}>{message}</p>
           <img className={classes.image} src={successIcon} alt="success" />
         </div>,
@@ -32,7 +41,7 @@ export const Alert = ({kind, message}: Props) => {
       );
     case 'fail': 
       return ReactDOM.createPortal(
-        <div className={`${classes.Alert} ${classes.fail}`} onClick={handleClick}>
+        <div id="Alert" className={`${classes.Alert} ${classes.fail}`} onClick={handleClick}>
           <p className={classes.message}>{message}</p>
           <img className={classes.image} src={failIcon} alt="fail" />
         </div>,
@@ -40,7 +49,7 @@ export const Alert = ({kind, message}: Props) => {
       );
     case 'warning': 
       return ReactDOM.createPortal(
-        <div className={`${classes.Alert} ${classes.warning}`} onClick={handleClick}>
+        <div id="Alert" className={`${classes.Alert} ${classes.warning}`} onClick={handleClick}>
           <p className={classes.message}>{message}</p>
           <img className={classes.image} src={warningIcon} alt="warning" />
         </div>,
