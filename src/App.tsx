@@ -2,7 +2,6 @@ import React from "react";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {LoginPage} from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
-import { DragAndDrop } from "@pages/DragAndDrop/DragAndDrop";
 
 const routers = createBrowserRouter([
     {

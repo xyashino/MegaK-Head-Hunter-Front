@@ -37,7 +37,6 @@ export const DragAndDrop = () => {
   const [currentFile, setCurrentFile] = useState<File | undefined>(undefined);
   const [progress, setProgress] = useState<number>(0);
   const [message, setMessage] = useState<ReactNode | string>("");
-  const [fileInfos, setFileInfos] = useState<FileData[]>([]);
 
   const onDrop = (files: File[]) => {
     if (files.length > 0) {
