@@ -26,3 +26,17 @@
   margin: 0;
   font-weight: bolder;
 }
+
+.preview_password {
+  position: relative;
+  width: 100%;
+}
+
+.preview_password_icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  height: 80%;
+  fill: var(--white);
+}
