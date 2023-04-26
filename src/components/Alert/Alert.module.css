@@ -1,0 +1,71 @@
+.Alert {
+  position: fixed;
+  bottom: 10%;
+  right: -550px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 10%;
+  padding: 5px;
+  max-width: 500px;
+  color: var(--white);
+  border-radius: 2px;
+  cursor: default;
+}
+.slideIn {
+  animation-name: slideIn;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.slideOut {
+  animation-name: slideOut;
+  animation-duration: 1s;
+}
+
+.message {
+  margin: 5px;
+}
+
+.image {
+  filter: brightness(0) invert(1);
+}
+
+.success {
+  background-color: var(--succesColor);
+}
+
+.fail {
+  background-color: var(--failureColor);
+}
+
+.warning {
+  background-color: var(--warningColor);
+}
+
+@media (min-width: 768px) {
+  .Alert {
+    top: 10%;
+    bottom: auto;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    right: -550px;
+  }
+
+  to {
+    right: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -550px;
+  }
+}
