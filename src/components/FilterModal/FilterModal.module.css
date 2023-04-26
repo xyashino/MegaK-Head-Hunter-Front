@@ -1,7 +1,9 @@
 .filter_modal {
     background: #0A0A0A 0% 0% no-repeat padding-box;
     padding: 2rem 1.5rem;
-    width: 30%;
+    min-width: 300px;
+    max-width: 800px;
+    width: 550px;
     height: 80%;
     text-align: left;
     font: normal normal normal 14px/23px Catamaran;
@@ -108,17 +110,19 @@
     opacity: 1;
 }
 
-.ReactModal__Overlay {
-    opacity: 0;
+@media(max-width: 768px) {
+    .filter_modal {
+        margin: 7rem 1rem;
+        width: 400px;
+    }
 }
 
-.ReactModal__Overlay--after-open {
-    opacity: 1;
+@media(min-width:768px){
+    .filter_modal {
+        margin: 7rem auto;
+    }
 }
 
-.ReactModal__Overlay--before-close {
-    opacity: 0;
-}
 
 
 
