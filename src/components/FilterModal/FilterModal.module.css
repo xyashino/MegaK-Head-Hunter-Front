@@ -27,6 +27,10 @@
     margin-left: 1em;
 }
 
+.filter_modal .filter_modal_btns button:nth-child(odd) {
+    background-color: transparent;
+}
+
 .btn_filter_modal_smaller button {
     text-align: left;
     font: normal normal normal 12px/19px Catamaran;
@@ -39,8 +43,13 @@
 
 .input_filter_modal_smaller input {
     font: normal normal normal 12px/19px Catamaran;
-    width: 17%;
+    width: 20%;
     margin: 0 1em;
+}
+
+.input_months input {
+    font: normal normal normal 12px/19px Catamaran;
+    width: 23%;
 }
 
 .filter_modal_wrapper {
@@ -54,13 +63,48 @@
     margin-bottom: 1rem;
 }
 
-.single_input_filter_modal label {
-    padding-left: 0.5rem;
+.single_input_filter_modal input {
+    display: none;
 }
 
-.single_input_filter_modal input {
+.single_input_filter_modal label:before {
+    content: "";
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 0.4rem;
+    background-color: transparent;
     border: 1px solid var(--bgInput);
-    color: #0A0A0A;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.input_radio:checked + label:before {
+    /*content: "🔴";*/
+    /*text-align: center;*/
+}
+
+/*.single_input_filter_modal label {*/
+
+/*}*/
+
+/*.input_filter_modal_radio {*/
+/*    margin-top: 0.2rem;*/
+/*}*/
+
+.first_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.first_row button {
+    text-align: left;
+    font: normal normal normal 14px/23px Catamaran;
+    letter-spacing: 0px;
+    color: #F7F7F7;
+    background: #172A35 0% 0% no-repeat padding-box;
+    opacity: 1;
 }
 
 .ReactModal__Overlay {

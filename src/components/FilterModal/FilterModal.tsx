@@ -23,8 +23,9 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             contentLabel="Filter Modal"
             // closeTimeoutMS={200}
         >
-            <div>
+            <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
+                <Button>Wyczyść wszystkie</Button>
             </div>
             <div>
                 <p>Ocena przejścia kursu</p>
@@ -65,24 +66,39 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             </div>
             <div>
                 <p>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</p>
-                <div className={classes.input_filter_modal_checkbox}>
+                <div className={classes.input_filter_modal_radio}>
                     <p className={classes.single_input_filter_modal}>
-                        <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
-                        <label htmlFor="javascript">Tak</label>
+                        <input
+                            className={classes.input_radio}
+                            type="radio"
+                            id="yes"
+                            name="yes"
+                            value="yes"
+                        />
+                        <label htmlFor="yes">Tak</label>
                     </p>
                     <p className={classes.single_input_filter_modal}>
-                        <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
-                        <label htmlFor="javascript">Nie</label>
+                        <input
+                            className={classes.input_radio}
+                            type="radio"
+                            id="no"
+                            name="no"
+                            value="no"
+                        />
+                        <label htmlFor="no">Nie</label>
                     </p>
                 </div>
             </div>
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
+                <div className={classes.input_months}>
+                <Input placeholder="0 miesięcy" type="number" value={''}/>
+                </div>
             </div>
 
             <div className={classes.filter_modal_btns}>
                 <Button className="btn_request_close" onClick={onRequestClose}>Anuluj</Button>
-                <Button className="btn_confirm" onClick={onConfirm}>Pokaż wyniki</Button>
+                <Button className={classes.btn_confirm} onClick={onConfirm}>Pokaż wyniki</Button>
             </div>
         </Modal>
     );
