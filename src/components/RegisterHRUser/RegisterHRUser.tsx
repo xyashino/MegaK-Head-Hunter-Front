@@ -6,8 +6,11 @@ import classes from "./RegisterHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
 import { CreateHrRequestBody } from "@backendTypes/hr/create-hr-request-body";
 import { RequestPath } from "@enums/request-path.enum";
+import { Info } from "@components/Info/Info";
 
 export const RegisterHRUser = () => {
+  const [info, setInfo] = useState({ show: false, msg: "", type: "success" });
+
   const {
     value: emailValue,
     error: emailError,
@@ -43,7 +46,7 @@ export const RegisterHRUser = () => {
     setNumVal(value);
   };
 
-  const { fetchData, response } = useAxios({
+  const { fetchData, error } = useAxios({
     url: RequestPath.CreteHr,
     method: "POST",
     body: {
@@ -54,9 +57,14 @@ export const RegisterHRUser = () => {
     } as CreateHrRequestBody,
   });
 
+  const resetInfo = () => setInfo({ show: false, msg: "", type: "success" });
+  const successInfo = () =>
+    setInfo({ show: false, msg: "Dodano Hr", type: "success" });
+
+  const showError = () => setInfo({ msg: error, show: true, type: "error" });
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    fetchData();
+    fetchData(successInfo, showError);
   };
 
   return (
@@ -103,9 +111,13 @@ export const RegisterHRUser = () => {
       />
       <Button>Dodaj użytkownika</Button>
 
-      {response && (
-        <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
-      )}
+      {info.show ? (
+        <Info
+          text={info.msg}
+          clickMethod={resetInfo}
+          type={info.type as "success"}
+        />
+      ) : null}
     </form>
   );
 };

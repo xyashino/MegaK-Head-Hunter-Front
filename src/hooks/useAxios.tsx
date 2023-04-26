@@ -43,7 +43,8 @@ export const useAxios = ({
 
   const requestLogic = async (
     fetchMethod: () => Promise<AxiosResponse<any, any>>,
-    afterSuccessMethod?: () => void
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
   ) => {
     try {
       setLoading(true);
@@ -53,30 +54,44 @@ export const useAxios = ({
       return res.data;
     } catch (e) {
       let message = "Unknown Error";
-      console.log(e);
       if (isAxiosError(error)) {
         message =
           error.response?.data.message ??
           error.response?.data.error ??
           error.message;
       }
+      console.log(message);
+      setError(message);
       setLoading(false);
-      console.error(message);
-      setError(error);
+      if (afterErrorMethod) {
+        afterErrorMethod();
+      }
     }
   };
 
-  const fetchData = (afterSuccessMethod?: () => void) => {
+  const fetchData = (
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
+  ) => {
     if (body && headers) {
       return requestLogic(
         () => axiosMethod(url, body, { headers }),
-        afterSuccessMethod
+        afterSuccessMethod,
+        afterErrorMethod
       );
     }
     if (body) {
-      return requestLogic(() => axiosMethod(url, body), afterSuccessMethod);
+      return requestLogic(
+        () => axiosMethod(url, body),
+        afterSuccessMethod,
+        afterErrorMethod
+      );
     }
-    return requestLogic(() => axiosMethod(url), afterSuccessMethod);
+    return requestLogic(
+      () => axiosMethod(url),
+      afterSuccessMethod,
+      afterErrorMethod
+    );
   };
   return { fetchData, response, error, loading };
 };

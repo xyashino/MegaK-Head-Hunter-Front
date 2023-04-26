@@ -2,10 +2,11 @@
   position: fixed;
   bottom: 10%;
   right: -550px;
+  min-width: 300px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 10%;
+  margin-right: 5%;
   padding: 5px;
   max-width: 500px;
   color: var(--white);
@@ -31,17 +32,6 @@
   filter: brightness(0) invert(1);
 }
 
-.success {
-  background-color: var(--succesColor);
-}
-
-.fail {
-  background-color: var(--failureColor);
-}
-
-.warning {
-  background-color: var(--warningColor);
-}
 
 @media (min-width: 768px) {
   .Alert {
