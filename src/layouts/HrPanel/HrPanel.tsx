@@ -7,6 +7,10 @@ import {Button} from "@components/Button/Button";
 export const HrPanel = () => {
     const [ModalIsOpen, setModalIsOpen] = useState<boolean>(false);
 
+   const openModal = () => {
+       setModalIsOpen(true);
+   }
+
     return (
         <>
             <div className={classes.div_hr_panel_wrapper}>
@@ -14,7 +18,7 @@ export const HrPanel = () => {
                     <BookmarkNavLink text="Dostepni kursanci" to="/hr/students" />
                     <BookmarkNavLink text="Do rozmowy" to="/hr/talk" />
                 </header>
-                <Button>Filtrowanie</Button>
+                <Button onClick={openModal}>Filtrowanie</Button>
                 <div className={classes.hr_panel_main}>
                     <Outlet />
                 </div>
