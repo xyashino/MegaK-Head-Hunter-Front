@@ -2,7 +2,7 @@ import { Navbar } from "@components/Navbar/Navbar";
 import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import classes from "./AppLayout.module.css";
 import { PageRouter } from "@enums/page-router.enum";
-import { useLayoutEffect } from "react";
+import React,{ useLayoutEffect } from "react";
 import { UserResponse } from "@backendTypes/users/user-response";
 export const AppLayout = () => {
   const data = useLoaderData() as UserResponse;

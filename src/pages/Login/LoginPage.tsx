@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useLayoutEffect} from "react";
+import React, {SyntheticEvent} from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Input } from "@components/Input/Input";
 import { Paragraph } from "@components/Paragraph/Paragraph";
