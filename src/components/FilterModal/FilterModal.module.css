@@ -1,6 +1,6 @@
 .filter_modal {
     background: #0A0A0A 0% 0% no-repeat padding-box;
-    padding: 2rem 2rem;
+    padding: 2rem 1.5rem;
     width: 30%;
     height: 80%;
     text-align: left;
@@ -15,7 +15,6 @@
 
 .filter_modal_btns {
     display: flex;
-    /*align-items: center;*/
     justify-content: flex-end;
 }
 
@@ -38,6 +37,12 @@
     margin-right: 1em;
 }
 
+.input_filter_modal_smaller input {
+    font: normal normal normal 12px/19px Catamaran;
+    width: 17%;
+    margin: 0 1em;
+}
+
 .filter_modal_wrapper {
     display: flex;
     flex-direction: column;
@@ -47,6 +52,15 @@
 
 .filter_modal div {
     margin-bottom: 1rem;
+}
+
+.single_input_filter_modal label {
+    padding-left: 0.5rem;
+}
+
+.single_input_filter_modal input {
+    border: 1px solid var(--bgInput);
+    color: #0A0A0A;
 }
 
 .ReactModal__Overlay {

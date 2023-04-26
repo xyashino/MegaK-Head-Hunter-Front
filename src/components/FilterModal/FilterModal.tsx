@@ -56,13 +56,25 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             </div>
             <div>
                 <p>Oczekiwane wynagrodzenie miesięczne netto</p>
-                <p>
-                    Od<Input placeholder="np. 1000 zł" type="text" value={''}/>
-                    Do<Input placeholder="np. 10000 zł" type="text" value={''}/>
-                </p>
+                <div className={classes.input_filter_modal_smaller}>
+                    <p>
+                        Od<Input placeholder="np. 1000 zł" type="text" value={''}/>
+                        Do<Input placeholder="np. 10000 zł" type="text" value={''}/>
+                    </p>
+                </div>
             </div>
             <div>
                 <p>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</p>
+                <div className={classes.input_filter_modal_checkbox}>
+                    <p className={classes.single_input_filter_modal}>
+                        <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
+                        <label htmlFor="javascript">Tak</label>
+                    </p>
+                    <p className={classes.single_input_filter_modal}>
+                        <input type="radio" id="javascript" name="fav_language" value="JavaScript"/>
+                        <label htmlFor="javascript">Nie</label>
+                    </p>
+                </div>
             </div>
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
