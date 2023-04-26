@@ -2,6 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
+import {Input} from "@components/Input/Input";
 
 Modal.setAppElement('#root');
 
@@ -22,7 +23,50 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             contentLabel="Filter Modal"
             // closeTimeoutMS={200}
         >
-            <h2>Filtrowanie</h2>
+            <div>
+                <h2>Filtrowanie</h2>
+            </div>
+            <div>
+                <p>Ocena przejścia kursu</p>
+            </div>
+            <div>
+                <p>Ocena aktywności i zaangażowania na kursie</p>
+            </div>
+            <div>
+                <p>Ocena kodu w projekcie własnym</p>
+            </div>
+            <div>
+                <p>Ocena pracy w zespole w Scrum</p>
+            </div>
+            <div>
+                <p>Preferowane miejsce pracy</p>
+                <div className={classes.btn_filter_modal_smaller}>
+                    <Button>Praca zdalna</Button>
+                    <Button>Praca w biurze</Button>
+                </div>
+            </div>
+            <div>
+                <p>Oczekiwany typ kontraktu</p>
+                <div className={classes.btn_filter_modal_smaller}>
+                    <Button>Umowa o pracę</Button>
+                    <Button>B2B</Button>
+                    <Button>Umowa zlecenie</Button>
+                    <Button>Umowa o dzieło</Button>
+                </div>
+            </div>
+            <div>
+                <p>Oczekiwane wynagrodzenie miesięczne netto</p>
+                <p>
+                    Od<Input placeholder="np. 1000 zł" type="text" value={''}/>
+                    Do<Input placeholder="np. 10000 zł" type="text" value={''}/>
+                </p>
+            </div>
+            <div>
+                <p>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</p>
+            </div>
+            <div>
+                <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
+            </div>
 
             <div className={classes.filter_modal_btns}>
                 <Button className="btn_request_close" onClick={onRequestClose}>Anuluj</Button>
