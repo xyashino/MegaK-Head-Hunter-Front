@@ -1,0 +1,25 @@
+.hr_panel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background: var(--bgInput) 0 0 no-repeat padding-box;
+    margin-bottom: 3px;
+    border-bottom: 4px solid var(--navBorder);
+}
+.hr_panel_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr_panel_button {
+    background: #1E1E1F 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .hr_panel_header {
+        justify-content: start;
+    }
+}
