@@ -4,6 +4,8 @@ import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import classes from "./RegisterHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
+import { CreateHrRequestBody } from "@backendTypes/hr/create-hr-request-body";
+import { RequestPath } from "@enums/request-path.enum";
 
 export const RegisterHRUser = () => {
   const {
@@ -37,28 +39,32 @@ export const RegisterHRUser = () => {
 
   const handleNumberInput = (e: SyntheticEvent) => {
     const { value } = e.target as HTMLInputElement;
-    if (Number(value) > 1 && Number(value) > 999) return;
+    if (Number(value) < 1 || Number(value) > 999) return;
     setNumVal(value);
   };
 
-  const { response, error, loading } = useAxios({
-    url: "/users",
+  const { fetchData, response } = useAxios({
+    url: RequestPath.CreteHr,
     method: "POST",
     body: {
       email: emailValue,
       company: companyValue,
       fullName: fullNameValue,
-      numVal: numVal,
-    },
+      maxReservedStudents: +numVal,
+    } as CreateHrRequestBody,
   });
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(response?.data);
+    fetchData();
   };
 
   return (
-    <div className={classes.register_hr_form}>
+    <form
+      className={classes.register_hr_form}
+      noValidate
+      onSubmit={handleSubmit}
+    >
       <Input
         type="email"
         placeholder="E-mail"
@@ -95,11 +101,11 @@ export const RegisterHRUser = () => {
         value={numVal}
         onChange={handleNumberInput}
       />
-      <Button onClick={handleSubmit}>Dodaj użytkownika</Button>
+      <Button>Dodaj użytkownika</Button>
 
       {response && (
         <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
       )}
-    </div>
+    </form>
   );
 };
