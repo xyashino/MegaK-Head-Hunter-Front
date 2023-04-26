@@ -4,7 +4,7 @@
     min-width: 300px;
     max-width: 800px;
     width: 550px;
-    height: 80%;
+    height: 700px;
     text-align: left;
     font: normal normal normal 14px/23px Catamaran;
     letter-spacing: 0px;
@@ -114,6 +114,10 @@
     .filter_modal {
         margin: 7rem 1rem;
         width: 400px;
+        height: 800px;
+    }
+    .btn_filter_modal_smaller button {
+        margin-top: 1rem;
     }
 }
 
@@ -122,6 +126,12 @@
         margin: 7rem auto;
     }
 }
+
+/*TODO:
+   1. input type="number" - ostylować strzałki według makiety\
+   2. input type="radio" - ostylować po zaznaczeniu
+   3. po kliknięciu buttonów, zmieniają kolor na czerwony
+   */
 
 
 
