@@ -1,25 +1,26 @@
 .Alert {
   position: fixed;
-  top: 10%;
-  left: 0;
+  bottom: 10%;
+  right: -550px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 5px;
+  margin-right: 10%;
   padding: 5px;
   max-width: 500px;
   color: var(--white);
   border-radius: 2px;
-  cursor: pointer;
-  animation-name: slideLeft;
+  cursor: default;
+}
+.slideIn {
+  animation-name: slideIn;
   animation-duration: 1s;
   animation-timing-function: linear;
-}
-.back {
-  animation-name: backToLeft;
-  animation-duration: 1.3s;
-  animation-timing-function: linear;
   animation-fill-mode: forwards;
+}
+.slideOut {
+  animation-name: slideOut;
+  animation-duration: 1s;
 }
 
 .message {
@@ -45,29 +46,13 @@
 @media (min-width: 768px) {
   .Alert {
     top: 10%;
-    left: auto;
-    right: 0;
-    animation-name: slideRight;
-  }
-
-  .back {
-    animation-name: backToRight;
+    bottom: auto;
   }
 }
 
-@keyframes slideLeft {
+@keyframes slideIn {
   from {
-    left: -500px;
-  }
-
-  to {
-    left: 0;
-  }
-}
-
-@keyframes slideRight {
-  from {
-    right: -500px;
+    right: -550px;
   }
 
   to {
@@ -75,21 +60,12 @@
   }
 }
 
-@keyframes backToRight {
+@keyframes slideOut {
   from {
     right: 0;
   }
 
   to {
-    right: -500px;
-  }
-}
-@keyframes backToLeft{
-  from {
-    left: 0;
-  }
-
-  to {
-    left: -500px;
+    right: -550px;
   }
 }

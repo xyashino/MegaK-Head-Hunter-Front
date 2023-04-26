@@ -1,36 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import successIcon from  '@assets/correct-circle.svg'
-import failIcon from "@assets/cross-circle.svg"
-import warningIcon from "@assets/warning-cicrle.svg"
+import alertIcon from  '@assets/alert-icon.svg'
 import classes from './Alert.module.css';
 
 type Props = {
   kind: 'success' | 'fail' | 'warning',
-  message: string
+  message: string,
+  durationMs?: number,
 }
 
-export const Alert = ({kind, message}: Props) => {
+export const Alert = ({kind, message, durationMs = 3000}: Props) => {
   const [display, setDisplay] = useState(true);
-
   const portal = document.getElementById('portal') as HTMLElement;
-
-  const handleClick = () => {
-    const alert = document.getElementById('Alert');
-    if(alert) {
-      alert.classList.add(classes.back);
-    }
-
-    setTimeout(() => {
-      setDisplay(false)
-    }, 2000);
-  }
+  const alertElement = useRef<HTMLDivElement>(null);
 
   if (!display) {
     return null
-  }
+  };
 
-  switch (kind) {
+  useEffect(() => {
+    if (alertElement.current) {
+      alertElement.current.classList.add(classes.slideIn);
+
+      setTimeout(() => {
+        alertElement.current?.classList.add(classes.slideOut);
+      }, durationMs);
+    };
+  },[]);
+
+  return ReactDOM.createPortal(
+    <div ref={alertElement} className={`${classes.Alert} ${classes[kind]}`}>
+      <p className={classes.message}>{message}</p>
+      <img className={classes.image} src={alertIcon} alt="alert icon"/>
+    </div>,
+    portal
+  );
+
+/*   switch (kind) {
     case 'success':
       return ReactDOM.createPortal(
         <div id="Alert" className={`${classes.Alert} ${classes.success}`} onClick={handleClick}>
@@ -55,5 +61,5 @@ export const Alert = ({kind, message}: Props) => {
         </div>,
         portal
       );
-  }
+  } */
 }
