@@ -1,12 +1,24 @@
 import { Navbar } from "@components/Navbar/Navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData, useNavigate } from "react-router-dom";
 import classes from "./AppLayout.module.css";
+import { PageRouter } from "@enums/page-router.enum";
+import { useLayoutEffect } from "react";
+import { UserResponse } from "@backendTypes/users/user-response";
 export const AppLayout = () => {
+  const data = useLoaderData() as UserResponse;
+  const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    if (data.role === "admin") return navigate(PageRouter.AdminStudents);
+    navigate(PageRouter.Error);
+    return;
+  }, []);
+
   return (
     <div className={classes.app_layout}>
-      <Navbar />
+      <Navbar lastName={''} firstName={'Admin'}/>
       <div className={classes.app_container}>
-        <Outlet />
+        <Outlet context={data} />
       </div>
     </div>
   );
