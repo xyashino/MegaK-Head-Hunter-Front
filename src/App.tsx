@@ -5,6 +5,7 @@ import { LoginPage } from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
 import { AdminPanel } from "@layouts/AdminPanel/AdminPanel";
+import {HrPanel} from "@layouts/HrPanel/HrPanel";
 
 const routers = createBrowserRouter([
   {
@@ -25,7 +26,22 @@ const routers = createBrowserRouter([
           },
         ],
       },
+      {
+        path: "hr",
+        element: <HrPanel/>,
+        children: [
+          {
+            path: "students",
+            element: <h1 style={{ color: "white" }}>Lista kurstantów</h1>,
+          },
+          {
+            path: "talk",
+            element: <h1 style={{ color: "white" }}>Lista kursantów do rozmowy</h1>,
+          },
+        ],
+      },
     ],
+
   },
   {
     path: "/error",
