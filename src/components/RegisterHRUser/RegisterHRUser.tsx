@@ -9,8 +9,6 @@ import { RequestPath } from "@enums/request-path.enum";
 import { Info } from "@components/Info/Info";
 
 export const RegisterHRUser = () => {
-  const [info, setInfo] = useState({ show: false, msg: "", type: "success" });
-
   const {
     value: emailValue,
     error: emailError,
@@ -46,7 +44,7 @@ export const RegisterHRUser = () => {
     setNumVal(value);
   };
 
-  const { fetchData, error } = useAxios({
+  const { fetchData, error,setError } = useAxios({
     url: RequestPath.CreteHr,
     method: "POST",
     body: {
@@ -57,14 +55,13 @@ export const RegisterHRUser = () => {
     } as CreateHrRequestBody,
   });
 
-  const resetInfo = () => setInfo({ show: false, msg: "", type: "success" });
+  const resetInfo = () => setError({ show: false, msg: "", type: "success" });
   const successInfo = () =>
-    setInfo({ show: false, msg: "Dodano Hr", type: "success" });
+    setError({ show: false, msg: "Dodano Hr", type: "success" });
 
-  const showError = () => setInfo({ msg: error, show: true, type: "error" });
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    fetchData(successInfo, showError);
+    fetchData(successInfo);
   };
 
   return (
@@ -111,11 +108,11 @@ export const RegisterHRUser = () => {
       />
       <Button>Dodaj użytkownika</Button>
 
-      {info.show ? (
+      {error.show ? (
         <Info
-          text={info.msg}
+          text={error.msg}
           clickMethod={resetInfo}
-          type={info.type as "success"}
+          type={error.type as "success"}
         />
       ) : null}
     </form>

@@ -36,7 +36,7 @@ export const useAxios = ({
   headers = null,
 }: AxiosProps) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState({ show: false, msg: "", type: "success" });
   const [loading, setLoading] = useState<boolean>(true);
 
   const axiosMethod = getAxiosMethod(method);
@@ -60,12 +60,9 @@ export const useAxios = ({
           error.response?.data.error ??
           error.message;
       }
-      console.log(message);
-      setError(message);
+      setError({ show: true, msg:message, type: "error" });
       setLoading(false);
-      if (afterErrorMethod) {
-        afterErrorMethod();
-      }
+      if (afterErrorMethod) {afterErrorMethod();}
     }
   };
 
@@ -93,5 +90,5 @@ export const useAxios = ({
       afterErrorMethod
     );
   };
-  return { fetchData, response, error, loading };
+  return { fetchData, setError, error, loading };
 };

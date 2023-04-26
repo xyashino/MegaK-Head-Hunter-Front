@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Input } from "@components/Input/Input";
 import { Paragraph } from "@components/Paragraph/Paragraph";
@@ -13,7 +13,6 @@ import { Info } from "@components/Info/Info";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const [info, setInfo] = useState({ show: false, msg: "", type: "success" });
   const {
     value: emailValue,
     error: emailError,
@@ -33,7 +32,7 @@ export const LoginPage = () => {
     maxLength: 255,
   });
 
-  const { fetchData, error } = useAxios({
+  const { fetchData, error,setError } = useAxios({
     url: RequestPath.Login,
     method: "POST",
     body: {
@@ -42,14 +41,12 @@ export const LoginPage = () => {
     },
   });
 
-  const resetInfo = () => setInfo({ show: false, msg: "", type: "success" });
-  const showError = () => setInfo({ show: true, msg: error, type: "error" });
-
+  const resetInfo = () => setError({ show: false, msg: "", type: "success" });
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
       navigate(PageRouter.Main);
-    }, showError);
+    });
   };
 
   return (
@@ -90,11 +87,11 @@ export const LoginPage = () => {
         </Paragraph>
         <Button>Zaloguj się</Button>
       </div>
-      {info.show ? (
+      {error.show ? (
         <Info
-          text={info.msg}
+          text={error.msg}
           clickMethod={resetInfo}
-          type={info.type as "success"}
+          type={error.type as "success"}
         />
       ) : null}
     </form>
