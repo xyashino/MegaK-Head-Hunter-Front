@@ -6,11 +6,13 @@
     background: var(--bgInput) 0 0 no-repeat padding-box;
     margin-bottom: 3px;
     border-bottom: 4px solid var(--navBorder);
+    z-index: -1;
 }
 .hr_panel_main {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: -1;
 }
 
 .hr_panel_button {

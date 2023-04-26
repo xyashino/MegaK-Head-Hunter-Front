@@ -32,11 +32,11 @@ const routers = createBrowserRouter([
         children: [
           {
             path: "students",
-            element: <h1 style={{ color: "white" }}>Lista kurstantów</h1>,
+            element: <h1 style={{ color: "white", zIndex: "-1" }}>Lista kurstantów</h1>,
           },
           {
             path: "talk",
-            element: <h1 style={{ color: "white" }}>Lista kursantów do rozmowy</h1>,
+            element: <h1 style={{ color: "white", zIndex: "-1" }}>Lista kursantów do rozmowy</h1>,
           },
         ],
       },

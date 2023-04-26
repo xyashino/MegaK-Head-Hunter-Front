@@ -9,6 +9,7 @@
     color: #F7F7F7;
     opacity: 1;
     margin: 7rem auto;
+    z-index: 10;
 }
 
 /*.filter_modal - problem z fontem - ostatnie normal to ma być medium ale jest błąd*/
@@ -109,16 +110,16 @@
 
 .ReactModal__Overlay {
     opacity: 0;
-    /*transition: all 200ms ease-in-out;*/
-
 }
 
 .ReactModal__Overlay--after-open {
     opacity: 1;
-
 }
 
 .ReactModal__Overlay--before-close {
     opacity: 0;
-
 }
+
+
+
+

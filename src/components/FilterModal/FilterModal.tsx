@@ -21,7 +21,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             onRequestClose={onRequestClose}
             className={classes.filter_modal}
             contentLabel="Filter Modal"
-            // closeTimeoutMS={200}
+            closeTimeoutMS={200}
+            style={{ overlay: { background: 'var(--bgInput)', opacity: 0.5 } }}
         >
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
