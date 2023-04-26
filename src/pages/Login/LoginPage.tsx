@@ -1,13 +1,18 @@
-import React, {SyntheticEvent} from "react";
+import React, {SyntheticEvent, useLayoutEffect} from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Input } from "@components/Input/Input";
 import { Paragraph } from "@components/Paragraph/Paragraph";
 import { Button } from "@components/Button/Button";
 import classes from "./LoginPage.module.css";
 import {useValidationState} from "@hooks/useValidationState";
+import {useAxios} from "@hooks/useAxios";
+import {RequestPath} from "@enums/request-path.enum";
+import {useNavigate} from "react-router-dom";
+import {PageRouter} from "@enums/page-router.enum";
 
 
 export const LoginPage = () => {
+    const navigate = useNavigate();
     const {
         value: emailValue,
         error: emailError,
@@ -28,8 +33,17 @@ export const LoginPage = () => {
     });
 
 
+    const {fetchData} = useAxios({url:RequestPath.Login , method: "POST", body: {
+            email:emailValue,
+            pwd:pwdValue
+        }})
+    const handleSubmit = async (e:SyntheticEvent) => {
+        e.preventDefault();
+        await fetchData(()=>{navigate(PageRouter.Main)})
+    };
+
     return (
-        <div className={classes.login_container}>
+        <form className={classes.login_container} noValidate onSubmit={handleSubmit}>
             <Logo />
             <Input
                 placeholder="E-mail"
@@ -63,6 +77,6 @@ export const LoginPage = () => {
                 </Paragraph>
                 <Button >Zaloguj się</Button>
             </div>
-        </div>
+        </form>
   );
 };
