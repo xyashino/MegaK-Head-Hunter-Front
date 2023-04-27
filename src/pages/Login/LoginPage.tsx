@@ -42,6 +42,7 @@ export const LoginPage = () => {
                 }
             />
             <Input
+                preview
                 placeholder="Password"
                 type="password"
                 value={pwdValue}
