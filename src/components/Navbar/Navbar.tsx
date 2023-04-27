@@ -1,7 +1,7 @@
 import { Avatar } from "@components/Avatar/Avatar";
 import { Logo } from "@components/Logo/Logo";
-import { Paragraph } from "@components/Paragraph/Paragraph";
-import React, { SyntheticEvent, useState } from "react";
+import { Text } from "@components/Text/Text";
+import React, {SyntheticEvent, useState} from "react";
 import classes from "./Navbar.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@components/Button/Button";
@@ -43,14 +43,14 @@ export const Navbar = ({ githubUsername, firstName, lastName }: Props) => {
           <div className={classes.nav_user}>
             <button className={classes.info} onClick={toggleMenu}>
               <Avatar githubUsername={githubUsername} />
-              <Paragraph
+              <Text
                   style={{
                     font: "normal normal normal 18px/30px Catamaran",
                     marginRight: "auto",
                   }}
               >
                 {`${firstName} ${lastName}`}
-              </Paragraph>
+              </Text>
               <span className="material-icons" style={{ color: "#9e9e9e" }}>
               arrow_drop_down
             </span>

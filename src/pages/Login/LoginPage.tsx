@@ -1,7 +1,7 @@
 import React, { SyntheticEvent } from "react";
 import { Logo } from "@components/Logo/Logo";
 import { Input } from "@components/Input/Input";
-import { Paragraph } from "@components/Paragraph/Paragraph";
+import { Text } from "@components/Text/Text";
 import { Button } from "@components/Button/Button";
 import classes from "./LoginPage.module.css";
 import { useValidationState } from "@hooks/useValidationState";
@@ -75,14 +75,14 @@ export const LoginPage = () => {
           setPwd((e.target as HTMLInputElement).value as string)
         }
       />
-      <Paragraph style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Paragraph>
+      <Text style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
-        <Paragraph>
+        <Text>
           Nie masz konta?{" "}
           <u>
             <b>Zarejestruj się</b>
           </u>
-        </Paragraph>
+        </Text>
         <Button>Zaloguj się</Button>
       </div>
     </form>

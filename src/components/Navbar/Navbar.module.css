@@ -39,7 +39,7 @@ nav {
 .nav_user .modal {
   position: absolute;
   width: 229px;
-  right: 0px;
+  right: 0;
   top: 76px;
   padding: 1rem;
   background-color: #1e1e1f;
@@ -48,7 +48,11 @@ nav {
   display: none;
   overflow: hidden;
 }
- 
+
+.nav_username {
+  font: normal normal normal 18px/30px Catamaran;
+  margin-right: auto;
+}
 
 .nav_user .modal a {
   text-decoration: none;
