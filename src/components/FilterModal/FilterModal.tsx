@@ -35,7 +35,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
                 <Button
-                    className={classes.button}
+                    className={classes.btn_filter_modal_smaller_active}
                 >Wyczyść wszystkie</Button>
             </div>
             <div>
@@ -55,12 +55,12 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <div>
                     <Button
                         onClick={() => setIsRemoteButtonActive(!isRemoteButtonActive)}
-                        className={isRemoteButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isRemoteButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Praca zdalna
                     </Button>
                     <Button
                         onClick={() => setIsOfficeButtonActive(!isOfficeButtonActive)}
-                        className={isOfficeButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isOfficeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Praca w biurze</Button>
                 </div>
             </div>
@@ -69,19 +69,19 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <div>
                     <Button
                         onClick={() => setIsPermanentButtonActive(!isPermanentButtonActive)}
-                        className={isPermanentButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isPermanentButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa o pracę</Button>
                     <Button
                         onClick={() => setIsBeToBeButtonActive(!isBeToBeButtonActive)}
-                        className={isBeToBeButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isBeToBeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >B2B</Button>
                     <Button
                         onClick={() => setIsMandateButtonActive(!isMandateButtonActive)}
-                        className={isMandateButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isMandateButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa zlecenie</Button>
                     <Button
                         onClick={() => setIsContractButtonActive(!isContractButtonActive)}
-                        className={isContractButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                        className={isContractButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa o dzieło</Button>
                 </div>
             </div>

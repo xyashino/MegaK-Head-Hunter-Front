@@ -18,7 +18,7 @@
   align-items: center;
 }
 
-.button {
+.btn_login {
   background-color: var(--megakRed);
   border: 0;
   color: var(--white);
@@ -30,10 +30,10 @@
   font-weight: 200;
 }
 
-.button:hover {
+.btn_login:hover {
   opacity: 0.9;
 }
 
-.button:focus-visible {
+.btn_login:focus-visible {
   outline: 2px solid hotpink;
 }

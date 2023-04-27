@@ -24,9 +24,9 @@ export const HrPanel = () => {
                     <BookmarkNavLink text="Dostepni kursanci" to="/hr/students"/>
                     <BookmarkNavLink text="Do rozmowy" to="/hr/talk"/>
                 </header>
-                <div className={classes.btn_to_modal}>
+                <div className={classes.div_btn_to_modal_wrapper}>
                     <Button
-                        className={classes.button}
+                        className={classes.btn_to_modal}
                         onClick={openFilterModal}><FilterAltIcon
                         style={{fontSize: "1.3rem", verticalAlign: "-5px", color: "#4D4D4D"}}
                     />Filtrowanie
