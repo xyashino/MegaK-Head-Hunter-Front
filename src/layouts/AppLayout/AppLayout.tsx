@@ -9,7 +9,7 @@ import {
 import classes from "./AppLayout.module.css";
 import { PageRouter } from "@enums/page-router.enum";
 import React, { useLayoutEffect } from "react";
-import { UserResponse } from "@backendTypes/users/user-response";
+import { UserResponse } from "@backendTypes";
 export const AppLayout = () => {
   const data = useLoaderData() as UserResponse;
   const navigate = useNavigate();

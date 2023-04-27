@@ -24,7 +24,7 @@
       "@context/*": ["./src/context/*"],
       "@utils/*": ["./src/utils/*"],
       "@enums/*": ["./src/enums/*"],
-      "@backendTypes/*": ["../MegaK-Head-Hunter-Back/src/types/*"]
+      "@backendTypes": ["../MegaK-Head-Hunter-Back/src/types/"]
     }
   },
   "include": ["src"],
