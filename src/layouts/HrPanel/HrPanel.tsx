@@ -26,6 +26,7 @@ export const HrPanel = () => {
                 </header>
                 <div className={classes.btn_to_modal}>
                     <Button
+                        className={classes.button}
                         onClick={openFilterModal}><FilterAltIcon
                         style={{fontSize: "1.3rem", verticalAlign: "-5px", color: "#4D4D4D"}}
                     />Filtrowanie

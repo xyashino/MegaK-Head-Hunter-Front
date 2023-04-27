@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
@@ -15,6 +15,14 @@ export type FilterModalProps = {
 };
 
 export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProps) => {
+
+    const [isRemoteButtonActive, setIsRemoteButtonActive] = useState<boolean>(false);
+    const [isOfficeButtonActive, setIsOfficeButtonActive] = useState<boolean>(false);
+    const [isPermanentButtonActive, setIsPermanentButtonActive] = useState<boolean>(false);
+    const [isBeToBeButtonActive, setIsBeToBeButtonActive] = useState<boolean>(false);
+    const [isMandateButtonActive, setIsMandateButtonActive] = useState<boolean>(false);
+    const [isContractButtonActive, setIsContractButtonActive] = useState<boolean>(false);
+
     return (
         <Modal
             isOpen={isOpen}
@@ -22,11 +30,13 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             className={classes.filter_modal}
             contentLabel="Filter Modal"
             closeTimeoutMS={200}
-            style={{ overlay: { background: '#292a2bbf'} }}
+            style={{overlay: {background: '#292a2bbf'}}}
         >
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
-                <Button>Wyczyść wszystkie</Button>
+                <Button
+                    className={classes.button}
+                >Wyczyść wszystkie</Button>
             </div>
             <div>
                 <p>Ocena przejścia kursu</p>
@@ -42,18 +52,37 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             </div>
             <div>
                 <p>Preferowane miejsce pracy</p>
-                <div className={classes.btn_filter_modal_smaller}>
-                    <Button>Praca zdalna</Button>
-                    <Button>Praca w biurze</Button>
+                <div>
+                    <Button
+                        onClick={() => setIsRemoteButtonActive(!isRemoteButtonActive)}
+                        className={isRemoteButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >Praca zdalna
+                    </Button>
+                    <Button
+                        onClick={() => setIsOfficeButtonActive(!isOfficeButtonActive)}
+                        className={isOfficeButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >Praca w biurze</Button>
                 </div>
             </div>
             <div>
                 <p>Oczekiwany typ kontraktu</p>
-                <div className={classes.btn_filter_modal_smaller}>
-                    <Button>Umowa o pracę</Button>
-                    <Button>B2B</Button>
-                    <Button>Umowa zlecenie</Button>
-                    <Button>Umowa o dzieło</Button>
+                <div>
+                    <Button
+                        onClick={() => setIsPermanentButtonActive(!isPermanentButtonActive)}
+                        className={isPermanentButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >Umowa o pracę</Button>
+                    <Button
+                        onClick={() => setIsBeToBeButtonActive(!isBeToBeButtonActive)}
+                        className={isBeToBeButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >B2B</Button>
+                    <Button
+                        onClick={() => setIsMandateButtonActive(!isMandateButtonActive)}
+                        className={isMandateButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >Umowa zlecenie</Button>
+                    <Button
+                        onClick={() => setIsContractButtonActive(!isContractButtonActive)}
+                        className={isContractButtonActive ? classes.button : classes.btn_filter_modal_smaller}
+                    >Umowa o dzieło</Button>
                 </div>
             </div>
             <div>
@@ -93,13 +122,13 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
                 <div className={classes.input_months}>
-                <Input placeholder="0 miesięcy" type="number" value={''}/>
+                    <Input placeholder="0 miesięcy" type="number" value={''}/>
                 </div>
             </div>
 
             <div className={classes.filter_modal_btns}>
-                <Button className="btn_request_close" onClick={onRequestClose}>Anuluj</Button>
-                <Button className={classes.btn_confirm} onClick={onConfirm}>Pokaż wyniki</Button>
+                <Button className={classes.button_bigger} onClick={onRequestClose}>Anuluj</Button>
+                <Button className={classes.button_bigger} onClick={onConfirm}>Pokaż wyniki</Button>
             </div>
         </Modal>
     );

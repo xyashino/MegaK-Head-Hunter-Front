@@ -61,7 +61,7 @@ export const LoginPage = () => {
                         <b>Zarejestruj się</b>
                     </u>
                 </Paragraph>
-                <Button >Zaloguj się</Button>
+                <Button className={classes.button}>Zaloguj się</Button>
             </div>
         </div>
   );
