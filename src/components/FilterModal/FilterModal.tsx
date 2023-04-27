@@ -23,6 +23,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     const [isMandateButtonActive, setIsMandateButtonActive] = useState<boolean>(false);
     const [isContractButtonActive, setIsContractButtonActive] = useState<boolean>(false);
 
+    const [isChecked, setIsChecked] = useState<boolean>(false);
+
     return (
         <Modal
             isOpen={isOpen}
@@ -89,31 +91,35 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <p>Oczekiwane wynagrodzenie miesięczne netto</p>
                 <div className={classes.input_filter_modal_smaller}>
                     <p>
-                        Od<Input placeholder="np. 1000 zł" type="text" value={''}/>
-                        Do<Input placeholder="np. 10000 zł" type="text" value={''}/>
+                        Od<Input placeholder="np. 1000 zł" type="text" value={''} onChange={() => 'void'}/>
+                        Do<Input placeholder="np. 10000 zł" type="text" value={''} onChange={() => 'void'}/>
                     </p>
                 </div>
             </div>
             <div>
                 <p>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</p>
-                <div className={classes.input_filter_modal_radio}>
-                    <p className={classes.single_input_filter_modal}>
+                <div>
+                    <p className={classes.input_radio_wrapper}>
                         <input
                             className={classes.input_radio}
                             type="radio"
                             id="yes"
-                            name="yes"
-                            value="yes"
+                            name="option"
+                            value="Tak"
+                            checked={isChecked}
+                            onChange={() => setIsChecked(true)}
                         />
                         <label htmlFor="yes">Tak</label>
                     </p>
-                    <p className={classes.single_input_filter_modal}>
+                    <p>
                         <input
                             className={classes.input_radio}
                             type="radio"
                             id="no"
-                            name="no"
-                            value="no"
+                            name="option"
+                            value="Nie"
+                            checked={!isChecked}
+                            onChange={() => setIsChecked(false)}
                         />
                         <label htmlFor="no">Nie</label>
                     </p>
@@ -122,7 +128,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
                 <div className={classes.input_months}>
-                    <Input placeholder="0 miesięcy" type="number" value={''}/>
+                    <Input placeholder="0 miesięcy" type="number" value={''} onChange={() => 'void'}/>
                 </div>
             </div>
 
@@ -133,3 +139,5 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         </Modal>
     );
 };
+
+// TODO: Obsługa inputów
