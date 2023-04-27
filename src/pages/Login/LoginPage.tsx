@@ -9,7 +9,6 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
-import { Info } from "@components/Info/Info";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ export const LoginPage = () => {
     maxLength: 255,
   });
 
-  const { fetchData, error,setError } = useAxios({
+  const { fetchData } = useAxios({
     url: RequestPath.Login,
     method: "POST",
     body: {
@@ -41,7 +40,6 @@ export const LoginPage = () => {
     },
   });
 
-  const resetInfo = () => setError({ show: false, msg: "", type: "success" });
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
@@ -87,13 +85,6 @@ export const LoginPage = () => {
         </Paragraph>
         <Button>Zaloguj się</Button>
       </div>
-      {error.show ? (
-        <Info
-          text={error.msg}
-          clickMethod={resetInfo}
-          type={error.type as "success"}
-        />
-      ) : null}
     </form>
   );
 };
