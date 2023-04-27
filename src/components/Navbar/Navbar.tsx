@@ -1,6 +1,6 @@
 import { Avatar } from "@components/Avatar/Avatar";
 import { Logo } from "@components/Logo/Logo";
-import { Paragraph } from "@components/Paragraph/Paragraph";
+import { Text } from "@components/Text/Text";
 import React, { useState } from "react";
 import classes from "./Navbar.module.css";
 import { Link } from "react-router-dom";
@@ -24,14 +24,11 @@ export const Navbar = () => {
         <div className={classes.nav_user}>
           <button className={classes.info} onClick={toggleMenu}>
             <Avatar />
-            <Paragraph
-              style={{
-                font: "normal normal normal 18px/30px Catamaran",
-                marginRight: "auto",
-              }}
+            <Text
+              customClasses={`${classes.nav_username}`}
             >
               {githubUsername}
-            </Paragraph>
+            </Text>
             <span className="material-icons" style={{ color: "#9e9e9e" }}>
               arrow_drop_down
             </span>

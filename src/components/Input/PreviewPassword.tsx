@@ -15,12 +15,14 @@ interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
   isError: boolean;
   message?: string;
   value: string;
+  customClasses: string;
 }
 export const PreviewPassword = ({
   className,
   isError,
   message,
   type,
+  customClasses,
   ...rest
 }: Props) => {
   const inputRef = useRef(null);
@@ -38,7 +40,9 @@ export const PreviewPassword = ({
     <>
       <div className={classes.preview_password}>
         <input
-          className={`${classes.input} ${isError && classes.error}`}
+          className={`${classes.input} ${
+            isError && classes.error
+          } ${customClasses}`}
           type={isPreview ? "text" : "password"}
           {...rest}
           ref={inputRef}
