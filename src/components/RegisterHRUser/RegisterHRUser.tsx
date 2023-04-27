@@ -4,7 +4,7 @@ import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import classes from "./RegisterHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
-import { CreateHrRequestBody } from "@backendTypes/hr/create-hr-request-body";
+import { CreateHrRequestBody } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 
 export const RegisterHRUser = () => {
