@@ -4,6 +4,7 @@ import {BookmarkNavLink} from "@components/BookmarkNavLink/BookmarkNavLink";
 import {Outlet} from "react-router-dom";
 import {Button} from "@components/Button/Button";
 import {FilterModal} from "@components/FilterModal/FilterModal";
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
 
 export const HrPanel = () => {
     const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
@@ -24,19 +25,23 @@ export const HrPanel = () => {
                     <BookmarkNavLink text="Do rozmowy" to="/hr/talk"/>
                 </header>
                 <div className={classes.btn_to_modal}>
-                <Button onClick={openFilterModal}>Filtrowanie</Button>
+                    <Button
+                        onClick={openFilterModal}><FilterAltIcon
+                        style={{fontSize: "1.3rem", verticalAlign: "-5px", color: "#4D4D4D"}}
+                    />Filtrowanie
+                    </Button>
                 </div>
                 <div className={classes.hr_panel_main}>
                     <Outlet/>
                 </div>
             </div>
             <div className={classes.filter_modal_wrapper}>
-            <FilterModal
-                isOpen={filterModalIsOpen}
-                onRequestClose={closeFilterModal}
-                onConfirm={closeFilterModal}
-                onCancel={closeFilterModal}
-            />
+                <FilterModal
+                    isOpen={filterModalIsOpen}
+                    onRequestClose={closeFilterModal}
+                    onConfirm={closeFilterModal}
+                    onCancel={closeFilterModal}
+                />
             </div>
         </>
     );

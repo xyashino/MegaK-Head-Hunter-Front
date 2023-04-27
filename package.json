@@ -10,6 +10,11 @@
     "lint": "eslint . --ext .ts,.tsx"
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.12.2",
+    "@mui/styled-engine-sc": "^5.12.0",
     "axios": "^1.3.6",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
@@ -20,7 +25,8 @@
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.10.0",
     "sass": "^1.62.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "styled-components": "^5.3.10"
   },
   "devDependencies": {
     "@types/node": "^18.15.11",

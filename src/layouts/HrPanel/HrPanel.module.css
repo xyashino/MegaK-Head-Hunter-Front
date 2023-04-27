@@ -30,3 +30,8 @@
     text-align: right;
     padding-top: 1rem;
 }
+
+.btn_to_modal button {
+    background: #1E1E1F 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
