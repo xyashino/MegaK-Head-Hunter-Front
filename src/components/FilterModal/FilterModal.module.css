@@ -37,8 +37,13 @@
 
 .input_months input {
     font: normal normal normal 12px/19px Catamaran;
-    width: 23%;
+    width: 6rem;
 }
+
+/*input[type=number]::-webkit-inner-spin-button,*/
+/*input[type=number]::-webkit-outer-spin-button {*/
+/*    display: none;*/
+/*}*/
 
 .filter_modal_wrapper {
     display: flex;
@@ -146,6 +151,11 @@ input[type="radio"]:checked + label:before {
     outline: 2px solid hotpink;
 }
 
+.arrows_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
 @media(max-width: 768px) {
     .filter_modal {
         margin: 7rem 1rem;
@@ -168,6 +178,7 @@ input[type="radio"]:checked + label:before {
 
 /*TODO:
    1. input type="number" - ostylować strzałki według makiety
+   Można na przykład ukryć element input i zastąpić go niestandardowymi przyciskami ze strzałkami, które będą inkrementować i dekrementować wartość w polu tekstowym.
    2. zmiana szerokości Navbara jak na makiecie
    */
 

@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
+import { NumberInputWithArrows } from '@components/NumberInputWithArrows/NumberInputWithArrows';
 
 Modal.setAppElement('#root');
 
@@ -22,6 +23,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     const [isBeToBeButtonActive, setIsBeToBeButtonActive] = useState<boolean>(false);
     const [isMandateButtonActive, setIsMandateButtonActive] = useState<boolean>(false);
     const [isContractButtonActive, setIsContractButtonActive] = useState<boolean>(false);
+
+    const [monthsOfExperience, setMonthsOfExperience] = useState<number>(0);
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
@@ -91,8 +94,20 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <p>Oczekiwane wynagrodzenie miesięczne netto</p>
                 <div className={classes.input_filter_modal_smaller}>
                     <p>
-                        Od<Input placeholder="np. 1000 zł" type="text" value={''} onChange={() => 'void'}/>
-                        Do<Input placeholder="np. 10000 zł" type="text" value={''} onChange={() => 'void'}/>
+                        Od
+                        <Input
+                            placeholder="np. 1000 zł"
+                            type="text"
+                            value={''}
+                            onChange={() => 'void'}
+                        />
+                        Do
+                        <Input
+                            placeholder="np. 10000 zł"
+                            type="text"
+                            value={''}
+                            onChange={() => 'void'}
+                        />
                     </p>
                 </div>
             </div>
@@ -128,7 +143,13 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
                 <div className={classes.input_months}>
-                    <Input placeholder="0 miesięcy" type="number" value={''} onChange={() => 'void'}/>
+                    {/*<Input placeholder="0 miesięcy" type="number" value={''} onChange={() => 'void'}/>*/}
+                    <NumberInputWithArrows
+                        value={monthsOfExperience}
+                        setValue={setMonthsOfExperience}
+                        min={0}
+                        max={12}
+                    />
                 </div>
             </div>
 
@@ -140,4 +161,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     );
 };
 
-// TODO: Obsługa inputów
+// TODO:
+//  1. Obsługa inputów
+//  2. Przycisk "Wyczyść wszystko" musi czyścić zaznaczone opcje !!!
+//  3. Button "Pokaż wyniki" musi pokazywać wyniki
+//  4. Dodać rating - gwiazdki
