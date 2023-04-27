@@ -6,6 +6,7 @@ import classes from "./RegisterHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
 import { CreateHrRequestBody } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
+import { Info } from "@components/Info/Info";
 
 export const RegisterHRUser = () => {
   const {
@@ -43,7 +44,7 @@ export const RegisterHRUser = () => {
     setNumVal(value);
   };
 
-  const { fetchData, response } = useAxios({
+  const { fetchData, error,setError } = useAxios({
     url: RequestPath.CreteHr,
     method: "POST",
     body: {
@@ -54,9 +55,13 @@ export const RegisterHRUser = () => {
     } as CreateHrRequestBody,
   });
 
+  const resetInfo = () => setError({ show: false, msg: "", type: "success" });
+  const successInfo = () =>
+    setError({ show: false, msg: "Dodano Hr", type: "success" });
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    fetchData();
+    fetchData(successInfo);
   };
 
   return (
@@ -103,9 +108,13 @@ export const RegisterHRUser = () => {
       />
       <Button>Dodaj użytkownika</Button>
 
-      {response && (
-        <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
-      )}
+      {error.show ? (
+        <Info
+          text={error.msg}
+          clickMethod={resetInfo}
+          type={error.type as "success"}
+        />
+      ) : null}
     </form>
   );
 };

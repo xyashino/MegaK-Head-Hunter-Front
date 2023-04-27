@@ -36,14 +36,15 @@ export const useAxios = ({
   headers = null,
 }: AxiosProps) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState({ show: false, msg: "", type: "success" });
   const [loading, setLoading] = useState<boolean>(true);
 
   const axiosMethod = getAxiosMethod(method);
 
   const requestLogic = async (
     fetchMethod: () => Promise<AxiosResponse<any, any>>,
-    afterSuccessMethod?: () => void
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
   ) => {
     try {
       setLoading(true);
@@ -53,30 +54,41 @@ export const useAxios = ({
       return res.data;
     } catch (e) {
       let message = "Unknown Error";
-      console.log(e);
       if (isAxiosError(error)) {
         message =
           error.response?.data.message ??
           error.response?.data.error ??
           error.message;
       }
+      setError({ show: true, msg:message, type: "error" });
       setLoading(false);
-      console.error(message);
-      setError(error);
+      if (afterErrorMethod) {afterErrorMethod();}
     }
   };
 
-  const fetchData = (afterSuccessMethod?: () => void) => {
+  const fetchData = (
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
+  ) => {
     if (body && headers) {
       return requestLogic(
         () => axiosMethod(url, body, { headers }),
-        afterSuccessMethod
+        afterSuccessMethod,
+        afterErrorMethod
       );
     }
     if (body) {
-      return requestLogic(() => axiosMethod(url, body), afterSuccessMethod);
+      return requestLogic(
+        () => axiosMethod(url, body),
+        afterSuccessMethod,
+        afterErrorMethod
+      );
     }
-    return requestLogic(() => axiosMethod(url), afterSuccessMethod);
+    return requestLogic(
+      () => axiosMethod(url),
+      afterSuccessMethod,
+      afterErrorMethod
+    );
   };
-  return { fetchData, response, error, loading };
+  return { fetchData, setError, error, loading };
 };
