@@ -28,7 +28,11 @@ const uploadOnServer = (file: File, onUploadProgress?: (progressEvent: AxiosProg
   });
 };
 
-export const DragAndDrop = () => {
+type Props = {
+  text: string,
+}
+
+export const DragAndDrop = ({text}: Props) => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
   const [currentFile, setCurrentFile] = useState<File | undefined>(undefined);
   const [message, setMessage] = useState<ReactNode | string>("");
@@ -71,7 +75,7 @@ export const DragAndDrop = () => {
                   {selectedFiles[0].name}
                 </div>
               ) : (
-                "Przeciągnij i upuść plik tutaj lub kliknij, aby wybrać plik"
+                text
               )}
             </div>
             <aside>
