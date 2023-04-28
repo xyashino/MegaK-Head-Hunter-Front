@@ -1,8 +1,6 @@
-import { useState, useLayoutEffect } from "react";
-import axios, { AxiosResponse, AxiosError } from "axios";
-
-axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
-
+import { useState } from "react";
+import { AxiosResponse, isAxiosError } from "axios";
+import { AxiosSetup } from "@utils/network/AxiosSetup";
 interface AxiosProps {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE";
@@ -19,13 +17,13 @@ type AxiosMethod = (
 const getAxiosMethod = (method: AxiosProps["method"]): AxiosMethod => {
   switch (method) {
     case "GET":
-      return axios.get;
+      return AxiosSetup.get;
     case "POST":
-      return axios.post;
+      return AxiosSetup.post;
     case "PUT":
-      return axios.put;
+      return AxiosSetup.put;
     case "DELETE":
-      return axios.delete;
+      return AxiosSetup.delete;
     default:
       throw new Error(`Invalid method: ${method}`);
   }
@@ -38,27 +36,59 @@ export const useAxios = ({
   headers = null,
 }: AxiosProps) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
-  const [error, setError] = useState<string>("");
+  const [error, setError] = useState({ show: false, msg: "", type: "success" });
   const [loading, setLoading] = useState<boolean>(true);
 
   const axiosMethod = getAxiosMethod(method);
 
-  const fetchData = () => {
-    axiosMethod(url, body, { headers })
-      .then((res: AxiosResponse) => {
-        setResponse(res);
-      })
-      .catch((err: AxiosError) => {
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  const requestLogic = async (
+    fetchMethod: () => Promise<AxiosResponse<any, any>>,
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
+  ) => {
+    try {
+      setLoading(true);
+      const res = await fetchMethod();
+      if (afterSuccessMethod) afterSuccessMethod();
+      setResponse(response?.data);
+      return res.data;
+    } catch (e) {
+      let message = "Unknown Error";
+      if (isAxiosError(error)) {
+        message =
+          error.response?.data.message ??
+          error.response?.data.error ??
+          error.message;
+      }
+      setError({ show: true, msg:message, type: "error" });
+      setLoading(false);
+      if (afterErrorMethod) {afterErrorMethod();}
+    }
   };
 
-  useLayoutEffect(() => {
-    fetchData();
-  }, [method, url, body, headers]);
-
-  return { response, error, loading };
+  const fetchData = (
+    afterSuccessMethod?: () => void,
+    afterErrorMethod?: () => void
+  ) => {
+    if (body && headers) {
+      return requestLogic(
+        () => axiosMethod(url, body, { headers }),
+        afterSuccessMethod,
+        afterErrorMethod
+      );
+    }
+    if (body) {
+      return requestLogic(
+        () => axiosMethod(url, body),
+        afterSuccessMethod,
+        afterErrorMethod
+      );
+    }
+    return requestLogic(
+      () => axiosMethod(url),
+      afterSuccessMethod,
+      afterErrorMethod
+    );
+  };
+  return { fetchData, setError, error, loading };
 };
