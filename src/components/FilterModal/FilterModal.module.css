@@ -38,6 +38,16 @@
 .input_months input {
     font: normal normal normal 12px/19px Catamaran;
     width: 6rem;
+    color: var(--colorInput);
+    opacity: 0.5;
+    font-weight: 200;
+}
+
+.input_months label {
+    font: normal normal normal 12px/19px Catamaran;
+    color: var(--colorInput);
+    font-weight: 200;
+    width: 2.5rem;
 }
 
 /*input[type=number]::-webkit-inner-spin-button,*/

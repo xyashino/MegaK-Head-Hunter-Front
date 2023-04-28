@@ -29,6 +29,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
     return (
+
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
@@ -143,12 +144,12 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Ilość miesięcy doświadczenia komercyjnego kandydata w programowaniu</p>
                 <div className={classes.input_months}>
-                    {/*<Input placeholder="0 miesięcy" type="number" value={''} onChange={() => 'void'}/>*/}
                     <NumberInputWithArrows
                         value={monthsOfExperience}
                         setValue={setMonthsOfExperience}
                         min={0}
                         max={12}
+                        monthsOfExperience={monthsOfExperience}
                     />
                 </div>
             </div>
