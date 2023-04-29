@@ -1,0 +1,11 @@
+.container_link {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.icon_link {
+  width: 22px;
+  height: 22px;
+}
