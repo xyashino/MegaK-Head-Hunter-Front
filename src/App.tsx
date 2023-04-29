@@ -6,6 +6,7 @@ import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
 import { AdminPanel } from "@layouts/AdminPanel/AdminPanel";
 import {HrPanel} from "@layouts/HrPanel/HrPanel";
+import {SendRating} from "@components/SendRating/SendRating";
 
 const routers = createBrowserRouter([
   {

@@ -1,0 +1,20 @@
+.one_degree {
+    background-color: gray;
+    margin-right: 5%;
+    cursor: pointer;
+    width: 10%;
+    padding: 3px;
+    display: inline-block;
+}
+
+.degrees_field {
+    width: 75%;
+}
+
+.one_rating_area {
+    width: 400px;
+}
+
+.star {
+    margin-top: 2px;
+}
