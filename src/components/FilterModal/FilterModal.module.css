@@ -1,16 +1,17 @@
+
 .filter_modal {
     background: #0A0A0A 0% 0% no-repeat padding-box;
     padding: 2rem 1.5rem;
     min-width: 300px;
     max-width: 800px;
     width: 550px;
-    height: 700px;
+    height: 800px;
     text-align: left;
     font: normal normal normal 14px/23px Catamaran;
     letter-spacing: 0px;
     color: #F7F7F7;
     opacity: 1;
-    margin: 7rem auto;
+    margin: 4rem auto;
     z-index: 10;
 }
 
@@ -168,9 +169,9 @@ input[type="radio"]:checked + label:before {
 
 @media(max-width: 768px) {
     .filter_modal {
-        margin: 7rem 1rem;
-        width: 400px;
-        height: 800px;
+        margin: 1rem 1rem;
+        width: 500px;
+        height: 850px;
     }
     .btn_filter_modal_smaller {
         margin-top: 1rem;
@@ -182,10 +183,9 @@ input[type="radio"]:checked + label:before {
 
 @media(min-width:768px){
     .filter_modal {
-        margin: 7rem auto;
+        margin: 4rem auto;
     }
 }
-
 /*TODO:
    1. input type="number" - ostylować strzałki według makiety
    Można na przykład ukryć element input i zastąpić go niestandardowymi przyciskami ze strzałkami, które będą inkrementować i dekrementować wartość w polu tekstowym.

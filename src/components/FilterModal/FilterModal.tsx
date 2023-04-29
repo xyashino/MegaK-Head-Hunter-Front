@@ -4,6 +4,7 @@ import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
 import { NumberInputWithArrows } from '@components/NumberInputWithArrows/NumberInputWithArrows';
+import {SendRating} from "@components/SendRating/SendRating";
 
 Modal.setAppElement('#root');
 
@@ -40,21 +41,19 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         >
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
-                <Button
-                    className={classes.btn_filter_modal_smaller_active}
-                >Wyczyść wszystkie</Button>
+                <Button className={classes.btn_filter_modal_smaller_active}>Wyczyść wszystkie</Button>
             </div>
             <div>
-                <p>Ocena przejścia kursu</p>
+                <SendRating whatIsAssessed="Ocena przejścia kursu"/>
             </div>
             <div>
-                <p>Ocena aktywności i zaangażowania na kursie</p>
+                <SendRating whatIsAssessed="Ocena aktywności i zaangażowania na kursie"/>
             </div>
             <div>
-                <p>Ocena kodu w projekcie własnym</p>
+                <SendRating whatIsAssessed="Ocena kodu w projekcie własnym"/>
             </div>
             <div>
-                <p>Ocena pracy w zespole w Scrum</p>
+                <SendRating whatIsAssessed="Ocena pracy w zespole w Scrum"/>
             </div>
             <div>
                 <p>Preferowane miejsce pracy</p>
