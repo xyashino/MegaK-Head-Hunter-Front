@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@material-ui/core';
 import { IconProps } from '@material-ui/core/Icon';
+import classes from "./LinkWithIcon.module.css";
 
 interface LinkProps {
   to: string;
