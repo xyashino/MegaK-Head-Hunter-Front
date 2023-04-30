@@ -16,7 +16,7 @@ const uploadOnServer = (
   file: File,
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void
 ): Promise<any> => {
-  let formData = new FormData();
+  const formData = new FormData();
 
   formData.append("uploadStudents", file);
 
@@ -43,7 +43,7 @@ export const DragAndDrop = () => {
 
   const upload = () => {
     if (selectedFiles && selectedFiles.length > 0) {
-      let currentFile = selectedFiles[0];
+      const currentFile = selectedFiles[0];
 
       setCurrentFile(currentFile);
       uploadOnServer(currentFile)
