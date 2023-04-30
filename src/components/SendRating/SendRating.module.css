@@ -1,20 +1,31 @@
 .one_degree {
-    background-color: gray;
-    margin-right: 5%;
+    background: #292A2B 0% 0% no-repeat padding-box;
+    margin-right: 0.5rem;
     cursor: pointer;
-    width: 10%;
-    padding: 3px;
-    display: inline-block;
+    width: 5rem;
+    padding: 0.2rem 0.7rem;
+    font: normal normal normal 14px/23px Catamaran;
+    letter-spacing: 0px;
+    color: #F7F7F7;
 }
 
 .degrees_field {
-    width: 75%;
+    /*width: 550px;*/
 }
 
 .one_rating_area {
-    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.react_icons_star {
+    margin-top: 0.7rem;
+    width: 1.5rem;
+    vertical-align: -0.19rem;
+    font-size: 12px;
+    color: var(--megakRed);
 }
 
-.star {
-    margin-top: 2px;
+.react_icons_star_active {
+    color: white;
 }

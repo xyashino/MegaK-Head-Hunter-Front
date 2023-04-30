@@ -43,18 +43,10 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <h2>Filtrowanie</h2>
                 <Button className={classes.btn_filter_modal_smaller_active}>Wyczyść wszystkie</Button>
             </div>
-            <div>
                 <SendRating whatIsAssessed="Ocena przejścia kursu"/>
-            </div>
-            <div>
                 <SendRating whatIsAssessed="Ocena aktywności i zaangażowania na kursie"/>
-            </div>
-            <div>
                 <SendRating whatIsAssessed="Ocena kodu w projekcie własnym"/>
-            </div>
-            <div>
                 <SendRating whatIsAssessed="Ocena pracy w zespole w Scrum"/>
-            </div>
             <div>
                 <p>Preferowane miejsce pracy</p>
                 <div>
