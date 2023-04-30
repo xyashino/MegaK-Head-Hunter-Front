@@ -19,7 +19,7 @@ export const ErrorPage = ({title, message, buttonMessage}: Props) => {
         <Link to='/'>{buttonMessage}</Link>
       </div>
       <div className={classes.image_container}>
-        <img src={img} className={classes.image} alt="error image"/>
+        <img src={img} className={classes.image} alt="error"/>
       </div>
     </div>
   </div>
