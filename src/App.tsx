@@ -9,6 +9,7 @@ import { PageRouter } from "@enums/page-router.enum";
 import { checkAuth } from "@utils/checkAuth";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
+import {StudentRegistration} from "@pages/StudentRegistration/StudentRegistration";
 
 const routers = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const routers = createBrowserRouter([
   {
     path: PageRouter.Login,
     element: <LoginPage />,
+  },
+  {
+    path: PageRouter.StudentRegistration,
+    // loader
+    element: <StudentRegistration />,
   },
   {
     path: PageRouter.Everything,
