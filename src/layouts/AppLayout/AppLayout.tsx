@@ -1,7 +1,6 @@
 import { Navbar } from "@components/Navbar/Navbar";
 import {
   Outlet,
-  redirect,
   useLoaderData,
   useLocation,
   useNavigate,
