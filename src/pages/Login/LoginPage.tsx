@@ -56,8 +56,8 @@ export const LoginPage = () => {
       <Logo />
       <Input
         placeholder="E-mail"
-        isError={emailError.show}
-        message={emailError.message}
+        hasError={emailError.show}
+        errorMessage={emailError.message}
         value={emailValue}
         type="email"
         onChange={(e: SyntheticEvent) =>
@@ -69,8 +69,8 @@ export const LoginPage = () => {
         placeholder="Password"
         type="password"
         value={pwdValue}
-        message={pwdError.message}
-        isError={pwdError.show}
+        errorMessage={pwdError.message}
+        hasError={pwdError.show}
         onChange={(e: SyntheticEvent) =>
           setPwd((e.target as HTMLInputElement).value as string)
         }
