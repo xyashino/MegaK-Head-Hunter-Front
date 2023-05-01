@@ -28,6 +28,12 @@ const uploadOnServer = (
   });
 };
 
+type Props = {
+  text: string,
+}
+
+export const DragAndDrop = ({text}: Props) => {
+  const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
 export const DragAndDrop = () => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(
     undefined
@@ -69,7 +75,7 @@ export const DragAndDrop = () => {
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>{selectedFiles[0].name}</div>
               ) : (
-                "Przeciągnij i upuść plik tutaj lub kliknij, aby wybrać plik"
+                text
               )}
             </div>
             <aside>
@@ -84,7 +90,9 @@ export const DragAndDrop = () => {
           </section>
         )}
       </Dropzone>
-      <div>{message}</div>
+      <div>
+        {message}
+      </div>
     </div>
   );
-};
+  }
