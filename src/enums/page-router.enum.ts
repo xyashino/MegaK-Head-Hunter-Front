@@ -8,4 +8,9 @@ export enum PageRouter {
     Error = "/error",
     Everything = "*",
     BaseAdmin = "/admin/students",
+    Student = "/student",
+    StudentPanel = "/student/panel",
+    StudentEdit= "/student/edit",
+    BaseStudent = "/student/panel",
+    Account = '/account'
 }
