@@ -5,5 +5,5 @@ export enum RequestPath {
     Upload = "/upload/file",
     CreteHr = "/hr",
     GetOneStudent="/students/",
-    CreteStudent = "/students/register/",
+    CreateStudent = "/students/register/",
 }

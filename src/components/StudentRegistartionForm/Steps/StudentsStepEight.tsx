@@ -36,7 +36,7 @@ export const StudentsStepEight = () => {
   const navigate = useNavigate();
   const { fetchData } = useAxios({
     body: processStudentData(studentData),
-    url: `${RequestPath.CreteStudent}${id}`,
+    url: `${RequestPath.CreateStudent}${id}`,
     method: "POST",
   });
 
