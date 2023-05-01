@@ -8,28 +8,32 @@ import {
 import classes from "./AppLayout.module.css";
 import { PageRouter } from "@enums/page-router.enum";
 import React, { useLayoutEffect } from "react";
-import { UserResponse } from "@backendTypes";
+import {CurrentUserResponse} from "@backendTypes";
 export const AppLayout = () => {
-  const data = useLoaderData() as UserResponse;
+  const {role,data} = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
   const location = useLocation();
 
   useLayoutEffect(() => {
     if (location.pathname === PageRouter.Main) {
-      switch (data.role) {
+      switch (role) {
         case "admin":
           return navigate(PageRouter.BaseAdmin);
+        case "student":
+          return navigate(PageRouter.BaseStudent);
         default:
           return navigate(PageRouter.Error);
       }
     }
   }, [location]);
 
+  const fullName = role === "admin" ? "Admin" : data.fullName
+
   return (
     <div className={classes.app_layout}>
-      <Navbar lastName={""} firstName={"Admin"} />
+      <Navbar fullName={fullName} githubUsername={data.githubUsername} />
       <div className={classes.app_container}>
-        <Outlet context={data} />
+        <Outlet context={role} />
       </div>
     </div>
   );
