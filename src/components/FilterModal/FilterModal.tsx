@@ -3,7 +3,7 @@ import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
-import { NumberInputWithArrows } from '@components/NumberInputWithArrows/NumberInputWithArrows';
+import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
 import {SendRating} from "@components/SendRating/SendRating";
 
 Modal.setAppElement('#root');
@@ -29,6 +29,22 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
+    const [minSalary, setMinSalary] = useState<string>('');
+    const [maxSalary, setMaxSalary] = useState<string>('');
+
+    const clearAllOptions = () => {
+        setIsRemoteButtonActive(false);
+        setIsOfficeButtonActive(false);
+        setIsPermanentButtonActive(false);
+        setIsBeToBeButtonActive(false);
+        setIsMandateButtonActive(false);
+        setIsContractButtonActive(false);
+        setMonthsOfExperience(0);
+        setIsChecked(false);
+        setMinSalary('');
+        setMaxSalary('');
+    };
+
     return (
 
         <Modal
@@ -41,12 +57,16 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         >
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
-                <Button className={classes.btn_filter_modal_smaller_active}>Wyczyść wszystkie</Button>
+                <Button
+                    className={classes.btn_filter_modal_smaller_active}
+                    onClick={clearAllOptions}
+                >Wyczyść wszystkie
+                </Button>
             </div>
-                <SendRating whatIsAssessed="Ocena przejścia kursu"/>
-                <SendRating whatIsAssessed="Ocena aktywności i zaangażowania na kursie"/>
-                <SendRating whatIsAssessed="Ocena kodu w projekcie własnym"/>
-                <SendRating whatIsAssessed="Ocena pracy w zespole w Scrum"/>
+            <SendRating whatIsAssessed="Ocena przejścia kursu"/>
+            <SendRating whatIsAssessed="Ocena aktywności i zaangażowania na kursie"/>
+            <SendRating whatIsAssessed="Ocena kodu w projekcie własnym"/>
+            <SendRating whatIsAssessed="Ocena pracy w zespole w Scrum"/>
             <div>
                 <p>Preferowane miejsce pracy</p>
                 <div>
@@ -90,15 +110,15 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                         <Input
                             placeholder="np. 1000 zł"
                             type="text"
-                            value={''}
-                            onChange={() => 'void'}
+                            value={minSalary}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinSalary(e.target.value)}
                         />
                         Do
                         <Input
                             placeholder="np. 10000 zł"
                             type="text"
-                            value={''}
-                            onChange={() => 'void'}
+                            value={maxSalary}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaxSalary(e.target.value)}
                         />
                     </p>
                 </div>
@@ -153,8 +173,4 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     );
 };
 
-// TODO:
-//  1. Obsługa inputów
-//  2. Przycisk "Wyczyść wszystko" musi czyścić zaznaczone opcje !!!
-//  3. Button "Pokaż wyniki" musi pokazywać wyniki
-//  4. Dodać rating - gwiazdki
+// TODO: Button "Pokaż wyniki" musi pokazywać wyniki
