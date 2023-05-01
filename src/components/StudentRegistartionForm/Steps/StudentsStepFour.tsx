@@ -1,4 +1,4 @@
-import React,{ SyntheticEvent, useContext, useState } from "react";
+import React, { useContext } from "react";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 import { UrlForm } from "@components/UrlForm/UrlForm";
 
@@ -6,22 +6,18 @@ export const StudentsStepFour = () => {
   const { studentData, setStudentData } = useContext(
     StudentRegistrationContext
   );
-
-  const [urlArray, setUrlArray] = useState(studentData["portfolioUrls"]);
-
-  const addUrl = (e: SyntheticEvent, url: string) => {
+  const updateStudentData = (portfolioUrls: string[]) => {
     setStudentData((prevState) => ({
       ...prevState,
-      portfolioUrls: [...prevState.portfolioUrls, url],
+      portfolioUrls,
     }));
-    setUrlArray((prevState) => [...prevState, url]);
   };
 
   return (
     <UrlForm
-      addUrlMethod={addUrl}
-      urlArray={urlArray}
+      urlArray={studentData.projectUrls}
       description="Protfolio:"
+      updateState={updateStudentData}
     />
   );
 };

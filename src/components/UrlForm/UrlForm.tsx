@@ -1,6 +1,6 @@
 import { useValidationState } from "@hooks/useValidationState";
 import { URL_REGEXP } from "@constants/Regexp";
-import React, { SyntheticEvent } from "react";
+import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { Text } from "@components/Text/Text";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
@@ -8,8 +8,8 @@ import classes from "./UrlForm.module.css";
 
 interface Props {
   urlArray: string[];
-  addUrlMethod: (e: SyntheticEvent, name: string) => void;
   description?: string;
+  updateState: (urls: string[]) => void;
 }
 
 const Empty = (
@@ -18,11 +18,10 @@ const Empty = (
   </Text>
 );
 
-export const UrlForm = ({ addUrlMethod, urlArray, description }: Props) => {
+export const UrlForm = ({ urlArray, description, updateState }: Props) => {
   const {
     value: url,
     setValue: setUrl,
-    isValid: isValidUrl,
     error,
   } = useValidationState("Url", {
     minLength: 1,
@@ -32,15 +31,29 @@ export const UrlForm = ({ addUrlMethod, urlArray, description }: Props) => {
       errorMessage: "Podałeś nieprawidłowy URL",
     },
   });
-  const handleClick = (e: SyntheticEvent) => {
+
+  const [urls, setUrls] = useState(urlArray);
+  const handleInputChange = (e: SyntheticEvent) =>
+    setUrl((e.target as HTMLInputElement).value);
+
+  useLayoutEffect(() => {
+    updateState(urls);
+  }, [urls]);
+
+  const addUrl = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!isValidUrl) return;
-    addUrlMethod(e, url);
+    setUrls((prevState) => [...prevState, url]);
     setUrl("");
   };
 
-  const handleInputChange = (e: SyntheticEvent) =>
-    setUrl((e.target as HTMLInputElement).value);
+  const removeUrl = (index: number, e: SyntheticEvent) => {
+    e.preventDefault();
+    setUrls((prevState) => {
+      const projectUrls = [...prevState];
+      projectUrls.splice(index, 1);
+      return projectUrls;
+    });
+  };
 
   return (
     <div>
@@ -59,21 +72,21 @@ export const UrlForm = ({ addUrlMethod, urlArray, description }: Props) => {
           errorMessage={error.message}
           placeholder="Opcjonalne"
         >
-          <Button
-            customClasses={`${classes.url_form_btn}`}
-            onClick={handleClick}
-          >
+          <Button customClasses={`${classes.url_form_btn}`} onClick={addUrl}>
             <Text weight="bold">Dodaj</Text>
           </Button>
         </Input>
       </div>
       <div className={classes.url_form_container}>
-        {urlArray.length === 0
+        {urls.length === 0
           ? Empty
-          : urlArray.map((el, i) => (
-              <a href={el} target="_blank" key={i} rel="noreferrer">
-                {el}
-              </a>
+          : urls.map((el, i) => (
+              <div key={i}>
+                <a href={el} target="_blank" rel="noreferrer">
+                  {el}
+                </a>
+                <button onClick={(e) => removeUrl(i, e)}>Usuń</button>
+              </div>
             ))}
       </div>
     </div>
