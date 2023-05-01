@@ -29,7 +29,7 @@ export const StudentsStepSeven = () => {
     <>
       <TextArea
         description="Edukacja"
-        name={InputName.Courses}
+        name={InputName.Education}
         value={data[InputName.Education]}
         onChange={handleInputChange}
       />
