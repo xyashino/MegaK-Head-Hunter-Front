@@ -4,6 +4,7 @@ export enum PageRouter {
     Admin = "/admin",
     AdminHr = "/admin/hr",
     AdminStudents = "/admin/students",
+    StudentRegistration = '/student/register/:id',
     Error = "/error",
     Everything = "*",
     BaseAdmin = "/admin/students",

@@ -6,57 +6,59 @@ import React, {
   useState,
 } from "react";
 import classes from "./Input.module.css";
-import preview from "@assets/preview/visibility.svg";
-import offPreview from "@assets/preview/visibility_off.svg";
-import { InputType } from "zlib";
+import previewIcon from "@assets/preview/visibility.svg";
+import offPreviewIcon from "@assets/preview/visibility_off.svg";
 
-interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
-  type?: InputType;
+export interface PreviewPasswordProps
+  extends HTMLAttributes<HTMLInputElement>,
+    PropsWithChildren {
+  type?: string;
   isError: boolean;
   message?: string;
   value: string;
   customClasses: string;
+  messageType: "warning" | "error";
 }
+
 export const PreviewPassword = ({
-  className,
   isError,
-  message,
   type,
+  value,
   customClasses,
+  messageType,
   ...rest
-}: Props) => {
-  const inputRef = useRef(null);
+}: PreviewPasswordProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [isPreview, setIsPreview] = useState(false);
 
   const handlePreview = (e: SyntheticEvent) => {
     e.preventDefault();
     setIsPreview((prevState) => !prevState);
     if (inputRef.current) {
-      const inputField = inputRef.current as HTMLInputElement;
-      inputField.focus();
+      inputRef.current.focus();
     }
   };
+
   return (
     <>
       <div className={classes.preview_password}>
         <input
           className={`${classes.input} ${
-            isError && classes.error
+            isError && classes[messageType]
           } ${customClasses}`}
           type={isPreview ? "text" : "password"}
+          value={value}
           {...rest}
           ref={inputRef}
         />
-
         <img
-          src={isPreview ? preview : offPreview}
-          alt={isPreview ? "preview icon" : "xxxxx"}
+          src={isPreview ? previewIcon : offPreviewIcon}
+          alt={isPreview ? "preview icon" : "off preview icon"}
           className={classes.preview_password_icon}
           draggable={false}
           onClick={handlePreview}
         />
       </div>
-      {isError && <p className={classes.error_message}>{message}</p>}
     </>
   );
 };
