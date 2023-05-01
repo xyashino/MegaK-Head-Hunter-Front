@@ -28,11 +28,12 @@ const uploadOnServer = (
   });
 };
 
-export const DragAndDrop = () => {
-  const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(
-    undefined
-  );
-  const [currentFile, setCurrentFile] = useState<File | undefined>(undefined);
+type Props = {
+  text: string,
+}
+
+export const DragAndDrop = ({text}: Props) => {
+  const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
   const [message, setMessage] = useState<ReactNode | string>("");
 
   const onDrop = (files: File[]) => {
@@ -44,15 +45,12 @@ export const DragAndDrop = () => {
   const upload = () => {
     if (selectedFiles && selectedFiles.length > 0) {
       const currentFile = selectedFiles[0];
-
-      setCurrentFile(currentFile);
       uploadOnServer(currentFile)
         .then(() => {
           setMessage(fileUploadedMsg);
         })
         .catch(() => {
           setMessage(fileUploadError);
-          setCurrentFile(undefined);
         });
 
       setSelectedFiles(undefined);
@@ -69,7 +67,7 @@ export const DragAndDrop = () => {
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>{selectedFiles[0].name}</div>
               ) : (
-                "Przeciągnij i upuść plik tutaj lub kliknij, aby wybrać plik"
+                text
               )}
             </div>
             <aside>
@@ -84,7 +82,8 @@ export const DragAndDrop = () => {
           </section>
         )}
       </Dropzone>
-      <div>{message}</div>
+      <div>
+        {message}
+      </div>
     </div>
-  );
-};
+  );}
