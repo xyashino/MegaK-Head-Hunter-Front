@@ -9,7 +9,9 @@ import { PageRouter } from "@enums/page-router.enum";
 import { checkAuth } from "@utils/checkAuth";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
-import {StudentRegistration} from "@pages/StudentRegistration/StudentRegistration";
+import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistration";
+import { getDataFrom } from "@utils/network/getDataFrom";
+import { RequestPath } from "@enums/request-path.enum";
 
 const routers = createBrowserRouter([
   {
@@ -49,7 +51,8 @@ const routers = createBrowserRouter([
   },
   {
     path: PageRouter.StudentRegistration,
-    // loader
+    loader: ({ params }) =>
+      getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
     element: <StudentRegistration />,
   },
   {
