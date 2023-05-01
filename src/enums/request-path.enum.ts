@@ -4,4 +4,6 @@ export enum RequestPath {
     Logout = "/auth/logout",
     Upload = "/upload/file",
     CreteHr = "/hr",
+    GetOneStudent="/students/",
+    CreteStudent = "/students/register/",
 }
