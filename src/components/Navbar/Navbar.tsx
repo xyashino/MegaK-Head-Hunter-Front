@@ -11,10 +11,10 @@ import { RequestPath } from "@enums/request-path.enum";
 
 interface Props {
   githubUsername?: string;
-  firstName: string;
-  lastName: string;
+  fullName: string;
+
 }
-export const Navbar = ({ githubUsername, firstName, lastName }: Props) => {
+export const Navbar = ({ githubUsername, fullName }: Props) => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const { fetchData } = useAxios({ url: RequestPath.Logout, method: "DELETE" });
@@ -49,7 +49,7 @@ export const Navbar = ({ githubUsername, firstName, lastName }: Props) => {
                     marginRight: "auto",
                   }}
               >
-                {`${firstName} ${lastName}`}
+                {fullName}
               </Text>
               <span className="material-icons" style={{ color: "#9e9e9e" }}>
               arrow_drop_down
@@ -58,7 +58,7 @@ export const Navbar = ({ githubUsername, firstName, lastName }: Props) => {
             <div
                 className={`${classes.modal} ${showMenu ? classes.showmenu : ""}`}
             >
-              <Link to="#">Konto</Link>
+              <Link to={PageRouter.Account}>Konto</Link>
               <Button onClick={logoutUser}>Wyloguj</Button>
             </div>
           </div>

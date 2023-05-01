@@ -12,6 +12,7 @@ import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
 import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistration";
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
+import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
 
 const routers = createBrowserRouter([
   {
@@ -28,12 +29,32 @@ const routers = createBrowserRouter([
             element: <DragAndDrop />,
           },
           {
-            path: "hr",
+            path: PageRouter.AdminHr,
             element: <RegisterHRUser />,
           },
         ],
       },
+      {
+        path: PageRouter.Student,
+        element: <StudentPanel />,
+        children: [
+          {
+            path: PageRouter.StudentPanel,
+            element: <h1>Panel studenta</h1>,
+          },
+          {
+            path: PageRouter.StudentEdit,
+            element: <h1>Edytuj CV</h1>,
+          },
+        ],
+      },
     ],
+  },
+  {
+    path: PageRouter.StudentRegistration,
+    loader: ({ params }) =>
+        getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    element: <StudentRegistration />,
   },
   {
     path: PageRouter.Error,
@@ -49,12 +70,7 @@ const routers = createBrowserRouter([
     path: PageRouter.Login,
     element: <LoginPage />,
   },
-  {
-    path: PageRouter.StudentRegistration,
-    loader: ({ params }) =>
-      getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
-    element: <StudentRegistration />,
-  },
+
   {
     path: PageRouter.Everything,
     element: <NotFoundPage message="Page not found - 404" />,
