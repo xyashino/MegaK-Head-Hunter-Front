@@ -69,8 +69,8 @@ export const RegisterHRUser = () => {
         type="email"
         placeholder="E-mail"
         value={emailValue}
-        isError={emailError.show}
-        message={emailError.message}
+        hasError={emailError.show}
+        errorMessage={emailError.message}
         onChange={(e: SyntheticEvent) =>
           setEmail((e.target as HTMLInputElement).value as string)
         }
@@ -79,8 +79,8 @@ export const RegisterHRUser = () => {
         type="text"
         placeholder="Imię i nazwisko"
         value={fullNameValue}
-        isError={fullNameError.show}
-        message={fullNameError.message}
+        hasError={fullNameError.show}
+        errorMessage={fullNameError.message}
         onChange={(e: SyntheticEvent) =>
           setFullName((e.target as HTMLInputElement).value as string)
         }
@@ -89,8 +89,8 @@ export const RegisterHRUser = () => {
         type="text"
         placeholder="Firma"
         value={companyValue}
-        isError={companyError.show}
-        message={companyError.message}
+        hasError={companyError.show}
+        errorMessage={companyError.message}
         onChange={(e: SyntheticEvent) =>
           setCompany((e.target as HTMLInputElement).value as string)
         }
