@@ -56,7 +56,7 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
   };
 
   return (
-    <div>
+    <div className={classes.url_container}>
       <Text
         weight="bold"
         color="gray"
@@ -82,7 +82,7 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
           ? Empty
           : urls.map((el, i) => (
               <div key={i}>
-                <a href={el} target="_blank" rel="noreferrer">
+                <a href={el} target="_blank" rel="noreferrer" className={classes.url_form_url}>
                   {el}
                 </a>
                 <button onClick={(e) => removeUrl(i, e)}>Usuń</button>
