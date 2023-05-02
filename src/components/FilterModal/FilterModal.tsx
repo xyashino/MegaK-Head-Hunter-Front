@@ -4,7 +4,8 @@ import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
 import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
-import {SendRating} from "@components/SendRating/SendRating";
+import {SendRating, SendRatingProps} from "@components/SendRating/SendRating";
+import {RatingCategories, RatingCategory} from "../../constants/rating";
 
 Modal.setAppElement('#root');
 
@@ -17,6 +18,8 @@ export type FilterModalProps = {
 };
 
 export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProps) => {
+
+    const [ratingCategories, setRatingCategories] = useState<RatingCategory[]>(RatingCategories);
 
     const [isRemoteButtonActive, setIsRemoteButtonActive] = useState<boolean>(false);
     const [isOfficeButtonActive, setIsOfficeButtonActive] = useState<boolean>(false);
@@ -43,10 +46,27 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setIsChecked(false);
         setMinSalary('');
         setMaxSalary('');
+        setRatingCategories(RatingCategories);
+    };
+
+    const handleRatingClick: SendRatingProps['onRatingClick'] = (name, starIdx) => {
+        setRatingCategories(
+            currentCategories => currentCategories.map(
+                category =>
+                    category.name === name
+                        ? {
+                            ...category,
+                            state: category.state
+                                .map((starValue, currentStarIdx) => currentStarIdx === starIdx
+                                    ? {isActive: !starValue.isActive}
+                                    : starValue)
+                        }
+                        : category
+            )
+        );
     };
 
     return (
-
         <Modal
             isOpen={isOpen}
             onRequestClose={onRequestClose}
@@ -63,10 +83,13 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 >Wyczyść wszystkie
                 </Button>
             </div>
-            <SendRating whatIsAssessed="Ocena przejścia kursu"/>
-            <SendRating whatIsAssessed="Ocena aktywności i zaangażowania na kursie"/>
-            <SendRating whatIsAssessed="Ocena kodu w projekcie własnym"/>
-            <SendRating whatIsAssessed="Ocena pracy w zespole w Scrum"/>
+            {ratingCategories.map((category) => (
+                <SendRating
+                    key={`rating-${category.name}`}
+                    {...category}
+                    onRatingClick={handleRatingClick}
+                />
+            ))}
             <div>
                 <p>Preferowane miejsce pracy</p>
                 <div>
