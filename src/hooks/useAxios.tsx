@@ -51,8 +51,9 @@ export const useAxios = ({
       const res = await fetchMethod();
       if (afterSuccessMethod) afterSuccessMethod();
       setResponse(response?.data);
+      setLoading(false);
       return res.data;
-    } catch (e) {
+    } catch (error) {
       let message = "Unknown Error";
       if (isAxiosError(error)) {
         message =
