@@ -14,6 +14,8 @@ import {processStudentData} from "@utils/procesStudentData";
 import {PersonalSection} from "@components/EditCvSections/PersonalSection";
 import {GithubSection} from "@components/EditCvSections/GithubSection";
 import {PreferenceSection} from "@components/EditCvSections/PreferenceSection";
+import {isAxiosError} from "axios";
+import {toast} from "react-hot-toast";
 
 type UpdateStudentData = Omit<
   StudentResponse,
@@ -108,7 +110,21 @@ export const EditCv = () => {
     const uploadData =async (e:SyntheticEvent)=> {
       e.preventDefault();
       const {id, ...rest}=studentData
-      await AxiosSetup.patch(`${RequestPath.GetOneStudent}${id}`, processStudentData(rest as any))
+      try {
+          await AxiosSetup.patch(`${RequestPath.GetOneStudent}${id}`, processStudentData(rest as any))
+      } catch (e) {
+          let message = "Unknown Error";
+          if (isAxiosError(e)) {
+              message =
+                  e.response?.data.message ??
+                  e.response?.data.error ??
+                  e.message;
+          }
+          toast["error"](Array.isArray(message) ? message.join("\n") : message);
+      } finally {
+          toast["success"]('Zapiasno zmiany');
+
+      }
     }
 
   return (
