@@ -6,27 +6,13 @@ import { Select } from "@components/Select/Select";
 import { StudentRegisterRequest } from "@backendTypes";
 import { Toggle } from "@components/Toggle/Toggle";
 import classes from  '../StudentRegistrationForm.module.css'
+import {EXPECTED_CONTRACT_TYPE_OPTIONS, EXPECTED_TYPE_WORK_OPTIONS} from "@constants/SelectOptions";
 enum InputType {
   Month = "month",
   ExpectedContractType = "expectedContractType",
   ExpectedTypeWork = "expectedTypeWork",
 }
 
-const expectedContractTypeOptions: StudentRegisterRequest["expectedContractType"][] = [
-  "Brak preferencji",
-  "Hybrydowo",
-  "Możliwe B2B",
-  "Możliwe UZ/UoD",
-  "Tylko UoP",
-];
-
-const expectedTypeWorkOptions: StudentRegisterRequest["expectedTypeWork"][] = [
-  "Bez znaczenia",
-  "Hybrydowo",
-  "Gotowość do przeprowadzki",
-  "Na miejscu",
-  "Wyłącznie zdalnie",
-];
 
 export const StudentsStepThree = () => {
   const { studentData, setStudentData } = useContext(
@@ -102,14 +88,14 @@ export const StudentsStepThree = () => {
             onChange={handleInputChange}
         />
         <Select
-            options={expectedContractTypeOptions}
+            options={EXPECTED_CONTRACT_TYPE_OPTIONS}
             description="Wybierz preferowaną umowę"
             value={studentData.expectedContractType}
             onChange={handleInputChange}
             name={InputType.ExpectedContractType}
         />
         <Select
-            options={expectedTypeWorkOptions}
+            options={EXPECTED_TYPE_WORK_OPTIONS}
             description="Wybierz miejsce Pracy"
             value={studentData.expectedTypeWork}
             onChange={handleInputChange}
