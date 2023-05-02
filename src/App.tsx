@@ -13,6 +13,7 @@ import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistrat
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
+import {EditCv} from "@pages/EditCv/EditCv";
 
 const routers = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop />,
+            element: <DragAndDrop  text='Test'/>,
           },
           {
             path: PageRouter.AdminHr,
@@ -44,7 +45,7 @@ const routers = createBrowserRouter([
           },
           {
             path: PageRouter.StudentEdit,
-            element: <h1>Edytuj CV</h1>,
+            element: <EditCv/>,
           },
         ],
       },
