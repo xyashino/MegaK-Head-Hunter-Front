@@ -12,20 +12,7 @@
   margin-bottom: 10px;
 }
 
-.toggle_wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 50%;
-}
 
-.github_section {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
 
 @media (min-width: 768px) {
   .small {

@@ -8,12 +8,12 @@ import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import classes from "./EditCv.module.css";
 import { Button } from "@components/Button/Button";
 import { TextArea } from "@components/TextArea/TextArea";
-import { PersonalSection } from "@pages/EditCv/sections/PersonalSection";
-import { PreferenceSection } from "@pages/EditCv/sections/PreferenceSection";
-import { GithubSection } from "@pages/EditCv/sections/GithubSection";
 import { UrlForm } from "@components/UrlForm/UrlForm";
 import {AxiosSetup} from "@utils/network/AxiosSetup";
 import {processStudentData} from "@utils/procesStudentData";
+import {PersonalSection} from "@components/EditCvSections/PersonalSection";
+import {GithubSection} from "@components/EditCvSections/GithubSection";
+import {PreferenceSection} from "@components/EditCvSections/PreferenceSection";
 
 type UpdateStudentData = Omit<
   StudentResponse,

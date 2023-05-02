@@ -7,7 +7,7 @@ import {
 } from "@constants/SelectOptions";
 import { Text } from "@components/Text/Text";
 import { Toggle } from "@components/Toggle/Toggle";
-import classes from "../EditCv.module.css";
+import classes from "./EditCvSections.module.css";
 import { SyntheticEvent } from "react";
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
   expectedTypeWork: { defaultValue: string; name: string };
   targetWorkCity: { defaultValue: string; name: string };
   monthsOfCommercialExp: { defaultValue: string; name: string };
-    expectedSalary: { defaultValue: string; name: string };
+  expectedSalary: { defaultValue: string; name: string };
   onChange: (e: SyntheticEvent) => void;
   toggle: {
     defaultValue: boolean;
@@ -28,7 +28,7 @@ export const PreferenceSection = ({
   targetWorkCity,
   monthsOfCommercialExp,
   onChange,
-                                      expectedSalary,
+  expectedSalary,
   toggle,
 }: Props) => {
   return (
@@ -54,7 +54,7 @@ export const PreferenceSection = ({
       <div className={classes.small}>
         <Input
           value={targetWorkCity.defaultValue}
-          description="Docelowe Misto"
+          description="Docelowe Miasto"
           name={targetWorkCity.name}
           onChange={onChange}
         />
@@ -69,18 +69,21 @@ export const PreferenceSection = ({
         />
       </div>
 
-        <div className={classes.small}>
-            <Input
-                value={expectedSalary.defaultValue}
-                description="Preferowane Wynagrodznie"
-                name={expectedSalary.name}
-                onChange={onChange}
-            />
-        </div>
+      <div className={classes.small}>
+        <Input
+          value={expectedSalary.defaultValue}
+          description="Preferowane Wynagrodznie"
+          name={expectedSalary.name}
+          onChange={onChange}
+        />
+      </div>
 
       <div className={classes.toggle_wrapper}>
-        <Text weight='bold'>Wyrażam zgodę na bezpłatny staż/praktyki</Text>
-        <Toggle runAfterChange={toggle.updateToggle} defaultValue={toggle.defaultValue} />
+        <Text weight="bold">Wyrażam zgodę na bezpłatny staż/praktyki</Text>
+        <Toggle
+          runAfterChange={toggle.updateToggle}
+          defaultValue={toggle.defaultValue}
+        />
       </div>
     </ContrastSection>
   );

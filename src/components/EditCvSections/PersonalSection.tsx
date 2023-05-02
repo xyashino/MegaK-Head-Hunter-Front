@@ -1,4 +1,4 @@
-import classes from "@pages/EditCv/EditCv.module.css";
+import classes from "./EditCvSections.module.css";
 import {Input} from "@components/Input/Input";
 import {ContrastSection} from "@components/ContrastSection/ContrastSection";
 import {SyntheticEvent} from "react";
