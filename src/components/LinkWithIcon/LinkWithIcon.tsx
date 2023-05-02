@@ -17,8 +17,12 @@ export const LinkWithIcon: React.FC<LinkProps> = ({
   style,
 }) => {
   return (
-    <Link to={to} className={`${classes.container_link}`}>
-      <Icon className={`${classes.icon_link}`}>{icon}</Icon>
+    <Link to={to} className={`${classes.container_link}`} style={style}>
+      {icon && icon ? (
+        <Icon className={`${classes.icon_link}`}>{icon}</Icon>
+      ) : (
+        <img className={`${classes.icon_link}`} src="github-mark.svg" />
+      )}
       {text}
     </Link>
   );
