@@ -4,7 +4,7 @@ import classes from "./SendRating.module.css";
 import { IconContext } from "react-icons";
 import { useState } from "react";
 
-interface sendRatingProps {
+interface SendRatingProps {
     whatIsAssessed: string;
 }
 
@@ -17,14 +17,15 @@ interface RatingCategory {
     state: StarState[];
 }
 
-export const SendRating = ({ whatIsAssessed }: sendRatingProps) => {
-    const [ratingCategories, setRatingCategories] =
-        useState<RatingCategory[]>([
-            { name: "course", state: [...Array(5)].map(() => ({ isActive: false })) },
-            { name: "engagement", state: [...Array(5)].map(() => ({ isActive: false })) },
-            { name: "project", state: [...Array(5)].map(() => ({ isActive: false })) },
-            { name: "scrum", state: [...Array(5)].map(() => ({ isActive: false })) },
-        ]);
+export const SendRating = ({ whatIsAssessed }: SendRatingProps) => {
+    const initialRatingCategories = [
+        { name: "course", state: [...Array(5)].map(() => ({ isActive: false })) },
+        { name: "engagement", state: [...Array(5)].map(() => ({ isActive: false })) },
+        { name: "project", state: [...Array(5)].map(() => ({ isActive: false })) },
+        { name: "scrum", state: [...Array(5)].map(() => ({ isActive: false })) },
+    ];
+
+    const [ratingCategories, setRatingCategories] = useState<RatingCategory[]>(initialRatingCategories);
 
     const handleStarClick = (index: number, ratingType: string) => {
         const newCategories = ratingCategories.map((category) => {
@@ -39,6 +40,14 @@ export const SendRating = ({ whatIsAssessed }: sendRatingProps) => {
                 return category;
             }
         });
+        setRatingCategories(newCategories);
+    };
+
+    const resetRatingCategories = () => {
+        const newCategories = ratingCategories.map((category) => ({
+            ...category,
+            state: category.state.map(() => ({ isActive: false })),
+        }));
         setRatingCategories(newCategories);
     };
 
