@@ -14,6 +14,7 @@ import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate, useParams } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
 import {processStudentData} from "@utils/procesStudentData";
+import {toast} from "react-hot-toast";
 
 export const StudentsStepEight = () => {
   const { studentData, setStudentData } = useContext(
@@ -31,6 +32,7 @@ export const StudentsStepEight = () => {
   const handleClick = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
+      toast['success']("Aktywowano konto");
       navigate(PageRouter.Main);
     });
   };

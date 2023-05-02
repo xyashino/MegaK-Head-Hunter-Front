@@ -4,13 +4,17 @@ import { BookmarkNavLink } from "@components/BookmarkNavLink/BookmarkNavLink";
 import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
 import { UserResponse } from "@backendTypes";
+import {toast} from "react-hot-toast";
 
 export const AdminPanel = () => {
   const role = useOutletContext() as UserResponse["role"];
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
-    if (role !== "admin") navigate(PageRouter.Main);
+    if (role !== "admin") {
+      toast['error']('Brak uprawnień');
+      navigate(PageRouter.Main)
+    }
   }, [role]);
 
   return (
