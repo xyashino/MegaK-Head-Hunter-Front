@@ -18,13 +18,15 @@ export const ValidateHRUser = () => {
   const {
     value: confirmPasswordValue,
     error: confirmPasswordError,
-    setValue: confirmPassword,
-  } = useValidationState("Nazwa firmy", {
+    setValue: setConfirmPassword,
+  } = useValidationState("Powtórz hasło", {
     minLength: 3,
     maxLength: 255,
   });
 
-  const { response, error, loading } = useAxios({
+  const [passwordMatchError, setPasswordMatchError] = useState("");
+
+  const { response } = useAxios({
     url: "/users",
     method: "POST",
     body: {
@@ -35,6 +37,11 @@ export const ValidateHRUser = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
+    if (passwordValue !== confirmPasswordValue) {
+      setPasswordMatchError("Hasła nie pasują do siebie");
+      return;
+    }
+    setPasswordMatchError("");
     console.log(response?.data);
   };
 
@@ -54,10 +61,14 @@ export const ValidateHRUser = () => {
         type="password"
         placeholder="Powtórz hasło"
         value={confirmPasswordValue}
-        isError={confirmPasswordError.show}
-        message={confirmPasswordError.message}
+        isError={confirmPasswordError.show || passwordMatchError !== ""}
+        message={
+          passwordMatchError !== ""
+            ? passwordMatchError
+            : confirmPasswordError.message
+        }
         onChange={(e: SyntheticEvent) =>
-          confirmPassword((e.target as HTMLInputElement).value as string)
+          setConfirmPassword((e.target as HTMLInputElement).value as string)
         }
       />
 
