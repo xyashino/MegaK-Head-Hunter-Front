@@ -5,6 +5,7 @@
   align-items: center;
   font-weight: 500;
   color: var(--megakBlue);
+  overflow-wrap: anywhere;
 }
 
 .icon_link {

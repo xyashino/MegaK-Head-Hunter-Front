@@ -187,12 +187,64 @@ export const DisplayCv = () => {
           Oczekiwania w stosunku do zatrudnienia
         </div>
         <div className={classes.content_gutter}>
-          <div>Preferowane miejsce pracy</div>
-          <div>Docelowe miasto, gdzie chce pracować kandydat</div>
-          <div>Oczekiwany typ kontraktu</div>
-          <div>Oczekiwane wynagordzenie miesięczne netto</div>
-          <div>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</div>
-          <div>Komercyjne doświadczenie w programowaniu</div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Preferowane miejsce pracy
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>Biuro</span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Docelowe miasto, gdzie chce pracować kandydat
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>Warszawa</span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>Oczekiwany typ kontraktu</span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>Umowa o pracę</span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Oczekiwane wynagordzenie miesięczne netto
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>8 000 zł</span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Zgoda na odbycie bezpłatnych praktyk/stażu na początek
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>TAK</span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Komercyjne doświadczenie w programowaniu
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>6 miesięcy</span>
+              </div>
+            </div>
+          </div> 
         </div>
         <div className={classes.title_gutter}>Edukacja</div>
         <Text className={classes.content_gutter}>
