@@ -2,7 +2,7 @@ import {FaStar} from "react-icons/fa";
 import {Paragraph} from "@components/Paragraph/Paragraph";
 import classes from "./SendRating.module.css";
 import {IconContext} from "react-icons/lib";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 interface SendRatingProps {
     whatIsAssessed: string,
@@ -14,10 +14,6 @@ type initState = {
 
 export const SendRating = ({whatIsAssessed}: SendRatingProps) => {
     const [buttonClicked, setButtonClicked] = useState<initState>({});
-
-    useEffect(() => {
-        localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
-    }, [buttonClicked]);
 
     const handleClick = (index: number) => () => {
         setButtonClicked(state => ({
