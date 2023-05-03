@@ -14,6 +14,7 @@ import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
 import {EditCv} from "@pages/EditCv/EditCv";
+import {Panel} from "@pages/Panel/Panel";
 
 const routers = createBrowserRouter([
   {
@@ -41,12 +42,18 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.StudentPanel,
-            element: <h1>Panel studenta</h1>,
+            element: <Panel/>,
           },
           {
             path: PageRouter.StudentEdit,
             element: <EditCv/>,
           },
+          {
+            path: `/student/cv/:id`,
+            loader: ({params}) =>
+                getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+            element: <EditCv/>,
+          }
         ],
       },
     ],
