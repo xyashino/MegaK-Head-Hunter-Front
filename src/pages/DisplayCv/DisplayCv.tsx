@@ -39,7 +39,7 @@ export const DisplayCv = () => {
       </div>
 
       <div className={classes.profile}>
-        <Avatar type="large" githubUsername="mikolajhere" />
+        <Avatar type="large" githubUsername="craftzdog" />
         <h2>Jan Kowalski</h2>
         <LinkWithIcon icon={""} text="jankowalski" to="https://megak.pl" />
         <div className={classes.contact}>
@@ -73,7 +73,179 @@ export const DisplayCv = () => {
           <Button style={{ width: "100%" }}>Zatrudniony</Button>
         </div>
       </div>
-      <div className={classes.details}></div>
+      <div className={classes.details}>
+        <div className={classes.title_gutter}>Ocena</div>
+        <div className={classes.content_gutter}>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>Ocena przejścia kursu</span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>5</span> / 5
+              </div>
+              <div className={classes.stars_row}>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Ocena aktywności i zaangażowania na kursie
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>3</span> / 5
+              </div>
+              <div className={classes.stars_row}>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#4f4f4f" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#4f4f4f" }}>
+                  star
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Ocena kodu w projekcie własnym
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>4</span> / 5
+              </div>
+              <div className={classes.stars_row}>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#4f4f4f" }}>
+                  star
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={classes.rate_container}>
+            <span className={classes.rate_title}>
+              Ocena pracy w zespole w Scrum
+            </span>
+            <div className={classes.rating}>
+              <div className={classes.figure}>
+                <span className={classes.rate_bold}>5</span> / 5
+              </div>
+              <div className={classes.stars_row}>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+                <span className="material-icons" style={{ color: "#E02735" }}>
+                  star
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={classes.title_gutter}>
+          Oczekiwania w stosunku do zatrudnienia
+        </div>
+        <div className={classes.content_gutter}>
+          <div>Preferowane miejsce pracy</div>
+          <div>Docelowe miasto, gdzie chce pracować kandydat</div>
+          <div>Oczekiwany typ kontraktu</div>
+          <div>Oczekiwane wynagordzenie miesięczne netto</div>
+          <div>Zgoda na odbycie bezpłatnych praktyk/stażu na początek</div>
+          <div>Komercyjne doświadczenie w programowaniu</div>
+        </div>
+        <div className={classes.title_gutter}>Edukacja</div>
+        <Text className={classes.content_gutter}>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Autem iste
+          cum, nisi qui delectus impedit? Repellat sit beatae nobis excepturi,
+          porro nihil aliquam, pariatur ex minus, est illum sint impedit.
+        </Text>
+        <div className={classes.title_gutter}>Kursy</div>
+        <Text className={classes.content_gutter}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+          natus expedita similique! Odit in accusamus sed aperiam earum corrupti
+          soluta voluptate, cupiditate impedit quia commodi!
+        </Text>
+        <div className={classes.title_gutter}>Doświadczenie zawodowe</div>
+        <Text className={classes.content_gutter}>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate
+          natus expedita similique! Odit in accusamus sed aperiam earum corrupti
+          soluta voluptate, cupiditate impedit quia commodi!
+        </Text>
+        <div className={classes.title_gutter}>Portfolio</div>
+        <LinkWithIcon
+          to="/"
+          text="https://Loremipsum/dolor/sit/amet"
+          icon="attach_file"
+          style={{ padding: "1.5rem" }}
+        />
+        <div className={classes.title_gutter}>Projekt w zespole Scrumowym</div>
+        <LinkWithIcon
+          to="/"
+          text="https://github.com/Ami777/MegaKursTest/commits?author=Ami777"
+          icon="attach_file"
+          style={{ padding: "1.5rem 1.5rem 0.5rem" }}
+        />
+        <LinkWithIcon
+          to="/"
+          text="https://github.com/Ami777/MegaKursTest/pulls?q=is%3Apr+reviewed-by%3AAmi777"
+          icon="attach_file"
+          style={{ padding: "0.5rem 1.5rem 1.5rem" }}
+        />
+        <div className={classes.title_gutter}>Projekt na zaliczenie</div>
+        <LinkWithIcon
+          to="/"
+          text="https://Loremipsum/dolor/sit/amet"
+          icon="attach_file"
+          style={{ padding: "1.5rem 1.5rem 0.5rem" }}
+        />
+        <LinkWithIcon
+          to="/"
+          text="https://Loremipsum/dolor/sit/amet"
+          icon="attach_file"
+          style={{ padding: "0.5rem 1.5rem 1.5rem" }}
+        />
+      </div>
     </div>
   );
 };
