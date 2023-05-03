@@ -1,20 +1,31 @@
-.one_degree {
-    background-color: gray;
-    margin-right: 5%;
-    cursor: pointer;
-    width: 10%;
-    padding: 3px;
-    display: inline-block;
-}
-
-.degrees_field {
-    width: 75%;
-}
-
 .one_rating_area {
-    width: 400px;
+    width: 20rem;
+}
+
+.rating_button {
+    cursor: pointer;
+    margin-right: 3%;
+    color: white;
+    background-color: #292A2B;
+    width: 15%;
+    padding: 8px;
+    border: 0;
+
+}
+
+.rating_value {
+    margin-right: 15%;
 }
 
 .star {
-    margin-top: 2px;
+    color: #e02635;
+}
+
+.star_clicked {
+    color: white;
+}
+
+.rating_button_clicked {
+    composes: rating_button;
+    background-color: #e02635;
 }

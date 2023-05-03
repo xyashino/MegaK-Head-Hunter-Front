@@ -1,12 +1,36 @@
 import {FaStar} from "react-icons/fa";
 import {Paragraph} from "@components/Paragraph/Paragraph";
 import classes from "./SendRating.module.css";
+import {IconContext} from "react-icons/lib";
+import {useEffect, useState} from "react";
 
-interface sendRatingProps {
+interface SendRatingProps {
     whatIsAssessed: string,
 }
 
-export const SendRating = ({whatIsAssessed}: sendRatingProps) => {
+type initState = {
+    [index: number]: boolean
+}
+
+const getInitialState = (): initState => {
+    const buttonClicked = localStorage.getItem('buttonClicked');
+    return buttonClicked ? JSON.parse(buttonClicked) : {};
+}
+
+export const SendRating = ({whatIsAssessed}: SendRatingProps) => {
+    const [buttonClicked, setButtonClicked] = useState<initState>(getInitialState);
+
+    useEffect(() => {
+        localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
+    }, [buttonClicked]);
+
+    const handleClick = (index: number) => () => {
+        setButtonClicked(state => ({
+            ...state,
+            [index]: !state[index]
+        }));
+    };
+
     return (
         <div className={classes.one_rating_area}>
             <Paragraph>{whatIsAssessed}</Paragraph>
@@ -14,8 +38,13 @@ export const SendRating = ({whatIsAssessed}: sendRatingProps) => {
                 {[...Array(5)].map((star, i) => {
                     let value = i + 1;
                     return (
-                        <span className={classes.one_degree}>{value}<FaStar className={classes.star}
-                                                                            color="#e02635"/></span>
+                        <IconContext.Provider value={{className: classes.react_icons_star}} key={i}>
+                            <button className={buttonClicked[i] ? classes.rating_button_clicked : classes.rating_button}
+                                    onClick={handleClick(i)}>
+                                <span className={classes.rating_value}>{value}</span>
+                                <FaStar className={buttonClicked[i] ? classes.star_clicked : classes.star}/>
+                            </button>
+                        </IconContext.Provider>
                     )
                 }).reverse()}
             </p>

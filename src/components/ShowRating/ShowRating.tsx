@@ -1,13 +1,13 @@
 import classes from "./ShowRating.module.css";
 import {RatingInStars} from "@components/RatingInStars/RatingInStars"
 
-interface ratingProps {
+interface RatingProps {
     paragraphText: string,
     degree: number,
     isStars: boolean
 }
 
-export const ShowRating = ({paragraphText, degree, isStars}: ratingProps) => {
+export const ShowRating = ({paragraphText, degree, isStars}: RatingProps) => {
     return (
         <div className={classes.rating}>
             <p>{paragraphText}</p>
