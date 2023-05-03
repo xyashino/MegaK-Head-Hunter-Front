@@ -1,0 +1,24 @@
+.contrast_section {
+    width: 100%;
+}
+
+.contrast_section_header {
+    width: 100%;
+    background-color: var(--bgInput);
+    padding: 6px 10px;
+    margin: 2px 0;
+}
+
+.contrast_section_text {
+    font-size: 22px;
+    text-align: left;
+}
+
+.contrast_section_content {
+    background-color: var(--sectionContent);
+    padding: 6px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}

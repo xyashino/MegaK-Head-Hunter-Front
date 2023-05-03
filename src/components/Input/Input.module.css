@@ -1,10 +1,9 @@
 .input {
-  background: var(--bgInput) 0% 0% no-repeat padding-box;
+  background: var(--bgInput) 0 0 no-repeat padding-box;
   opacity: 1;
   border: 0;
   width: 100%;
-  max-width: -webkit-fill-available;
-  padding: 6.5px 17px;
+  padding: 7px 17px;
   color: var(--colorInput);
   font: normal normal normal 16px/27px Catamaran;
 }
@@ -19,10 +18,47 @@
   outline: 3px solid var(--megakRed);
   color: var(--colorInput);
 }
+.warning {
+  outline: 3px solid #c59601;
+  color: var(--colorInput);
+}
 
-.error_message {
-  color: var(--megakRed);
+.message {
   padding: 0;
   margin: 0;
   font-weight: bolder;
+}
+
+.error_message {
+  color: var(--megakRed);
+}
+
+.warning_message {
+  color:#c59601;
+}
+
+.preview_password {
+  position: relative;
+  width: 100%;
+}
+
+.preview_password_icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  height: 80%;
+  fill: var(--white);
+}
+.input_group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--inactiveBookmark);
+  padding: 10px 5px 0;
 }

@@ -1,0 +1,133 @@
+.student_registration_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--navBorder);
+  padding: 30px;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--megakRed) var(--navBorder);
+}
+
+.student_registration_title {
+  color: var(--white);
+  font-size: 25px;
+  text-transform: uppercase;
+}
+
+.student_registration_pages {
+  color: var(--white);
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.student_registration_form {
+  width: 95%;
+  flex-grow: 1;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar_container {
+  min-width: 160px;
+  min-height: 160px;
+}
+
+.text_info {
+  font-size: 15px;
+  text-align: center;
+  padding: 4px;
+  text-transform: uppercase;
+}
+
+.info_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info_container a {
+  padding: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--megakRed);
+}
+.info_container p {
+  text-transform: uppercase;
+  text-align: center;
+}
+.info_container_github {
+  font-size: 14px;
+  padding: 4px;
+  margin: 3px 0;
+}
+
+.info_container a:hover {
+  transform: scale(1.5);
+}
+
+.toggle_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+.toggle_text {
+  margin-right: 20px;
+  font-size: 20px;
+}
+
+.activate_btn {
+  width: 80%;
+  border-radius: 20px;
+  margin: 30px auto;
+}
+
+@media (min-width: 768px) {
+  .student_registration_container {
+    width: 90%;
+    margin: 20px 0;
+  }
+  .student_registration_title {
+    font-size: 30px;
+  }
+  .info_container_github {
+    font-size: 18px;
+  }
+  .text_info {
+    font-size: 20px;
+  }
+
+  .activate_btn {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1024px) {
+    .student_registration_container {
+        width: 70%;
+        height: 80%;
+    }
+    .student_registration_form {
+        width: 85%;
+    }
+}
+
+@media (min-width: 1920px) {
+    .student_registration_container {
+        width: 60%;
+        height: 70%;
+    }
+
+    .student_registration_form {
+        width: 60%;
+    }
+}
