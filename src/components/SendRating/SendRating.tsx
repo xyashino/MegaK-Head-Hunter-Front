@@ -12,13 +12,8 @@ type initState = {
     [index: number]: boolean
 }
 
-const getInitialState = (): initState => {
-    const buttonClicked = localStorage.getItem('buttonClicked');
-    return buttonClicked ? JSON.parse(buttonClicked) : {};
-}
-
 export const SendRating = ({whatIsAssessed}: SendRatingProps) => {
-    const [buttonClicked, setButtonClicked] = useState<initState>(getInitialState);
+    const [buttonClicked, setButtonClicked] = useState<initState>({});
 
     useEffect(() => {
         localStorage.setItem('buttonClicked', JSON.stringify(buttonClicked));
