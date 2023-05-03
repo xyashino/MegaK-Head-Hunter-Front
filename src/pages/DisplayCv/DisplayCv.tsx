@@ -188,7 +188,7 @@ export const DisplayCv = () => {
         </div>
         <div className={classes.content_gutter}>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
+            <span className={classes.expectations_title}>
               Preferowane miejsce pracy
             </span>
             <div className={classes.rating}>
@@ -198,7 +198,7 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
+            <span className={classes.expectations_title}>
               Docelowe miasto, gdzie chce pracować kandydat
             </span>
             <div className={classes.rating}>
@@ -208,7 +208,7 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>Oczekiwany typ kontraktu</span>
+            <span className={classes.expectations_title}>Oczekiwany typ kontraktu</span>
             <div className={classes.rating}>
               <div className={classes.figure}>
                 <span className={classes.rate_bold}>Umowa o pracę</span>
@@ -216,7 +216,7 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
+            <span className={classes.expectations_title}>
               Oczekiwane wynagordzenie miesięczne netto
             </span>
             <div className={classes.rating}>
@@ -226,7 +226,7 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
+            <span className={classes.expectations_title}>
               Zgoda na odbycie bezpłatnych praktyk/stażu na początek
             </span>
             <div className={classes.rating}>
@@ -236,7 +236,7 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
+            <span className={classes.expectations_title}>
               Komercyjne doświadczenie w programowaniu
             </span>
             <div className={classes.rating}>

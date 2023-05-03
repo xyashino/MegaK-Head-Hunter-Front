@@ -94,6 +94,11 @@ h2 {
   font-size: 14px;
   line-height: 20px;
 }
+.expectations_title {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+}
 .rating {
   flex: 1;
   display: flex;
@@ -126,6 +131,10 @@ h2 {
   }
   .back a {
     justify-content: center;
+  }
+
+  .expectations_title {
+    min-height: 60px;
   }
 }
 
