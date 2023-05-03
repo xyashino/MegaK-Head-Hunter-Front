@@ -16,7 +16,9 @@
   --grey: #9e9e9e;
   --bgNav: #1e1e1f;
   --navBorder: #202122;
-  --sectionContent: #222324;
+  --sectionContent: #222324; 
+  --megakBlue: #0b8bd4;
+  --iconGrey: #4d4d4d;
 }
 
 body {
