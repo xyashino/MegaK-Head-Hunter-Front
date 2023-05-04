@@ -1,0 +1,15 @@
+export enum UpdateOptionName {
+    MonthsOfExp = "monthsOfCommercialExp",
+    Bio = "bio",
+    Education = "education",
+    ContractType = "expectedContractType",
+    Salary = "expectedSalary",
+    TypeWork = "expectedTypeWork",
+    Github = "githubUsername",
+    Firstname = "firstname",
+    Lastname = "lastname",
+    City = "targetWorkCity",
+    Tel = "tel",
+    Experience = "workExperience",
+    Courses = "courses",
+}
