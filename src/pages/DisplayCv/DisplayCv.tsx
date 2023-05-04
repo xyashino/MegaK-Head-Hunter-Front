@@ -41,16 +41,16 @@ export const DisplayCv = () => {
       <div className={classes.profile}>
         <Avatar type="large" githubUsername="craftzdog" />
         <h2>Jan Kowalski</h2>
-        <LinkWithIcon icon={""} text="jankowalski" to="https://megak.pl" />
+        <LinkWithIcon icon={"./github.svg"} text="jankowalski" to="https://megak.pl" />
         <div className={classes.contact}>
           <LinkWithIcon
-            icon={"phone"}
+            icon={"./phone.svg"}
             text="+48 566 072 227"
             to="tel:+48566072227"
             style={{ color: "white", marginBottom: "0.25rem" }}
           />
           <LinkWithIcon
-            icon={"mail"}
+            icon={"./mail.svg"}
             text="jankowalski@gmail.com"
             to="tel:+48566072227"
             style={{ color: "white" }}
@@ -268,33 +268,33 @@ export const DisplayCv = () => {
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="attach_file"
-          style={{ padding: "1.5rem" }}
-        />
+          icon="./attach_file.svg"
+          style={{ padding: "1.5rem", color: "#1585cc" }}
+        /> 
         <div className={classes.title_gutter}>Projekt w zespole Scrumowym</div>
         <LinkWithIcon
           to="/"
           text="https://github.com/Ami777/MegaKursTest/commits?author=Ami777"
-          icon="attach_file"
+          icon="./attach_file.svg"
           style={{ padding: "1.5rem 1.5rem 0.5rem" }}
         />
         <LinkWithIcon
           to="/"
           text="https://github.com/Ami777/MegaKursTest/pulls?q=is%3Apr+reviewed-by%3AAmi777"
-          icon="attach_file"
+          icon="./attach_file.svg"
           style={{ padding: "0.5rem 1.5rem 1.5rem" }}
         />
         <div className={classes.title_gutter}>Projekt na zaliczenie</div>
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="attach_file"
+          icon="./attach_file.svg"
           style={{ padding: "1.5rem 1.5rem 0.5rem" }}
         />
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="attach_file"
+          icon="./attach_file.svg"
           style={{ padding: "0.5rem 1.5rem 1.5rem" }}
         />
       </div>
