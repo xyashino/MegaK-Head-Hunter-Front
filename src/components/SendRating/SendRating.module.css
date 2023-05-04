@@ -1,31 +1,31 @@
-.one_rating_area {
-    width: 20rem;
-}
-
-.rating_button {
+.one_degree {
+    background: #292A2B 0% 0% no-repeat padding-box;
+    margin-right: 0.5rem;
     cursor: pointer;
-    margin-right: 3%;
+    width: 5rem;
+    padding: 0.2rem 0.7rem;
+    font: normal normal normal 14px/23px Catamaran;
+    letter-spacing: 0px;
+    color: #F7F7F7;
+}
+
+.degrees_field {
+    /*width: 550px;*/
+}
+
+.one_rating_area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.react_icons_star {
+    margin-top: 0.7rem;
+    width: 1.5rem;
+    vertical-align: -0.19rem;
+    font-size: 12px;
+    color: var(--megakRed);
+}
+
+.react_icons_star_active {
     color: white;
-    background-color: #292A2B;
-    width: 15%;
-    padding: 8px;
-    border: 0;
-
-}
-
-.rating_value {
-    margin-right: 15%;
-}
-
-.star {
-    color: #e02635;
-}
-
-.star_clicked {
-    color: white;
-}
-
-.rating_button_clicked {
-    composes: rating_button;
-    background-color: #e02635;
 }

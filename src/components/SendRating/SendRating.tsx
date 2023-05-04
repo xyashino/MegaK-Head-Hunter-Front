@@ -1,43 +1,38 @@
-import {FaStar} from "react-icons/fa";
-import {Paragraph} from "@components/Paragraph/Paragraph";
+import { FaStar } from "react-icons/fa";
+import { Paragraph } from "@components/Paragraph/Paragraph";
 import classes from "./SendRating.module.css";
-import {IconContext} from "react-icons/lib";
-import {useState} from "react";
+import { IconContext } from "react-icons";
+import {RatingCategory} from "../../constants/rating";
 
-interface SendRatingProps {
-    whatIsAssessed: string,
+export interface SendRatingProps extends RatingCategory {
+    onRatingClick: (name: string, starIdx: number) => void;
 }
 
-type initState = {
-    [index: number]: boolean
-}
-
-export const SendRating = ({whatIsAssessed}: SendRatingProps) => {
-    const [buttonClicked, setButtonClicked] = useState<initState>({});
-
-    const handleClick = (index: number) => () => {
-        setButtonClicked(state => ({
-            ...state,
-            [index]: !state[index]
-        }));
-    };
-
+export const SendRating = ({ name, label, state, onRatingClick }: SendRatingProps) => {
     return (
         <div className={classes.one_rating_area}>
-            <Paragraph>{whatIsAssessed}</Paragraph>
+            <Paragraph>{label}</Paragraph>
+
             <p className={classes.degrees_field}>
-                {[...Array(5)].map((star, i) => {
-                    let value = i + 1;
-                    return (
-                        <IconContext.Provider value={{className: classes.react_icons_star}} key={i}>
-                            <button className={buttonClicked[i] ? classes.rating_button_clicked : classes.rating_button}
-                                    onClick={handleClick(i)}>
-                                <span className={classes.rating_value}>{value}</span>
-                                <FaStar className={buttonClicked[i] ? classes.star_clicked : classes.star}/>
-                            </button>
+                {state.map((singleStarState, idx) => (
+                    <button
+                        key={`rating-button-${idx}`}
+                        onClick={() => onRatingClick(name, idx)}
+                        className={classes.one_degree}
+                    >
+                        {idx + 1}
+
+                        <IconContext.Provider
+                            value={{
+                                className: state[idx].isActive
+                                    ? classes.react_icons_star_active
+                                    : classes.react_icons_star
+                            }}
+                        >
+                            <FaStar />
                         </IconContext.Provider>
-                    )
-                }).reverse()}
+                    </button>
+                ))}
             </p>
         </div>
     );

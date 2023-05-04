@@ -4,18 +4,20 @@ interface ValidationData {
     minLength: number;
     maxLength?: number;
     specialChars?: string[];
+    includeSpace?: boolean;
     sameAs?: string;
 }
 
 function validateInputValue(inputValue: string, inputName: string, validationData: ValidationData) {
-    const { minLength, maxLength, specialChars, sameAs } = validationData;
+    const { minLength, maxLength, specialChars, sameAs,includeSpace=false } = validationData;
     const { length } = inputValue;
-
     switch (true) {
         case length < minLength:
-            throw new Error(`${inputName} musi mieć min. ${minLength} znaków`);
+            throw new Error(`${inputName} musi mieć min. ${minLength <= 4 ? `${minLength} znaki.` : `${minLength} znaków.`}`);
         case maxLength && length > maxLength:
-            throw new Error(`${inputName} musi mieć max. ${maxLength} znaków`);
+            throw new Error(`${inputName} musi mieć max. ${maxLength as number <= 4 ? `${maxLength} znaki.` : `${maxLength} znaków.`} znaków`);
+        case !includeSpace && inputValue.includes(' '):
+            throw new Error(`${inputName} nie może zawierać spacji.`);
         case specialChars?.some((char) => !inputValue.includes(char)):
             throw new Error(`${inputName} musi zawierać ${specialChars?.join(",")}`);
         case sameAs && sameAs !== inputValue:
@@ -35,7 +37,6 @@ interface UseValidationStateResult {
         message: string;
     };
 }
-
 export const useValidationState = (
     inputName: string,
     validationData: ValidationData

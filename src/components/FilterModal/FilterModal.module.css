@@ -1,0 +1,206 @@
+
+.filter_modal {
+    background: #0A0A0A 0% 0% no-repeat padding-box;
+    padding: 2rem 1.5rem;
+    min-width: 300px;
+    max-width: 800px;
+    width: 550px;
+    height: 800px;
+    text-align: left;
+    font: normal normal normal 14px/23px Catamaran;
+    letter-spacing: 0px;
+    color: #F7F7F7;
+    opacity: 1;
+    margin: 4rem auto;
+    z-index: 10;
+}
+
+/*.filter_modal - problem z fontem - ostatnie normal to ma być medium ale jest błąd*/
+
+.filter_modal_btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.filter_modal .filter_modal_btns button {
+    margin-left: 1em;
+}
+
+.filter_modal .filter_modal_btns button:nth-child(odd) {
+    background-color: transparent;
+}
+
+.input_filter_modal_smaller input {
+    font: normal normal normal 12px/19px Catamaran;
+    width: 6rem;
+    margin: 0 1em;
+}
+
+.input_months input {
+    font: normal normal normal 12px/19px Catamaran;
+    width: 6rem;
+    color: var(--colorInput);
+    opacity: 0.5;
+    font-weight: 200;
+}
+
+.input_months label {
+    font: normal normal normal 12px/19px Catamaran;
+    color: var(--colorInput);
+    font-weight: 200;
+    width: 2.5rem;
+}
+
+/*input[type=number]::-webkit-inner-spin-button,*/
+/*input[type=number]::-webkit-outer-spin-button {*/
+/*    display: none;*/
+/*}*/
+
+.filter_modal_wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter_modal div {
+    margin-bottom: 1rem;
+}
+
+.input_radio_wrapper {
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+
+input[type="radio"] {
+    /* ukryj standardowe kółka radio */
+    display: none;
+}
+
+input[type="radio"] + label:before {
+    /* dodaj kółka jako pseudo-elementy przed label */
+    content: "";
+    display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid #292A2B;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+input[type="radio"] + label:after {
+    /* dodaj tekst po prawej stronie */
+    content: attr(value);
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input[type="radio"]:checked + label:before {
+    /* zmień kolor wypełnienia po kliknięciu */
+    background-color: var(--megakRed);
+}
+.first_row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.first_row button {
+    text-align: left;
+    font: normal normal normal 14px/23px Catamaran;
+    letter-spacing: 0px;
+    color: #F7F7F7;
+    background: #172A35 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.btn_filter_modal_smaller {
+    text-align: left;
+    font: normal normal normal 12px/19px Catamaran;
+    letter-spacing: 0px;
+    color: var(--white);
+    background: #292A2B 0% 0% no-repeat padding-box;
+    opacity: 1;
+    margin-right: 1em;
+    border: 0;
+    padding: 6px 10px;
+    font-weight: 200;
+}
+
+.btn_filter_modal_smaller_active {
+    background-color: var(--megakRed);
+    text-align: left;
+    font: normal normal normal 12px/19px Catamaran;
+    letter-spacing: 0px;
+    color: var(--white);
+    opacity: 1;
+    margin-right: 1em;
+    border: 0;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-weight: 200;
+}
+
+.button_bigger {
+    background-color: var(--megakRed);
+    border: 0;
+    color: var(--white);
+    padding: 6px 10px;
+    letter-spacing: 0px;
+    font: normal normal normal 16px/27px Catamaran;
+    cursor: pointer;
+    opacity: 1;
+    font-weight: 200;
+}
+
+.btn_filter_modal_smaller_active:hover {
+    opacity: 0.9;
+}
+
+.btn_filter_modal_smaller_active:focus-visible {
+    outline: 2px solid hotpink;
+}
+
+.arrows_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.star_bgc_red {
+    background-color: red;
+}
+
+.star_default {
+    background-color: var(--bgInput);
+}
+
+@media(max-width: 768px) {
+    .filter_modal {
+        margin: 1rem 1rem;
+        width: 500px;
+        height: 850px;
+    }
+    .btn_filter_modal_smaller {
+        margin-top: 1rem;
+    }
+    .btn_filter_modal_smaller_active {
+        margin-top: 1rem;
+    }
+}
+
+@media(min-width:768px){
+    .filter_modal {
+        margin: 4rem auto;
+    }
+}
+/*TODO:
+   1. input type="number" - ostylować strzałki według makiety
+   Można na przykład ukryć element input i zastąpić go niestandardowymi przyciskami ze strzałkami, które będą inkrementować i dekrementować wartość w polu tekstowym.
+   2. zmiana szerokości Navbara jak na makiecie
+   */
+
+
+
+
+
