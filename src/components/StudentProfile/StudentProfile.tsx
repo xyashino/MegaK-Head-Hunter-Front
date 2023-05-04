@@ -24,18 +24,18 @@ type Props = {
     <div className={classes.profile}>
       <Avatar type="large" githubUsername="craftzdog" />
       <h2 className={classes.name}>{name}</h2>
-      <LinkWithIcon icon={""} text={ghLink} to="https://megak.pl" />
+      <LinkWithIcon icon={"./github.svg"} text={ghLink} to="https://megak.pl" />
       <div className={classes.contact}>
         <LinkWithIcon
-          icon={"phone"}
+          icon={"./phone.svg"}
           text={phone}
           to={"tel:" + phone}
           style={{ color: "white", marginBottom: "0.25rem" }}
         />
         <LinkWithIcon
-          icon={"mail"}
+          icon={"./mail.svg"}
           text={mail}
-          to={"tel:" + phone}
+          to={"mailto:" + phone}
           style={{ color: "white" }}
         />
         <Text 
