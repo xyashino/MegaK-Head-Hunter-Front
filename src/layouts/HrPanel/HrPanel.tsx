@@ -5,6 +5,7 @@ import {Outlet} from "react-router-dom";
 import {Button} from "@components/Button/Button";
 import {FilterModal} from "@components/FilterModal/FilterModal";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import {PageRouter} from "@enums/page-router.enum";
 
 export const HrPanel = () => {
     const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
@@ -21,8 +22,8 @@ export const HrPanel = () => {
         <>
             <div className={classes.div_hr_panel_wrapper}>
                 <header className={classes.hr_panel_header}>
-                    <BookmarkNavLink text="Dostepni kursanci" to="/hr/students"/>
-                    <BookmarkNavLink text="Do rozmowy" to="/hr/talk"/>
+                    <BookmarkNavLink text="Dostepni kursanci" to={PageRouter.HrStudents}/>
+                    <BookmarkNavLink text="Do rozmowy" to={PageRouter.HrTalk}/>
                 </header>
                 <div className={classes.div_btn_to_modal_wrapper}>
                     <Button

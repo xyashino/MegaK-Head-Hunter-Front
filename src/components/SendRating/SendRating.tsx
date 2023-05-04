@@ -1,9 +1,7 @@
 import { FaStar } from "react-icons/fa";
-import { Paragraph } from "@components/Paragraph/Paragraph";
 import classes from "./SendRating.module.css";
 import { IconContext } from "react-icons";
-import {RatingCategory} from "../../constants/rating";
-
+import {RatingCategory} from "@constants/rating";
 export interface SendRatingProps extends RatingCategory {
     onRatingClick: (name: string, starIdx: number) => void;
 }
@@ -11,7 +9,7 @@ export interface SendRatingProps extends RatingCategory {
 export const SendRating = ({ name, label, state, onRatingClick }: SendRatingProps) => {
     return (
         <div className={classes.one_rating_area}>
-            <Paragraph>{label}</Paragraph>
+            <p>{label}</p>
 
             <p className={classes.degrees_field}>
                 {state.map((singleStarState, idx) => (

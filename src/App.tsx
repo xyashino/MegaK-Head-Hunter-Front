@@ -13,6 +13,7 @@ import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistrat
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
+import {HrPanel} from "@layouts/HrPanel/HrPanel";
 
 const routers = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop />,
+            element: <DragAndDrop  text="abc"/>,
           },
           {
             path: PageRouter.AdminHr,
@@ -48,6 +49,20 @@ const routers = createBrowserRouter([
           },
         ],
       },
+      // {
+      //   path: PageRouter.Hr,
+      //   element: <HrPanel/>,
+      //   children: [
+      //     {
+      //       path: PageRouter.HrStudents,
+      //       element: <h1>Kursanci</h1>,
+      //     },
+      //     {
+      //       path: PageRouter.HrTalk,
+      //       element: <h1>Do rozmowy</h1>,
+      //     },
+      //   ],
+      // },
     ],
   },
   {
@@ -70,7 +85,20 @@ const routers = createBrowserRouter([
     path: PageRouter.Login,
     element: <LoginPage />,
   },
-
+  {
+    path: PageRouter.Hr,
+    element: <HrPanel/>,
+    children: [
+      {
+        path: PageRouter.HrStudents,
+        element: <h1>Kursanci</h1>,
+      },
+      {
+        path: PageRouter.HrTalk,
+        element: <h1>Do rozmowy</h1>,
+      },
+    ],
+  },
   {
     path: PageRouter.Everything,
     element: <NotFoundPage message="Page not found - 404" />,

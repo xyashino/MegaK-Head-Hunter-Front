@@ -12,5 +12,8 @@ export enum PageRouter {
     StudentPanel = "/student/panel",
     StudentEdit= "/student/edit",
     BaseStudent = "/student/panel",
-    Account = '/account'
+    Account = '/account',
+    Hr = "/hr",
+    HrStudents = "/hr/students",
+    HrTalk = "/hr/talk",
 }

@@ -5,7 +5,7 @@ import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
 import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
 import {SendRating, SendRatingProps} from "@components/SendRating/SendRating";
-import {RatingCategories, RatingCategory} from "../../constants/rating";
+import {RatingCategories, RatingCategory} from "@constants/rating";
 
 Modal.setAppElement('#root');
 
