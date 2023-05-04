@@ -6,6 +6,7 @@ import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import { useState } from "react";
 import { Text } from "@components/Text/Text";
 import { Button } from "@components/Button/Button";
+import { ShowRating } from "@components/ShowRating/ShowRating";
 
 export const DisplayCv = () => {
   const [studentData, setStudentData] = useState({
@@ -41,7 +42,11 @@ export const DisplayCv = () => {
       <div className={classes.profile}>
         <Avatar type="large" githubUsername="craftzdog" />
         <h2>Jan Kowalski</h2>
-        <LinkWithIcon icon={"./github.svg"} text="jankowalski" to="https://megak.pl" />
+        <LinkWithIcon
+          icon={"./github.svg"}
+          text="jankowalski"
+          to="https://megak.pl"
+        />
         <div className={classes.contact}>
           <LinkWithIcon
             icon={"./phone.svg"}
@@ -52,7 +57,7 @@ export const DisplayCv = () => {
           <LinkWithIcon
             icon={"./mail.svg"}
             text="jankowalski@gmail.com"
-            to="tel:+48566072227"
+            to="mailto:jankowalski@gmail.com"
             style={{ color: "white" }}
           />
           <Text style={{ color: "grey", marginTop: "1.5rem" }}>O mnie</Text>
@@ -76,112 +81,26 @@ export const DisplayCv = () => {
       <div className={classes.details}>
         <div className={classes.title_gutter}>Ocena</div>
         <div className={classes.content_gutter}>
-          <div className={classes.rate_container}>
-            <span className={classes.rate_title}>Ocena przejścia kursu</span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>5</span> / 5
-              </div>
-              <div className={classes.stars_row}>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
-              Ocena aktywności i zaangażowania na kursie
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>3</span> / 5
-              </div>
-              <div className={classes.stars_row}>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#4f4f4f" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#4f4f4f" }}>
-                  star
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
-              Ocena kodu w projekcie własnym
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>4</span> / 5
-              </div>
-              <div className={classes.stars_row}>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#4f4f4f" }}>
-                  star
-                </span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.rate_title}>
-              Ocena pracy w zespole w Scrum
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>5</span> / 5
-              </div>
-              <div className={classes.stars_row}>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-                <span className="material-icons" style={{ color: "#E02735" }}>
-                  star
-                </span>
-              </div>
-            </div>
-          </div>
+          <ShowRating
+            degree={5}
+            isStars
+            paragraphText="Ocena przejścia kursu"
+          />
+          <ShowRating
+            degree={3}
+            isStars
+            paragraphText="Ocena aktywności i zaangażowania na kursie"
+          />
+          <ShowRating
+            degree={4}
+            isStars
+            paragraphText="Ocena kodu w projekcie własnym"
+          />
+          <ShowRating
+            degree={5}
+            isStars
+            paragraphText="Ocena pracy w zespole w Scrum"
+          /> 
         </div>
         <div className={classes.title_gutter}>
           Oczekiwania w stosunku do zatrudnienia
@@ -208,7 +127,9 @@ export const DisplayCv = () => {
             </div>
           </div>
           <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>Oczekiwany typ kontraktu</span>
+            <span className={classes.expectations_title}>
+              Oczekiwany typ kontraktu
+            </span>
             <div className={classes.rating}>
               <div className={classes.figure}>
                 <span className={classes.rate_bold}>Umowa o pracę</span>
@@ -244,7 +165,7 @@ export const DisplayCv = () => {
                 <span className={classes.rate_bold}>6 miesięcy</span>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
         <div className={classes.title_gutter}>Edukacja</div>
         <Text className={classes.content_gutter}>
@@ -270,7 +191,7 @@ export const DisplayCv = () => {
           text="https://Loremipsum/dolor/sit/amet"
           icon="./attach_file.svg"
           style={{ padding: "1.5rem", color: "#1585cc" }}
-        /> 
+        />
         <div className={classes.title_gutter}>Projekt w zespole Scrumowym</div>
         <LinkWithIcon
           to="/"
