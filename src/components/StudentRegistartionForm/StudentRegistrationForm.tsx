@@ -12,6 +12,7 @@ import { StudentsStepFive } from "@components/StudentRegistartionForm/Steps/Stud
 import { StudentsStepSix } from "@components/StudentRegistartionForm/Steps/StudentsStepSix";
 import { StudentsStepSeven } from "@components/StudentRegistartionForm/Steps/StudentsStepSeven";
 import { StudentsStepEight } from "@components/StudentRegistartionForm/Steps/StudentsStepEight";
+import {DEFAULT_STUDENT_DATA} from "@constants/DefaultStudentData";
 export const StudentRegistrationForm = () => {
   const [step, dispatchStep] = useReducer(stepReducer, {
     maxStep: 8,
@@ -19,25 +20,7 @@ export const StudentRegistrationForm = () => {
     currentStep: 1,
     canProceedToNextStep: false,
   });
-  const [studentData, setStudentData] = useState<StudentRegisterRequest>({
-    pwd: "",
-    githubUsername: "",
-    bio: "",
-    canTakeApprenticeship: false,
-    firstname: "",
-    lastname: "",
-    expectedSalary: "",
-    courses: "",
-    education: "",
-    targetWorkCity: "",
-    tel: "",
-    expectedContractType: "Brak preferencji",
-    monthsOfCommercialExp: 0,
-    workExperience: "",
-    expectedTypeWork: "Bez znaczenia",
-    projectUrls: [],
-    portfolioUrls: [],
-  });
+  const [studentData, setStudentData] = useState<StudentRegisterRequest>(DEFAULT_STUDENT_DATA);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();

@@ -1,9 +1,9 @@
 import classes from "./EditCvSections.module.css";
 import { Input } from "@components/Input/Input";
-import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import React, { SyntheticEvent } from "react";
 import { Avatar } from "@components/Avatar/Avatar";
 import { Text } from "@components/Text/Text";
+import {ContrastSection} from "@components/EditCvSections/ContrastSection";
 
 interface Props {
   githubUsername: { defaultValue: string; name: string };

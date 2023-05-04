@@ -1,5 +1,4 @@
 import { Input } from "@components/Input/Input";
-import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import { Select } from "@components/Select/Select";
 import {
   EXPECTED_CONTRACT_TYPE_OPTIONS,
@@ -9,6 +8,7 @@ import { Text } from "@components/Text/Text";
 import { Toggle } from "@components/Toggle/Toggle";
 import classes from "./EditCvSections.module.css";
 import { SyntheticEvent } from "react";
+import {ContrastSection} from "@components/EditCvSections/ContrastSection";
 
 interface Props {
   expectedContractType: { defaultValue: string; name: string };

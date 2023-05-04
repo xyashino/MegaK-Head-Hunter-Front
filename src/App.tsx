@@ -60,8 +60,7 @@ const routers = createBrowserRouter([
   },
   {
     path: PageRouter.StudentRegistration,
-    loader: ({ params }) =>
-        getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    loader: ({ params }) => getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
     element: <StudentRegistration />,
   },
   {
