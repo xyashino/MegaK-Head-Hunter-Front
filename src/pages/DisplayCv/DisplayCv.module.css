@@ -24,35 +24,6 @@
   opacity: 0.8;
 }
 
-.profile {
-  flex: 2;
-  background-color: var(--bgInput);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1.5rem;
-  max-width: 100%;
-  height: fit-content;
-}
-
-.contact {
-  text-align: left;
-  width: 100%;
-  margin-top: 1rem;
-}
-
-.contact a {
-  font-weight: 200;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 0rem;
-  color: var(--white);
-}
-
 .details {
   flex: 10;
 }

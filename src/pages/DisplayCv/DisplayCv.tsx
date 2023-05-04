@@ -6,7 +6,6 @@ import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import { useState } from "react";
 import { Text } from "@components/Text/Text";
 import { Button } from "@components/Button/Button";
-import { ShowRating } from "@components/ShowRating/ShowRating";
 
 export const DisplayCv = () => {
   const [studentData, setStudentData] = useState({
@@ -42,22 +41,18 @@ export const DisplayCv = () => {
       <div className={classes.profile}>
         <Avatar type="large" githubUsername="craftzdog" />
         <h2>Jan Kowalski</h2>
-        <LinkWithIcon
-          icon={"./github.svg"}
-          text="jankowalski"
-          to="https://megak.pl"
-        />
+        <LinkWithIcon icon={""} text="jankowalski" to="https://megak.pl" />
         <div className={classes.contact}>
           <LinkWithIcon
-            icon={"./phone.svg"}
+            icon={"phone"}
             text="+48 566 072 227"
             to="tel:+48566072227"
             style={{ color: "white", marginBottom: "0.25rem" }}
           />
           <LinkWithIcon
-            icon={"./mail.svg"}
+            icon={"mail"}
             text="jankowalski@gmail.com"
-            to="mailto:jankowalski@gmail.com"
+            to="tel:+48566072227"
             style={{ color: "white" }}
           />
           <Text style={{ color: "grey", marginTop: "1.5rem" }}>O mnie</Text>
