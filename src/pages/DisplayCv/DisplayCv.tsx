@@ -6,6 +6,7 @@ import { ContrastSection } from "@components/ContrastSection/ContrastSection";
 import { useState } from "react";
 import { Text } from "@components/Text/Text";
 import { Button } from "@components/Button/Button";
+import { StudentProfile } from "@components/StudentProfile/StudentProfile";
 
 export const DisplayCv = () => {
   const [studentData, setStudentData] = useState({
@@ -37,42 +38,13 @@ export const DisplayCv = () => {
           Wróć
         </Link>
       </div>
-
-      <div className={classes.profile}>
-        <Avatar type="large" githubUsername="craftzdog" />
-        <h2>Jan Kowalski</h2>
-        <LinkWithIcon icon={""} text="jankowalski" to="https://megak.pl" />
-        <div className={classes.contact}>
-          <LinkWithIcon
-            icon={"phone"}
-            text="+48 566 072 227"
-            to="tel:+48566072227"
-            style={{ color: "white", marginBottom: "0.25rem" }}
-          />
-          <LinkWithIcon
-            icon={"mail"}
-            text="jankowalski@gmail.com"
-            to="tel:+48566072227"
-            style={{ color: "white" }}
-          />
-          <Text style={{ color: "grey", marginTop: "1.5rem" }}>O mnie</Text>
-          <Text
-            style={{
-              color: "#f7f7f7",
-              marginBottom: "1.5rem",
-              fontWeight: "200",
-            }}
-          >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis
-            doloremque atque eius sunt, excepturi alias dolorem exercitationem
-            neque at?
-          </Text>
-          <Button style={{ width: "100%", marginBottom: "0.75rem" }}>
-            Brak zainteresowania
-          </Button>
-          <Button style={{ width: "100%" }}>Zatrudniony</Button>
-        </div>
-      </div>
+      <StudentProfile 
+        name="Jan Kowalski" 
+        ghLink="janKowalski"
+        phone="+48500600700"
+        mail="jan.kowalski@gmail.com"
+        aboutMe="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi odio numquam consequuntur quo veniam dolore enim sint. Incidunt, nostrum. Sapiente reiciendis praesentium aperiam ipsam exercitationem unde soluta excepturi accusamus eius?"
+      />
       <div className={classes.details}>
         <div className={classes.title_gutter}>Ocena</div>
         <div className={classes.content_gutter}>
