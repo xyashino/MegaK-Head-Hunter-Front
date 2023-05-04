@@ -1,20 +1,21 @@
 .box {
-    margin: 2rem;
-    padding-bottom: 1rem;
-    border: 2px solid var(--white);
+    margin: 0 auto;
+    width: 90%;
     font-size: 0.9rem;
     text-align: center;
 }
 .drop_box {
-    margin: 2rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1rem;
-    border: 2px dashed black;
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px dashed var(--white);
+    max-width: 380px;
+    min-height: 100px;
     color: var(--white);
     font-size: 0.9rem;
-    text-align: center;
     cursor: pointer;
+    border-radius: 2px;
 }
+
 .red {
     color: var(--megakRed);
 }
@@ -22,10 +23,10 @@
     color: #008000;
 }
 .upload_btn {
-  background-color: var(--white);
+  background-color: var(--megakRed);
   border-radius: 2px;
   border-width: 0;
-  color: black;
+  color: var(--white);
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
@@ -33,7 +34,7 @@
   line-height: 20px;
   list-style: none;
   margin: 0;
-  padding: 5px 12px;
+  padding: 6px 10px;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;

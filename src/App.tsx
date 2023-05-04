@@ -5,45 +5,59 @@ import { LoginPage } from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
 import { AdminPanel } from "@layouts/AdminPanel/AdminPanel";
-import {HrPanel} from "@layouts/HrPanel/HrPanel";
+import { PageRouter } from "@enums/page-router.enum";
+import { checkAuth } from "@utils/checkAuth";
+import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
+import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
+import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistration";
+import { getDataFrom } from "@utils/network/getDataFrom";
+import { RequestPath } from "@enums/request-path.enum";
+import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
 
 const routers = createBrowserRouter([
   {
-    path: "/",
+    path: PageRouter.Main,
+    loader: checkAuth,
     element: <AppLayout />,
     children: [
       {
-        path: "admin",
+        path: PageRouter.Admin,
         element: <AdminPanel />,
         children: [
           {
-            path: "students",
-            element: <h1 style={{ color: "white" }}>Upload Studentów </h1>,
+            path: PageRouter.AdminStudents,
+            element: <DragAndDrop />,
           },
           {
-            path: "hr",
-            element: <h1 style={{ color: "white" }}>Dodaj Hr Formularz</h1>,
+            path: PageRouter.AdminHr,
+            element: <RegisterHRUser />,
           },
         ],
       },
       {
-        path: "hr",
-        element: <HrPanel/>,
+        path: PageRouter.Student,
+        element: <StudentPanel />,
         children: [
           {
-            path: "students",
-            element: <h1 style={{ color: "white", zIndex: "-1" }}>Lista kurstantów</h1>,
+            path: PageRouter.StudentPanel,
+            element: <h1>Panel studenta</h1>,
           },
           {
-            path: "talk",
-            element: <h1 style={{ color: "white", zIndex: "-1" }}>Lista kursantów do rozmowy</h1>,
+            path: PageRouter.StudentEdit,
+            element: <h1>Edytuj CV</h1>,
           },
         ],
       },
     ],
   },
   {
-    path: "/error",
+    path: PageRouter.StudentRegistration,
+    loader: ({ params }) =>
+        getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    element: <StudentRegistration />,
+  },
+  {
+    path: PageRouter.Error,
     element: (
       <ErrorPage
         title="Błąd 500"
@@ -53,11 +67,12 @@ const routers = createBrowserRouter([
     ),
   },
   {
-    path: "/login",
+    path: PageRouter.Login,
     element: <LoginPage />,
   },
+
   {
-    path: "*",
+    path: PageRouter.Everything,
     element: <NotFoundPage message="Page not found - 404" />,
   },
 ]);

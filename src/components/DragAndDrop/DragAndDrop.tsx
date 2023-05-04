@@ -1,26 +1,26 @@
-import React, { ReactNode, useState} from 'react';
-import axios from "axios";
-import Dropzone from 'react-dropzone';
-import classes from "./DragAndDrop.module.css"
-import { AxiosProgressEvent } from 'axios';
+import React, { ReactNode, useState } from "react";
+import Dropzone from "react-dropzone";
+import classes from "./DragAndDrop.module.css";
+import { AxiosProgressEvent } from "axios";
+import { AxiosSetup } from "@utils/network/AxiosSetup";
+import { RequestPath } from "@enums/request-path.enum";
 
-  const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>
-  const fileUploadError = <p className={classes.red}>Wystąpił problem z wysłaniem pliku, spróbuj ponownie</p>
+const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>;
+const fileUploadError = (
+  <p className={classes.red}>
+    Wystąpił problem z wysłaniem pliku, spróbuj ponownie
+  </p>
+);
 
-const http = axios.create({
-  baseURL: "http://localhost:3000",
-  headers: {
-    "Content-type": "application/json",
-  },
-});
-
-
-const uploadOnServer = (file: File, onUploadProgress?: (progressEvent: AxiosProgressEvent) => void): Promise<any> => {
-  let formData = new FormData();
+const uploadOnServer = (
+  file: File,
+  onUploadProgress?: (progressEvent: AxiosProgressEvent) => void
+): Promise<any> => {
+  const formData = new FormData();
 
   formData.append("uploadStudents", file);
 
-  return http.post("/upload/file", formData, {
+  return AxiosSetup.post(RequestPath.Upload, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -28,9 +28,12 @@ const uploadOnServer = (file: File, onUploadProgress?: (progressEvent: AxiosProg
   });
 };
 
-export const DragAndDrop = () => {
+type Props = {
+  text: string,
+}
+
+export const DragAndDrop = ({text}: Props) => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
-  const [currentFile, setCurrentFile] = useState<File | undefined>(undefined);
   const [message, setMessage] = useState<ReactNode | string>("");
 
   const onDrop = (files: File[]) => {
@@ -39,39 +42,32 @@ export const DragAndDrop = () => {
     }
   };
 
-
   const upload = () => {
-    if (selectedFiles && selectedFiles.length > 0){
-    let currentFile = selectedFiles[0];
+    if (selectedFiles && selectedFiles.length > 0) {
+      const currentFile = selectedFiles[0];
+      uploadOnServer(currentFile)
+        .then(() => {
+          setMessage(fileUploadedMsg);
+        })
+        .catch(() => {
+          setMessage(fileUploadError);
+        });
 
-    setCurrentFile(currentFile);
-
-            uploadOnServer(currentFile)
-              .then(() => {
-                setMessage(fileUploadedMsg);
-              })
-              .catch(() => {
-              setMessage(fileUploadError);
-              setCurrentFile(undefined);
-              });
-
-    setSelectedFiles(undefined);
-  }};
-
+      setSelectedFiles(undefined);
+    }
+  };
 
   return (
     <div className={classes.box}>
       <Dropzone onDrop={onDrop} multiple={false}>
         {({ getRootProps, getInputProps }) => (
           <section>
-            <div  className={classes.drop_box} {...getRootProps()}>
+            <div className={classes.drop_box} {...getRootProps()}>
               <input {...getInputProps()} />
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
-                <div>
-                  {selectedFiles[0].name}
-                </div>
+                <div>{selectedFiles[0].name}</div>
               ) : (
-                "Przeciągnij i upuść plik tutaj lub kliknij, aby wybrać plik"
+                text
               )}
             </div>
             <aside>
@@ -90,5 +86,4 @@ export const DragAndDrop = () => {
         {message}
       </div>
     </div>
-  );
-  }
+  );}

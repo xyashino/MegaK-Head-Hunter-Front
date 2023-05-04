@@ -1,7 +1,9 @@
-import React, { HTMLAttributes, PropsWithChildren } from "react";
+import React, {HTMLAttributes, PropsWithChildren} from "react";
 import classes from "./Input.module.css";
+import { PreviewPassword } from "@components/Input/PreviewPassword";
+import { BaseInput } from "@components/Input/BaseInput";
 
-type InputType =
+export type InputType =
   | "email"
   | "password"
   | "text"
@@ -11,26 +13,53 @@ type InputType =
   | "radio"
   | "file";
 
-interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
+interface Props
+  extends HTMLAttributes<HTMLInputElement>,
+    PropsWithChildren {
   type?: InputType;
-  isError?: boolean;
-  message?: string;
-  value:string;
+  name?: string;
+  value: string;
+  preview?: boolean;
+  description?: string;
+  hasError?: boolean;
+  errorMessage?: string;
+  messageType?: "warning" | "error";
+  customClasses?: string;
 }
 
 export const Input = ({
-  className,
-  style,
   children,
-  isError = false,
-  message,
+  preview = false,
+  description,
+  hasError = false,
+  errorMessage,
+  messageType = "error",
+  customClasses = "",
   ...rest
 }: Props) => {
-
   return (
-    <>
-      <input className={`${classes.input} ${isError && classes.error}`} {...rest}/>
-      {isError && <p className={classes.error_message}>{message}</p>}
-    </>
+    <BaseInput
+      description={description}
+      hasError={hasError}
+      errorMessage={errorMessage}
+      messageType={messageType}
+    >
+      {preview ? (
+        <PreviewPassword
+          {...rest}
+          customClasses={customClasses}
+          isError={hasError}
+          messageType={messageType}
+        />
+      ) : (
+        <input
+          {...rest}
+          className={`${classes.input} ${customClasses} ${
+            hasError && classes[messageType]
+          }`}
+        />
+      )}
+      {children}
+    </BaseInput>
   );
 };
