@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import classes from "./Dropdown.module.css";
 
 interface DropdownProps {
@@ -22,10 +22,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
+  const toggleDropdown = useCallback(() => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  }, []);
   return (
     <>
       <div className={classes.dropdown_container}>
@@ -47,7 +46,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   src="./arrow_down.svg"
                   className={classes.icon}
                   onClick={toggleDropdown}
-                  alt=""
+                  alt="collapse"
                 />
               </>
             ) : (
@@ -57,7 +56,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   className={classes.icon}
                   style={{ transform: "rotate(180deg)" }}
                   onClick={toggleDropdown}
-                  alt=""
+                  alt="expand"
                 />
               </>
             )}
