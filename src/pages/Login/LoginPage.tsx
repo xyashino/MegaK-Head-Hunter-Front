@@ -49,6 +49,10 @@ export const LoginPage = () => {
     });
   };
 
+  const handlePasswordForgotten = async () => {
+    await navigate('/send-pwd-reset');
+  }
+
   return (
     <form
       className={classes.login_container}
@@ -77,7 +81,8 @@ export const LoginPage = () => {
           setPwd((e.target as HTMLInputElement).value as string)
         }
       />
-      <Text style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Text>
+      <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
+            onClick={handlePasswordForgotten}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}
