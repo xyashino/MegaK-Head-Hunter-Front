@@ -50,3 +50,7 @@
 .btn_to_modal:focus-visible {
     outline: 2px solid hotpink;
 }
+
+.div_hr_panel_wrapper {
+    margin-bottom: 70vh;
+}

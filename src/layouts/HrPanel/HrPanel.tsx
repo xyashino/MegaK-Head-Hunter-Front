@@ -6,6 +6,7 @@ import {Button} from "@components/Button/Button";
 import {FilterModal} from "@components/FilterModal/FilterModal";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import {PageRouter} from "@enums/page-router.enum";
+import {Navbar} from "@components/Navbar/Navbar";
 
 export const HrPanel = () => {
     const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
@@ -21,13 +22,14 @@ export const HrPanel = () => {
     return (
         <>
             <div className={classes.div_hr_panel_wrapper}>
+                <Navbar fullName="xd"></Navbar>
                 <header className={classes.hr_panel_header}>
                     <BookmarkNavLink text="Dostepni kursanci" to={PageRouter.HrStudents}/>
                     <BookmarkNavLink text="Do rozmowy" to={PageRouter.HrTalk}/>
                 </header>
                 <div className={classes.div_btn_to_modal_wrapper}>
                     <Button
-                        className={classes.btn_to_modal}
+                        customClasses={classes.btn_to_modal}
                         onClick={openFilterModal}><FilterAltIcon
                         style={{fontSize: "1.3rem", verticalAlign: "-5px", color: "#4D4D4D"}}
                     />Filtrowanie
