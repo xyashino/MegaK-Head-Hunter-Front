@@ -12,5 +12,7 @@ export enum PageRouter {
     StudentPanel = "/student/panel",
     StudentEdit= "/student/edit",
     BaseStudent = "/student/panel",
-    Account = '/account'
+    Account = '/account',
+    SendPwdReset = '/send-pwd-reset',
+    PwdReset='/pwd-reset'
 }
