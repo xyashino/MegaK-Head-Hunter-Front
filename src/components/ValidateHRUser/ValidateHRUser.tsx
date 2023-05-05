@@ -24,13 +24,12 @@ export const ValidateHRUser = () => {
     maxLength: 255,
     sameAs: passwordValue,
   });
-  
+
   const { response } = useAxios({
     url: "/users",
     method: "POST",
     body: {
       password: passwordValue,
-      confirmPassword: confirmPasswordValue,
     },
   });
 
@@ -40,7 +39,7 @@ export const ValidateHRUser = () => {
   };
 
   return (
-    <div className={classes.validate_hr_form}>
+    <form className={classes.validate_hr_form} onClick={handleSubmit}>
       <Input
         type="password"
         placeholder="Podaj hasło"
@@ -62,11 +61,7 @@ export const ValidateHRUser = () => {
         }
       />
 
-      <Button onClick={handleSubmit}>Zapisz</Button>
-
-      {response && (
-        <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
-      )}
-    </div>
+      <Button>Zapisz</Button> 
+    </form>
   );
 };
