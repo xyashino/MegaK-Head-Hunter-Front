@@ -36,7 +36,7 @@ export const RegisterHRUser = () => {
     minLength: 3,
     maxLength: 255,
   });
-  const [numVal, setNumVal] = useState("1");
+  const [numVal, setNumVal] = useState("");
 
   const handleNumberInput = (e: SyntheticEvent) => {
     const { value } = e.target as HTMLInputElement;
