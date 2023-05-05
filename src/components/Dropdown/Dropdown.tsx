@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./Dropdown.module.css";
 
 interface DropdownProps {
   title: string;
@@ -13,11 +14,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ title, children }) => {
   };
 
   return (
-    <div className="dropdown-container">
-      <button className="dropdown-button" onClick={toggleDropdown}>
+    <div className={classes.dropdown_container}>
+      <button className={classes.dropdown_button} onClick={toggleDropdown}>
         {title}
       </button>
-      {isOpen && <div className="dropdown-content">{children}</div>}
+      {isOpen && <div className={classes.dropdown_content}>{children}</div>}
     </div>
   );
 };
