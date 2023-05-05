@@ -1,16 +1,26 @@
 export enum PageRouter {
-    Main = "/",
-    Login = "/login",
-    Admin = "/admin",
-    AdminHr = "/admin/hr",
-    AdminStudents = "/admin/students",
-    StudentRegistration = '/student/register/:id',
-    Error = "/error",
-    Everything = "*",
-    BaseAdmin = "/admin/students",
-    Student = "/student",
-    StudentPanel = "/student/panel",
-    StudentEdit= "/student/edit",
-    BaseStudent = "/student/panel",
-    Account = '/account'
+  Main = "/",
+  Login = "/login",
+  Everything = "*",
+  Account = "/account",
+  BaseAdmin = "/admin/students",
+  BaseStudent = "/student/panel",
+  BaseHr = "/student/students",
+
+  Admin = "/admin",
+  AdminHr = "/admin/hr",
+  AdminStudents = "/admin/students",
+
+  Student = "/student",
+  StudentRegistration = "/student/register/:id",
+  StudentPanel = "/student/panel",
+  StudentEdit = "/student/edit",
+
+  Hr = "/hr",
+  HrStudents = "/hr/students",
+  HrTalk = "/hr/talk",
+
+  Cv = "/cv/:id",
+
+  Error = "/error",
 }
