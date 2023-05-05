@@ -2,8 +2,8 @@ import React from 'react';
 import { Avatar } from '@components/Avatar/Avatar';
 import { LinkWithIcon } from '@components/LinkWithIcon/LinkWithIcon';
 import { Button } from '@components/Button/Button';
-import classes from './StudentProfile.module.css';
 import { Text } from '@components/Text/Text';
+import classes from './StudentProfile.module.css';
 
 type Props = {
   name: string,
@@ -30,40 +30,30 @@ type Props = {
           icon={"phone"}
           text={phone}
           to={"tel:" + phone}
-          style={{ color: "white", marginBottom: "0.25rem" }}
         />
         <LinkWithIcon
           icon={"mail"}
           text={mail}
           to={"tel:" + phone}
-          style={{ color: "white" }}
         />
         <Text 
-          style={{
-            color: "grey", 
-            marginTop: "1.5rem" 
-          }}
+          customClasses={classes.aboutMe}
         >
           O mnie
         </Text>
         <Text
-          style={{
-            color: "#f7f7f7",
-            marginBottom: "1.5rem",
-            fontWeight: "200",
-          }}
+        customClasses={classes.aboutMeDesc}
         >
           {aboutMe}
         </Text>
         <Button 
-          style={{ 
-            width: "100%", 
-            marginBottom: "0.75rem" 
-          }}
+          customClasses={`${classes.button} ${classes.disinterest}`}
         >
           Brak zainteresowania
         </Button>
-        <Button style={{ width: "100%" }}>
+        <Button
+          customClasses={classes.button}
+        >
           Zatrudniony
         </Button>
       </div>
