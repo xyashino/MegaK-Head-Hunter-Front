@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 import classes from "./Dropdown.module.css";
 
-interface DropdownProps { 
+interface DropdownProps {
   children: string | JSX.Element | JSX.Element[];
   firstOptionalBtn?: string | JSX.Element | JSX.Element[];
   secondOptionalBtn?: string | JSX.Element | JSX.Element[];
   reservationData?: string | JSX.Element | JSX.Element[];
   userNameData?: string | JSX.Element | JSX.Element[];
   userNameAvatarData?: string | JSX.Element | JSX.Element[];
+  thirdOptionalBtn?: string | JSX.Element | JSX.Element[];
 }
 
-export const Dropdown: React.FC<DropdownProps> = ({ 
+export const Dropdown: React.FC<DropdownProps> = ({
   children,
   firstOptionalBtn,
   secondOptionalBtn,
   reservationData,
   userNameAvatarData,
   userNameData,
+  thirdOptionalBtn,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -28,13 +30,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <>
       <div className={classes.dropdown_container}>
         <div className={classes.user_info}>
-          {reservationData}
+          <div className={classes.hidden}>{reservationData}</div>
           {userNameAvatarData}
           {userNameData}
         </div>
         <div className={classes.buttons_row}>
-          {firstOptionalBtn}
-          {secondOptionalBtn}
+          <div className={classes.hidden}>
+            {firstOptionalBtn}
+            {secondOptionalBtn}
+            {thirdOptionalBtn}
+          </div>
           <button className={classes.dropdown_button}>
             {isOpen ? (
               <>
