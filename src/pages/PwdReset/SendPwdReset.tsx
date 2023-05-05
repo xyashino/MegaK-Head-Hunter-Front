@@ -62,7 +62,7 @@ export const SendPwdReset = () => {
                 marginLeft: "auto",
                 textDecoration: "underline",
                 cursor:"pointer"}}
-                  onClick={() => navigate('/')}>
+                  onClick={() => navigate(PageRouter.Main)}>
                 Wróć do strony logowania
             </Text>
         </form>
