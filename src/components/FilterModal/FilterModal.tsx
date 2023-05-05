@@ -4,8 +4,6 @@ import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
 import {Input} from "@components/Input/Input";
 import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
-import {SendRating, SendRatingProps} from "@components/SendRating/SendRating";
-import {RatingCategories, RatingCategory} from "@constants/rating";
 
 Modal.setAppElement('#root');
 
@@ -77,7 +75,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <label htmlFor="">Ocena przejścia kursu</label>
             <Input
                 type="number"
-                placeholder="Wpisz ocenę w zakresie od 1 do 5"
+                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
                 customClasses={classes.input_rating}
                 value={(courseRating !== null) ? courseRating.toString() : ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCourseRating(Number(e.target.value))}
@@ -88,7 +86,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 customClasses={classes.input_rating}
                 value={(engagementRating !== null) ? engagementRating.toString() : ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEngagementRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę w zakresie od 1 do 5"
+                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
             />
             <label htmlFor="">Ocena kodu w projekcie własnym</label>
             <Input
@@ -96,7 +94,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 customClasses={classes.input_rating}
                 value={(projectRating !== null) ? projectRating.toString() : ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProjectRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę w zakresie od 1 do 5"
+                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
             />
             <label htmlFor="">Ocena pracy w zespole w Scrum</label>
             <Input
@@ -104,7 +102,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 customClasses={classes.input_rating}
                 value={(scrumRating !== null) ? scrumRating.toString() : ''}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScrumRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę w zakresie od 1 do 5"
+                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
             />
             <div>
                 <p>Preferowane miejsce pracy</p>
