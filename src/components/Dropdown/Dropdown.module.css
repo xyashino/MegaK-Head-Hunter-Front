@@ -1,16 +1,18 @@
 .dropdown_container {
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   width: 100%;
   max-width: 1390px;
   background-color: var(--bgInput);
   padding: 10.5px 24px;
+  justify-content: space-between;
+  margin-inline: auto;
 }
 
 .dropdown_button {
-  background-color: #f1f1f1;
-  color: black;
-  padding: 12px;
+  background-color: transparent;
   font-size: 16px;
   border: none;
   cursor: pointer;
@@ -18,4 +20,26 @@
 
 .dropdown_content {
   background-color: #222324;
+  transition: 0.2s;
+  color: var(--white);
+  padding: 1.5rem;
+  max-width: 1390px;
+  margin-inline: auto;
+}
+
+.icon {
+  transition: 0.2s;
+}
+
+.buttons_row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.user_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
