@@ -19,7 +19,7 @@ export type FilterModalProps = {
 
 export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProps) => {
 
-    const [ratingCategories, setRatingCategories] = useState<RatingCategory[]>(RatingCategories);
+    // const [ratingCategories, setRatingCategories] = useState<RatingCategory[]>(RatingCategories);
 
     const [isRemoteButtonActive, setIsRemoteButtonActive] = useState<boolean>(false);
     const [isOfficeButtonActive, setIsOfficeButtonActive] = useState<boolean>(false);
@@ -29,6 +29,11 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
     const [isContractButtonActive, setIsContractButtonActive] = useState<boolean>(false);
 
     const [monthsOfExperience, setMonthsOfExperience] = useState<number>(0);
+
+    const [courseRating, setCourseRating] = useState<number>(5);
+    const [engagementRating, setEngagementRating] = useState<number>(5);
+    const [projectRating, setProjectRating] = useState<number>(5);
+    const [scrumRating, setScrumRating] = useState<number>(5);
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
@@ -46,24 +51,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setIsChecked(false);
         setMinSalary('');
         setMaxSalary('');
-        setRatingCategories(RatingCategories);
-    };
+        // setRatingCategories(RatingCategories);
 
-    const handleRatingClick: SendRatingProps['onRatingClick'] = (name, starIdx) => {
-        setRatingCategories(
-            currentCategories => currentCategories.map(
-                category =>
-                    category.name === name
-                        ? {
-                            ...category,
-                            state: category.state
-                                .map((starValue, currentStarIdx) => currentStarIdx === starIdx
-                                    ? {isActive: !starValue.isActive}
-                                    : starValue)
-                        }
-                        : category
-            )
-        );
     };
 
     return (
@@ -78,29 +67,78 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
                 <Button
-                    className={classes.btn_filter_modal_smaller_active}
+                    customClasses={classes.btn_filter_modal_smaller_active}
                     onClick={clearAllOptions}
                 >Wyczyść wszystkie
                 </Button>
             </div>
-            {ratingCategories.map((category) => (
-                <SendRating
-                    key={`rating-${category.name}`}
-                    {...category}
-                    onRatingClick={handleRatingClick}
+            <div>
+            <label htmlFor="">Ocena przejścia kursu</label>
+                <div>
+            <input
+                type="number"
+                className={classes.input_rating}
+                value={courseRating}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCourseRating(Number(e.target.value))}
+                placeholder="Wpisz ocenę od 1 do 5"
+                min={1}
+                max={5}
+            />
+                </div>
+            </div>
+            <div>
+                <label htmlFor="">Ocena aktywności i zaangażowania na kursie</label>
+                <div>
+                <input
+                    type="number"
+                    className={classes.input_rating}
+                    value={engagementRating}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEngagementRating(Number(e.target.value))}
+                    placeholder="Wpisz ocenę od 1 do 5"
+                    min={1}
+                    max={5}
                 />
-            ))}
+                </div>
+            </div>
+            <div>
+                <label htmlFor="">Ocena kodu w projekcie własnym</label>
+                <div>
+                <input
+                    type="number"
+                    className={classes.input_rating}
+                    value={projectRating}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProjectRating(Number(e.target.value))}
+                    placeholder="Wpisz ocenę od 1 do 5"
+                    min={1}
+                    max={5}
+                />
+                </div>
+            </div>
+            <div>
+                <label htmlFor="">Ocena pracy w zespole w Scrum</label>
+                <div>
+                <input
+                    type="number"
+                    className={classes.input_rating}
+                    value={scrumRating}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScrumRating(Number(e.target.value))}
+                    placeholder="Wpisz ocenę od 1 do 5"
+                    min={1}
+                    max={5}
+                />
+                </div>
+            </div>
             <div>
                 <p>Preferowane miejsce pracy</p>
                 <div>
                     <Button
                         onClick={() => setIsRemoteButtonActive(!isRemoteButtonActive)}
-                        className={isRemoteButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isRemoteButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Praca zdalna
                     </Button>
                     <Button
                         onClick={() => setIsOfficeButtonActive(!isOfficeButtonActive)}
-                        className={isOfficeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isOfficeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Praca w biurze</Button>
                 </div>
             </div>
@@ -109,19 +147,19 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <div>
                     <Button
                         onClick={() => setIsPermanentButtonActive(!isPermanentButtonActive)}
-                        className={isPermanentButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isPermanentButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa o pracę</Button>
                     <Button
                         onClick={() => setIsBeToBeButtonActive(!isBeToBeButtonActive)}
-                        className={isBeToBeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isBeToBeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >B2B</Button>
                     <Button
                         onClick={() => setIsMandateButtonActive(!isMandateButtonActive)}
-                        className={isMandateButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isMandateButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa zlecenie</Button>
                     <Button
                         onClick={() => setIsContractButtonActive(!isContractButtonActive)}
-                        className={isContractButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                        customClasses={isContractButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
                     >Umowa o dzieło</Button>
                 </div>
             </div>
@@ -129,15 +167,15 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <p>Oczekiwane wynagrodzenie miesięczne netto</p>
                 <div className={classes.input_filter_modal_smaller}>
                     <p>
-                        Od
-                        <Input
+                        <label htmlFor="">Od</label>
+                        <input
                             placeholder="np. 1000 zł"
                             type="text"
                             value={minSalary}
                             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinSalary(e.target.value)}
                         />
-                        Do
-                        <Input
+                        <label htmlFor="">Do</label>
+                        <input
                             placeholder="np. 10000 zł"
                             type="text"
                             value={maxSalary}
@@ -189,8 +227,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             </div>
 
             <div className={classes.filter_modal_btns}>
-                <Button className={classes.button_bigger} onClick={onRequestClose}>Anuluj</Button>
-                <Button className={classes.button_bigger} onClick={onConfirm}>Pokaż wyniki</Button>
+                <Button customClasses={classes.button_bigger} onClick={onRequestClose}>Anuluj</Button>
+                <Button customClasses={classes.button_bigger} onClick={onConfirm}>Pokaż wyniki</Button>
             </div>
         </Modal>
     );
