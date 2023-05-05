@@ -16,7 +16,7 @@ import { PreferenceSection } from "@components/EditCvSections/PreferenceSection"
 import { isAxiosError } from "axios";
 import { toast } from "react-hot-toast";
 import { UpdateStudentData } from "../../types/UpdateStudentData";
-import { UpdateOptionName } from "@enums/OptionName";
+import { UpdateOptionName } from "@enums/option-name.enum";
 import { ContrastSection } from "@components/EditCvSections/ContrastSection";
 import { DEFAULT_UPDATE_STUDENT_DATA } from "@constants/DefaultUpdateStudentData";
 export const EditCv = () => {
