@@ -1,6 +1,10 @@
 .dropdown_container {
   position: relative;
   display: inline-block;
+  width: 100%;
+  max-width: 1390px;
+  background-color: var(--bgInput);
+  padding: 10.5px 24px;
 }
 
 .dropdown_button {
@@ -12,13 +16,6 @@
   cursor: pointer;
 }
 
-/* .dropdown_content {
-  position: absolute;
-  z-index: 1;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 12px;
-  top: 100%;
-  left: 0;
-  min-width: 160px;
-} */
+.dropdown_content {
+  background-color: #222324;
+}
