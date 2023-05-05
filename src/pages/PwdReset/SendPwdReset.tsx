@@ -55,11 +55,17 @@ export const SendPwdReset = () => {
             />
             <div className={classes.text_section}>
                 <Text>
-                    Na podany adres email zostanie wysłany link do zmiany hasła
+                    Na podany adres email zostanie wysłany tymczasowy link do zmiany hasła
                 </Text>
             <Button>Wyślij</Button>
             </div>
-
+                <Text style={{
+                    marginLeft: "auto",
+                    textDecoration: "underline",
+                    cursor:"pointer"}}
+                      onClick={() => navigate('/')}>
+                    Wróć do strony logowania
+                </Text>
         </form>
     )
 }
