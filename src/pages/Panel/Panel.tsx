@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Panel.module.css";
+import classes from '../EditCv/EditCv.module.css';
 import { Button } from "@components/Button/Button";
 import {AxiosSetup} from "@utils/network/AxiosSetup";
 import {RequestPath} from "@enums/request-path.enum";
@@ -15,6 +15,7 @@ export const Panel = () => {
            AxiosSetup.patch(`${RequestPath.GetOneStudent}${id}`,{
                status: "Zatrudniony"
            })
+           navigate('/login')
        }
    }
 
