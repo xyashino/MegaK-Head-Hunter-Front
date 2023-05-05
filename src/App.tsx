@@ -15,6 +15,9 @@ import { RequestPath } from "@enums/request-path.enum";
 import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
 import {EditCv} from "@pages/EditCv/EditCv";
 import {Panel} from "@pages/Panel/Panel";
+import {DisplayCv} from "@pages/DisplayCv/DisplayCv";
+import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
+import {PwdReset} from "@pages/PwdReset/PwdReset";
 
 const routers = createBrowserRouter([
   {
@@ -52,7 +55,7 @@ const routers = createBrowserRouter([
             path: `/student/cv/:id`,
             loader: ({params}) =>
                 getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
-            element: <EditCv/>,
+            element: <DisplayCv/>,
           }
         ],
       },
@@ -77,7 +80,14 @@ const routers = createBrowserRouter([
     path: PageRouter.Login,
     element: <LoginPage />,
   },
-
+  {
+    path: PageRouter.SendPwdReset,
+    element: <SendPwdReset/>
+  },
+  {
+    path: PageRouter.PwdReset,
+    element: <PwdReset/>
+  },
   {
     path: PageRouter.Everything,
     element: <NotFoundPage message="Page not found - 404" />,
