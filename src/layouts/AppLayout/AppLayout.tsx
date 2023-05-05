@@ -28,12 +28,13 @@ export const AppLayout = () => {
   }, [location]);
 
   const fullName = role === "admin" ? "Admin" : data.fullName
+  const githubUsername = role ==='student' ? data.githubUsername : undefined;
 
   return (
     <div className={classes.app_layout}>
-      <Navbar fullName={fullName} githubUsername={data.githubUsername} />
+      <Navbar fullName={fullName} githubUsername={githubUsername} />
       <div className={classes.app_container}>
-        <Outlet context={role} />
+        <Outlet context={{role,id:data?.id ?? ''}} />
       </div>
     </div>
   );

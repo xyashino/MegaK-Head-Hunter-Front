@@ -6,7 +6,7 @@ import {PageRouter} from "@enums/page-router.enum";
 import {UserResponse} from "@backendTypes";
 
 export const StudentPanel = () => {
-  const role = useOutletContext() as UserResponse["role"];
+  const {role,id} = useOutletContext() as {role:UserResponse["role"],id:string};
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
@@ -21,7 +21,7 @@ export const StudentPanel = () => {
           <BookmarkNavLink text="Edytuj CV" to={PageRouter.StudentEdit} />
         </header>
         <div className={classes.student_panel_main}>
-          <Outlet />
+          <Outlet context={{id}}/>
         </div>
       </div>
     </>

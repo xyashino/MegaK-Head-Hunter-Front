@@ -13,21 +13,9 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate, useParams } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
-import { StudentRegisterRequest } from "@backendTypes";
+import {processStudentData} from "@utils/procesStudentData";
+import {toast} from "react-hot-toast";
 
-const processStudentData = <T extends StudentRegisterRequest>(obj: T): Partial<T> => {
-  const filteredStudentData: Partial<T> = {};
-  for (const key in obj) {
-    if (obj[key]) {
-      filteredStudentData[key] = obj[key];
-    }
-  }
-  filteredStudentData.canTakeApprenticeship ??= false;
-  if (filteredStudentData.monthsOfCommercialExp === 0) {
-      delete filteredStudentData.monthsOfCommercialExp;
-  }
-  return filteredStudentData;
-};
 export const StudentsStepEight = () => {
   const { studentData, setStudentData } = useContext(
     StudentRegistrationContext
@@ -44,6 +32,7 @@ export const StudentsStepEight = () => {
   const handleClick = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
+      toast['success']("Aktywowano konto");
       navigate(PageRouter.Main);
     });
   };

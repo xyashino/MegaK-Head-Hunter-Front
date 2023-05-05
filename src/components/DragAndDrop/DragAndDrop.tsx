@@ -4,6 +4,7 @@ import classes from "./DragAndDrop.module.css";
 import { AxiosProgressEvent } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
+import {toast} from "react-hot-toast";
 
 const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>;
 const fileUploadError = (
@@ -48,9 +49,11 @@ export const DragAndDrop = ({text}: Props) => {
       uploadOnServer(currentFile)
         .then(() => {
           setMessage(fileUploadedMsg);
+          toast['success'](fileUploadedMsg);
         })
         .catch(() => {
           setMessage(fileUploadError);
+          toast['error'](fileUploadedMsg);
         });
 
       setSelectedFiles(undefined);

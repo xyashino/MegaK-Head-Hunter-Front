@@ -9,6 +9,7 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
+import {toast} from "react-hot-toast";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export const LoginPage = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
+      toast['success']('Zalogowano');
       navigate(PageRouter.Main);
     });
   };
