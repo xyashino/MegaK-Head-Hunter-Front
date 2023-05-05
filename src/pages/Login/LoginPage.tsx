@@ -77,7 +77,8 @@ export const LoginPage = () => {
           setPwd((e.target as HTMLInputElement).value as string)
         }
       />
-      <Text style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Text>
+      <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
+            onClick={() => navigate('/send-pwd-reset')}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}
