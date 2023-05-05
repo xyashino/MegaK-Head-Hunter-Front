@@ -14,6 +14,8 @@ import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
 import {EditCv} from "@pages/EditCv/EditCv";
+import {PwdReset} from "@pages/PwdReset/PwdReset";
+import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
 
 const routers = createBrowserRouter([
   {
@@ -70,7 +72,14 @@ const routers = createBrowserRouter([
     path: PageRouter.Login,
     element: <LoginPage />,
   },
-
+  {
+    path: PageRouter.SendPwdReset,
+    element: <SendPwdReset/>
+  },
+  {
+    path: PageRouter.PwdReset,
+    element: <PwdReset/>
+  },
   {
     path: PageRouter.Everything,
     element: <NotFoundPage message="Page not found - 404" />,
