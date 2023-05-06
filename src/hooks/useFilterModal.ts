@@ -60,6 +60,29 @@ export const useFilterModal = () => {
         },
     ];
 
+    const ratings = [
+        {
+            label: "Ocena kursu",
+            rating: courseRating,
+            setRating: setCourseRating,
+        },
+        {
+            label: "Ocena aktywności i zaangażowania na kursie",
+            rating: engagementRating,
+            setRating: setEngagementRating,
+        },
+        {
+            label: "Ocena kodu w projekcie własnym",
+            rating: projectRating,
+            setRating: setProjectRating,
+        },
+        {
+            label: "Ocena pracy w zespole w Scrum",
+            rating: scrumRating,
+            setRating: setScrumRating,
+        },
+    ];
+
     return {
         isRemoteButtonActive,
         setIsRemoteButtonActive,
@@ -91,5 +114,6 @@ export const useFilterModal = () => {
         setMaxSalary,
         clearAllOptions,
         typeOfContractButtons,
+        ratings,
     };
 };

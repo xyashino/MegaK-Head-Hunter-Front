@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
-import {Input} from "@components/Input/Input";
+import {RatingsInputs} from "@components/RatingInputs/RatingInputs";
 import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
 import {useFilterModal} from "@hooks/useFilterModal";
 
@@ -25,14 +25,6 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setIsOfficeButtonActive,
         monthsOfExperience,
         setMonthsOfExperience,
-        courseRating,
-        setCourseRating,
-        engagementRating,
-        setEngagementRating,
-        projectRating,
-        setProjectRating,
-        scrumRating,
-        setScrumRating,
         isChecked,
         setIsChecked,
         minSalary,
@@ -41,6 +33,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setMaxSalary,
         clearAllOptions,
         typeOfContractButtons,
+        ratings,
     } = useFilterModal();
 
     return (
@@ -61,37 +54,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 </Button>
             </div>
             <label htmlFor="">Ocena przejścia kursu</label>
-            <Input
-                type="number"
-                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
-                customClasses={classes.input_rating}
-                value={(courseRating !== null) ? courseRating.toString() : ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCourseRating(Number(e.target.value))}
-            />
-            <label htmlFor="">Ocena aktywności i zaangażowania na kursie</label>
-            <Input
-                type="number"
-                customClasses={classes.input_rating}
-                value={(engagementRating !== null) ? engagementRating.toString() : ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEngagementRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
-            />
-            <label htmlFor="">Ocena kodu w projekcie własnym</label>
-            <Input
-                type="number"
-                customClasses={classes.input_rating}
-                value={(projectRating !== null) ? projectRating.toString() : ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProjectRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
-            />
-            <label htmlFor="">Ocena pracy w zespole w Scrum</label>
-            <Input
-                type="number"
-                customClasses={classes.input_rating}
-                value={(scrumRating !== null) ? scrumRating.toString() : ''}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setScrumRating(Number(e.target.value))}
-                placeholder="Wpisz ocenę kursanta w zakresie od 1 do 5"
-            />
+            <RatingsInputs ratings={ratings}/>
             <div>
                 <p>Preferowane miejsce pracy</p>
                 <div>
