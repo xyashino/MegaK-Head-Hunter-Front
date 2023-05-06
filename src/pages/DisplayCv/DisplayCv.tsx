@@ -9,7 +9,7 @@ import { Button } from "@components/Button/Button";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
 import { ShowRating } from "@components/ShowRating/ShowRating";
 import attach_file from "@assets/attach_file.svg";
-import { ExpectationContainer } from "@pages/ExpectationContainer/ExpectationContainer";
+import { ExpectationContainer } from "@components/ExpectationContainer/ExpectationContainer";
 
 export const DisplayCv = () => {
   return (
