@@ -1,9 +1,9 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import classes from "./ExpectationContainer.module.css";
 
 interface ExpectationContainerProps {
   title: string;
-  expectation: string;
+  expectation: string | ReactNode | ReactNode[];
 }
 
 export const ExpectationContainer = ({

@@ -1,5 +1,6 @@
 import React, { ReactNode, useCallback, useState } from "react";
 import classes from "./Dropdown.module.css";
+import arrow_down from "@assets/arrow_down.svg";
 
 interface DropdownProps {
   children: ReactNode | ReactNode[] | string;
@@ -43,7 +44,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             {isOpen ? (
               <>
                 <img
-                  src="./arrow_down.svg"
+                  src={arrow_down}
                   className={classes.icon}
                   onClick={toggleDropdown}
                   alt="collapse"
@@ -52,7 +53,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             ) : (
               <>
                 <img
-                  src="./arrow_down.svg"
+                  src={arrow_down}
                   className={classes.icon}
                   style={{ transform: "rotate(180deg)" }}
                   onClick={toggleDropdown}

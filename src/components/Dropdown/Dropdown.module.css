@@ -28,6 +28,10 @@
   padding: 1.5rem;
   max-width: 1390px;
   margin-inline: auto;
+  display: grid;
+  font-size: 14px;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
 }
 
 .icon {
