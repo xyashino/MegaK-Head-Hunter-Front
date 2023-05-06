@@ -11,12 +11,10 @@ const RED_COLOR = "#e02635";
 export const RatingInStars = ({ numberOfStars }: RatingInStarsProps) => {
   return (
     <span className={classes.stars}>
-      {[...Array(5)].map((star) => {
+      {[...Array(5)].map((star, i) => {
         return (
-          <span key={star}>
-            <FaStar
-              color={star + 1 >= numberOfStars ? GREY_COLOR : RED_COLOR}
-            />
+          <span key={i}>
+            <FaStar color={i + 1 >= numberOfStars ? GREY_COLOR : RED_COLOR} />
           </span>
         );
       })}

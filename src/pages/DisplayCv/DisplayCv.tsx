@@ -9,6 +9,7 @@ import { Button } from "@components/Button/Button";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
 import { ShowRating } from "@components/ShowRating/ShowRating";
 import attach_file from "@assets/attach_file.svg";
+import { ExpectationContainer } from "@pages/ExpectationContainer/ExpectationContainer";
 
 export const DisplayCv = () => {
   return (
@@ -58,66 +59,30 @@ export const DisplayCv = () => {
           Oczekiwania w stosunku do zatrudnienia
         </div>
         <div className={classes.content_gutter}>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Preferowane miejsce pracy
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>Biuro</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Docelowe miasto, gdzie chce pracować kandydat
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>Warszawa</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Oczekiwany typ kontraktu
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>Umowa o pracę</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Oczekiwane wynagordzenie miesięczne netto
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>8 000 zł</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Zgoda na odbycie bezpłatnych praktyk/stażu na początek
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>TAK</span>
-              </div>
-            </div>
-          </div>
-          <div className={classes.rate_container}>
-            <span className={classes.expectations_title}>
-              Komercyjne doświadczenie w programowaniu
-            </span>
-            <div className={classes.rating}>
-              <div className={classes.figure}>
-                <span className={classes.rate_bold}>6 miesięcy</span>
-              </div>
-            </div>
-          </div>
+          <ExpectationContainer
+            title="Preferowane miejsce pracy"
+            expectation="Biuro"
+          />
+          <ExpectationContainer
+            title="Docelowe miasto, gdzie chce pracować kandydat"
+            expectation="Warszawa"
+          />
+          <ExpectationContainer
+            title="Oczekiwany typ kontraktu"
+            expectation="Umowa o pracę"
+          />
+          <ExpectationContainer
+            title="Oczekiwane wynagordzenie miesięczne netto"
+            expectation="8 000 zł"
+          />
+          <ExpectationContainer
+            title="Zgoda na odbycie bezpłatnych praktyk/stażu na początek"
+            expectation="TAK"
+          />
+          <ExpectationContainer
+            title="Komercyjne doświadczenie w programowaniu"
+            expectation="6 miesięcy"
+          />
         </div>
         <div className={classes.title_gutter}>Edukacja</div>
         <Text className={classes.content_gutter}>

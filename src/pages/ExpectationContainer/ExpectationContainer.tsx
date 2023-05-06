@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./RatingContainer.module.css";
+import classes from "./ExpectationContainer.module.css";
 
 interface ExpectationContainerProps {
   title: string;
