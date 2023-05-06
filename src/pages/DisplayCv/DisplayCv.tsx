@@ -11,25 +11,6 @@ import { ShowRating } from "@components/ShowRating/ShowRating";
 import attach_file from "@assets/attach_file.svg";
 
 export const DisplayCv = () => {
-  const [studentData, setStudentData] = useState({
-    bio: "",
-    canTakeApprenticeship: false,
-    education: "",
-    expectedContractType: "",
-    expectedSalary: 0,
-    expectedTypeWork: "",
-    firstname: "",
-    githubUsername: "",
-    id: "",
-    lastname: "",
-    monthsOfCommercialExp: 0,
-    portfolioUrls: [],
-    projectUrls: [],
-    targetWorkCity: "",
-    tel: "",
-    workExperience: "",
-    courses: "",
-  });
   return (
     <div className={classes.container}>
       <div className={classes.back}>
