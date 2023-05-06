@@ -9,6 +9,7 @@
   padding: 10.5px 24px;
   justify-content: space-between;
   margin-inline: auto;
+  color: var(--white);
 }
 
 .dropdown_button {
@@ -25,13 +26,29 @@
   background-color: #222324;
   transition: 0.2s;
   color: var(--white);
-  padding: 1.5rem;
   max-width: 1390px;
   margin-inline: auto;
   display: grid;
   font-size: 14px;
-  gap: 1.5rem;
-  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr)); */
+  position: relative;
+}
+
+.dropdown_content > div {
+  padding: 1rem;
+  text-align: left;
+  position: relative;
+}
+
+.dropdown_content div:not(:first-of-type)::after {
+  content: "";
+  width: 1px;
+  height: 100%;
+  background-color: var(--white);
+  opacity: 0.1;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .icon {
@@ -61,5 +78,10 @@
 @media (min-width: 768px) {
   .hidden {
     display: flex;
+  }
+
+  .dropdown_content {
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    gap: 1rem;
   }
 }
