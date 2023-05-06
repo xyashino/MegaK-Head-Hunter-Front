@@ -4,9 +4,9 @@ import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import { Button } from "@components/Button/Button";
 import classes from "./StudentProfile.module.css";
 import { Text } from "@components/Text/Text";
-import github from "@assets/github.svg";
-import phone from "@assets/phone.svg";
-import mail from "@assets/mail.svg";
+import githubIcon from "@assets/github.svg";
+import phoneIcon from "@assets/phone.svg";
+import mailIcon from "@assets/mail.svg";
 
 type Props = {
   name: string;
@@ -27,16 +27,16 @@ export const StudentProfile = ({
     <div className={classes.profile}>
       <Avatar type="large" githubUsername="craftzdog" />
       <h2 className={classes.name}>{name}</h2>
-      <LinkWithIcon icon={github} text={ghLink} to="https://megak.pl" />
+      <LinkWithIcon icon={githubIcon} text={ghLink} to="https://megak.pl" />
       <div className={classes.contact}>
         <LinkWithIcon
-          icon={phone}
+          icon={phoneIcon}
           text={phone}
           to={"tel:" + phone}
           style={{ color: "white", marginBottom: "0.25rem" }}
         />
         <LinkWithIcon
-          icon={mail}
+          icon={mailIcon}
           text={mail}
           to={"mailto:" + phone}
           style={{ color: "white" }}
