@@ -39,7 +39,7 @@ export const ValidateHRUser = () => {
   };
 
   return (
-    <form className={classes.validate_hr_form} onClick={handleSubmit}>
+    <form className={classes.validate_hr_form} onSubmit={handleSubmit}>
       <Input
         type="password"
         placeholder="Podaj hasło"
