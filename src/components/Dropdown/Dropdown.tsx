@@ -1,14 +1,14 @@
-import React, { useCallback, useState } from "react";
+import React, { ReactNode, useCallback, useState } from "react";
 import classes from "./Dropdown.module.css";
 
 interface DropdownProps {
-  children: string | JSX.Element | JSX.Element[];
-  firstOptionalBtn?: string | JSX.Element | JSX.Element[];
-  secondOptionalBtn?: string | JSX.Element | JSX.Element[];
-  reservationData?: string | JSX.Element | JSX.Element[];
-  userNameData?: string | JSX.Element | JSX.Element[];
-  userNameAvatarData?: string | JSX.Element | JSX.Element[];
-  thirdOptionalBtn?: string | JSX.Element | JSX.Element[];
+  children: ReactNode | ReactNode[] | string;
+  firstOptionalBtn?: ReactNode | ReactNode[] | string;
+  secondOptionalBtn?: ReactNode | ReactNode[] | string;
+  reservationData?: ReactNode | ReactNode[] | string;
+  userNameData?: ReactNode | ReactNode[] | string;
+  userNameAvatarData?: ReactNode | ReactNode[] | string;
+  thirdOptionalBtn?: ReactNode | ReactNode[] | string;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
