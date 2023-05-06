@@ -4,7 +4,7 @@ import { StudentResponse } from "@backendTypes";
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { Text } from "@components/Text/Text";
-import classes from "./EditCv.module.css";
+import classes from "./EditCvPage.module.css";
 import { Button } from "@components/Button/Button";
 import { TextArea } from "@components/TextArea/TextArea";
 import { UrlForm } from "@components/UrlForm/UrlForm";
@@ -19,7 +19,7 @@ import { UpdateStudentData } from "../../types/UpdateStudentData";
 import { UpdateOptionName } from "@enums/option-name.enum";
 import { ContrastSection } from "@components/EditCvSections/ContrastSection";
 import { DEFAULT_UPDATE_STUDENT_DATA } from "@constants/DefaultUpdateStudentData";
-export const EditCv = () => {
+export const EditCvPage = () => {
   const { id } = useOutletContext() as { id: string };
   const { fetchData, loading } = useAxios({
     method: "GET",

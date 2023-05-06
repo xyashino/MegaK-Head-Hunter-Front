@@ -19,7 +19,6 @@
     "react-dropzone": "^14.2.3",
     "react-hot-toast": "^2.4.1",
     "react-router-dom": "^6.10.0",
-    "sass": "^1.62.0",
     "sort-by": "^1.2.0"
   },
   "devDependencies": {
