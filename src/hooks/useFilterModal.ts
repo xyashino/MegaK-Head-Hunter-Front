@@ -62,7 +62,7 @@ export const useFilterModal = () => {
 
     const ratings = [
         {
-            label: "Ocena kursu",
+            label: "Ocena przejścia kursu",
             rating: courseRating,
             setRating: setCourseRating,
         },

@@ -53,7 +53,6 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 >Wyczyść wszystkie
                 </Button>
             </div>
-            <label htmlFor="">Ocena przejścia kursu</label>
             <RatingsInputs ratings={ratings}/>
             <div>
                 <p>Preferowane miejsce pracy</p>
