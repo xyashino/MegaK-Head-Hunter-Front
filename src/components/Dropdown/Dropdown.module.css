@@ -42,8 +42,8 @@
 
 .dropdown_content div:not(:first-of-type)::after {
   content: "";
-  width: 1px;
-  height: 100%;
+  width: 100%;
+  height: 1px;
   background-color: var(--white);
   opacity: 0.1;
   position: absolute;
@@ -84,4 +84,16 @@
     grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
     gap: 1rem;
   }
+
+  .dropdown_content div:not(:first-of-type)::after {
+    content: "";
+    width: 1px;
+    height: 100%;
+    background-color: var(--white);
+    opacity: 0.1;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
 }
