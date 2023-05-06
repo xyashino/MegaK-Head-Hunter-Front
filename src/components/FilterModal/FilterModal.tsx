@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
@@ -23,14 +23,6 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setIsRemoteButtonActive,
         isOfficeButtonActive,
         setIsOfficeButtonActive,
-        isPermanentButtonActive,
-        setIsPermanentButtonActive,
-        isBeToBeButtonActive,
-        setIsBeToBeButtonActive,
-        isMandateButtonActive,
-        setIsMandateButtonActive,
-        isContractButtonActive,
-        setIsContractButtonActive,
         monthsOfExperience,
         setMonthsOfExperience,
         courseRating,
@@ -48,6 +40,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         maxSalary,
         setMaxSalary,
         clearAllOptions,
+        typeOfContractButtons,
     } = useFilterModal();
 
     return (
@@ -116,22 +109,15 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Oczekiwany typ kontraktu</p>
                 <div>
-                    <Button
-                        onClick={() => setIsPermanentButtonActive(!isPermanentButtonActive)}
-                        customClasses={isPermanentButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >Umowa o pracę</Button>
-                    <Button
-                        onClick={() => setIsBeToBeButtonActive(!isBeToBeButtonActive)}
-                        customClasses={isBeToBeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >B2B</Button>
-                    <Button
-                        onClick={() => setIsMandateButtonActive(!isMandateButtonActive)}
-                        customClasses={isMandateButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >Umowa zlecenie</Button>
-                    <Button
-                        onClick={() => setIsContractButtonActive(!isContractButtonActive)}
-                        customClasses={isContractButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >Umowa o dzieło</Button>
+                    {typeOfContractButtons.map(({ text, isActive, onClick}) => (
+                        <button
+                            key={text}
+                            className={`${classes.btn_filter_modal_smaller} ${isActive ? classes.btn_filter_modal_smaller_active : ''}`}
+                            onClick={onClick}
+                        >
+                            {text}
+                        </button>
+                    ))}
                 </div>
             </div>
             <div>

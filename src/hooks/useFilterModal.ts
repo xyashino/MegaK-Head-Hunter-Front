@@ -37,6 +37,29 @@ export const useFilterModal = () => {
         setScrumRating(null);
     };
 
+    const typeOfContractButtons = [
+        {
+            text: 'Umowa o pracę',
+            isActive: isPermanentButtonActive,
+            onClick: () => setIsPermanentButtonActive(!isPermanentButtonActive),
+        },
+        {
+            text: 'B2B',
+            isActive: isBeToBeButtonActive,
+            onClick: () => setIsBeToBeButtonActive(!isBeToBeButtonActive),
+        },
+        {
+            text: 'Umowa zlecenie',
+            isActive: isMandateButtonActive,
+            onClick: () => setIsMandateButtonActive(!isMandateButtonActive),
+        },
+        {
+            text: 'Umowa o dzieło',
+            isActive: isContractButtonActive,
+            onClick: () => setIsContractButtonActive(!isContractButtonActive),
+        },
+    ];
+
     return {
         isRemoteButtonActive,
         setIsRemoteButtonActive,
@@ -67,5 +90,6 @@ export const useFilterModal = () => {
         maxSalary,
         setMaxSalary,
         clearAllOptions,
+        typeOfContractButtons,
     };
 };
