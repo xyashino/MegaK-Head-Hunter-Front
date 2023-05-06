@@ -8,6 +8,7 @@ import { Text } from "@components/Text/Text";
 import { Button } from "@components/Button/Button";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
 import { ShowRating } from "@components/ShowRating/ShowRating";
+import attach_file from "@assets/attach_file.svg";
 
 export const DisplayCv = () => {
   const [studentData, setStudentData] = useState({
@@ -40,14 +41,14 @@ export const DisplayCv = () => {
         </Link>
       </div>
 
-      <StudentProfile 
-        name="Jan Kowalski" 
+      <StudentProfile
+        name="Jan Kowalski"
         ghLink="janKowalski"
         phone="+48500600700"
         mail="jan.kowalski@gmail.com"
         aboutMe="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi odio numquam consequuntur quo veniam dolore enim sint. Incidunt, nostrum. Sapiente reiciendis praesentium aperiam ipsam exercitationem unde soluta excepturi accusamus eius?"
       />
-     
+
       <div className={classes.details}>
         <div className={classes.title_gutter}>Ocena</div>
         <div className={classes.content_gutter}>
@@ -70,7 +71,7 @@ export const DisplayCv = () => {
             degree={5}
             isStars
             paragraphText="Ocena pracy w zespole w Scrum"
-          /> 
+          />
         </div>
         <div className={classes.title_gutter}>
           Oczekiwania w stosunku do zatrudnienia
@@ -159,33 +160,33 @@ export const DisplayCv = () => {
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="./attach_file.svg"
+          icon={attach_file}
           style={{ padding: "1.5rem", color: "#1585cc" }}
         />
         <div className={classes.title_gutter}>Projekt w zespole Scrumowym</div>
         <LinkWithIcon
           to="/"
           text="https://github.com/Ami777/MegaKursTest/commits?author=Ami777"
-          icon="./attach_file.svg"
+          icon={attach_file}
           style={{ padding: "1.5rem 1.5rem 0.5rem" }}
         />
         <LinkWithIcon
           to="/"
           text="https://github.com/Ami777/MegaKursTest/pulls?q=is%3Apr+reviewed-by%3AAmi777"
-          icon="./attach_file.svg"
+          icon={attach_file}
           style={{ padding: "0.5rem 1.5rem 1.5rem" }}
         />
         <div className={classes.title_gutter}>Projekt na zaliczenie</div>
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="./attach_file.svg"
+          icon={attach_file}
           style={{ padding: "1.5rem 1.5rem 0.5rem" }}
         />
         <LinkWithIcon
           to="/"
           text="https://Loremipsum/dolor/sit/amet"
-          icon="./attach_file.svg"
+          icon={attach_file}
           style={{ padding: "0.5rem 1.5rem 1.5rem" }}
         />
       </div>
