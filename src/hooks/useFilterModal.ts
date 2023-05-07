@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, {useState} from "react";
 
 export const useFilterModal = () => {
     const [isRemoteButtonActive, setIsRemoteButtonActive] = useState<boolean>(false);
@@ -10,15 +10,17 @@ export const useFilterModal = () => {
 
     const [monthsOfExperience, setMonthsOfExperience] = useState<number>(0);
 
-    const [courseRating, setCourseRating] = useState<number | null>(null);
-    const [engagementRating, setEngagementRating] = useState<number | null>(null);
-    const [projectRating, setProjectRating] = useState<number | null>(null);
-    const [scrumRating, setScrumRating] = useState<number | null>(null);
+    const [rating, setRating] =
+        useState<{
+            course: number | null,
+            engagement: number | null,
+            project: number | null,
+            scrum: number | null
+        }>({course: null, engagement: null, project: null, scrum: null});
 
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
-    const [minSalary, setMinSalary] = useState<string>('');
-    const [maxSalary, setMaxSalary] = useState<string>('');
+    const [salary, setSalary] = useState<{ min: string, max: string }>({min: '', max: ''});
 
     const clearAllOptions = () => {
         setIsRemoteButtonActive(false);
@@ -29,12 +31,8 @@ export const useFilterModal = () => {
         setIsContractButtonActive(false);
         setMonthsOfExperience(0);
         setIsChecked(false);
-        setMinSalary('');
-        setMaxSalary('');
-        setCourseRating(null);
-        setEngagementRating(null);
-        setProjectRating(null);
-        setScrumRating(null);
+        setSalary({min: '', max: ''});
+        setRating({course: null, engagement: null, project: null, scrum: null});
     };
 
     const typeOfContractButtons = [
@@ -63,23 +61,23 @@ export const useFilterModal = () => {
     const ratings = [
         {
             label: "Ocena przejścia kursu",
-            rating: courseRating,
-            setRating: setCourseRating,
+            rating: rating.course,
+            setRating: (newRating: number) => setRating({...rating, course: newRating}),
         },
         {
             label: "Ocena aktywności i zaangażowania na kursie",
-            rating: engagementRating,
-            setRating: setEngagementRating,
+            rating: rating.engagement,
+            setRating: (newRating: number) => setRating({...rating, engagement: newRating}),
         },
         {
             label: "Ocena kodu w projekcie własnym",
-            rating: projectRating,
-            setRating: setProjectRating,
+            rating: rating.project,
+            setRating: (newRating: number) => setRating({...rating, project: newRating}),
         },
         {
             label: "Ocena pracy w zespole w Scrum",
-            rating: scrumRating,
-            setRating: setScrumRating,
+            rating: rating.scrum,
+            setRating: (newRating: number) => setRating({...rating, scrum: newRating}),
         },
     ];
 
@@ -98,20 +96,12 @@ export const useFilterModal = () => {
         setIsContractButtonActive,
         monthsOfExperience,
         setMonthsOfExperience,
-        courseRating,
-        setCourseRating,
-        engagementRating,
-        setEngagementRating,
-        projectRating,
-        setProjectRating,
-        scrumRating,
-        setScrumRating,
+        rating,
+        setRating,
         isChecked,
         setIsChecked,
-        minSalary,
-        setMinSalary,
-        maxSalary,
-        setMaxSalary,
+        salary,
+        setSalary,
         clearAllOptions,
         typeOfContractButtons,
         ratings,

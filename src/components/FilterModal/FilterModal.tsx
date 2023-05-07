@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import {Button} from "@components/Button/Button";
-import {RatingsInputs} from "@components/RatingInputs/RatingInputs";
+import RatingsInputs from "@components/RatingInputs/RatingInputs";
 import {NumberInputWithArrows} from '@components/NumberInputWithArrows/NumberInputWithArrows';
 import {useFilterModal} from "@hooks/useFilterModal";
 
@@ -27,10 +27,8 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
         setMonthsOfExperience,
         isChecked,
         setIsChecked,
-        minSalary,
-        setMinSalary,
-        maxSalary,
-        setMaxSalary,
+        salary,
+        setSalary,
         clearAllOptions,
         typeOfContractButtons,
         ratings,
@@ -90,15 +88,15 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                         <input
                             placeholder="np. 1000 zł"
                             type="text"
-                            value={minSalary}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMinSalary(e.target.value)}
+                            value={salary.min}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSalary({ ...salary, min: e.target.value })}
                         />
                         <label htmlFor="">Do</label>
                         <input
                             placeholder="np. 10000 zł"
                             type="text"
-                            value={maxSalary}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMaxSalary(e.target.value)}
+                            value={salary.max}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSalary({ ...salary, max: e.target.value })}
                         />
                     </p>
                 </div>

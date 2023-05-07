@@ -8,7 +8,6 @@ import {
 import classes from "./AppLayout.module.css";
 import { PageRouter } from "@enums/page-router.enum";
 import React, { useLayoutEffect } from "react";
-// @ts-ignore
 import {CurrentUserResponse} from "@backendTypes";
 export const AppLayout = () => {
   const {role,data} = useLoaderData() as CurrentUserResponse;
