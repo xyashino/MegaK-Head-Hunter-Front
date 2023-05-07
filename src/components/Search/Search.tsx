@@ -6,7 +6,7 @@ import { Input } from "@components/Input/Input";
 type UserProps = {
   id: number;
   name: string;
-  email: string;
+  surname: string;
 };
 
 type SearchUsersProps = {
@@ -21,8 +21,8 @@ export const SearchUsers: React.FC<SearchUsersProps> = ({ users }) => {
     const searchTerm = event.target.value.toLowerCase();
     const filteredUsers = users.filter((user) => {
       const name = user.name.toLowerCase();
-      const email = user.email.toLowerCase();
-      return name.includes(searchTerm) || email.includes(searchTerm);
+      const surname = user.surname.toLowerCase();
+      return name.includes(searchTerm) || surname.includes(searchTerm);
     });
     setSearchTerm(searchTerm);
     setSearchResults(filteredUsers);
@@ -46,7 +46,7 @@ export const SearchUsers: React.FC<SearchUsersProps> = ({ users }) => {
       <ul>
         {searchResults.map((user) => (
           <li key={user.id}>
-            {user.name} ({user.email})
+            {user.name} ({user.surname})
           </li>
         ))}
       </ul>
