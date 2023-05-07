@@ -47,22 +47,22 @@ export const useFilterModal = () => {
         {
             text: 'Umowa o pracę',
             isActive: isTheButtonActive.permanent,
-            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, permanent: !isActive}),
+            onClick: () => setIsTheButtonActive(prev => ({ ...prev, permanent: !prev.permanent })),
         },
         {
             text: 'B2B',
             isActive: isTheButtonActive.beToBe,
-            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, beToBe: !isActive}),
+            onClick: () => setIsTheButtonActive(prev => ({ ...prev, beToBe: !prev.beToBe })),
         },
         {
             text: 'Umowa zlecenie',
             isActive: isTheButtonActive.mandate,
-            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, mandate: !isActive}),
+            onClick: () => setIsTheButtonActive(prev => ({ ...prev, mandate: !prev.mandate })),
         },
         {
             text: 'Umowa o dzieło',
             isActive: isTheButtonActive.contract,
-            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, contract: !isActive}),
+            onClick: () => setIsTheButtonActive(prev => ({ ...prev, contract: !prev.contract })),
         },
     ];
 

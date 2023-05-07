@@ -70,10 +70,12 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div>
                 <p>Oczekiwany typ kontraktu</p>
                 <div>
-                    {typeOfContractButtons.map(({ text, isActive, onClick}) => (
+                    {typeOfContractButtons.map(({ text, isActive, onClick }) => (
                         <button
                             key={text}
-                            className={`${classes.btn_filter_modal_smaller} ${isActive ? classes.btn_filter_modal_smaller_active : ''}`}
+                            className={`${classes.btn_filter_modal_smaller} ${
+                                isActive ? classes.btn_filter_modal_smaller_active : ""
+                            }`}
                             onClick={onClick}
                         >
                             {text}
