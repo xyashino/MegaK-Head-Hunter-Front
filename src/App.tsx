@@ -1,25 +1,24 @@
-import React from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ErrorPage } from "@pages/Error/ErrorPage";
-import { LoginPage } from "@pages/Login/LoginPage";
-import { NotFoundPage } from "@pages/NotFound/NotFoundPage";
-import { AppLayout } from "@layouts/AppLayout/AppLayout";
-import { PageRouter } from "@enums/page-router.enum";
-import { checkAuth } from "@utils/checkAuth";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
-import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
-import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegistrationPage";
-import { getDataFrom } from "@utils/network/getDataFrom";
-import { RequestPath } from "@enums/request-path.enum";
-import { EditCvPage } from "@pages/EditCv/EditCvPage";
 import { Panel } from "@components/Panel/Panel";
+import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
 import {
   ADMIN_BOOKMARKS,
   HR_BOOKMARKS,
   STUDENT_BOOKMARKS,
 } from "@constants/Bookmarks";
-import {PwdReset} from "@pages/PwdReset/PwdReset";
-import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
+import { PageRouter } from "@enums/page-router.enum";
+import { RequestPath } from "@enums/request-path.enum";
+import { AppLayout } from "@layouts/AppLayout/AppLayout";
+import { EditCvPage } from "@pages/EditCv/EditCvPage";
+import { ErrorPage } from "@pages/Error/ErrorPage";
+import { LoginPage } from "@pages/Login/LoginPage";
+import { NotFoundPage } from "@pages/NotFound/NotFoundPage";
+import { PwdForgotPage } from "@pages/PwdReset/PwdForgotPage";
+import { PwdResetPage } from "@pages/PwdReset/PwdResetPage";
+import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegistrationPage";
+import { checkAuth } from "@utils/checkAuth";
+import { getDataFrom } from "@utils/network/getDataFrom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 const routers = createBrowserRouter([
   {
@@ -74,6 +73,11 @@ const routers = createBrowserRouter([
         // loader
         element: <p>Zobacz Cv</p>,
       },
+      {
+        path: PageRouter.Account,
+        // loader
+        element: <p>Konto</p>,
+      },
     ],
   },
   {
@@ -97,12 +101,12 @@ const routers = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: PageRouter.SendPwdReset,
-    element: <SendPwdReset/>
+    path: PageRouter.PwdForgot,
+    element: <PwdForgotPage />,
   },
   {
     path: PageRouter.PwdReset,
-    element: <PwdReset/>
+    element: <PwdResetPage />,
   },
   {
     path: PageRouter.Everything,
