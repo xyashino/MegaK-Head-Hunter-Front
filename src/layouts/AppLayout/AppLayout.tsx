@@ -21,6 +21,8 @@ export const AppLayout = () => {
           return navigate(PageRouter.BaseAdmin);
         case "student":
           return navigate(PageRouter.BaseStudent);
+        case "hr":
+          return navigate(PageRouter.BaseHr);
         default:
           return navigate(PageRouter.Error);
       }
