@@ -6,6 +6,7 @@ import classes from "./RegisterHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
 import { CreateHrRequestBody } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
+import { toast } from "react-hot-toast";
 
 export const RegisterHRUser = () => {
   const {
@@ -56,7 +57,9 @@ export const RegisterHRUser = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    fetchData();
+    fetchData(() => {
+      toast["success"]("Dodano HR");
+    });
   };
 
   return (

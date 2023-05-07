@@ -9,6 +9,7 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
+import {toast} from "react-hot-toast";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ export const LoginPage = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
+      toast['success']('Zalogowano');
       navigate(PageRouter.Main);
     });
   };
@@ -75,7 +77,8 @@ export const LoginPage = () => {
           setPwd((e.target as HTMLInputElement).value as string)
         }
       />
-      <Text style={{ marginLeft: "auto" }}>Zapomniałeś hasła?</Text>
+      <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
+            onClick={() => navigate(PageRouter.SendPwdReset)}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}

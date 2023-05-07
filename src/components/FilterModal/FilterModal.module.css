@@ -191,6 +191,10 @@ input[type="radio"]:checked + label:before {
     background-color: var(--bgInput);
 }
 
+.modal_container {
+    overflow: auto;
+}
+
 @media(max-width: 768px) {
     .filter_modal {
         margin: 1rem 1rem;

@@ -2,18 +2,24 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ErrorPage } from "@pages/Error/ErrorPage";
 import { LoginPage } from "@pages/Login/LoginPage";
-import { NotFoundPage } from "@pages/NotFound404/NotFoundPage";
+import { NotFoundPage } from "@pages/NotFound/NotFoundPage";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
-import { AdminPanel } from "@layouts/AdminPanel/AdminPanel";
 import { PageRouter } from "@enums/page-router.enum";
 import { checkAuth } from "@utils/checkAuth";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
-import { StudentRegistration } from "@pages/StudentRegistration/StudentRegistration";
+import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegistrationPage";
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { RequestPath } from "@enums/request-path.enum";
-import { StudentPanel } from "@layouts/StudentPanel/StudentPanel";
-import {HrPanel} from "@layouts/HrPanel/HrPanel";
+import { EditCvPage } from "@pages/EditCv/EditCvPage";
+import { Panel } from "@components/Panel/Panel";
+import {
+  ADMIN_BOOKMARKS,
+  HR_BOOKMARKS,
+  STUDENT_BOOKMARKS,
+} from "@constants/Bookmarks";
+import {PwdReset} from "@pages/PwdReset/PwdReset";
+import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
 
 const routers = createBrowserRouter([
   {
@@ -23,11 +29,11 @@ const routers = createBrowserRouter([
     children: [
       {
         path: PageRouter.Admin,
-        element: <AdminPanel />,
+        element: <Panel accessRole="admin" bookmarks={ADMIN_BOOKMARKS} />,
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop  text="abc"/>,
+            element: <DragAndDrop text="Test" />,
           },
           {
             path: PageRouter.AdminHr,
@@ -37,7 +43,7 @@ const routers = createBrowserRouter([
       },
       {
         path: PageRouter.Student,
-        element: <StudentPanel />,
+        element: <Panel accessRole="student" bookmarks={STUDENT_BOOKMARKS} />,
         children: [
           {
             path: PageRouter.StudentPanel,
@@ -45,31 +51,36 @@ const routers = createBrowserRouter([
           },
           {
             path: PageRouter.StudentEdit,
-            element: <h1>Edytuj CV</h1>,
+            element: <EditCvPage />,
           },
         ],
       },
-      // {
-      //   path: PageRouter.Hr,
-      //   element: <HrPanel/>,
-      //   children: [
-      //     {
-      //       path: PageRouter.HrStudents,
-      //       element: <h1>Kursanci</h1>,
-      //     },
-      //     {
-      //       path: PageRouter.HrTalk,
-      //       element: <h1>Do rozmowy</h1>,
-      //     },
-      //   ],
-      // },
+      {
+        path: PageRouter.Hr,
+        element: <Panel accessRole="hr" bookmarks={HR_BOOKMARKS} />,
+        children: [
+          {
+            path: PageRouter.HrStudents,
+            element: <h1>Lista Studentów</h1>,
+          },
+          {
+            path: PageRouter.HrTalk,
+            element: <h1>Lista Rozmów</h1>,
+          },
+        ],
+      },
+      {
+        path: PageRouter.Cv,
+        // loader
+        element: <p>Zobacz Cv</p>,
+      },
     ],
   },
   {
     path: PageRouter.StudentRegistration,
     loader: ({ params }) =>
-        getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
-    element: <StudentRegistration />,
+      getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    element: <StudentRegistrationPage />,
   },
   {
     path: PageRouter.Error,
@@ -86,18 +97,12 @@ const routers = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: PageRouter.Hr,
-    element: <HrPanel/>,
-    children: [
-      {
-        path: PageRouter.HrStudents,
-        element: <h1>Kursanci</h1>,
-      },
-      {
-        path: PageRouter.HrTalk,
-        element: <h1>Do rozmowy</h1>,
-      },
-    ],
+    path: PageRouter.SendPwdReset,
+    element: <SendPwdReset/>
+  },
+  {
+    path: PageRouter.PwdReset,
+    element: <PwdReset/>
   },
   {
     path: PageRouter.Everything,

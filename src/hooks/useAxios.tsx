@@ -1,6 +1,7 @@
-import { useState } from "react";
+import {useState } from "react";
 import { AxiosResponse, isAxiosError } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
+import { toast } from "react-hot-toast";
 interface AxiosProps {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE";
@@ -37,8 +38,7 @@ export const useAxios = ({
 }: AxiosProps) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
   const [error, setError] = useState({ show: false, msg: "", type: "success" });
-  const [loading, setLoading] = useState<boolean>(true);
-
+  const [loading, setLoading] = useState<boolean>(false);
   const axiosMethod = getAxiosMethod(method);
 
   const requestLogic = async (
@@ -51,8 +51,9 @@ export const useAxios = ({
       const res = await fetchMethod();
       if (afterSuccessMethod) afterSuccessMethod();
       setResponse(response?.data);
+      setLoading(false);
       return res.data;
-    } catch (e) {
+    } catch (error) {
       let message = "Unknown Error";
       if (isAxiosError(error)) {
         message =
@@ -60,9 +61,12 @@ export const useAxios = ({
           error.response?.data.error ??
           error.message;
       }
-      setError({ show: true, msg:message, type: "error" });
+      toast["error"](Array.isArray(message) ? message.join("\n") : message);
+      setError({ show: true, msg: message, type: "error" });
       setLoading(false);
-      if (afterErrorMethod) {afterErrorMethod();}
+      if (afterErrorMethod) {
+        afterErrorMethod();
+      }
     }
   };
 

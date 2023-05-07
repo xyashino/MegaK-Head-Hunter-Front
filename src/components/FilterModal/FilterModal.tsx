@@ -42,6 +42,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             closeTimeoutMS={200}
             style={{overlay: {background: '#292a2bbf'}}}
         >
+            <div className={classes.modal_container}>
             <div className={classes.first_row}>
                 <h2>Filtrowanie</h2>
                 <Button
@@ -153,6 +154,7 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
             <div className={classes.filter_modal_btns}>
                 <Button customClasses={classes.button_bigger} onClick={onRequestClose}>Anuluj</Button>
                 <Button customClasses={classes.button_bigger} onClick={onConfirm}>Pokaż wyniki</Button>
+            </div>
             </div>
         </Modal>
     );

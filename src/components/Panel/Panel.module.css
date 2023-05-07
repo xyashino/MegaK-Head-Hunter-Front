@@ -1,4 +1,4 @@
-.student_panel_header {
+.panel_header {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -7,14 +7,14 @@
   margin-bottom: 3px;
   border-bottom: 4px solid var(--navBorder);
 }
-.student_panel_main {
+.panel_main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 @media (min-width: 768px) {
-  .student_panel_header {
+  .panel_header {
     justify-content: start;
   }
 }

@@ -6,4 +6,6 @@ export enum RequestPath {
     CreteHr = "/hr",
     GetOneStudent="/students/",
     CreateStudent = "/students/register/",
+    SendPasswordReset="/auth/send-pwd-reset",
+    PasswordReset="/auth/reset-password"
 }

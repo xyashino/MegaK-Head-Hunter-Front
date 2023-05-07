@@ -8,7 +8,7 @@
     color: var(--colorInput);
     font: normal normal normal 16px/27px Catamaran;
     resize: none;
-    margin-bottom: 20px;
+    margin: 10px 5px;
 }
 
 .textarea::placeholder {
