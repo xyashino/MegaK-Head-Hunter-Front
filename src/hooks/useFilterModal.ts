@@ -1,16 +1,25 @@
 import React, {useState} from "react";
 
+type ButtonConfig = {
+    [key: string]: {
+        text: string;
+    };
+};
+
+type ButtonActiveState = {
+    [key: string]: boolean;
+};
+
 export const useFilterModal = () => {
 
-    const [isTheButtonActive, setIsTheButtonActive] =
-        useState<{
-            remote: boolean,
-            office: boolean,
-            permanent: boolean,
-            beToBe: boolean,
-            mandate: boolean,
-            contract: boolean,
-        }>({remote: false, office: false, permanent: false, beToBe: false, mandate: false, contract: false});
+    const [isTheButtonActive, setIsTheButtonActive] = useState<ButtonActiveState>({
+        remote: false,
+        office: false,
+        permanent: false,
+        beToBe: false,
+        mandate: false,
+        contract: false,
+    });
 
     const [monthsOfExperience, setMonthsOfExperience] = useState<number>(0);
 
@@ -27,20 +36,15 @@ export const useFilterModal = () => {
     const [salary, setSalary] = useState<{ min: string, max: string }>({min: '', max: ''});
 
     const setDefaultValues = (obj: any, defaultValue: any) => {
-        for (const prop in obj) {
-            if (obj.hasOwnProperty(prop)) {
-                obj[prop] = obj[prop] || defaultValue;
-            }
-        }
-        return obj;
+        return { ...obj, ...Object.fromEntries(Object.keys(obj).map(key => [key, defaultValue])) };
     };
 
     const clearAllOptions = () => {
-        setIsTheButtonActive(prev => setDefaultValues(prev,false));
+        setIsTheButtonActive(prev => ({ ...setDefaultValues(prev, false) }));
         setMonthsOfExperience(0);
         setIsChecked(false);
-        setSalary(prev => setDefaultValues(prev,''));
-        setRating(prev => setDefaultValues(prev,''));
+        setSalary(prev => ({ ...setDefaultValues(prev, '') }));
+        setRating(prev => ({ ...setDefaultValues(prev, '') }));
     };
 
     const typeOfContractButtons = [
@@ -89,6 +93,15 @@ export const useFilterModal = () => {
         },
     ];
 
+    const buttonConfig: ButtonConfig = {
+        remote: {
+            text: 'Praca zdalna',
+        },
+        office: {
+            text: 'Praca w biurze',
+        },
+    };
+
     return {
         isTheButtonActive,
         setIsTheButtonActive,
@@ -103,5 +116,6 @@ export const useFilterModal = () => {
         clearAllOptions,
         typeOfContractButtons,
         ratings,
+        buttonConfig,
     };
 };
