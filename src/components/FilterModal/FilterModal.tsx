@@ -19,10 +19,8 @@ export type FilterModalProps = {
 export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProps) => {
 
     const {
-        isRemoteButtonActive,
-        setIsRemoteButtonActive,
-        isOfficeButtonActive,
-        setIsOfficeButtonActive,
+        isTheButtonActive,
+        setIsTheButtonActive,
         monthsOfExperience,
         setMonthsOfExperience,
         isChecked,
@@ -56,14 +54,17 @@ export const FilterModal = ({isOpen, onRequestClose, onConfirm}: FilterModalProp
                 <p>Preferowane miejsce pracy</p>
                 <div>
                     <Button
-                        onClick={() => setIsRemoteButtonActive(!isRemoteButtonActive)}
-                        customClasses={isRemoteButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >Praca zdalna
+                        onClick={() => setIsTheButtonActive(prev => ({ ...prev, remote: !prev.remote }))}
+                        customClasses={isTheButtonActive.remote ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                    >
+                        Praca zdalna
                     </Button>
                     <Button
-                        onClick={() => setIsOfficeButtonActive(!isOfficeButtonActive)}
-                        customClasses={isOfficeButtonActive ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
-                    >Praca w biurze</Button>
+                        onClick={() => setIsTheButtonActive(prev => ({ ...prev, office: !prev.office }))}
+                        customClasses={isTheButtonActive.office ? classes.btn_filter_modal_smaller_active : classes.btn_filter_modal_smaller}
+                    >
+                        Praca w biurze
+                    </Button>
                 </div>
             </div>
             <div>
