@@ -29,7 +29,7 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
   return (
     <>
       <div>
-        <header className={classes.panel_main}>
+        <header className={classes.panel_header}>
           {bookmarks.map(({to,text},index) => (
             <BookmarkNavLink
               text={text}
