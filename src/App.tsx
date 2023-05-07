@@ -18,6 +18,8 @@ import {
   HR_BOOKMARKS,
   STUDENT_BOOKMARKS,
 } from "@constants/Bookmarks";
+import {PwdReset} from "@pages/PwdReset/PwdReset";
+import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
 
 const routers = createBrowserRouter([
   {
@@ -93,6 +95,14 @@ const routers = createBrowserRouter([
   {
     path: PageRouter.Login,
     element: <LoginPage />,
+  },
+  {
+    path: PageRouter.SendPwdReset,
+    element: <SendPwdReset/>
+  },
+  {
+    path: PageRouter.PwdReset,
+    element: <PwdReset/>
   },
   {
     path: PageRouter.Everything,
