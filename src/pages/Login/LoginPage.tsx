@@ -78,7 +78,7 @@ export const LoginPage = () => {
         }
       />
       <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
-            onClick={() => navigate(PageRouter.SendPwdReset)}>Zapomniałeś hasła?</Text>
+            onClick={() => navigate(PageRouter.PwdForgot)}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}
