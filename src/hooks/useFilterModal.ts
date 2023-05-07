@@ -1,12 +1,16 @@
 import React, {useState} from "react";
 
 export const useFilterModal = () => {
-    const [isRemoteButtonActive, setIsRemoteButtonActive] = useState<boolean>(false);
-    const [isOfficeButtonActive, setIsOfficeButtonActive] = useState<boolean>(false);
-    const [isPermanentButtonActive, setIsPermanentButtonActive] = useState<boolean>(false);
-    const [isBeToBeButtonActive, setIsBeToBeButtonActive] = useState<boolean>(false);
-    const [isMandateButtonActive, setIsMandateButtonActive] = useState<boolean>(false);
-    const [isContractButtonActive, setIsContractButtonActive] = useState<boolean>(false);
+
+    const [isTheButtonActive, setIsTheButtonActive] =
+        useState<{
+            remote: boolean,
+            office: boolean,
+            permanent: boolean,
+            beToBe: boolean,
+            mandate: boolean,
+            contract: boolean,
+        }>({remote: false, office: false, permanent: false, beToBe: false, mandate: false, contract: false});
 
     const [monthsOfExperience, setMonthsOfExperience] = useState<number>(0);
 
@@ -22,39 +26,43 @@ export const useFilterModal = () => {
 
     const [salary, setSalary] = useState<{ min: string, max: string }>({min: '', max: ''});
 
+    const setDefaultValues = (obj: any, defaultValue: any) => {
+        for (const prop in obj) {
+            if (obj.hasOwnProperty(prop)) {
+                obj[prop] = obj[prop] || defaultValue;
+            }
+        }
+        return obj;
+    };
+
     const clearAllOptions = () => {
-        setIsRemoteButtonActive(false);
-        setIsOfficeButtonActive(false);
-        setIsPermanentButtonActive(false);
-        setIsBeToBeButtonActive(false);
-        setIsMandateButtonActive(false);
-        setIsContractButtonActive(false);
+        setIsTheButtonActive(prev => setDefaultValues(prev,false));
         setMonthsOfExperience(0);
         setIsChecked(false);
-        setSalary({min: '', max: ''});
-        setRating({course: null, engagement: null, project: null, scrum: null});
+        setSalary(prev => setDefaultValues(prev,''));
+        setRating(prev => setDefaultValues(prev,''));
     };
 
     const typeOfContractButtons = [
         {
             text: 'Umowa o pracę',
-            isActive: isPermanentButtonActive,
-            onClick: () => setIsPermanentButtonActive(!isPermanentButtonActive),
+            isActive: isTheButtonActive.permanent,
+            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, permanent: !isActive}),
         },
         {
             text: 'B2B',
-            isActive: isBeToBeButtonActive,
-            onClick: () => setIsBeToBeButtonActive(!isBeToBeButtonActive),
+            isActive: isTheButtonActive.beToBe,
+            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, beToBe: !isActive}),
         },
         {
             text: 'Umowa zlecenie',
-            isActive: isMandateButtonActive,
-            onClick: () => setIsMandateButtonActive(!isMandateButtonActive),
+            isActive: isTheButtonActive.mandate,
+            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, mandate: !isActive}),
         },
         {
             text: 'Umowa o dzieło',
-            isActive: isContractButtonActive,
-            onClick: () => setIsContractButtonActive(!isContractButtonActive),
+            isActive: isTheButtonActive.contract,
+            onClick: () => (isActive: boolean) => setIsTheButtonActive({...isTheButtonActive, contract: !isActive}),
         },
     ];
 
@@ -82,18 +90,8 @@ export const useFilterModal = () => {
     ];
 
     return {
-        isRemoteButtonActive,
-        setIsRemoteButtonActive,
-        isOfficeButtonActive,
-        setIsOfficeButtonActive,
-        isPermanentButtonActive,
-        setIsPermanentButtonActive,
-        isBeToBeButtonActive,
-        setIsBeToBeButtonActive,
-        isMandateButtonActive,
-        setIsMandateButtonActive,
-        isContractButtonActive,
-        setIsContractButtonActive,
+        isTheButtonActive,
+        setIsTheButtonActive,
         monthsOfExperience,
         setMonthsOfExperience,
         rating,
