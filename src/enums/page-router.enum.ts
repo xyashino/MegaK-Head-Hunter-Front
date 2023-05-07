@@ -23,6 +23,6 @@ export enum PageRouter {
   Cv = "/cv/:id",
 
   Error = "/error",
-  SendPwdReset = '/reset',
-  PwdReset='/password/reset'
+  PwdReset = '/password/reset',
+  PwdForgot='/password/forgot'
 }

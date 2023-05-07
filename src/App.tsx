@@ -97,7 +97,7 @@ const routers = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: PageRouter.SendPwdReset,
+    path: PageRouter.PwdForgot,
     element: <SendPwdReset/>
   },
   {
