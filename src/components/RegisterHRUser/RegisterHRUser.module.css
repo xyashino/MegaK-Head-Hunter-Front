@@ -2,7 +2,15 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin-inline: auto;
   gap: 1rem;
   padding-inline: 1rem;
+}
+
+.response_div {
+  margin: 5px;
+  color: var(--white);
+  overflow: overlay;
+  text-align: center;
 }

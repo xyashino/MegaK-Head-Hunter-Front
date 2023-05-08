@@ -57,8 +57,8 @@ export const RegisterHRUser = () => {
     console.log(response?.data);
   };
 
-  return (
-    <div className={classes.register_hr_form}>
+  return <>
+    <form className={classes.register_hr_form} onSubmit={handleSubmit}>
       <Input
         type="email"
         placeholder="E-mail"
@@ -95,11 +95,8 @@ export const RegisterHRUser = () => {
         value={numVal}
         onChange={handleNumberInput}
       />
-      <Button onClick={handleSubmit}>Dodaj użytkownika</Button>
-
-      {response && (
-        <div style={{ color: "white" }}>{JSON.stringify(response.data)}</div>
-      )}
-    </div>
-  );
+      <Button>Dodaj użytkownika</Button>
+    </form>
+    {response && <div className={classes.response_div}>{JSON.stringify(response?.data)}</div>}
+  </>;
 };

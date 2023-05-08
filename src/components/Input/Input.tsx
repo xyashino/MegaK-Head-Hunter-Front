@@ -9,7 +9,8 @@ type InputType =
   | "date"
   | "checkbox"
   | "radio"
-  | "file";
+  | "file"
+  | "submit";
 
 interface Props extends HTMLAttributes<HTMLInputElement>, PropsWithChildren {
   type?: InputType;
