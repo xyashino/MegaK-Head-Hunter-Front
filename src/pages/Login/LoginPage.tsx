@@ -32,7 +32,7 @@ export const LoginPage = () => {
     maxLength: 255,
   });
 
-  const { fetchData } = useAxios({
+  const { fetchData ,loading} = useAxios({
     url: RequestPath.Login,
     method: "POST",
     body: {
@@ -86,7 +86,7 @@ export const LoginPage = () => {
             <b>Zarejestruj się</b>
           </u>
         </Text>
-        <Button>Zaloguj się</Button>
+        <Button loading={loading}>Zaloguj się</Button>
       </div>
     </form>
   );
