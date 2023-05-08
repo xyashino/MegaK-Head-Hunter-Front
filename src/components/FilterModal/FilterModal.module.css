@@ -199,9 +199,11 @@ input[type="radio"]:checked + label:before {
 
 @media(max-width: 768px) {
     .filter_modal {
-        margin: 1rem 1rem;
-        width: 350px;
-        height: 650px;
+        margin: 1rem;
+        width: 100%;
+        max-width: 350px;
+        height: 100%;
+        max-height: 650px;
         overflow-y: scroll;
     }
     .btn_filter_modal_smaller {

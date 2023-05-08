@@ -3,8 +3,6 @@ import classes from "./HrPanel.module.css";
 import {Outlet} from "react-router-dom";
 import {Button} from "@components/Button/Button";
 import {FilterModal} from "@components/FilterModal/FilterModal";
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-
 
 export const HrPanel = () => {
     const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
@@ -23,9 +21,13 @@ export const HrPanel = () => {
                 <div className={classes.div_btn_to_modal_wrapper}>
                     <Button
                         customClasses={classes.btn_to_modal}
-                        onClick={openFilterModal}><FilterAltIcon
-                        style={{fontSize: "1.3rem", verticalAlign: "-5px", color: "#4D4D4D"}}
-                    />Filtrowanie
+                        onClick={openFilterModal}>
+                        <span
+                            className="material-icons-outlined"
+                            style={{fontSize: "1.5rem", verticalAlign: "-6px", color: "#4D4D4D", backgroundColor: ""}}>
+                            filter_alt
+                        </span>
+                        Filtrowanie
                     </Button>
                 </div>
                 <div className={classes.hr_panel_main}>
