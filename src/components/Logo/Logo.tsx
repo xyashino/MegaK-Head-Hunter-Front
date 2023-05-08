@@ -6,13 +6,18 @@ import classes from "./Logo.module.css";
 
 interface Props extends HTMLAttributes<HTMLImageElement> {
   customClasses?: string;
+  navigateToMain?: true;
 }
 
-export const Logo = ({ customClasses = "", ...rest }: Props) => {
+export const Logo = ({
+  customClasses = "",
+  navigateToMain,
+  ...rest
+}: Props) => {
   const navigate = useNavigate();
   const handleClick = (e: SyntheticEvent) => {
     e.preventDefault();
-    navigate(PageRouter.Main);
+    navigateToMain && navigate(PageRouter.Main);
   };
   return (
     <div
