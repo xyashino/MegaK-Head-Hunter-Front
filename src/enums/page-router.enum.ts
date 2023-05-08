@@ -19,6 +19,7 @@ export enum PageRouter {
   Hr = "/hr",
   HrStudents = "/hr/students",
   HrTalk = "/hr/talk",
+  HrRegistration= '/hr/register/:id',
 
   Cv = "/cv/:id",
 
