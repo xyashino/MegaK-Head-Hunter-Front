@@ -58,6 +58,7 @@
     color: var(--colorInput);
     opacity: 0.5;
     font-weight: 200;
+    cursor: default;
 }
 
 .input_months label {
@@ -142,6 +143,7 @@ input[type="radio"]:checked + label:before {
     border: 0;
     padding: 6px 10px;
     font-weight: 200;
+    cursor: pointer;
 }
 
 .btn_filter_modal_smaller_active {
@@ -198,8 +200,9 @@ input[type="radio"]:checked + label:before {
 @media(max-width: 768px) {
     .filter_modal {
         margin: 1rem 1rem;
-        width: 500px;
-        height: 850px;
+        width: 350px;
+        height: 650px;
+        overflow-y: scroll;
     }
     .btn_filter_modal_smaller {
         margin-top: 1rem;

@@ -1,12 +1,10 @@
 import React, {useState} from "react";
 import classes from "./HrPanel.module.css";
-import {BookmarkNavLink} from "@components/BookmarkNavLink/BookmarkNavLink";
 import {Outlet} from "react-router-dom";
 import {Button} from "@components/Button/Button";
 import {FilterModal} from "@components/FilterModal/FilterModal";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import {PageRouter} from "@enums/page-router.enum";
-import {Navbar} from "@components/Navbar/Navbar";
+
 
 export const HrPanel = () => {
     const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
@@ -22,11 +20,6 @@ export const HrPanel = () => {
     return (
         <>
             <div className={classes.div_hr_panel_wrapper}>
-                <Navbar fullName="xd"></Navbar>
-                <header className={classes.hr_panel_header}>
-                    <BookmarkNavLink text="Dostepni kursanci" to={PageRouter.HrStudents}/>
-                    <BookmarkNavLink text="Do rozmowy" to={PageRouter.HrTalk}/>
-                </header>
                 <div className={classes.div_btn_to_modal_wrapper}>
                     <Button
                         customClasses={classes.btn_to_modal}

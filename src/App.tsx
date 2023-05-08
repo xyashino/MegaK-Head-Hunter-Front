@@ -20,6 +20,7 @@ import {
 } from "@constants/Bookmarks";
 import {PwdReset} from "@pages/PwdReset/PwdReset";
 import {SendPwdReset} from "@pages/PwdReset/SendPwdReset";
+import {HrPanel} from "@layouts/HrPanel/HrPanel";
 
 const routers = createBrowserRouter([
   {
@@ -61,11 +62,11 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.HrStudents,
-            element: <h1>Lista Studentów</h1>,
+            element: <HrPanel/>,
           },
           {
             path: PageRouter.HrTalk,
-            element: <h1>Lista Rozmów</h1>,
+            element: <HrPanel/>,
           },
         ],
       },

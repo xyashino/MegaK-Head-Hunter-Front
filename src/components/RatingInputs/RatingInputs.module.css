@@ -7,4 +7,5 @@
     padding: 6px 10px;
     color: var(--colorInput);
     margin-bottom: -1rem;
+    outline: transparent;
 }
