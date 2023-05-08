@@ -1,0 +1,14 @@
+.container_link {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  align-items: center;
+  font-weight: 500;
+  color: var(--megakBlue);
+  overflow-wrap: anywhere;
+}
+
+.icon_link {
+  width: 22px;
+  height: 22px;
+}
