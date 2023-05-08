@@ -36,7 +36,7 @@ export const PwdResetPage = () => {
     sameAs: pwdValue,
   });
 
-  const { fetchData } = useAxios({
+  const { fetchData ,loading} = useAxios({
     url: RequestPath.PasswordReset,
     method: "POST",
     body: {
@@ -82,7 +82,7 @@ export const PwdResetPage = () => {
       />
       <div className={classes.text_section}>
         <Text>Po zapisaniu Twoje hasło zostanie zmienione</Text>
-        <Button>Zapisz</Button>
+        <Button loading={loading}>Zapisz</Button>
       </div>
     </form>
   );

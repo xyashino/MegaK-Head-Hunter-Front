@@ -61,7 +61,7 @@ export const PwdForgotPage = () => {
             hasła
           </Text>
         )}
-        <Button>Wyślij</Button>
+        <Button loading={loading}>Wyślij</Button>
       </div>
       <Text
         style={{
