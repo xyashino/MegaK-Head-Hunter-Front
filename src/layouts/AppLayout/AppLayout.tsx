@@ -1,4 +1,7 @@
+import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
+import { PageRouter } from "@enums/page-router.enum";
+import { useLayoutEffect } from "react";
 import {
   Outlet,
   useLoaderData,
@@ -6,11 +9,8 @@ import {
   useNavigate,
 } from "react-router-dom";
 import classes from "./AppLayout.module.css";
-import { PageRouter } from "@enums/page-router.enum";
-import React, { useLayoutEffect } from "react";
-import {CurrentUserResponse} from "@backendTypes";
 export const AppLayout = () => {
-  const {role,data} = useLoaderData() as CurrentUserResponse;
+  const { role, data, id } = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -29,14 +29,14 @@ export const AppLayout = () => {
     }
   }, [location]);
 
-  const fullName = role === "admin" ? "Admin" : data.fullName
-  const githubUsername = role ==='student' ? data.githubUsername : undefined;
+  const fullName = role === "admin" ? "Admin" : data.fullName;
+  const githubUsername = role === "student" ? data.githubUsername : undefined;
 
   return (
     <div className={classes.app_layout}>
       <Navbar fullName={fullName} githubUsername={githubUsername} />
       <div className={classes.app_container}>
-        <Outlet context={{role,id:data?.id ?? ''}} />
+        <Outlet context={{ role, id: data?.id ?? "", userId: id }} />
       </div>
     </div>
   );
