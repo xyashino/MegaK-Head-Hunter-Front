@@ -1,6 +1,6 @@
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { Panel } from "@components/Panel/Panel";
-import { RegisterHRUser } from "@components/RegisterHRUser/RegisterHRUser";
+import { RegisterHrUser } from "@components/RegisterHrUser/RegisterHrUser";
 import {
   ADMIN_BOOKMARKS,
   HR_BOOKMARKS,
@@ -9,6 +9,7 @@ import {
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
+import { AccountPage } from "@pages/Account/AccountPage";
 import { EditCvPage } from "@pages/EditCv/EditCvPage";
 import { ErrorPage } from "@pages/Error/ErrorPage";
 import { LoginPage } from "@pages/Login/LoginPage";
@@ -36,7 +37,7 @@ const routers = createBrowserRouter([
           },
           {
             path: PageRouter.AdminHr,
-            element: <RegisterHRUser />,
+            element: <RegisterHrUser />,
           },
         ],
       },
@@ -75,8 +76,7 @@ const routers = createBrowserRouter([
       },
       {
         path: PageRouter.Account,
-        // loader
-        element: <p>Konto</p>,
+        element: <AccountPage />,
       },
     ],
   },
@@ -84,6 +84,11 @@ const routers = createBrowserRouter([
     path: PageRouter.StudentRegistration,
     loader: ({ params }) =>
       getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    element: <StudentRegistrationPage />,
+  },
+  {
+    path: PageRouter.HrRegistration,
+    loader: ({ params }) => getDataFrom(`${RequestPath.GetOneHr}${params.id}`),
     element: <StudentRegistrationPage />,
   },
   {
