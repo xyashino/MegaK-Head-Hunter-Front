@@ -4,7 +4,7 @@ import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { toast } from "react-hot-toast";
 interface AxiosProps {
   url: string;
-  method: "GET" | "POST" | "PUT" | "DELETE";
+  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: object | null;
   headers?: object | null;
 }
@@ -21,6 +21,8 @@ const getAxiosMethod = (method: AxiosProps["method"]): AxiosMethod => {
       return AxiosSetup.get;
     case "POST":
       return AxiosSetup.post;
+    case "PATCH":
+      return AxiosSetup.patch;
     case "PUT":
       return AxiosSetup.put;
     case "DELETE":
