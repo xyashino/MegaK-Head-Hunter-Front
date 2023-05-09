@@ -54,8 +54,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               <>
                 <img
                   src={arrow_down}
-                  className={classes.icon}
-                  style={{ transform: "rotate(180deg)" }}
+                  className={`${classes.icon} ${classes.icon_animated}`}
                   onClick={toggleDropdown}
                   alt="expand"
                 />
@@ -64,7 +63,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </button>
         </div>
       </div>
-      {isOpen && <div className={classes.dropdown_content}>{children}</div>}
+      {isOpen && (
+        <div
+          className={`${classes.dropdown_content} ${
+            isOpen ? classes.dropdown_content_animated : ""
+          }`}
+        >
+          {children}
+        </div>
+      )}
     </>
   );
 };
