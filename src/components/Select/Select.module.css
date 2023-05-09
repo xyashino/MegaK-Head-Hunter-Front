@@ -14,11 +14,13 @@
   cursor: pointer;
 }
 .select_group {
-  width: 100%;
   display: flex;
   flex-direction: column;
 }
 
+.full_size {
+  width: 100%;
+}
 
 .option {
   cursor: pointer;
