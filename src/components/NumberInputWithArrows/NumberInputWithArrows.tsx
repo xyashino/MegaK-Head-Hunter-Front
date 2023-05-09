@@ -1,7 +1,5 @@
 import React from "react";
 import classes from "./NumberInputWithArrows.module.css";
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export type NumberInputWithArrowsProps = {
     value: number;
@@ -64,13 +62,21 @@ export const NumberInputWithArrows = ({ value, setValue, min, max, monthsOfExper
                 className={classes.arrow}
                 onClick={handleIncrement}
                 aria-label="increase">
-                <ArrowDropUpIcon style={{fontSize: "41px"}}/>
+                <span
+                    className="material-icons-outlined"
+                    style={{fontSize: "41px"}}>
+                    arrow_drop_up
+                </span>
             </button>
             <button
                 className={classes.arrow}
                 onClick={handleDecrement}
                 aria-label="decrease">
-                <ArrowDropDownIcon style={{fontSize: "41px"}} />
+                <span
+                    className="material-icons-outlined"
+                    style={{fontSize: "41px"}}>
+                    arrow_drop_down
+                </span>
             </button>
             </div>
         </div>
