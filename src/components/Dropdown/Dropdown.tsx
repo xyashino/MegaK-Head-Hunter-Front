@@ -2,14 +2,16 @@ import React, { ReactNode, useCallback, useState } from "react";
 import classes from "./Dropdown.module.css";
 import arrow_down from "@assets/arrow_down.svg";
 
+type OptionalData = ReactNode | ReactNode[] | string;
+
 interface DropdownProps {
-  children: ReactNode | ReactNode[] | string;
-  firstOptionalBtn?: ReactNode | ReactNode[] | string;
-  secondOptionalBtn?: ReactNode | ReactNode[] | string;
-  reservationData?: ReactNode | ReactNode[] | string;
-  userNameData?: ReactNode | ReactNode[] | string;
-  userNameAvatarData?: ReactNode | ReactNode[] | string;
-  thirdOptionalBtn?: ReactNode | ReactNode[] | string;
+  children: OptionalData;
+  firstOptionalBtn?: OptionalData;
+  secondOptionalBtn?: OptionalData;
+  reservationData?: OptionalData;
+  userNameData?: OptionalData;
+  userNameAvatarData?: OptionalData;
+  thirdOptionalBtn?: OptionalData;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -47,7 +49,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   src={arrow_down}
                   className={classes.icon}
                   onClick={toggleDropdown}
-                  alt="collapse"
+                  alt="Strzałka w dół - rozwiń zawartość"
                 />
               </>
             ) : (
@@ -56,7 +58,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   src={arrow_down}
                   className={`${classes.icon} ${classes.icon_animated}`}
                   onClick={toggleDropdown}
-                  alt="expand"
+                  alt="Strzałka w górę - ukryj zawartość"
                 />
               </>
             )}
