@@ -33,6 +33,7 @@ export const QueryManagement = ({
 }: Props) => {
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
     url: import.meta.env.VITE_API_URL + request,
+    name: '',
     pagination: meta,
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +61,7 @@ export const QueryManagement = ({
   return (
     <QueryContext.Provider value={{ queryData, dispatchQuery }}>
       <div className={classes.query_management}>
-        <div>{children}</div>
+        <div className={classes.query_children}>{children}</div>
         <Paginator />
       </div>
     </QueryContext.Provider>
