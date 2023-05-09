@@ -1,9 +1,10 @@
 import { useLoaderData } from "react-router-dom";
 import { ActiveStudentResponse, PageMeta } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
-import { useState } from "react";
+import React, { useState } from "react";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
+import { SearchUsers } from "@components/Search/Search";
 
 export const TalksPage = () => {
   const { data: activeStudents, meta } = useLoaderData() as {
@@ -18,11 +19,16 @@ export const TalksPage = () => {
       meta={meta}
       request={RequestPath.GetInterview}
       updateStudents={(e: ActiveStudentResponse[]) => {
-        setStudents(e)
+        setStudents(e);
       }}
     >
+      <div>
+        <SearchUsers />
+      </div>
       {students.map((el) => (
-        <Dropdown userNameData={el.firstname} key={el.id}>{el.lastname}</Dropdown>
+        <Dropdown userNameData={el.firstname} key={el.id}>
+          {el.lastname}
+        </Dropdown>
       ))}
     </QueryManagement>
   );
