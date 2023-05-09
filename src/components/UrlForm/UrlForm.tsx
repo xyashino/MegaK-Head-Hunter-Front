@@ -5,7 +5,9 @@ import { Text } from "@components/Text/Text";
 import { Input } from "@components/Input/Input";
 import { Button } from "@components/Button/Button";
 import classes from "./UrlForm.module.css";
-
+import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
+import icon from '@assets/attach_file.svg'
+ 
 interface Props {
   urlArray: string[];
   description?: string;
@@ -14,7 +16,7 @@ interface Props {
 
 const Empty = (
   <Text weight="bold" customClasses={`${classes.url_form_empty}`}>
-    Brak żadnych linków :/
+    Brak żadnych linków
   </Text>
 );
 
@@ -81,11 +83,9 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
         {urls.length === 0
           ? Empty
           : urls.map((el, i) => (
-              <div key={i}>
-                <a href={el} target="_blank" rel="noreferrer" className={classes.url_form_url}>
-                  {el}
-                </a>
-                <button onClick={(e) => removeUrl(i, e)}>Usuń</button>
+              <div key={i} className={classes.container}>
+                <LinkWithIcon to={el} text={el} icon={icon}/>
+                <Button customClasses={classes.delete_project_button} onClick={(e) => removeUrl(i, e)}>Usuń</Button>
               </div>
             ))}
       </div>

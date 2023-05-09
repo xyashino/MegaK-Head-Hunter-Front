@@ -2,7 +2,6 @@
     width: 80%;
 }
 
-
 .url_form {
   display: flex;
   justify-content: center;
@@ -36,4 +35,28 @@
   color: var(--megakRed);
   text-wrap: normal;
   word-wrap: break-word;
+}
+
+.url_form_container .container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+}
+
+.url_form_container a {
+  color: var(--white);
+}
+.url_form_container img {
+  filter: grayscale(1);
+}
+
+.url_form_container .delete_project_button {
+  margin-left: 10px;
+  padding: 2px 4px;
+}
+
+@media (min-width: 767px) {
+  .url_form_container a:hover img {
+    filter: hue-rotate(180deg);
+  }
 }
