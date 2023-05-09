@@ -8,12 +8,22 @@
     margin: 1rem auto;
     padding: 1rem;
     border: 1px dashed var(--white);
-    max-width: 380px;
-    min-height: 100px;
+    max-width: 600px;
+    min-height: 140px;
     color: var(--white);
     font-size: 0.9rem;
     cursor: pointer;
     border-radius: 2px;
+    transition: .2s;
+}
+
+.text {
+    font-size: 1.2rem;
+}
+
+.info {
+    margin-top: 1rem;
+    font-size: 1rem;
 }
 
 .red {
@@ -29,12 +39,11 @@
   color: var(--white);
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 20px;
   list-style: none;
-  margin: 0;
-  padding: 6px 10px;
+  padding: 10px 24px;
   text-align: center;
   transition: all 200ms;
   vertical-align: baseline;
@@ -42,4 +51,22 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+}
+
+@media (min-width: 768px) {
+    .text {
+        font-size: 1.4rem;
+    }
+
+    .info {
+        font-size: 1.2rem;
+    }
+
+    .upload_btn {
+        font-size: 18px;
+    }
+
+    .drop_box:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
 }
