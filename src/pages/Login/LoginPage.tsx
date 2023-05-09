@@ -32,7 +32,7 @@ export const LoginPage = () => {
     maxLength: 255,
   });
 
-  const { fetchData } = useAxios({
+  const { fetchData ,loading} = useAxios({
     url: RequestPath.Login,
     method: "POST",
     body: {
@@ -78,7 +78,7 @@ export const LoginPage = () => {
         }
       />
       <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
-            onClick={() => navigate(PageRouter.SendPwdReset)}>Zapomniałeś hasła?</Text>
+            onClick={() => navigate(PageRouter.PwdForgot)}>Zapomniałeś hasła?</Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}
@@ -86,7 +86,7 @@ export const LoginPage = () => {
             <b>Zarejestruj się</b>
           </u>
         </Text>
-        <Button>Zaloguj się</Button>
+        <Button loading={loading}>Zaloguj się</Button>
       </div>
     </form>
   );
