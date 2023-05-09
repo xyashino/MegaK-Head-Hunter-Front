@@ -3,4 +3,5 @@ export enum QueryAction {
     PaginationPrevStep ,
     PaginationChangeTake,
     PaginationUpdate,
+    UpdateName,
 }
