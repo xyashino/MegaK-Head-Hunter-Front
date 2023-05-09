@@ -1,0 +1,27 @@
+.rate_container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.expectations_title {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+}
+.rating {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.figure {
+  display: flex;
+  flex-direction: row;
+  font-size: 18px;
+}
+
+.rate_bold {
+  font-weight: bold;
+  margin-right: 0.25rem;
+}

@@ -88,3 +88,10 @@ nav {
     display: block;
   }
 }
+
+@media (min-width: 1024px) {
+  .nav_container {
+    width: 80%;
+    max-width: 1555px;
+  }
+}

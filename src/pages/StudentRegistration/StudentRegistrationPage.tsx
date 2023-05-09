@@ -1,7 +1,7 @@
-import classes from "./StudentRegistration.module.css";
 import React from "react";
+import classes from "./StudentRegistrationPage.module.css";
 import { StudentRegistrationForm } from "@components/StudentRegistartionForm/StudentRegistrationForm";
-export const StudentRegistration = () => {
+export const StudentRegistrationPage = () => {
   return (
     <div className={classes.student_registration}>
       <StudentRegistrationForm />
