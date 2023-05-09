@@ -21,6 +21,10 @@
   justify-content: center;
 }
 
+.icon_animated {
+  transform: rotate(180deg);
+}
+
 .dropdown_content {
   background-color: #222324;
   transition: 0.2s;
@@ -29,8 +33,19 @@
   margin-inline: auto;
   display: grid;
   font-size: 14px;
-  /* grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr)); */
   position: relative;
+  height: fit-content;
+  animation-name: fadeIn;
+  animation-duration: 0.2s all;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .dropdown_content > div {
