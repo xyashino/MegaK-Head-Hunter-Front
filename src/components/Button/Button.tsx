@@ -5,6 +5,7 @@ interface Props extends HTMLAttributes<HTMLButtonElement>, PropsWithChildren {
   customClasses?: string;
   status?: "active" | "disabled";
   loading?: boolean;
+  name?:string;
 }
 
 export const Button = ({
