@@ -6,6 +6,7 @@ import { PageRouter } from "@enums/page-router.enum";
 import { UserResponse } from "@backendTypes";
 import { toast } from "react-hot-toast";
 import {BookmarkData} from "../../types/BookmarkData";
+import {OutletData} from "../../types/OutletData";
 
 interface Props {
   accessRole: UserResponse["role"];
@@ -13,10 +14,7 @@ interface Props {
 }
 
 export const Panel = ({ accessRole, bookmarks }: Props) => {
-  const { role, id } = useOutletContext() as {
-    role: UserResponse["role"];
-    id: string;
-  };
+  const { role, id ,userId} = useOutletContext() as OutletData;
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
@@ -29,7 +27,7 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
   return (
     <>
       <div>
-        <header className={classes.panel_main}>
+        <header className={classes.panel_header}>
           {bookmarks.map(({to,text},index) => (
             <BookmarkNavLink
               text={text}
@@ -39,7 +37,7 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
           ))}
         </header>
         <div className={classes.panel_main}>
-          <Outlet context={{ role, id }} />
+          <Outlet context={{ role, id , userId }} />
         </div>
       </div>
     </>

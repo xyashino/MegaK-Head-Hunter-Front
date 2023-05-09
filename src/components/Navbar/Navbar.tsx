@@ -1,14 +1,14 @@
 import { Avatar } from "@components/Avatar/Avatar";
+import { Button } from "@components/Button/Button";
 import { Logo } from "@components/Logo/Logo";
 import { Text } from "@components/Text/Text";
-import React, { SyntheticEvent, useState } from "react";
-import classes from "./Navbar.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@components/Button/Button";
 import { PageRouter } from "@enums/page-router.enum";
-import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
+import { useAxios } from "@hooks/useAxios";
+import { SyntheticEvent, useState } from "react";
 import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import classes from "./Navbar.module.css";
 
 interface Props {
   githubUsername?: string;
@@ -42,6 +42,7 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
       >
         <Logo
           style={{ marginBottom: 0, justifyContent: "start", height: "55px" }}
+          navigateToMain
         />
         <div className={classes.nav_user}>
           <button className={classes.info} onClick={toggleMenu}>

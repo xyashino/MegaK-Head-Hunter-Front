@@ -1,12 +1,16 @@
 .button {
   border: 0;
   color: var(--white);
-  padding: 6px 10px;
+  padding: 6px 15px;
   letter-spacing: 0;
   font: normal normal normal 16px/27px Catamaran;
   cursor: pointer;
   opacity: 1;
   font-weight: 200;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 32px;
 }
 
 .button:hover {
@@ -18,7 +22,7 @@
 }
 
 .disabled {
-  background-color: var(--navBorder);
+  background-color: #222224;
 }
 
 .active {
