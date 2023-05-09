@@ -1,5 +1,4 @@
 import React, { HTMLAttributes, PropsWithChildren } from "react";
-import { Link } from "react-router-dom";
 import classes from "./LinkWithIcon.module.css";
 
 interface LinkProps extends HTMLAttributes<HTMLLinkElement>, PropsWithChildren {
