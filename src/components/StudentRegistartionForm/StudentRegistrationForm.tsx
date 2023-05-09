@@ -1,9 +1,8 @@
-import React,{SyntheticEvent, useReducer, useState } from "react";
+import React, { SyntheticEvent, useReducer, useState } from "react";
 import { StudentRegisterRequest } from "@backendTypes";
 import classes from "./StudentRegistrationForm.module.css";
 import { StepsPagination } from "@components/StepsPagination/StepsPagination";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
-import { stepReducer } from "@components/StudentRegistartionForm/StepReducer";
 import { StudentsStepOne } from "@components/StudentRegistartionForm/Steps/StudentsStepOne";
 import { StudentsStepTwo } from "@components/StudentRegistartionForm/Steps/StudentsStepTwo";
 import { StudentsStepThree } from "@components/StudentRegistartionForm/Steps/StudentsStepThree";
@@ -12,7 +11,8 @@ import { StudentsStepFive } from "@components/StudentRegistartionForm/Steps/Stud
 import { StudentsStepSix } from "@components/StudentRegistartionForm/Steps/StudentsStepSix";
 import { StudentsStepSeven } from "@components/StudentRegistartionForm/Steps/StudentsStepSeven";
 import { StudentsStepEight } from "@components/StudentRegistartionForm/Steps/StudentsStepEight";
-import {DEFAULT_STUDENT_DATA} from "@constants/DefaultStudentData";
+import { DEFAULT_STUDENT_DATA } from "@constants/DefaultStudentData";
+import { stepReducer } from "@reducers/StepReducer";
 export const StudentRegistrationForm = () => {
   const [step, dispatchStep] = useReducer(stepReducer, {
     maxStep: 8,
@@ -20,7 +20,8 @@ export const StudentRegistrationForm = () => {
     currentStep: 1,
     canProceedToNextStep: false,
   });
-  const [studentData, setStudentData] = useState<StudentRegisterRequest>(DEFAULT_STUDENT_DATA);
+  const [studentData, setStudentData] =
+    useState<StudentRegisterRequest>(DEFAULT_STUDENT_DATA);
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
