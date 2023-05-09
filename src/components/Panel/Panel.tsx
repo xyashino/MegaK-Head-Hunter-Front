@@ -26,7 +26,7 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
 
   return (
     <>
-      <div>
+      <div  className={classes.panel}>
         <header className={classes.panel_header}>
           {bookmarks.map(({to,text},index) => (
             <BookmarkNavLink
