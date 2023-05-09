@@ -33,40 +33,32 @@ export const StudentProfile = ({
           icon={phoneIcon}
           text={phone}
           to={"tel:" + phone}
-          style={{ color: "white", marginBottom: "0.25rem" }}
         />
         <LinkWithIcon
           icon={mailIcon}
           text={mail}
-          to={"mailto:" + phone}
-          style={{ color: "white" }}
+          to={"tel:" + phone}
         />
-        <Text
-          style={{
-            color: "grey",
-            marginTop: "1.5rem",
-          }}
+        <Text 
+          customClasses={classes.aboutMe}
         >
           O mnie
         </Text>
         <Text
-          style={{
-            color: "#f7f7f7",
-            marginBottom: "1.5rem",
-            fontWeight: "200",
-          }}
+        customClasses={classes.aboutMeDesc}
         >
           {aboutMe}
         </Text>
-        <Button
-          style={{
-            width: "100%",
-            marginBottom: "0.75rem",
-          }}
+        <Button 
+          customClasses={`${classes.button} ${classes.disinterest}`}
         >
           Brak zainteresowania
         </Button>
-        <Button style={{ width: "100%" }}>Zatrudniony</Button>
+        <Button
+          customClasses={classes.button}
+        >
+          Zatrudniony
+        </Button>
       </div>
     </div>
   );
