@@ -4,9 +4,8 @@
   align-items: center;
   flex-direction: row;
   width: 100%;
-  max-width: 1390px;
   background-color: var(--bgInput);
-  padding: 10.5px 24px;
+  padding: 12px 24px;
   justify-content: space-between;
   margin-inline: auto;
   color: var(--white);
@@ -95,5 +94,5 @@
     left: 0;
     top: 0;
   }
-  
+
 }
