@@ -1,11 +1,11 @@
 import { QueryData } from "../types/QueryData";
 import { QueryActionData } from "../types/QueryActionData";
 import { QueryAction } from "@enums/query-action.enum";
-import {PageMeta} from "@backendTypes";
-import {buildQueryUrl} from "@utils/buildQuery";
+import { PageMeta } from "@backendTypes";
+import { buildQueryUrl } from "@utils/buildQuery";
 type Reducer = (state: QueryData, action: QueryActionData) => QueryData;
 
-const updatePageAndFlags = (pagination:PageMeta, newPage:number) => {
+const updatePageAndFlags = (pagination: PageMeta, newPage: number) => {
   pagination.page = newPage;
   pagination.hasPreviousPage = pagination.page !== 1;
   pagination.hasNextPage = pagination.page < pagination.pageCount;
@@ -44,7 +44,11 @@ export const queryReducer: Reducer = (state, action) => {
     case QueryAction.PaginationUpdate:
       copyState.pagination = action.payload;
       return copyState;
-
+    case QueryAction.UpdateName:
+      copyState.name = action.payload;
+      copyState.pagination.page = 1;
+      copyState.url = buildQueryUrl(copyState.url, { name: copyState.name });
+      return copyState;
     default:
       return state;
   }
