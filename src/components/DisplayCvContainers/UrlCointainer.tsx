@@ -12,7 +12,7 @@ export const UrlContainer = ({ title, array }: Props) => {
     <div>
       <div className={classes.title_gutter}>{title}</div>
       {array.length !== 0
-        ? array.map((link, index) => (
+        ? array.map((link) => (
             <LinkWithIcon
               to={link}
               text={link}
