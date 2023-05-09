@@ -31,11 +31,14 @@ export const AppLayout = () => {
 
   const fullName = role === "admin" ? "Admin" : data.fullName;
   const githubUsername = role === "student" ? data.githubUsername : undefined;
-
   return (
     <div className={classes.app_layout}>
       <Navbar fullName={fullName} githubUsername={githubUsername} />
-      <div className={classes.app_container}>
+      <div
+        className={`${classes.app_container} ${
+          location.pathname.includes(`/cv/`) ? "" : classes.app_container_gray
+        }`}
+      >
         <Outlet context={{ role, id: data?.id ?? "", userId: id }} />
       </div>
     </div>
