@@ -30,7 +30,6 @@
 
 .title_gutter {
   background-color: var(--bgInput);
-  padding: 1.5rem;
   font-size: 20px;
   color: var(--white);
   font-weight: 600;
