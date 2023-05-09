@@ -1,6 +1,6 @@
-import { StepAction } from "@enums/step-action.enum";
-import { StepData } from "../../types/StepData";
-import { StepsActionData } from "../../types/StepsActionData";
+import {StepData} from "../types/StepData";
+import {StepsActionData} from "../types/StepsActionData";
+import {StepAction} from "@enums/step-action.enum";
 
 type Reducer = (state: StepData, action: StepsActionData) => StepData;
 
