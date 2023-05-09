@@ -38,7 +38,7 @@ export const useAxios = ({
 }: AxiosProps) => {
   const [response, setResponse] = useState<AxiosResponse | null>(null);
   const [error, setError] = useState({ show: false, msg: "", type: "success" });
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const axiosMethod = getAxiosMethod(method);
 
   const requestLogic = async (

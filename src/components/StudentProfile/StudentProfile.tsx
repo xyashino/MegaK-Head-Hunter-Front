@@ -5,8 +5,8 @@ import { Button } from "@components/Button/Button";
 import classes from "./StudentProfile.module.css";
 import { Text } from "@components/Text/Text";
 import githubIcon from "@assets/github.svg";
-import phoneIcon from "@assets/phone.svg";
 import mailIcon from "@assets/mail.svg";
+import phoneIcon from "@assets/phone.svg";
 
 type Props = {
   name: string;
