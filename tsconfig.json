@@ -27,6 +27,7 @@
       "@utils/*": ["./src/utils/*"],
       "@enums/*": ["./src/enums/*"],
       "@constants/*": ["./src/constants/*"],
+      "@reducers/*": ["./src/reducers/*"],
       "@backendTypes": ["../MegaK-Head-Hunter-Back/src/types/"]
     }
   },
