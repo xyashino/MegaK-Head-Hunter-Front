@@ -1,7 +1,8 @@
 export enum QueryAction {
-    PaginationNextStep,
-    PaginationPrevStep ,
-    PaginationChangeTake,
-    PaginationUpdate,
-    UpdateName,
+  PaginationNextStep,
+  PaginationPrevStep,
+  PaginationChangeTake,
+  PaginationUpdate,
+  UpdateName,
+  FilterStudent,
 }

@@ -25,6 +25,19 @@ interface Props extends PropsWithChildren {
   updateStudents: (students: ActiveStudentResponse[]) => void;
 }
 
+const filters = {
+  courseCompletion: "4",
+  courseEngagement: "",
+  projectDegree: "",
+  teamProjectDegree: "",
+  expectedTypeWork: "",
+  expectedContractType: "",
+  minSalary: "",
+  maxSalary: "",
+  canTakeApprenticeship: "",
+  monthsOfCommercialExp: "",
+};
+
 export const QueryManagement = ({
   children,
   request,
@@ -33,11 +46,12 @@ export const QueryManagement = ({
 }: Props) => {
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
     url: import.meta.env.VITE_API_URL + request,
-    name: '',
+    name: "",
+    filtration: filters,
     pagination: meta,
   });
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log(queryData);
   useLayoutEffect(() => {
     if (isLoading) return;
     setIsLoading(true);

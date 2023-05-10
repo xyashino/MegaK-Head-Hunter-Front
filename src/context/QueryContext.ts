@@ -1,6 +1,6 @@
 import { createContext, Dispatch } from "react";
 import { QueryData } from "../types/QueryData";
-import {QueryActionData} from "../types/QueryActionData";
+import { QueryActionData } from "../types/QueryActionData";
 
 interface QueryContextValue {
   queryData: QueryData;
@@ -10,6 +10,19 @@ interface QueryContextValue {
 const initialValue: QueryContextValue = {
   queryData: {
     url: "",
+    name: "",
+    filtration: {
+      courseCompletion: "",
+      courseEngagement: "",
+      projectDegree: "",
+      teamProjectDegree: "",
+      expectedTypeWork: "",
+      expectedContractType: "",
+      minSalary: "",
+      maxSalary: "",
+      canTakeApprenticeship: "",
+      monthsOfCommercialExp: "",
+    },
     pagination: {
       hasNextPage: false,
       hasPreviousPage: false,
@@ -22,5 +35,4 @@ const initialValue: QueryContextValue = {
   dispatchQuery: () => {},
 };
 
-export const QueryContext =
-  createContext<QueryContextValue>(initialValue);
+export const QueryContext = createContext<QueryContextValue>(initialValue);

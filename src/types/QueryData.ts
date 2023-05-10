@@ -1,7 +1,8 @@
-import { PageMeta } from "@backendTypes";
+import { Filtration, PageMeta } from "@backendTypes";
 
 export interface QueryData {
   url: string;
   pagination: PageMeta;
-  name:string;
+  name: string;
+  filtration: Filtration;
 }
