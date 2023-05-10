@@ -31,7 +31,7 @@ export const useFilterModal = () => {
     scrum: number | null;
   }>({ course: null, engagement: null, project: null, scrum: null });
 
-  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [isChecked, setIsChecked] = useState<number>(0);
 
   const [salary, setSalary] = useState<{ min: string; max: string }>({
     min: "",
@@ -48,7 +48,7 @@ export const useFilterModal = () => {
   const clearAllOptions = () => {
     setIsTheButtonActive((prev) => ({ ...setDefaultValues(prev, false) }));
     setMonthsOfExperience(0);
-    setIsChecked(false);
+    setIsChecked(0);
     setSalary((prev) => ({ ...setDefaultValues(prev, "") }));
     setRating((prev) => ({ ...setDefaultValues(prev, "") }));
   };

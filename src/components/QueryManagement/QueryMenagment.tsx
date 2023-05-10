@@ -26,7 +26,7 @@ interface Props extends PropsWithChildren {
 }
 
 const filters = {
-  courseCompletion: "4",
+  courseCompletion: "",
   courseEngagement: "",
   projectDegree: "",
   teamProjectDegree: "",
@@ -51,7 +51,6 @@ export const QueryManagement = ({
     pagination: meta,
   });
   const [isLoading, setIsLoading] = useState(false);
-  console.log(queryData);
   useLayoutEffect(() => {
     if (isLoading) return;
     setIsLoading(true);

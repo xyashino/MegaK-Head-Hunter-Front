@@ -47,6 +47,7 @@ export const FilterModal = ({ isOpen, onRequestClose }: FilterModalProps) => {
         minSalary: salary.min,
         maxSalary: salary.max,
         monthsOfCommercialExp: monthsOfExperience,
+        canTakeApprenticeship: isChecked,
       },
     });
     onRequestClose();
@@ -146,8 +147,8 @@ export const FilterModal = ({ isOpen, onRequestClose }: FilterModalProps) => {
                 id="yes"
                 name="option"
                 value="Tak"
-                checked={isChecked}
-                onChange={() => setIsChecked(true)}
+                checked={isChecked === 1}
+                onChange={() => setIsChecked(1)}
               />
               <label htmlFor="yes">Tak</label>
             </p>
@@ -159,7 +160,7 @@ export const FilterModal = ({ isOpen, onRequestClose }: FilterModalProps) => {
                 name="option"
                 value="Nie"
                 checked={!isChecked}
-                onChange={() => setIsChecked(false)}
+                onChange={() => setIsChecked(0)}
               />
               <label htmlFor="no">Nie</label>
             </p>
