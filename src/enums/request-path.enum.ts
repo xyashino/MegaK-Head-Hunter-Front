@@ -10,4 +10,5 @@ export enum RequestPath {
   CreateStudent = "/students/register/",
   SendPasswordReset = "/auth/password/reset/request",
   PasswordReset = "/auth/password/reset",
+  RegisterHr = '/hr/register/'
 }

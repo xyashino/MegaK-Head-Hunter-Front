@@ -1,5 +1,4 @@
 import React, { HTMLAttributes, PropsWithChildren } from "react";
-import { Link } from "react-router-dom";
 import classes from "./LinkWithIcon.module.css";
 
 interface LinkProps extends HTMLAttributes<HTMLLinkElement>, PropsWithChildren {
@@ -15,9 +14,9 @@ export const LinkWithIcon: React.FC<LinkProps> = ({
   style,
 }) => {
   return (
-    <Link to={to} className={`${classes.container_link}`} style={style}>
-      <img className={`${classes.icon_link}`} src={icon} />
+    <a href={to} className={`${classes.container_link}`} style={style} target="_blank" rel="noreferrer">
+      <img className={`${classes.icon_link}`} src={icon}  alt='Url Icon'/>
       {text}
-    </Link>
+    </a>
   );
 };

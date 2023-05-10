@@ -5,9 +5,11 @@
   width: 100vw;
   height: 100vh;
 }
+.app_container_gray {
+  background-color: var(--bgInput);
+}
 
 .app_container {
-  background-color: var(--bgInput);
   padding: 0 1em;
   width: 100%;
   flex-grow: 1;

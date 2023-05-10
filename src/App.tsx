@@ -10,16 +10,19 @@ import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { AppLayout } from "@layouts/AppLayout/AppLayout";
 import { AccountPage } from "@pages/Account/AccountPage";
+import { DisplayCvPage } from "@pages/DisplayCv/DisplayCvPage";
 import { EditCvPage } from "@pages/EditCv/EditCvPage";
 import { ErrorPage } from "@pages/Error/ErrorPage";
 import { LoginPage } from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound/NotFoundPage";
 import { PwdForgotPage } from "@pages/PwdReset/PwdForgotPage";
 import { PwdResetPage } from "@pages/PwdReset/PwdResetPage";
+import { StudentPanelPage } from "@pages/StudentPanel/StudentPanelPage";
 import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegistrationPage";
 import { checkAuth } from "@utils/checkAuth";
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {ValidateHRUser} from "@components/ValidateHRUser/ValidateHRUser";
 
 const routers = createBrowserRouter([
   {
@@ -47,7 +50,7 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.StudentPanel,
-            element: <h1>Panel studenta</h1>,
+            element: <StudentPanelPage />,
           },
           {
             path: PageRouter.StudentEdit,
@@ -70,26 +73,25 @@ const routers = createBrowserRouter([
         ],
       },
       {
-        path: PageRouter.Cv,
-        // loader
-        element: <p>Zobacz Cv</p>,
-      },
-      {
         path: PageRouter.Account,
         element: <AccountPage />,
+      },
+      {
+        path: PageRouter.Cv,
+        loader: ({ params }) => getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+        element: <DisplayCvPage />,
       },
     ],
   },
   {
     path: PageRouter.StudentRegistration,
-    loader: ({ params }) =>
-      getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    loader: ({ params }) => getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
     element: <StudentRegistrationPage />,
   },
   {
     path: PageRouter.HrRegistration,
     loader: ({ params }) => getDataFrom(`${RequestPath.GetOneHr}${params.id}`),
-    element: <StudentRegistrationPage />,
+    element: <ValidateHRUser />,
   },
   {
     path: PageRouter.Error,
