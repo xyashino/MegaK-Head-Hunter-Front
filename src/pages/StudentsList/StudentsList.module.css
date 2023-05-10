@@ -1,0 +1,56 @@
+.hr_panel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background: var(--bgInput) 0 0 no-repeat padding-box;
+    margin-bottom: 3px;
+    border-bottom: 4px solid var(--navBorder);
+    z-index: -1;
+}
+.hr_panel_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+
+.hr_panel_button {
+    background: #1E1E1F 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+@media (min-width: 768px) {
+    .hr_panel_header {
+        justify-content: start;
+    }
+}
+
+.div_btn_to_modal_wrapper {
+    text-align: right;
+}
+
+.btn_to_modal {
+    background: #1E1E1F 0% 0% no-repeat padding-box;
+    border: 0;
+    color: var(--white);
+    padding: 6px 10px;
+    letter-spacing: 0px;
+    font: normal normal normal 16px/27px Catamaran;
+    cursor: pointer;
+    opacity: 1;
+    font-weight: 200;
+    margin-top: 1rem;
+}
+
+.btn_to_modal:hover {
+    opacity: 0.9;
+}
+
+.btn_to_modal:focus-visible {
+    outline: 2px solid hotpink;
+}
+
+.div_hr_panel_wrapper {
+    margin-bottom: 70vh;
+}

@@ -1,0 +1,46 @@
+.arrows_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: -0.7rem;
+}
+
+.arrow {
+    height: 0.8rem;
+    background-color: transparent;
+    border: none;
+    color: var(--colorInput);
+    opacity: 0.3;
+    cursor: pointer;
+    width: 0.2rem;
+}
+
+.div_input_number_wrapper {
+    display: flex;
+    background: var(--bgInput) 0% 0% no-repeat padding-box;
+    width: 7rem;
+    height: 2rem;
+}
+
+.number_input {
+    background: var(--bgInput) 0% 0% no-repeat padding-box;
+    opacity: 1;
+    border: 0;
+    padding: 6.5px 17px;
+    color: #666666;
+    font: normal normal normal 12px/19px Catamaran;
+    height: 2rem;
+    outline: transparent;
+}
+
+.number_input::placeholder {
+    color: #666666;
+    opacity: 0.5;
+}
+
+.number_input_label {
+    color: #666666;
+    font: normal normal normal 12px/19px Catamaran;
+    opacity: 0.5;
+    margin-left: -4rem;
+    margin-top: 0.435rem;
+}
