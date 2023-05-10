@@ -31,7 +31,11 @@ export const SearchUsers = () => {
   return (
     <div className={classes.search_input}>
       <label htmlFor="search">
-        <img src={searchIcon} alt="search icon" />
+        <img
+          className={classes.search_img}
+          src={searchIcon}
+          alt="search icon"
+        />
       </label>
       <Input
         id="search"
