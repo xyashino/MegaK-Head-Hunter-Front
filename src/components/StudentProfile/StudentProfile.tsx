@@ -1,94 +1,64 @@
+import React from "react";
+import { Avatar } from "@components/Avatar/Avatar";
+import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
+import { Button } from "@components/Button/Button";
+import classes from "./StudentProfile.module.css";
+import { Text } from "@components/Text/Text";
 import githubIcon from "@assets/github.svg";
 import mailIcon from "@assets/mail.svg";
 import phoneIcon from "@assets/phone.svg";
-import { Avatar } from "@components/Avatar/Avatar";
-import { Button } from "@components/Button/Button";
-import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
-import { Text } from "@components/Text/Text";
-import classes from "./StudentProfile.module.css";
 
 type Props = {
-  fullName: string;
-  ghUsername: string;
-  phone: string | null;
+  name: string;
+  ghLink: string;
+  phone: string;
   mail: string;
-  aboutMe: string | null;
-  showButtons: boolean;
+  aboutMe: string;
 };
 
-const BASE_GH_URL = "https://github.com/";
-
-const Buttons = (
-  <>
-    <Button
-      style={{
-        width: "100%",
-        marginBottom: "0.75rem",
-      }}
-    >
-      Brak zainteresowania
-    </Button>
-    <Button style={{ width: "100%" }}>Zatrudniony</Button>
-  </>
-);
-
 export const StudentProfile = ({
-  fullName,
-  ghUsername,
+  name,
+  ghLink,
   phone,
   mail,
   aboutMe,
-  showButtons = false,
 }: Props) => {
   return (
     <div className={classes.profile}>
-      <Avatar type="large" githubUsername={ghUsername} />
-      <h2 className={classes.name}>{fullName}</h2>
-      <LinkWithIcon
-        icon={githubIcon}
-        text={ghUsername}
-        to={`${BASE_GH_URL}${ghUsername}`}
-      />
+      <Avatar type="large" githubUsername="craftzdog" />
+      <h2 className={classes.name}>{name}</h2>
+      <LinkWithIcon icon={githubIcon} text={ghLink} to="https://megak.pl" />
       <div className={classes.contact}>
-        {phone && (
-          <LinkWithIcon
-            icon={phoneIcon}
-            text={phone}
-            to={"tel:" + phone}
-            style={{ color: "white", marginBottom: "0.25rem" }}
-          />
-        )}
-
+        <LinkWithIcon
+          icon={phoneIcon}
+          text={phone}
+          to={"tel:" + phone}
+        />
         <LinkWithIcon
           icon={mailIcon}
           text={mail}
-          to={"mailto:" + phone}
-          style={{ color: "white" }}
+          to={"tel:" + phone}
         />
-
-        {aboutMe && (
-          <>
-            <Text
-              style={{
-                color: "grey",
-                marginTop: "1.5rem",
-              }}
-            >
-              O mnie
-            </Text>
-            <Text
-              style={{
-                color: "#f7f7f7",
-                marginBottom: "1.5rem",
-                fontWeight: "200",
-              }}
-            >
-              {aboutMe}
-            </Text>
-          </>
-        )}
-
-        {showButtons ? Buttons : undefined}
+        <Text 
+          customClasses={classes.aboutMe}
+        >
+          O mnie
+        </Text>
+        <Text
+        customClasses={classes.aboutMeDesc}
+        >
+          {aboutMe}
+        </Text>
+        <Button 
+          customClasses={`${classes.button} ${classes.disinterest}`}
+        >
+          Brak zainteresowania
+        </Button>
+        <Button
+          customClasses={classes.button}
+        >
+          Zatrudniony
+        </Button>
       </div>
     </div>
   );
