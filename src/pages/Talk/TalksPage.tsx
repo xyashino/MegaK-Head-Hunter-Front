@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import {
   ActiveStudentResponse,
   ManyStudentResponse,
@@ -16,6 +16,7 @@ import { FilterModal } from "@components/FilterModal/FilterModal";
 import { Avatar } from "@components/Avatar/Avatar";
 import { RemoveInterviewButton } from "@components/RemoveInterviewButton/RemoveInterviewButton";
 import { HiredButton } from "@components/HiredButton/HiredButton";
+import { PageRouter } from "@enums/page-router.enum";
 
 export const TalksPage = () => {
   const { data: activeStudents, meta } = useLoaderData() as {
@@ -32,6 +33,8 @@ export const TalksPage = () => {
   const closeFilterModal = () => {
     setFilterModalIsOpen(false);
   };
+
+  const navigate = useNavigate();
 
   return (
     <QueryManagement
@@ -84,7 +87,13 @@ export const TalksPage = () => {
           children={
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate? Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit. Debitis?"
           }
-          firstOptionalBtn={<Button>Pokaż CV</Button>}
+          firstOptionalBtn={
+            <Button
+              onClick={() => navigate(`${PageRouter.GetCv}${el.student.id}`)}
+            >
+              Pokaż CV
+            </Button>
+          }
           secondOptionalBtn={<RemoveInterviewButton id={el.student.id} />}
           thirdOptionalBtn={<HiredButton id={el.student.id} />}
         />
