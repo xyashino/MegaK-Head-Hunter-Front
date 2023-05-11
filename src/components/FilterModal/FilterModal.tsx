@@ -1,10 +1,8 @@
-import React, { SyntheticEvent, useContext, useReducer, useState } from "react";
+import React, { SyntheticEvent, useContext, useState } from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import { QueryContext } from "@context/QueryContext";
 import { SalarySection } from "@components/FilterModal/Sections/SalarySection";
-import { DEFAULT_FILTER_DATA } from "@constants/DefaultFilterData";
-import { filterReducer } from "@reducers/FilterReducer";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
 import { RatingSection } from "@components/FilterModal/Sections/RatingSection";
@@ -14,18 +12,15 @@ import { ApprenticeshipSection } from "@components/FilterModal/Sections/Apprenti
 import { MonthSection } from "@components/FilterModal/Sections/MonthSection";
 import { QueryAction } from "@enums/query-action.enum";
 import { FilterModalBtn } from "@components/FilterModal/FilterModalBtn";
-import { buildFilterPayload } from "@components/FilterModal/filter-modal-helper";
 import { FilterHeaderSection } from "@components/FilterModal/Sections/FilterHeaderSection";
 import { FilterButtonsSection } from "@components/FilterModal/Sections/FilterButtonsSection";
+import {buildFilterQuery} from "@utils/query/buildFilterQuery";
 
 Modal.setAppElement("#root");
 
 export const FilterModal = () => {
   const { dispatchQuery } = useContext(QueryContext);
-  const [filter, dispatchFilter] = useReducer(
-    filterReducer,
-    DEFAULT_FILTER_DATA
-  );
+  const { filter, dispatchFilter } = useContext(FilterContext);
   const [isOpened, setIsOpened] = useState(false);
 
   const openFilterModal = () => setIsOpened(true);
@@ -34,7 +29,7 @@ export const FilterModal = () => {
   const onConfirm = () => {
     dispatchQuery({
       type: QueryAction.FilterStudent,
-      payload: buildFilterPayload(filter),
+      payload: buildFilterQuery(filter),
     });
     closeFilterModal();
   };
@@ -55,21 +50,19 @@ export const FilterModal = () => {
         closeTimeoutMS={200}
         style={{ overlay: { background: "#292a2bbf" } }}
       >
-        <FilterContext.Provider value={{ filter, dispatchFilter }}>
-          <div className={classes.modal_container}>
-            <FilterHeaderSection clearAll={clearAll} />
-            <RatingSection />
-            <WorkSection />
-            <ContractSection />
-            <SalarySection />
-            <ApprenticeshipSection />
-            <MonthSection />
-            <FilterButtonsSection
-              closeFilterModal={closeFilterModal}
-              onConfirm={onConfirm}
-            />
-          </div>
-        </FilterContext.Provider>
+        <div className={classes.modal_container}>
+          <FilterHeaderSection clearAll={clearAll} />
+          <RatingSection />
+          <WorkSection />
+          <ContractSection />
+          <SalarySection />
+          <ApprenticeshipSection />
+          <MonthSection />
+          <FilterButtonsSection
+            closeFilterModal={closeFilterModal}
+            onConfirm={onConfirm}
+          />
+        </div>
       </Modal>
     </>
   );

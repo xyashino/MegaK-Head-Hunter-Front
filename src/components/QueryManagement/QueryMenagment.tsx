@@ -1,5 +1,6 @@
-import React,{
+import React, {
   PropsWithChildren,
+  useContext,
   useLayoutEffect,
   useReducer,
   useState,
@@ -17,7 +18,10 @@ import {
 } from "@backendTypes";
 import { toast } from "react-hot-toast";
 import { Paginator } from "@components/Paginator/Paginator";
-import {DEFAULT_QUERY_FILTERS} from "@constants/DefaultQueruFilters";
+import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
+import { FilterContext } from "@context/FilterContext";
+import { buildQueryUrl } from "@utils/query/buildQuery";
+import { buildFilterQuery } from "@utils/query/buildFilterQuery";
 
 interface Props extends PropsWithChildren {
   baseStudents: ActiveStudentResponse[];
@@ -31,13 +35,20 @@ export const QueryManagement = ({
   meta,
   updateStudents,
 }: Props) => {
+  const { filter } = useContext(FilterContext);
+
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
-    url: import.meta.env.VITE_API_URL + request,
+    url: buildQueryUrl(
+      `${import.meta.env.VITE_API_URL + request}`,
+      buildFilterQuery(filter)
+    ),
     name: "",
     filtration: DEFAULT_QUERY_FILTERS,
     pagination: meta,
   });
+
   const [isLoading, setIsLoading] = useState(false);
+
   useLayoutEffect(() => {
     if (isLoading) return;
     setIsLoading(true);
