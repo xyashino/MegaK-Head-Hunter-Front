@@ -57,7 +57,6 @@ export const filterReducer: Reducer = (state, action) => {
       copyState.salary.max = "";
       return DEFAULT_FILTER_DATA;
     case FilterAction.UpdateAll:
-      console.log("payload", payload)
       return {...payload};
   }
 };
