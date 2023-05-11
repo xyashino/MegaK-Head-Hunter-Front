@@ -7,6 +7,13 @@ import { SearchUsers } from "@components/Search/Search";
 import classes from "@pages/Students/StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
+import { Dropdown } from "@components/Dropdown/Dropdown";
+import { Avatar } from "@components/Avatar/Avatar";
+import { Button } from "@components/Button/Button";
+import { PageRouter } from "@enums/page-router.enum";
+import { HiredButton } from "@components/HiredButton/HiredButton";
+import { RemoveInterviewButton } from "@components/RemoveInterviewButton/RemoveInterviewButton";
+import { Text } from "@components/Text/Text";
 
 export const TalksPage = () => {
   const { data: activeStudents, meta } = useLoaderData() as {
@@ -31,31 +38,44 @@ export const TalksPage = () => {
             <FilterModal />
           </div>
         </div>
-        {/*{students.map((el) => (*/}
-        {/*  <Dropdown*/}
-        {/*    key={el.student.id}*/}
-        {/*    reservationData={*/}
-        {/*      <Text>*/}
-        {/*        Rezerwacja do <br />*/}
-        {/*        {new Date(el.bookingDate).toLocaleDateString()}*/}
-        {/*      </Text>*/}
-        {/*    }*/}
-        {/*    userNameAvatarData={*/}
-        {/*      <Avatar githubUsername={el.student.githubUsername} />*/}
-        {/*    }*/}
-        {/*    userNameData={*/}
-        {/*      <Text>*/}
-        {/*        {el.student.firstname} {el.student.lastname}*/}
-        {/*      </Text>*/}
-        {/*    }*/}
-        {/*    children={*/}
-        {/*      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate? Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit. Debitis?"*/}
-        {/*    }*/}
-        {/*    firstOptionalBtn={<Button>Pokaż CV</Button>}*/}
-        {/*    secondOptionalBtn={<Button>Brak zainteresowania</Button>}*/}
-        {/*    thirdOptionalBtn={<Button>Zatrudniony</Button>}*/}
-        {/*  />*/}
-        {/*))}*/}
+        {students.map((el) => (
+          <Dropdown
+            key={el.student.id}
+            reservationData={
+              <Text>
+                Rezerwacja do <br />
+                {new Date(el.bookingDate).toLocaleDateString()}
+              </Text>
+            }
+            userNameAvatarData={
+              <Avatar githubUsername={el.student.githubUsername} />
+            }
+            userNameData={
+              <Text>
+                {el.student.firstname} {el.student.lastname}
+              </Text>
+            }
+            firstOptionalBtn={
+              <Button
+                onClick={() => navigate(`${PageRouter.GetCv}${el.student.id}`)}
+              >
+                Pokaż CV
+              </Button>
+            }
+            secondOptionalBtn={<RemoveInterviewButton id={el.student.id} />}
+            thirdOptionalBtn={<HiredButton id={el.student.id} />}
+            courseAssessment={el.student.courseCompletion}
+            courseEngagement={el.student.courseEngagement}
+            projectDegree={el.student.projectDegree}
+            teamProjectDegree={el.student.teamProjectDegree}
+            expectedTypeWork={el.student.expectedTypeWork}
+            expectedContractType={el.student.expectedContractType}
+            expectedSalary={el.student.expectedSalary}
+            canTakeApprenticeship={el.student.canTakeApprenticeship}
+            monthsOfCommercialExp={el.student.monthsOfCommercialExp}
+            targetWorkCity={el.student.targetWorkCity}
+          />
+        ))}
       </QueryManagement>
     </FilterContextProvider>
   );
