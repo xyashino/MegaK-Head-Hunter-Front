@@ -1,6 +1,7 @@
 import { createContext, Dispatch } from "react";
 import { QueryData } from "../types/QueryData";
 import { QueryActionData } from "../types/QueryActionData";
+import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
 
 interface QueryContextValue {
   queryData: QueryData;
@@ -11,18 +12,7 @@ const initialValue: QueryContextValue = {
   queryData: {
     url: "",
     name: "",
-    filtration: {
-      courseCompletion: "",
-      courseEngagement: "",
-      projectDegree: "",
-      teamProjectDegree: "",
-      expectedTypeWork: "",
-      expectedContractType: "",
-      minSalary: "",
-      maxSalary: "",
-      canTakeApprenticeship: "",
-      monthsOfCommercialExp: "",
-    },
+    filtration: DEFAULT_QUERY_FILTERS,
     pagination: {
       hasNextPage: false,
       hasPreviousPage: false,
