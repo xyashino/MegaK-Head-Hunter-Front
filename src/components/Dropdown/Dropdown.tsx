@@ -21,7 +21,7 @@ interface DropdownProps {
   expectedContractType?: OptionalData;
   expectedSalary?: OptionalData;
   canTakeApprenticeship?: OptionalData;
-  monthsOfCommercialExp?: OptionalData;
+  monthsOfCommercialExp: number;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -47,6 +47,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const toggleDropdown = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }, []);
+
+  let months = "miesięcy";
+
+  if (monthsOfCommercialExp >= 2 && monthsOfCommercialExp <= 4)
+    months = "miesiące";
+
+  if (monthsOfCommercialExp === 1) months = "miesiąc";
+
   return (
     <>
       <div className={classes.dropdown_container}>
@@ -161,7 +169,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               Zgoda na odbycie bezpłatnych praktyk/stażu na początek
             </div>
             <div className={classes.dropdown_row_data}>
-              <b>{canTakeApprenticeship}</b>
+              <b>{canTakeApprenticeship ? "TAK" : "NIE"}</b>
             </div>
           </div>
           <div className={classes.dropdown_row}>
@@ -169,7 +177,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
               Komercyjne doświadczenie w programowaniu
             </div>
             <div className={classes.dropdown_row_data}>
-              <b>{monthsOfCommercialExp}</b>
+              <b>
+                {monthsOfCommercialExp} {months}
+              </b>
             </div>
           </div>
         </div>
