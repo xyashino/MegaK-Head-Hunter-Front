@@ -1,3 +1,4 @@
+import React from "react";
 import classes from "./RatingInStars.module.css";
 import {Star} from "@components/RatingInStars/Star";
 

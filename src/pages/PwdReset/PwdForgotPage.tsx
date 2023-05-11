@@ -1,3 +1,4 @@
+import React, { SyntheticEvent } from "react";
 import { Button } from "@components/Button/Button";
 import { Input } from "@components/Input/Input";
 import { Logo } from "@components/Logo/Logo";
@@ -6,10 +7,9 @@ import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
-import { SyntheticEvent } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import classes from './PwdResetPage.module.css';
+import classes from "./PwdResetPage.module.css";
 
 export const PwdForgotPage = () => {
   const navigate = useNavigate();

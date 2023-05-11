@@ -1,11 +1,10 @@
+import React,{ SyntheticEvent, useContext } from "react";
 import { Text } from "@components/Text/Text";
-import { SyntheticEvent, useContext } from "react";
 import { QueryContext } from "@context/QueryContext";
 import { Select } from "@components/Select/Select";
 import { QueryAction } from "@enums/query-action.enum";
 import { Button } from "@components/Button/Button";
 import classes from "./Paginator.module.css";
-
 enum Controller {
   Prev = "prev",
   Next = "next",

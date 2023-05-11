@@ -50,6 +50,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   className={classes.icon}
                   onClick={toggleDropdown}
                   alt="Strzałka w dół - rozwiń zawartość"
+                  draggable={false}
                 />
               </>
             ) : (
@@ -59,6 +60,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                   className={`${classes.icon} ${classes.icon_animated}`}
                   onClick={toggleDropdown}
                   alt="Strzałka w górę - ukryj zawartość"
+                  draggable={false}
                 />
               </>
             )}

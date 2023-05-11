@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./BookmarkNavLink.module.css";
-import {NavLink, To} from "react-router-dom";
+import {NavLink, To } from "react-router-dom";
 
 interface LinkToBookmarkProps {
   text?: string;

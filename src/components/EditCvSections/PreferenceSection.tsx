@@ -1,3 +1,4 @@
+import React,{ SyntheticEvent } from "react";
 import { Input } from "@components/Input/Input";
 import { Select } from "@components/Select/Select";
 import {
@@ -7,7 +8,6 @@ import {
 import { Text } from "@components/Text/Text";
 import { Toggle } from "@components/Toggle/Toggle";
 import classes from "./EditCvSections.module.css";
-import { SyntheticEvent } from "react";
 import {ContrastSection} from "@components/EditCvSections/ContrastSection";
 
 interface Props {

@@ -1,3 +1,4 @@
+import React from "react";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { Panel } from "@components/Panel/Panel";
 import { RegisterHrUser } from "@components/RegisterHrUser/RegisterHrUser";

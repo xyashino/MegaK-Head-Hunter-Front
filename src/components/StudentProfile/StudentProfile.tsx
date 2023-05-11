@@ -1,3 +1,4 @@
+import React from "react";
 import githubIcon from "@assets/github.svg";
 import mailIcon from "@assets/mail.svg";
 import phoneIcon from "@assets/phone.svg";
@@ -6,7 +7,6 @@ import { Button } from "@components/Button/Button";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import { Text } from "@components/Text/Text";
 import classes from "./StudentProfile.module.css";
-
 type Props = {
   fullName: string;
   ghUsername: string;

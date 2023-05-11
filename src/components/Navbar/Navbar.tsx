@@ -1,3 +1,4 @@
+import React,{ SyntheticEvent, useState } from "react";
 import { Avatar } from "@components/Avatar/Avatar";
 import { Button } from "@components/Button/Button";
 import { Logo } from "@components/Logo/Logo";
@@ -5,7 +6,6 @@ import { Text } from "@components/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
-import { SyntheticEvent, useState } from "react";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Navbar.module.css";

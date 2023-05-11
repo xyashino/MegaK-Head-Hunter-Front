@@ -1,6 +1,6 @@
+import React, { HTMLAttributes, SyntheticEvent } from "react";
 import img from "@assets/logo.png";
 import { PageRouter } from "@enums/page-router.enum";
-import { HTMLAttributes, SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import classes from "./Logo.module.css";
 

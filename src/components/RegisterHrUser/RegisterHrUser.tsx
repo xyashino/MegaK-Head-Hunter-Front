@@ -1,10 +1,10 @@
+import React,{ SyntheticEvent, useLayoutEffect, useState } from "react";
 import { CreateHrRequestBody } from "@backendTypes";
 import { Button } from "@components/Button/Button";
 import { Input } from "@components/Input/Input";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
-import { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import classes from "./RegisterHrUser.module.css";
 enum InputName {

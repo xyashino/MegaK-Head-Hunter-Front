@@ -1,11 +1,11 @@
+import React, { HTMLAttributes, PropsWithChildren } from "react";
 import Loading from "@assets/Loading.svg";
-import { HTMLAttributes, PropsWithChildren } from "react";
 import classes from "./Button.module.css";
 interface Props extends HTMLAttributes<HTMLButtonElement>, PropsWithChildren {
   customClasses?: string;
   status?: "active" | "disabled";
   loading?: boolean;
-  name?:string;
+  name?: string;
 }
 
 export const Button = ({

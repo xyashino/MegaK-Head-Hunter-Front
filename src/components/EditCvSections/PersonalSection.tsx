@@ -1,8 +1,7 @@
+import React,{SyntheticEvent} from "react";
 import classes from "./EditCvSections.module.css";
 import {Input} from "@components/Input/Input";
-import {SyntheticEvent} from "react";
 import {ContrastSection} from "@components/EditCvSections/ContrastSection";
-
 interface Props {
     tel:{defaultValue:string, name:string}
     firstname:{defaultValue:string, name:string}
