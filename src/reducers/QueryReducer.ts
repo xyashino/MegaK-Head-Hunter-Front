@@ -58,10 +58,8 @@ export const queryReducer: Reducer = (state, action) => {
         courseEngagement: copyState.filtration.courseEngagement ?? "",
         projectDegree: copyState.filtration.projectDegree ?? "",
         teamProjectDegree: copyState.filtration.teamProjectDegree ?? "",
-        expectedTypeWork:
-          copyState.filtration.expectedTypeWork ?? "Bez znaczenia",
-        expectedContractType:
-          copyState.filtration.expectedContractType ?? "Brak preferencji",
+        expectedTypeWork: copyState.filtration.expectedTypeWork ?? "",
+        expectedContractType: copyState.filtration.expectedContractType ?? "",
         minSalary: copyState.filtration.minSalary,
         maxSalary: copyState.filtration.maxSalary,
         canTakeApprenticeship: copyState.filtration.canTakeApprenticeship,
