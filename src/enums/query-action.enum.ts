@@ -5,4 +5,5 @@ export enum QueryAction {
   PaginationUpdate,
   UpdateName,
   FilterStudent,
+  UpdateFilter
 }

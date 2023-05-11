@@ -1,6 +1,7 @@
 import { FilterData } from "../types/FilterData";
 import { FilterActionData } from "../types/FilterActionData";
 import { FilterAction } from "@enums/filter-action.enum";
+import {DEFAULT_FILTER_DATA} from "@constants/DefaultFilterData";
 
 type Reducer = (state: FilterData, action: FilterActionData) => FilterData;
 export const filterReducer: Reducer = (state, action) => {
@@ -11,11 +12,11 @@ export const filterReducer: Reducer = (state, action) => {
     case FilterAction.UpdateSalary:
       if (!payload) return state;
       copyState.salary = payload;
-      break;
+      return copyState;
 
     case FilterAction.UpdateApprenticeship:
       copyState.canTakeApprenticeship = payload;
-      break;
+      return copyState;
 
     case FilterAction.UpdateTypeWork:
       const foundWorkIndex = copyState.typeWork.findIndex(
@@ -23,7 +24,8 @@ export const filterReducer: Reducer = (state, action) => {
       );
       if (foundWorkIndex === -1) return state;
       copyState.typeWork[foundWorkIndex].isActive = payload.isActive;
-      break;
+      return copyState;
+
 
     case FilterAction.UpdateContract:
       const foundContractIndex = copyState.contract.findIndex(
@@ -31,7 +33,7 @@ export const filterReducer: Reducer = (state, action) => {
       );
       if (foundContractIndex === -1) return state;
       copyState.contract[foundContractIndex].isActive = payload.isActive;
-      break;
+      return copyState;
 
     case FilterAction.UpdateRating:
       const foundRatingIndex = copyState.rating.findIndex(
@@ -39,11 +41,11 @@ export const filterReducer: Reducer = (state, action) => {
       );
       if (foundRatingIndex === -1) return state;
       copyState.rating[foundRatingIndex].value = payload.value;
-      break;
+      return copyState;
 
     case FilterAction.UpdateMonth:
       copyState.monthOfExperience = payload;
-      break;
+      return copyState;
 
     case FilterAction.ResetAll:
       copyState.monthOfExperience = null;
@@ -53,8 +55,9 @@ export const filterReducer: Reducer = (state, action) => {
       copyState.typeWork.forEach((el) => (el.isActive = false));
       copyState.salary.min = "";
       copyState.salary.max = "";
-      break;
+      return DEFAULT_FILTER_DATA;
+    case FilterAction.UpdateAll:
+      console.log("payload", payload)
+      return {...payload};
   }
-
-  return copyState;
 };

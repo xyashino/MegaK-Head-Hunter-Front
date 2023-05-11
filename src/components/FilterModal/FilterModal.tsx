@@ -1,4 +1,10 @@
-import React, { SyntheticEvent, useContext, useState } from "react";
+import React, {
+  SyntheticEvent,
+  useContext,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import { QueryContext } from "@context/QueryContext";
@@ -14,7 +20,7 @@ import { QueryAction } from "@enums/query-action.enum";
 import { FilterModalBtn } from "@components/FilterModal/FilterModalBtn";
 import { FilterHeaderSection } from "@components/FilterModal/Sections/FilterHeaderSection";
 import { FilterButtonsSection } from "@components/FilterModal/Sections/FilterButtonsSection";
-import {buildFilterQuery} from "@utils/query/buildFilterQuery";
+import { buildFilterQuery } from "@utils/query/buildFilterQuery";
 
 Modal.setAppElement("#root");
 
@@ -22,18 +28,37 @@ export const FilterModal = () => {
   const { dispatchQuery } = useContext(QueryContext);
   const { filter, dispatchFilter } = useContext(FilterContext);
   const [isOpened, setIsOpened] = useState(false);
-
   const openFilterModal = () => setIsOpened(true);
-  const closeFilterModal = () => setIsOpened(false);
+  const filterRef = useRef({ ...filter });
+  const closeFilterModal = () => {
+    if (!filterRef.current) return;
+    dispatchFilter({
+      type: FilterAction.UpdateAll,
+      payload: filterRef.current,
+    });
+    setIsOpened(false);
+  };
 
   const onConfirm = () => {
     dispatchQuery({
       type: QueryAction.FilterStudent,
       payload: buildFilterQuery(filter),
     });
-    closeFilterModal();
+    setIsOpened(false);
   };
 
+  useLayoutEffect(() => {
+    if (isOpened) {
+      filterRef.current = {
+        rating: filter.rating.map((item) => ({ ...item })),
+        salary: { ...filter.salary },
+        typeWork: filter.typeWork.map((item) => ({ ...item })),
+        canTakeApprenticeship: filter.canTakeApprenticeship,
+        contract: filter.contract.map((item) => ({ ...item })),
+        monthOfExperience: filter.monthOfExperience,
+      };
+    }
+  }, [isOpened]);
   const clearAll = (e: SyntheticEvent) => {
     e.preventDefault();
     dispatchFilter({ type: FilterAction.ResetAll, payload: undefined });

@@ -5,5 +5,6 @@ export enum FilterAction {
   UpdateApprenticeship,
   UpdateContract,
   ResetAll,
-  UpdateMonth
+  UpdateMonth,
+  UpdateAll
 }

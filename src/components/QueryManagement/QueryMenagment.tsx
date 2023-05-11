@@ -20,8 +20,7 @@ import { toast } from "react-hot-toast";
 import { Paginator } from "@components/Paginator/Paginator";
 import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
 import { FilterContext } from "@context/FilterContext";
-import { buildQueryUrl } from "@utils/query/buildQuery";
-import { buildFilterQuery } from "@utils/query/buildFilterQuery";
+import {FilterAction} from "@enums/filter-action.enum";
 
 interface Props extends PropsWithChildren {
   baseStudents: ActiveStudentResponse[];
@@ -35,20 +34,23 @@ export const QueryManagement = ({
   meta,
   updateStudents,
 }: Props) => {
-  const { filter } = useContext(FilterContext);
+  const { dispatchFilter } = useContext(FilterContext);
 
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
-    url: buildQueryUrl(
-      `${import.meta.env.VITE_API_URL + request}`,
-      buildFilterQuery(filter)
-    ),
+    url: import.meta.env.VITE_API_URL + request,
     name: "",
     filtration: DEFAULT_QUERY_FILTERS,
     pagination: meta,
   });
 
-  const [isLoading, setIsLoading] = useState(false);
+  useLayoutEffect(() => {
+    dispatchFilter({
+      type: FilterAction.ResetAll,
+      payload: undefined,
+    });
+  }, []);
 
+  const [isLoading, setIsLoading] = useState(false);
   useLayoutEffect(() => {
     if (isLoading) return;
     setIsLoading(true);
