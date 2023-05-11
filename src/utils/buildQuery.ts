@@ -1,6 +1,6 @@
 export const buildQueryUrl = (
   baseUrl: string,
-  params: { [key: string]: string | string[] | boolean  | number}
+  params: { [key: string]: string | string[] | boolean | number }
 ) => {
   const url = new URL(baseUrl);
   for (const [key, value] of Object.entries(params)) {
@@ -13,8 +13,9 @@ export const buildQueryUrl = (
       continue;
     }
     if (Array.isArray(value)) {
+      url.searchParams.delete(key)
       value.forEach((el) => {
-        if (el === "") return;
+        if (el === "" || url.searchParams.getAll(key).includes(key)) return;
         url.searchParams.append(key, el);
       });
       continue;

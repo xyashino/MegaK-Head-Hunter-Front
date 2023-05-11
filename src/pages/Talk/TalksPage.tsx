@@ -26,9 +26,7 @@ export const TalksPage = () => {
       <div className={classes.search_bar}>
         <SearchUsers />
         <div className={classes.div_btn_to_modal_wrapper}>
-          <FilterModal
-
-          />
+          <FilterModal />
         </div>
       </div>
       {/*{students.map((el) => (*/}
