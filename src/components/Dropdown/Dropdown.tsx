@@ -5,22 +5,21 @@ import arrow_down from "@assets/arrow_down.svg";
 type OptionalData = ReactNode | ReactNode[] | string;
 
 interface DropdownProps {
-  // children: OptionalData;
   firstOptionalBtn?: OptionalData;
   secondOptionalBtn?: OptionalData;
   reservationData?: OptionalData;
-  userNameData?: OptionalData;
+  userNameData: OptionalData;
   userNameAvatarData?: OptionalData;
   thirdOptionalBtn?: OptionalData;
-  courseAssessment?: OptionalData;
-  courseEngagement?: OptionalData;
-  projectDegree?: OptionalData;
-  teamProjectDegree?: OptionalData;
-  expectedTypeWork?: OptionalData;
-  targetWorkCity?: OptionalData;
-  expectedContractType?: OptionalData;
-  expectedSalary?: OptionalData;
-  canTakeApprenticeship?: OptionalData;
+  courseAssessment: number;
+  courseEngagement: number;
+  projectDegree: number;
+  teamProjectDegree: number;
+  expectedTypeWork: string;
+  targetWorkCity: string | null;
+  expectedContractType: string;
+  expectedSalary: number | null;
+  canTakeApprenticeship: boolean;
   monthsOfCommercialExp: number;
 }
 
