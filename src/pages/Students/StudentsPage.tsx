@@ -55,7 +55,7 @@ export const StudentsPage = () => {
           </Button>
         </div>
       </div>
-      {students.map((el) => (
+      {students.map((el: ActiveStudentResponse) => (
         <Dropdown
           key={el.id}
           userNameData={
