@@ -17,6 +17,7 @@ import {
 } from "@backendTypes";
 import { toast } from "react-hot-toast";
 import { Paginator } from "@components/Paginator/Paginator";
+import {DEFAULT_QUERY_FILTERS} from "@constants/DefaultQueruFilters";
 
 interface Props extends PropsWithChildren {
   baseStudents: ActiveStudentResponse[];
@@ -24,20 +25,6 @@ interface Props extends PropsWithChildren {
   meta: PageMeta;
   updateStudents: (students: ActiveStudentResponse[]) => void;
 }
-
-const filters = {
-  courseCompletion: "",
-  courseEngagement: "",
-  projectDegree: "",
-  teamProjectDegree: "",
-  expectedTypeWork: "",
-  expectedContractType: "",
-  minSalary: "",
-  maxSalary: "",
-  canTakeApprenticeship: "",
-  monthsOfCommercialExp: "",
-};
-
 export const QueryManagement = ({
   children,
   request,
@@ -47,7 +34,7 @@ export const QueryManagement = ({
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
     url: import.meta.env.VITE_API_URL + request,
     name: "",
-    filtration: filters,
+    filtration: DEFAULT_QUERY_FILTERS,
     pagination: meta,
   });
   const [isLoading, setIsLoading] = useState(false);
