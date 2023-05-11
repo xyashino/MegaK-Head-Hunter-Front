@@ -9,6 +9,7 @@ import classes from "./StudentsPage.module.css";
 import { Button } from "@components/Button/Button";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { Text } from "@components/Text/Text";
+import { CreateInterviewButton } from "@components/CreateInterviewButton/CreateInterviewButton";
 
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
@@ -65,7 +66,7 @@ export const StudentsPage = () => {
           children={
             "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate? Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit. Debitis?"
           }
-          firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
+          firstOptionalBtn={<CreateInterviewButton id={el.id} />}
         />
       ))}
       <FilterModal
