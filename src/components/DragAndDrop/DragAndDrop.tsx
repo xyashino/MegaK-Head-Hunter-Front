@@ -4,7 +4,7 @@ import classes from "./DragAndDrop.module.css";
 import { AxiosProgressEvent } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>;
 const fileUploadError = (
@@ -30,11 +30,13 @@ const uploadOnServer = (
 };
 
 type Props = {
-  text: string,
-}
+  text: string;
+};
 
-export const DragAndDrop = ({text}: Props) => {
-  const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(undefined);
+export const DragAndDrop = ({ text }: Props) => {
+  const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(
+    undefined
+  );
   const [message, setMessage] = useState<ReactNode | string>("");
 
   const onDrop = (files: File[]) => {
@@ -49,11 +51,11 @@ export const DragAndDrop = ({text}: Props) => {
       uploadOnServer(currentFile)
         .then(() => {
           setMessage(fileUploadedMsg);
-          toast['success'](fileUploadedMsg);
+          toast["success"](fileUploadedMsg);
         })
         .catch(() => {
           setMessage(fileUploadError);
-          toast['error'](fileUploadedMsg);
+          toast["error"](fileUploadedMsg);
         });
 
       setSelectedFiles(undefined);
@@ -70,7 +72,7 @@ export const DragAndDrop = ({text}: Props) => {
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>{selectedFiles[0].name}</div>
               ) : (
-                text
+                "Przeciągnij i upuść plik lub kliknij i wybierz z dysku"
               )}
             </div>
             <aside>
@@ -85,8 +87,7 @@ export const DragAndDrop = ({text}: Props) => {
           </section>
         )}
       </Dropzone>
-      <div>
-        {message}
-      </div>
+      <div>{message}</div>
     </div>
-  );}
+  );
+};
