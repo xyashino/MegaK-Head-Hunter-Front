@@ -60,7 +60,7 @@ export const StudentsPage = () => {
           key={el.id}
           userNameData={
             <Text>
-              {el.firstname} {el.lastname.charAt(0) + "."}
+              {el.firstname} {el.lastname ? el.lastname.charAt(0) + "." : ""}
             </Text>
           }
           courseAssessment={el.courseCompletion}
@@ -72,6 +72,7 @@ export const StudentsPage = () => {
           expectedSalary={el.expectedSalary}
           canTakeApprenticeship={el.canTakeApprenticeship}
           monthsOfCommercialExp={el.monthsOfCommercialExp}
+          targetWorkCity={el.targetWorkCity}
           firstOptionalBtn={<CreateInterviewButton id={el.id} />}
         />
       ))}
