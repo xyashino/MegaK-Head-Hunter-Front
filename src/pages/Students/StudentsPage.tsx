@@ -63,9 +63,15 @@ export const StudentsPage = () => {
               {el.firstname} {el.lastname.charAt(0) + "."}
             </Text>
           }
-          children={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate? Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit. Debitis?"
-          }
+          courseAssessment={el.courseCompletion}
+          courseEngagement={el.courseEngagement}
+          projectDegree={el.projectDegree}
+          teamProjectDegree={el.teamProjectDegree}
+          expectedTypeWork={el.expectedTypeWork}
+          expectedContractType={el.expectedContractType}
+          expectedSalary={el.expectedSalary}
+          canTakeApprenticeship={el.canTakeApprenticeship}
+          monthsOfCommercialExp={el.monthsOfCommercialExp}
           firstOptionalBtn={<CreateInterviewButton id={el.id} />}
         />
       ))}
