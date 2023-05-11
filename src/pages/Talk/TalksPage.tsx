@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { ActiveStudentResponse, PageMeta } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import React, { useState } from "react";
@@ -21,6 +21,7 @@ export const TalksPage = () => {
     meta: PageMeta;
   };
   const [students, setStudents] = useState(activeStudents);
+  const navigate = useNavigate();
 
   return (
     <FilterContextProvider>
