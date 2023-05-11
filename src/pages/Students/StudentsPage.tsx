@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import { ActiveStudentResponse, ManyStudentResponse } from "@backendTypes";
+import { ManyStudentResponse, ActiveStudentResponse } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
@@ -9,78 +9,48 @@ import classes from "./StudentsPage.module.css";
 import { Button } from "@components/Button/Button";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { Text } from "@components/Text/Text";
-import { CreateInterviewButton } from "@components/CreateInterviewButton/CreateInterviewButton";
+import { FilterContextProvider } from "@context/FilterContext";
 
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
-  const [students, setStudents] = useState(activeStudents);
-  const [filterModalIsOpen, setFilterModalIsOpen] = useState<boolean>(false);
+  const [students, setStudents] =
+    useState<ActiveStudentResponse[]>(activeStudents);
 
-  const openFilterModal = () => {
-    setFilterModalIsOpen(true);
-  };
-
-  const closeFilterModal = () => {
-    setFilterModalIsOpen(false);
+  const updateStudents = (e: ActiveStudentResponse[]) => {
+    setStudents(e);
   };
 
   return (
-    <QueryManagement
-      baseStudents={activeStudents}
-      meta={meta}
-      request={RequestPath.GetStudents}
-      updateStudents={(e: ActiveStudentResponse[]) => {
-        setStudents(e);
-      }}
-    >
-      <div className={classes.search_bar}>
-        <SearchUsers />
-        <div className={classes.div_btn_to_modal_wrapper}>
-          <Button
-            customClasses={classes.btn_to_modal}
-            onClick={openFilterModal}
-          >
-            <span
-              className="material-icons-outlined"
-              style={{
-                fontSize: "1.5rem",
-                verticalAlign: "-6px",
-                color: "#4D4D4D",
-                backgroundColor: "",
-              }}
-            >
-              filter_alt
-            </span>
-            Filtrowanie
-          </Button>
+    <FilterContextProvider>
+      <QueryManagement
+        baseStudents={activeStudents}
+        meta={meta}
+        request={RequestPath.GetStudents}
+        updateStudents={updateStudents}
+      >
+        <div className={classes.search_bar}>
+          <SearchUsers />
+          <div className={classes.div_btn_to_modal_wrapper}>
+            <FilterModal />
+          </div>
         </div>
-      </div>
-      {students.map((el: ActiveStudentResponse) => (
-        <Dropdown
-          key={el.id}
-          userNameData={
-            <Text>
-              {el.firstname} {el.lastname ? el.lastname.charAt(0) + "." : ""}
-            </Text>
-          }
-          courseAssessment={el.courseCompletion}
-          courseEngagement={el.courseEngagement}
-          projectDegree={el.projectDegree}
-          teamProjectDegree={el.teamProjectDegree}
-          expectedTypeWork={el.expectedTypeWork}
-          expectedContractType={el.expectedContractType}
-          expectedSalary={el.expectedSalary}
-          canTakeApprenticeship={el.canTakeApprenticeship}
-          monthsOfCommercialExp={el.monthsOfCommercialExp}
-          targetWorkCity={el.targetWorkCity}
-          firstOptionalBtn={<CreateInterviewButton id={el.id} />}
-        />
-      ))}
-      <FilterModal
-        isOpen={filterModalIsOpen}
-        onRequestClose={closeFilterModal}
-        onCancel={closeFilterModal}
-      />
-    </QueryManagement>
+        {students.map((el) => (
+          <Dropdown
+            key={el.id}
+            userNameData={
+              <Text>
+                {el.firstname} {el.lastname?.charAt(0) + "."}
+              </Text>
+            }
+            firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum
+            ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate?
+            Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit.
+            Debitis?
+          </Dropdown>
+        ))}
+      </QueryManagement>
+    </FilterContextProvider>
   );
 };

@@ -2,7 +2,7 @@ import { QueryData } from "../types/QueryData";
 import { QueryActionData } from "../types/QueryActionData";
 import { QueryAction } from "@enums/query-action.enum";
 import { PageMeta } from "@backendTypes";
-import { buildQueryUrl } from "@utils/buildQuery";
+import {buildQueryUrl} from "@utils/query/buildQuery";
 
 type Reducer = (state: QueryData, action: QueryActionData) => QueryData;
 
@@ -58,10 +58,8 @@ export const queryReducer: Reducer = (state, action) => {
         courseEngagement: copyState.filtration.courseEngagement ?? "",
         projectDegree: copyState.filtration.projectDegree ?? "",
         teamProjectDegree: copyState.filtration.teamProjectDegree ?? "",
-        expectedTypeWork:
-          copyState.filtration.expectedTypeWork ?? "Bez znaczenia",
-        expectedContractType:
-          copyState.filtration.expectedContractType ?? "Brak preferencji",
+        expectedTypeWork: copyState.filtration.expectedTypeWork ?? "",
+        expectedContractType: copyState.filtration.expectedContractType ?? "",
         minSalary: copyState.filtration.minSalary,
         maxSalary: copyState.filtration.maxSalary,
         canTakeApprenticeship: copyState.filtration.canTakeApprenticeship,

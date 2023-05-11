@@ -1,5 +1,6 @@
-import React,{
+import React, {
   PropsWithChildren,
+  useContext,
   useLayoutEffect,
   useReducer,
   useState,
@@ -17,6 +18,9 @@ import {
 } from "@backendTypes";
 import { toast } from "react-hot-toast";
 import { Paginator } from "@components/Paginator/Paginator";
+import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
+import { FilterContext } from "@context/FilterContext";
+import {FilterAction} from "@enums/filter-action.enum";
 
 interface Props extends PropsWithChildren {
   baseStudents: ActiveStudentResponse[];
@@ -24,32 +28,28 @@ interface Props extends PropsWithChildren {
   meta: PageMeta;
   updateStudents: (students: ActiveStudentResponse[]) => void;
 }
-
-const filters = {
-  courseCompletion: "",
-  courseEngagement: "",
-  projectDegree: "",
-  teamProjectDegree: "",
-  expectedTypeWork: "",
-  expectedContractType: "",
-  minSalary: "",
-  maxSalary: "",
-  canTakeApprenticeship: "",
-  monthsOfCommercialExp: "",
-};
-
 export const QueryManagement = ({
   children,
   request,
   meta,
   updateStudents,
 }: Props) => {
+  const { dispatchFilter } = useContext(FilterContext);
+
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
     url: import.meta.env.VITE_API_URL + request,
     name: "",
-    filtration: filters,
+    filtration: DEFAULT_QUERY_FILTERS,
     pagination: meta,
   });
+
+  useLayoutEffect(() => {
+    dispatchFilter({
+      type: FilterAction.ResetAll,
+      payload: undefined,
+    });
+  }, []);
+
   const [isLoading, setIsLoading] = useState(false);
   useLayoutEffect(() => {
     if (isLoading) return;
