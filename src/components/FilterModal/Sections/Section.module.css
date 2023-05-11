@@ -1,0 +1,11 @@
+.input_rating {
+    font: normal normal normal 12px/19px Catamaran;
+    width: 16.2rem;
+    background: var(--bgInput) 0 0 no-repeat padding-box;
+    opacity: 1;
+    border: 0;
+    padding: 6px 10px;
+    color: var(--colorInput);
+    margin-bottom: -1rem;
+    outline: transparent;
+}
