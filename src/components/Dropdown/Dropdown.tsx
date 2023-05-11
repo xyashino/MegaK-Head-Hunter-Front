@@ -92,107 +92,86 @@ export const Dropdown: React.FC<DropdownProps> = ({
             isOpen ? classes.dropdown_content_animated : ""
           }`}
         >
-          {courseAssessment ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Ocena przejścia kursu
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{courseAssessment}</b> / 5
-              </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Ocena przejścia kursu
             </div>
-          ) : null}
-          {courseEngagement ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Ocena aktywności i zaangażowania na kursie
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{courseEngagement}</b> / 5
-              </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{courseAssessment}</b> / 5
             </div>
-          ) : null}
-          {projectDegree ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Ocena kodu w projekcie własnym
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{projectDegree}</b> / 5
-              </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Ocena aktywności i zaangażowania na kursie
             </div>
-          ) : null}
-          {teamProjectDegree ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Ocena pracy w zespole w Scrum
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{teamProjectDegree}</b> / 5
-              </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{courseEngagement}</b> / 5
             </div>
-          ) : null}
-
-          {expectedTypeWork ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Preferowane miejsce pracy
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{expectedTypeWork}</b>
-              </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Ocena kodu w projekcie własnym
             </div>
-          ) : null}
-          {targetWorkCity ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Docelowe miasto, gdzie chce pracować kandydat
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{targetWorkCity}</b>
-              </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{projectDegree}</b> / 5
             </div>
-          ) : null}
-          {expectedContractType ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Oczekiwany typ kontraktu
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{expectedContractType}</b>
-              </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Ocena pracy w zespole w Scrum
             </div>
-          ) : null}
-          {expectedSalary ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Oczekiwane wynagrodzenie miesięczne netto
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{expectedSalary} zł</b>
-              </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{teamProjectDegree}</b> / 5
             </div>
-          ) : null}
-          {canTakeApprenticeship ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Zgoda na odbycie bezpłatnych praktyk/stażu na początek
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{canTakeApprenticeship}</b>
-              </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Preferowane miejsce pracy
             </div>
-          ) : null}
-          {monthsOfCommercialExp ? (
-            <div className={classes.dropdown_row}>
-              <div className={classes.dropdown_row_title}>
-                Komercyjne doświadczenie w programowaniu
-              </div>
-              <div className={classes.dropdown_row_data}>
-                <b>{monthsOfCommercialExp}</b>
-              </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{expectedTypeWork}</b>
             </div>
-          ) : null}
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Docelowe miasto, gdzie chce pracować kandydat
+            </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{targetWorkCity}</b>
+            </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Oczekiwany typ kontraktu
+            </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{expectedContractType}</b>
+            </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Oczekiwane wynagrodzenie miesięczne netto
+            </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{expectedSalary} zł</b>
+            </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Zgoda na odbycie bezpłatnych praktyk/stażu na początek
+            </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{canTakeApprenticeship}</b>
+            </div>
+          </div>
+          <div className={classes.dropdown_row}>
+            <div className={classes.dropdown_row_title}>
+              Komercyjne doświadczenie w programowaniu
+            </div>
+            <div className={classes.dropdown_row_data}>
+              <b>{monthsOfCommercialExp}</b>
+            </div>
+          </div>
         </div>
       )}
     </>
