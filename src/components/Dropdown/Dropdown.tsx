@@ -2,15 +2,17 @@ import React, { ReactNode, useCallback, useState } from "react";
 import classes from "./Dropdown.module.css";
 import arrow_down from "@assets/arrow_down.svg";
 import { DropdownContent } from "@components/DropdownContent/DropdownContent";
+import { Text } from "@componentsCommon/Text/Text";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
 
 type OptionalData = ReactNode | ReactNode[] | string;
 
 interface DropdownProps {
   firstOptionalBtn?: OptionalData;
   secondOptionalBtn?: OptionalData;
-  reservationData?: OptionalData;
-  userNameData: OptionalData;
-  userNameAvatarData?: OptionalData;
+  reservation?: string;
+  userName: string;
+  githubUsername?: string;
   thirdOptionalBtn?: OptionalData;
   studentData: {
     courseCompletion: number;
@@ -29,9 +31,9 @@ interface DropdownProps {
 export const Dropdown: React.FC<DropdownProps> = ({
   firstOptionalBtn,
   secondOptionalBtn,
-  reservationData,
-  userNameAvatarData,
-  userNameData,
+  reservation,
+  githubUsername,
+  userName,
   thirdOptionalBtn,
   studentData,
 }) => {
@@ -45,9 +47,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <>
       <div className={classes.dropdown_container}>
         <div className={classes.user_info}>
-          <div className={classes.hidden}>{reservationData}</div>
-          {userNameAvatarData}
-          {userNameData}
+          <div className={classes.hidden}>
+            {reservation && (
+                <Text>
+                  Rezerwacja do <br />
+                  {new Date(reservation).toLocaleDateString()}
+                </Text>
+            )}
+          </div>
+          {githubUsername && <Avatar githubUsername={githubUsername} />}
+          <Text>{userName}</Text>
         </div>
         <div className={classes.buttons_row}>
           <div className={classes.hidden}>
@@ -65,7 +74,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </button>
         </div>
       </div>
-      {isOpen && <DropdownContent isOpen={isOpen} studentData={studentData}/>}
+      {isOpen && <DropdownContent isOpen={isOpen} studentData={studentData} />}
     </>
   );
 };

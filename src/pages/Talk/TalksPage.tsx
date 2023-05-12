@@ -8,12 +8,10 @@ import classes from "@pages/Students/StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
 import { Dropdown } from "@components/Dropdown/Dropdown";
-import { Avatar } from "@componentsCommon/Avatar/Avatar";
 import { Button } from "@componentsCommon/Button/Button";
 import { PageRouter } from "@enums/page-router.enum";
 import { HiredButton } from "@components/HiredButton/HiredButton";
 import { RemoveInterviewButton } from "@components/RemoveInterviewButton/RemoveInterviewButton";
-import { Text } from "@componentsCommon/Text/Text";
 
 export const TalksPage = () => {
   const { data: activeStudents, meta } = useLoaderData() as {
@@ -42,40 +40,26 @@ export const TalksPage = () => {
         {students.map((el) => (
           <Dropdown
             key={el.id}
-            reservationData={
-              <Text>
-                Rezerwacja do <br />
-                {/*{new Date(el).toLocaleDateString()}*/}
-              </Text>
-            }
-            userNameAvatarData={
-              <Avatar githubUsername={el.githubUsername} />
-            }
-            userNameData={
-              <Text>
-                {el.firstname} {el.lastname}
-              </Text>
-            }
+            githubUsername={el.githubUsername}
+            userName={`${el.firstname} ${el.lastname?.charAt(0) + "."}`}
             firstOptionalBtn={
-              <Button
-                onClick={() => navigate(`${PageRouter.GetCv}${el.id}`)}
-              >
+              <Button onClick={() => navigate(`${PageRouter.GetCv}${el.id}`)}>
                 Pokaż CV
               </Button>
             }
             secondOptionalBtn={<RemoveInterviewButton id={el.id} />}
             thirdOptionalBtn={<HiredButton id={el.id} />}
             studentData={{
-                courseCompletion: el.courseCompletion,
-                courseEngagement: el.courseEngagement,
-                projectDegree: el.projectDegree,
-                teamProjectDegree: el.teamProjectDegree,
-                expectedTypeWork: el.expectedTypeWork,
-                expectedContractType: el.expectedContractType,
-                expectedSalary: el.expectedSalary,
-                canTakeApprenticeship: el.canTakeApprenticeship,
-                monthsOfCommercialExp: el.monthsOfCommercialExp,
-                targetWorkCity: el.targetWorkCity
+              courseCompletion: el.courseCompletion,
+              courseEngagement: el.courseEngagement,
+              projectDegree: el.projectDegree,
+              teamProjectDegree: el.teamProjectDegree,
+              expectedTypeWork: el.expectedTypeWork,
+              expectedContractType: el.expectedContractType,
+              expectedSalary: el.expectedSalary,
+              canTakeApprenticeship: el.canTakeApprenticeship,
+              monthsOfCommercialExp: el.monthsOfCommercialExp,
+              targetWorkCity: el.targetWorkCity,
             }}
           />
         ))}

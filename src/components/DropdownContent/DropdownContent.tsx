@@ -39,9 +39,7 @@ export const DropdownContent: React.FC<DropdownProps> = ({
   return (
     <>
       <div
-        className={`${classes.dropdown_content} ${
-          isOpen ? classes.dropdown_content_animated : ""
-        }`}
+        className={`${classes.dropdown_content} ${isOpen ? classes.dropdown_content_animated : ""}`}
       >
         <DropdownContentRow title="Ocena przejścia kursu">
           <b>{courseCompletion}</b> / 5

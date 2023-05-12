@@ -8,7 +8,6 @@ import classes from "./StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
 import { Button } from "@componentsCommon/Button/Button";
-import { Text } from "@componentsCommon/Text/Text";
 import { useState } from "react";
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
@@ -36,11 +35,7 @@ export const StudentsPage = () => {
         {students.map(({ id, firstname, lastname, ...rest }) => (
           <Dropdown
             key={id}
-            userNameData={
-              <Text>
-                {firstname} {lastname?.charAt(0) + "."}
-              </Text>
-            }
+            userName={`${firstname} ${lastname?.charAt(0) + "."}`}
             firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
             studentData={{
               canTakeApprenticeship: rest.canTakeApprenticeship,

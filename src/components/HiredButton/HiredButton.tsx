@@ -11,7 +11,6 @@ export const HiredButton = ({ id }: any) => {
       status: "Zatrudniony",
     },
   });
-
   const hiredStudent = async () => {
     const result = confirm("Czy na pewno chcesz zatrudnić kursanta?");
     if (result) {
