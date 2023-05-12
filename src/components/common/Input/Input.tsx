@@ -1,7 +1,7 @@
 import React, {HTMLAttributes, PropsWithChildren} from "react";
 import classes from "./Input.module.css";
-import { PreviewPassword } from "@components/Input/PreviewPassword";
-import { BaseInput } from "@components/Input/BaseInput";
+import { PreviewPassword } from "@componentsCommon/Input/PreviewPassword";
+import { BaseInput } from "@componentsCommon/Input/BaseInput";
 
 export type InputType =
   | "email"

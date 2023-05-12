@@ -1,8 +1,8 @@
 import React, { SyntheticEvent } from "react";
-import { Logo } from "@components/Logo/Logo";
-import { Input } from "@components/Input/Input";
-import { Text } from "@components/Text/Text";
-import { Button } from "@components/Button/Button";
+import { Logo } from "@componentsCommon/Logo/Logo";
+import { Input } from "@componentsCommon/Input/Input";
+import { Text } from "@componentsCommon/Text/Text";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./LoginPage.module.css";
 import { useValidationState } from "@hooks/useValidationState";
 import { useAxios } from "@hooks/useAxios";

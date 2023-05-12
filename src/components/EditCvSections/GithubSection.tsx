@@ -1,8 +1,8 @@
 import classes from "./EditCvSections.module.css";
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 import React, { SyntheticEvent } from "react";
-import { Avatar } from "@components/Avatar/Avatar";
-import { Text } from "@components/Text/Text";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
+import { Text } from "@componentsCommon/Text/Text";
 import {ContrastSection} from "@components/EditCvSections/ContrastSection";
 
 interface Props {

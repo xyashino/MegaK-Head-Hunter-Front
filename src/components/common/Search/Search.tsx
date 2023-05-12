@@ -6,7 +6,7 @@ import React, {
 } from "react";
 import classes from "./Search.module.css";
 import searchIcon from "@assets/search.svg";
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 import { QueryContext } from "@context/QueryContext";
 import { QueryAction } from "@enums/query-action.enum";
 
