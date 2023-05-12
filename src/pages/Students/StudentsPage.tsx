@@ -5,11 +5,11 @@ import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
 import { SearchUsers } from "@componentsCommon/Search/Search";
 import classes from "./StudentsPage.module.css";
-import { Button } from "@components/Button/Button";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
 import { Button } from "@componentsCommon/Button/Button";
 import { Text } from "@componentsCommon/Text/Text";
+import { useState } from "react";
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
   const [students, setStudents] =
@@ -33,21 +33,28 @@ export const StudentsPage = () => {
             <FilterModal />
           </div>
         </div>
-        {students.map((el) => (
+        {students.map(({ id, firstname, lastname, ...rest }) => (
           <Dropdown
-            key={el.id}
+            key={id}
             userNameData={
               <Text>
-                {el.firstname} {el.lastname?.charAt(0) + "."}
+                {firstname} {lastname?.charAt(0) + "."}
               </Text>
             }
             firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum
-            ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate?
-            Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit.
-            Debitis?
-          </Dropdown>
+            studentData={{
+              canTakeApprenticeship: rest.canTakeApprenticeship,
+              monthsOfCommercialExp: rest.monthsOfCommercialExp,
+              expectedContractType: rest.expectedContractType,
+              teamProjectDegree: rest.teamProjectDegree,
+              expectedSalary: rest.expectedSalary,
+              targetWorkCity: rest.targetWorkCity,
+              courseEngagement: rest.courseEngagement,
+              courseCompletion: rest.courseCompletion,
+              expectedTypeWork: rest.expectedTypeWork,
+              projectDegree: rest.projectDegree,
+            }}
+          />
         ))}
       </QueryManagement>
     </FilterContextProvider>

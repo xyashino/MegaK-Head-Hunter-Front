@@ -1,7 +1,7 @@
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 
 export const RemoveInterviewButton = ({ id }: any) => {
   const { fetchData, loading } = useAxios({

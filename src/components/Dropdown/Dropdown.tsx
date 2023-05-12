@@ -12,16 +12,18 @@ interface DropdownProps {
   userNameData: OptionalData;
   userNameAvatarData?: OptionalData;
   thirdOptionalBtn?: OptionalData;
-  courseAssessment: number;
-  courseEngagement: number;
-  projectDegree: number;
-  teamProjectDegree: number;
-  expectedTypeWork: string;
-  targetWorkCity: string | null;
-  expectedContractType: string;
-  expectedSalary: number | null;
-  canTakeApprenticeship: boolean;
-  monthsOfCommercialExp: number;
+  studentData: {
+    courseCompletion: number;
+    courseEngagement: number;
+    projectDegree: number;
+    teamProjectDegree: number;
+    expectedTypeWork: string;
+    targetWorkCity: string | null;
+    expectedContractType: string;
+    expectedSalary: number | null;
+    canTakeApprenticeship: boolean;
+    monthsOfCommercialExp: number;
+  };
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
@@ -31,29 +33,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
   userNameAvatarData,
   userNameData,
   thirdOptionalBtn,
-  courseAssessment,
-  courseEngagement,
-  projectDegree,
-  teamProjectDegree,
-  expectedTypeWork,
-  targetWorkCity,
-  expectedContractType,
-  expectedSalary,
-  canTakeApprenticeship,
-  monthsOfCommercialExp,
+  studentData,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   }, []);
-
-  let months = "miesięcy";
-
-  if (monthsOfCommercialExp >= 2 && monthsOfCommercialExp <= 4)
-    months = "miesiące";
-
-  if (monthsOfCommercialExp === 1) months = "miesiąc";
 
   return (
     <>
@@ -69,46 +55,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
             {secondOptionalBtn}
             {thirdOptionalBtn}
           </div>
-          <button className={classes.dropdown_button}>
-            {isOpen ? (
-              <>
-                <img
-                  src={arrow_down}
-                  className={classes.icon}
-                  onClick={toggleDropdown}
-                  alt="Strzałka w dół - rozwiń zawartość"
-                  draggable={false}
-                />
-              </>
-            ) : (
-              <>
-                <img
-                  src={arrow_down}
-                  className={`${classes.icon} ${classes.icon_animated}`}
-                  onClick={toggleDropdown}
-                  alt="Strzałka w górę - ukryj zawartość"
-                  draggable={false}
-                />
-              </>
-            )}
+          <button className={classes.dropdown_button} onClick={toggleDropdown}>
+            <img
+              src={arrow_down}
+              className={`${classes.icon} ${isOpen && classes.icon_animated}`}
+              alt="Strzałka w dół - rozwiń zawartość"
+              draggable={false}
+            />
           </button>
         </div>
       </div>
-      {isOpen && (
-        <DropdownContent
-          isOpen={isOpen}
-          courseAssessment={courseAssessment}
-          courseEngagement={courseEngagement}
-          projectDegree={projectDegree}
-          teamProjectDegree={teamProjectDegree}
-          expectedTypeWork={expectedTypeWork}
-          targetWorkCity={targetWorkCity}
-          expectedContractType={expectedContractType}
-          expectedSalary={expectedSalary}
-          canTakeApprenticeship={canTakeApprenticeship}
-          monthsOfCommercialExp={monthsOfCommercialExp}
-        />
-      )}
+      {isOpen && <DropdownContent isOpen={isOpen} studentData={studentData}/>}
     </>
   );
 };

@@ -8,12 +8,12 @@ import classes from "@pages/Students/StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
 import { Dropdown } from "@components/Dropdown/Dropdown";
-import { Avatar } from "@components/Avatar/Avatar";
-import { Button } from "@components/Button/Button";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
+import { Button } from "@componentsCommon/Button/Button";
 import { PageRouter } from "@enums/page-router.enum";
 import { HiredButton } from "@components/HiredButton/HiredButton";
 import { RemoveInterviewButton } from "@components/RemoveInterviewButton/RemoveInterviewButton";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 
 export const TalksPage = () => {
   const { data: activeStudents, meta } = useLoaderData() as {
@@ -41,40 +41,42 @@ export const TalksPage = () => {
         </div>
         {students.map((el) => (
           <Dropdown
-            key={el.student.id}
+            key={el.id}
             reservationData={
               <Text>
                 Rezerwacja do <br />
-                {new Date(el.bookingDate).toLocaleDateString()}
+                {/*{new Date(el).toLocaleDateString()}*/}
               </Text>
             }
             userNameAvatarData={
-              <Avatar githubUsername={el.student.githubUsername} />
+              <Avatar githubUsername={el.githubUsername} />
             }
             userNameData={
               <Text>
-                {el.student.firstname} {el.student.lastname}
+                {el.firstname} {el.lastname}
               </Text>
             }
             firstOptionalBtn={
               <Button
-                onClick={() => navigate(`${PageRouter.GetCv}${el.student.id}`)}
+                onClick={() => navigate(`${PageRouter.GetCv}${el.id}`)}
               >
                 Pokaż CV
               </Button>
             }
-            secondOptionalBtn={<RemoveInterviewButton id={el.student.id} />}
-            thirdOptionalBtn={<HiredButton id={el.student.id} />}
-            courseAssessment={el.student.courseCompletion}
-            courseEngagement={el.student.courseEngagement}
-            projectDegree={el.student.projectDegree}
-            teamProjectDegree={el.student.teamProjectDegree}
-            expectedTypeWork={el.student.expectedTypeWork}
-            expectedContractType={el.student.expectedContractType}
-            expectedSalary={el.student.expectedSalary}
-            canTakeApprenticeship={el.student.canTakeApprenticeship}
-            monthsOfCommercialExp={el.student.monthsOfCommercialExp}
-            targetWorkCity={el.student.targetWorkCity}
+            secondOptionalBtn={<RemoveInterviewButton id={el.id} />}
+            thirdOptionalBtn={<HiredButton id={el.id} />}
+            studentData={{
+                courseCompletion: el.courseCompletion,
+                courseEngagement: el.courseEngagement,
+                projectDegree: el.projectDegree,
+                teamProjectDegree: el.teamProjectDegree,
+                expectedTypeWork: el.expectedTypeWork,
+                expectedContractType: el.expectedContractType,
+                expectedSalary: el.expectedSalary,
+                canTakeApprenticeship: el.canTakeApprenticeship,
+                monthsOfCommercialExp: el.monthsOfCommercialExp,
+                targetWorkCity: el.targetWorkCity
+            }}
           />
         ))}
       </QueryManagement>
