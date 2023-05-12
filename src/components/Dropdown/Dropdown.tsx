@@ -1,19 +1,21 @@
-import React, { ReactNode, useCallback, useState } from "react";
+import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import classes from "./Dropdown.module.css";
 import arrow_down from "@assets/arrow_down.svg";
 import { DropdownContent } from "@components/DropdownContent/DropdownContent";
 import { Text } from "@componentsCommon/Text/Text";
 import { Avatar } from "@componentsCommon/Avatar/Avatar";
-
-type OptionalData = ReactNode | ReactNode[] | string;
+import { Button } from "@componentsCommon/Button/Button";
+import { PageRouter } from "@enums/page-router.enum";
+import { RemoveInterviewButton } from "@components/RemoveInterviewButton/RemoveInterviewButton";
+import { HiredButton } from "@components/HiredButton/HiredButton";
 
 interface DropdownProps {
-  firstOptionalBtn?: OptionalData;
-  secondOptionalBtn?: OptionalData;
+  isTalks?: true;
+  id: string;
   reservation?: string;
   userName: string;
   githubUsername?: string;
-  thirdOptionalBtn?: OptionalData;
   studentData: {
     courseCompletion: number;
     courseEngagement: number;
@@ -29,15 +31,15 @@ interface DropdownProps {
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
-  firstOptionalBtn,
-  secondOptionalBtn,
+  isTalks,
+  id,
   reservation,
   githubUsername,
   userName,
-  thirdOptionalBtn,
   studentData,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleDropdown = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -49,10 +51,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
         <div className={classes.user_info}>
           <div className={classes.hidden}>
             {reservation && (
-                <Text>
-                  Rezerwacja do <br />
-                  {new Date(reservation).toLocaleDateString()}
-                </Text>
+              <Text>
+                Rezerwacja do <br />
+                {new Date(reservation).toLocaleDateString()}
+              </Text>
             )}
           </div>
           {githubUsername && <Avatar githubUsername={githubUsername} />}
@@ -60,9 +62,17 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </div>
         <div className={classes.buttons_row}>
           <div className={classes.hidden}>
-            {firstOptionalBtn}
-            {secondOptionalBtn}
-            {thirdOptionalBtn}
+            {isTalks ? (
+              <>
+                <Button onClick={() => navigate(`${PageRouter.GetCv}${id}`)}>
+                  Pokaż CV
+                </Button>
+                <RemoveInterviewButton id={id} />
+                <HiredButton id={id} />
+              </>
+            ) : (
+              <Button>Zarezerwuj rozmowę</Button>
+            )}
           </div>
           <button className={classes.dropdown_button} onClick={toggleDropdown}>
             <img

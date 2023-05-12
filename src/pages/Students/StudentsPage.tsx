@@ -7,7 +7,6 @@ import { SearchUsers } from "@componentsCommon/Search/Search";
 import classes from "./StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
-import { Button } from "@componentsCommon/Button/Button";
 import { useState } from "react";
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
@@ -36,7 +35,7 @@ export const StudentsPage = () => {
           <Dropdown
             key={id}
             userName={`${firstname} ${lastname?.charAt(0) + "."}`}
-            firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
+            id={id}
             studentData={{
               canTakeApprenticeship: rest.canTakeApprenticeship,
               monthsOfCommercialExp: rest.monthsOfCommercialExp,
