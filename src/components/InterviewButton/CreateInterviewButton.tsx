@@ -3,7 +3,11 @@ import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
 import { Button } from "@componentsCommon/Button/Button";
 
-export const CreateInterviewButton = ({ id }: any) => {
+interface Props {
+  id:string;
+}
+
+export const CreateInterviewButton = ({ id }: Props) => {
   const { fetchData, loading } = useAxios({
     url: RequestPath.GetInterview,
     method: "POST",
