@@ -1,5 +1,5 @@
 import React, { SyntheticEvent, useContext } from "react";
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 import classes from "./Section.module.css";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";

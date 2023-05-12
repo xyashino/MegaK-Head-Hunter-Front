@@ -2,7 +2,7 @@ import classes from "@components/FilterModal/FilterModal.module.css";
 import React, { SyntheticEvent, useContext } from "react";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 
 export const MonthSection = () => {
   const {

@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.back_btn {
+  margin: 20px;
+  width: 100%;
+}
+
 .form {
   background-color: var(--navBorder);
   padding: 10px 10px;

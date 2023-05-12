@@ -1,16 +1,15 @@
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ManyStudentResponse, ActiveStudentResponse } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
-import React, { useState } from "react";
-import { SearchUsers } from "@components/Search/Search";
+import { SearchUsers } from "@componentsCommon/Search/Search";
 import classes from "./StudentsPage.module.css";
-import { Button } from "@components/Button/Button";
 import { FilterModal } from "@components/FilterModal/FilterModal";
-import { Text } from "@components/Text/Text";
 import { FilterContextProvider } from "@context/FilterContext";
-
+import { Button } from "@componentsCommon/Button/Button";
+import { Text } from "@componentsCommon/Text/Text";
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
   const [students, setStudents] =
@@ -43,12 +42,8 @@ export const StudentsPage = () => {
               </Text>
             }
             firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
-          >
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum
-            ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate?
-            Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit.
-            Debitis?
-          </Dropdown>
+            children={"dasd"}
+          />
         ))}
       </QueryManagement>
     </FilterContextProvider>

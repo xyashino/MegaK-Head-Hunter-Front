@@ -1,5 +1,5 @@
 import classes from "@components/FilterModal/FilterModal.module.css";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 import React, {SyntheticEvent} from "react";
 
 interface Props {

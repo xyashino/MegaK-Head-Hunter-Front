@@ -3,7 +3,7 @@ import { ActiveStudentResponse, PageMeta } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import React, { useState } from "react";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
-import { SearchUsers } from "@components/Search/Search";
+import { SearchUsers } from "@componentsCommon/Search/Search";
 import classes from "@pages/Students/StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";

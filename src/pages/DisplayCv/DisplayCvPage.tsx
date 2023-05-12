@@ -2,7 +2,7 @@ import React from "react";
 import { ActiveStudentResponse } from "@backendTypes";
 import { ShowRating } from "@components/ShowRating/ShowRating";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
 import { Link, useLoaderData, useOutletContext } from "react-router-dom";
 import classes from "./DisplayCvPage.module.css";
