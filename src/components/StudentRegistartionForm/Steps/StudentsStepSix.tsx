@@ -1,7 +1,7 @@
 import { useValidationState } from "@hooks/useValidationState";
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 import React,{ SyntheticEvent, useContext, useLayoutEffect, useState } from "react";
-import { TextArea } from "@components/TextArea/TextArea";
+import { TextArea } from "@componentsCommon/TextArea/TextArea";
 import { PHONE_NUMBER_REGEXP } from "@constants/Regexp";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 

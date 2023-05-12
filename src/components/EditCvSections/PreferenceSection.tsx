@@ -1,14 +1,14 @@
-import React,{ SyntheticEvent } from "react";
-import { Input } from "@components/Input/Input";
-import { Select } from "@components/Select/Select";
+import React, { SyntheticEvent } from "react";
+import { Input } from "@componentsCommon/Input/Input";
+import { Select } from "@componentsCommon/Select/Select";
 import {
   EXPECTED_CONTRACT_TYPE_OPTIONS,
   EXPECTED_TYPE_WORK_OPTIONS,
 } from "@constants/SelectOptions";
-import { Text } from "@components/Text/Text";
-import { Toggle } from "@components/Toggle/Toggle";
+import { Text } from "@componentsCommon/Text/Text";
+import { Toggle } from "@componentsCommon/Toggle/Toggle";
 import classes from "./EditCvSections.module.css";
-import {ContrastSection} from "@components/EditCvSections/ContrastSection";
+import { ContrastSection } from "@components/EditCvSections/ContrastSection";
 
 interface Props {
   expectedContractType: { defaultValue: string; name: string };

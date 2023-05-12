@@ -1,5 +1,5 @@
 import React, { SyntheticEvent } from "react";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { OutletData } from "../../types/OutletData";
 import { toast } from "react-hot-toast";

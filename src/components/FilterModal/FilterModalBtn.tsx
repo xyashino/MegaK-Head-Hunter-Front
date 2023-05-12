@@ -1,5 +1,5 @@
 import classes from "@pages/Students/StudentsPage.module.css";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 import React from "react";
 
 interface Props {

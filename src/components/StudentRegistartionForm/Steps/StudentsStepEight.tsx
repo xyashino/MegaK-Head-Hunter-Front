@@ -4,9 +4,9 @@ import React, {
   useLayoutEffect,
   useState,
 } from "react";
-import { TextArea } from "@components/TextArea/TextArea";
-import { Button } from "@components/Button/Button";
-import { Text } from "@components/Text/Text";
+import { TextArea } from "@componentsCommon/TextArea/TextArea";
+import { Button } from "@componentsCommon/Button/Button";
+import { Text } from "@componentsCommon/Text/Text";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 import classes from "../StudentRegistrationForm.module.css";
 import { useAxios } from "@hooks/useAxios";

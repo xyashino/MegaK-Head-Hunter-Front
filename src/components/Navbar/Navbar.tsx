@@ -1,8 +1,8 @@
 import React,{ SyntheticEvent, useState } from "react";
-import { Avatar } from "@components/Avatar/Avatar";
-import { Button } from "@components/Button/Button";
-import { Logo } from "@components/Logo/Logo";
-import { Text } from "@components/Text/Text";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
+import { Button } from "@componentsCommon/Button/Button";
+import { Logo } from "@componentsCommon/Logo/Logo";
+import { Text } from "@componentsCommon/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";

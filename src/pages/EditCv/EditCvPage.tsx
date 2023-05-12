@@ -3,10 +3,10 @@ import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { StudentResponse } from "@backendTypes";
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 import classes from "./EditCvPage.module.css";
-import { Button } from "@components/Button/Button";
-import { TextArea } from "@components/TextArea/TextArea";
+import { Button } from "@componentsCommon/Button/Button";
+import { TextArea } from "@componentsCommon/TextArea/TextArea";
 import { UrlForm } from "@components/UrlForm/UrlForm";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { processStudentData } from "@utils/procesStudentData";
@@ -66,20 +66,19 @@ export const EditCvPage = () => {
     }));
   };
 
-  const addUrlPortfolio = (portfolioUrls:string[]) =>{
-      setStudentData((prevState) => ({
-          ...prevState,
-          portfolioUrls,
-      }));
-  }
+  const addUrlPortfolio = (portfolioUrls: string[]) => {
+    setStudentData((prevState) => ({
+      ...prevState,
+      portfolioUrls,
+    }));
+  };
 
-    const addUrlProject = (projectUrls:string[]) =>{
-        setStudentData((prevState) => ({
-            ...prevState,
-            projectUrls,
-        }));
-    }
-
+  const addUrlProject = (projectUrls: string[]) => {
+    setStudentData((prevState) => ({
+      ...prevState,
+      projectUrls,
+    }));
+  };
 
   const uploadData = async (e: SyntheticEvent) => {
     e.preventDefault();

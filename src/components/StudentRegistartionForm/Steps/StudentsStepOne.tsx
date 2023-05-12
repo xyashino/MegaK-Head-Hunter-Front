@@ -1,6 +1,6 @@
-import { Input } from "@components/Input/Input";
+import { Input } from "@componentsCommon/Input/Input";
 import { useValidationState } from "@hooks/useValidationState";
-import React,{ SyntheticEvent, useContext, useLayoutEffect } from "react";
+import React, { SyntheticEvent, useContext, useLayoutEffect } from "react";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 import { StepAction } from "@enums/step-action.enum";
 enum InputName {

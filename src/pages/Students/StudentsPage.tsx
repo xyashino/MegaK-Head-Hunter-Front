@@ -3,14 +3,13 @@ import { ManyStudentResponse, ActiveStudentResponse } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
-import React, { useState } from "react";
-import { SearchUsers } from "@components/Search/Search";
+import { SearchUsers } from "@componentsCommon/Search/Search";
 import classes from "./StudentsPage.module.css";
+import { Button } from "@components/Button/Button";
 import { FilterModal } from "@components/FilterModal/FilterModal";
-import { Text } from "@components/Text/Text";
 import { FilterContextProvider } from "@context/FilterContext";
-import { CreateInterviewButton } from "@components/CreateInterviewButton/CreateInterviewButton";
-
+import { Button } from "@componentsCommon/Button/Button";
+import { Text } from "@componentsCommon/Text/Text";
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
   const [students, setStudents] =
@@ -34,26 +33,21 @@ export const StudentsPage = () => {
             <FilterModal />
           </div>
         </div>
-        {students.map((el: ActiveStudentResponse) => (
+        {students.map((el) => (
           <Dropdown
             key={el.id}
             userNameData={
               <Text>
-                {el.firstname} {el.lastname ? el.lastname.charAt(0) + "." : ""}
+                {el.firstname} {el.lastname?.charAt(0) + "."}
               </Text>
             }
-            courseAssessment={el.courseCompletion}
-            courseEngagement={el.courseEngagement}
-            projectDegree={el.projectDegree}
-            teamProjectDegree={el.teamProjectDegree}
-            expectedTypeWork={el.expectedTypeWork}
-            expectedContractType={el.expectedContractType}
-            expectedSalary={el.expectedSalary}
-            canTakeApprenticeship={el.canTakeApprenticeship}
-            monthsOfCommercialExp={el.monthsOfCommercialExp}
-            targetWorkCity={el.targetWorkCity}
-            firstOptionalBtn={<CreateInterviewButton id={el.id} />}
-          />
+            firstOptionalBtn={<Button>Zarezerwuj rozmowę</Button>}
+          >
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. At harum
+            ipsum labore maxime natus nemo nostrum omnis quod ratione voluptate?
+            Eum impedit ipsam obcaecati placeat quisquam rerum saepe sit.
+            Debitis?
+          </Dropdown>
         ))}
       </QueryManagement>
     </FilterContextProvider>

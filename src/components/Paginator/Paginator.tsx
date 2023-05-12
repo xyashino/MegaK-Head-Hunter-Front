@@ -1,9 +1,9 @@
 import React,{ SyntheticEvent, useContext } from "react";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 import { QueryContext } from "@context/QueryContext";
-import { Select } from "@components/Select/Select";
+import { Select } from "@componentsCommon/Select/Select";
 import { QueryAction } from "@enums/query-action.enum";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./Paginator.module.css";
 enum Controller {
   Prev = "prev",

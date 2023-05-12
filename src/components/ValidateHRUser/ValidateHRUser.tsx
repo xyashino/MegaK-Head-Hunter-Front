@@ -1,7 +1,7 @@
 import React, {SyntheticEvent, useLayoutEffect, useState} from "react";
 import { useValidationState } from "@hooks/useValidationState";
-import { Input } from "@components/Input/Input";
-import { Button } from "@components/Button/Button";
+import { Input } from "@componentsCommon/Input/Input";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./ValidateHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
 import { toast } from "react-hot-toast";

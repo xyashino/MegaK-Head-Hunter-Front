@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Button } from "@components/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./StepsPagination.module.css";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 import { StepAction } from "@enums/step-action.enum";
