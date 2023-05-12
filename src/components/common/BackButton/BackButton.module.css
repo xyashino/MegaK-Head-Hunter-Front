@@ -1,0 +1,16 @@
+.back {
+    flex: 1;
+    max-width: 100%;
+    user-select: none;
+}
+
+.back a {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    color: var(--white);
+}
+
+.back a:hover {
+    opacity: 0.8;
+}
