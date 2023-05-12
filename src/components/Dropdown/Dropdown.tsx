@@ -74,7 +74,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </button>
         </div>
       </div>
-      {isOpen && <DropdownContent isOpen={isOpen} studentData={studentData} />}
+      <div className={`${classes.dropdown_content_wrapper } ${isOpen ? classes.dropdown_content_wrapper_open : ''}`}>
+        <DropdownContent isOpen={isOpen} studentData={studentData} />
+      </div>
     </>
   );
 };
