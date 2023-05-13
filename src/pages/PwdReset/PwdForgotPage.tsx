@@ -69,7 +69,7 @@ export const PwdForgotPage = () => {
           textDecoration: "underline",
           cursor: "pointer",
         }}
-        onClick={() => navigate(PageRouter.Main)}
+        onClick={() => navigate(PageRouter.Login)}
       >
         Wróć do strony logowania
       </Text>

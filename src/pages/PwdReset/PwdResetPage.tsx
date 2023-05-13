@@ -51,7 +51,7 @@ export const PwdResetPage = () => {
 
     await fetchData(() => {
       toast["success"]("Hasło zostało zmienione");
-      navigate(PageRouter.Main);
+      navigate(PageRouter.Login);
     });
   };
 
