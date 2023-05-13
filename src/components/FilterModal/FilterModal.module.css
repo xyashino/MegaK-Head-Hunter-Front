@@ -1,3 +1,16 @@
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 20;
+  background-color: #292a2bbf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .filter_modal {
   background: #0a0a0a 0 0 no-repeat padding-box;
   padding: 2rem 1.5rem;
@@ -7,7 +20,6 @@
   font: normal normal normal 14px/23px Catamaran;
   letter-spacing: 0;
   color: #f7f7f7;
-  margin: 4rem auto;
   z-index: 10;
   animation: modal-animation 0.3s ease-out forwards;
 }
@@ -134,7 +146,7 @@ input[type="radio"]:checked + label:before {
   color: var(--white);
   background: #292a2b 0 0 no-repeat padding-box;
   opacity: 1;
-  margin-right: 1em;
+  margin: 5px 1em 5px 0;
   border: 0;
   padding: 6px 10px;
   font-weight: 200;
@@ -206,12 +218,6 @@ input[type="radio"]:checked + label:before {
   }
   .btn_filter_modal_smaller_active {
     margin-top: 1rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .filter_modal {
-    margin: 4rem auto;
   }
 }
 

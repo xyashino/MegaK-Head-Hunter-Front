@@ -71,11 +71,11 @@ export const FilterModal = () => {
         isOpen={isOpened}
         onRequestClose={closeFilterModal}
         className={classes.filter_modal}
+        overlayClassName={classes.modal_container}
         contentLabel="Filter Modal"
         closeTimeoutMS={50}
-        style={{ overlay: { backgroundColor: "#292a2bbf" } }}
       >
-        <div className={classes.modal_container}>
+        <div>
           <FilterHeaderSection clearAll={clearAll} />
           <RatingSection />
           <WorkSection />
