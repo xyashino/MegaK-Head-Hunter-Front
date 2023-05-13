@@ -31,9 +31,10 @@ const uploadOnServer = (
 
 type Props = {
   text: string;
+  secondText?:string
 };
 
-export const DragAndDrop = ({ text }: Props) => {
+export const DragAndDrop = ({ text ,secondText=''}: Props) => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(
     undefined
   );
@@ -72,7 +73,7 @@ export const DragAndDrop = ({ text }: Props) => {
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>{selectedFiles[0].name}</div>
               ) : (
-                <p className={classes.text}>{text}</p>
+                <p className={classes.text}>{text} <br/> {secondText}</p>
               )}
             </div>
             <aside>

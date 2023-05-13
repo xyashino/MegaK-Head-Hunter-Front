@@ -36,7 +36,7 @@ export const StudentPanelPage = () => {
   };
 
   return (
-    <div>
+    <div style={{alignSelf: 'start'}}>
       <Button
         onClick={navigateToCv}
         style={{ minWidth: "200px", margin: "30px" }}

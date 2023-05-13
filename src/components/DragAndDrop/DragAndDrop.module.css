@@ -1,6 +1,7 @@
 .box {
+    align-self: start;
     margin: 0 auto;
-    width: 90%;
+    width: 100%;
     font-size: 0.9rem;
     text-align: center;
 }
@@ -8,7 +9,7 @@
     margin: 1rem auto;
     padding: 1rem;
     border: 1px dashed var(--white);
-    max-width: 600px;
+    max-width: 1200px;
     min-height: 140px;
     color: var(--white);
     font-size: 0.9rem;
@@ -19,6 +20,8 @@
 
 .text {
     font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .info {
