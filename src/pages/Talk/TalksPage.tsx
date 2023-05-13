@@ -1,5 +1,8 @@
 import { useLoaderData } from "react-router-dom";
-import { ActiveStudentResponse, PageMeta } from "@backendTypes";
+import {
+    InterviewFindResponse,
+    InterviewResponse,
+} from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import React, { useState } from "react";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
@@ -10,19 +13,15 @@ import { FilterContextProvider } from "@context/FilterContext";
 import { Dropdown } from "@components/Dropdown/Dropdown";
 
 export const TalksPage = () => {
-  const { data: activeStudents, meta } = useLoaderData() as {
-    data: ActiveStudentResponse[];
-    meta: PageMeta;
-  };
-  const [students, setStudents] = useState(activeStudents);
+  const { data: interviewResponse, meta } = useLoaderData() as InterviewFindResponse;
+  const [interview, setInterview] = useState(interviewResponse);
   return (
     <FilterContextProvider>
       <QueryManagement
-        baseStudents={students}
         meta={meta}
         request={RequestPath.GetInterview}
-        updateStudents={(e: ActiveStudentResponse[]) => {
-          setStudents(e);
+        updateStudents={(e) => {
+          setInterview(e as InterviewResponse[]);
         }}
       >
         <div className={classes.search_bar}>
@@ -31,7 +30,7 @@ export const TalksPage = () => {
             <FilterModal />
           </div>
         </div>
-        {students.map((el) => (
+        {interview.map(({ student: el }) => (
           <Dropdown
             key={el.id}
             githubUsername={el.githubUsername}
