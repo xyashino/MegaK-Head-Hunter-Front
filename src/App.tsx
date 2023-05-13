@@ -39,7 +39,7 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop text="Test" />,
+            element: <DragAndDrop text="Przeciągni upuść plik"  secondText='LUB kliknij TUTAJ'/>,
           },
           {
             path: PageRouter.AdminHr,
