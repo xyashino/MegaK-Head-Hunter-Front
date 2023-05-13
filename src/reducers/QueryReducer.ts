@@ -50,6 +50,9 @@ export const queryReducer: Reducer = (state, action) => {
       copyState.pagination.page = 1;
       copyState.url = buildQueryUrl(copyState.url, { name: copyState.name });
       return copyState;
+    case QueryAction.Refresh:
+      copyState.refresh = !copyState.refresh;
+      return copyState;
     case QueryAction.FilterStudent:
       copyState.filtration = action.payload;
       copyState.pagination.page = 1;

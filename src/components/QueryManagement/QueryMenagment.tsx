@@ -12,7 +12,7 @@ import { queryReducer } from "@reducers/QueryReducer";
 import { RequestPath } from "@enums/request-path.enum";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import {
-  ActiveStudentResponse,
+  InterviewFindResponse,
   ManyStudentResponse,
   PageMeta,
 } from "@backendTypes";
@@ -20,13 +20,14 @@ import { toast } from "react-hot-toast";
 import { Paginator } from "@components/Paginator/Paginator";
 import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
 import { FilterContext } from "@context/FilterContext";
-import {FilterAction} from "@enums/filter-action.enum";
+import { FilterAction } from "@enums/filter-action.enum";
 
 interface Props extends PropsWithChildren {
-  baseStudents: ActiveStudentResponse[];
   request: RequestPath;
   meta: PageMeta;
-  updateStudents: (students: ActiveStudentResponse[]) => void;
+  updateStudents: <T extends ManyStudentResponse | InterviewFindResponse>(
+    e: T["data"]
+  ) => void;
 }
 export const QueryManagement = ({
   children,
@@ -41,6 +42,7 @@ export const QueryManagement = ({
     name: "",
     filtration: DEFAULT_QUERY_FILTERS,
     pagination: meta,
+    refresh: false,
   });
 
   useLayoutEffect(() => {
@@ -57,7 +59,7 @@ export const QueryManagement = ({
     (async () => {
       try {
         const { meta, data } = (
-          await AxiosSetup.get<ManyStudentResponse>(queryData.url)
+          await AxiosSetup.get<ManyStudentResponse | InterviewFindResponse>(queryData.url)
         ).data;
         updateStudents(data);
         dispatchQuery({ type: QueryAction.PaginationUpdate, payload: meta });
@@ -69,7 +71,7 @@ export const QueryManagement = ({
         setIsLoading(false);
       }
     })();
-  }, [queryData.url]);
+  }, [queryData.url,queryData.refresh]);
 
   return (
     <QueryContext.Provider value={{ queryData, dispatchQuery }}>

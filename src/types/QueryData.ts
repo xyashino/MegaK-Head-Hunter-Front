@@ -5,4 +5,5 @@ export interface QueryData {
   pagination: PageMeta;
   name: string;
   filtration: Filtration;
+  refresh:boolean;
 }

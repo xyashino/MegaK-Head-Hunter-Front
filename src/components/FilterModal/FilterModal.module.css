@@ -8,9 +8,17 @@
     font: normal normal normal 14px/23px Catamaran;
     letter-spacing: 0;
     color: #F7F7F7;
-    opacity: 1;
     margin: 4rem auto;
     z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+.filter_modal_open {
+    opacity: 1;
+}
+
+.filter_modal_overlay {
+    background-color: #292a2bbf;
 }
 
 /*.filter_modal - problem z fontem - ostatnie normal to ma być medium ale jest błąd*/
