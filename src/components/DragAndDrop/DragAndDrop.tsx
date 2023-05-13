@@ -6,9 +6,9 @@ import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
 
-const fileUploadedMsg = <p className={classes.green}>Plik wysłany</p>;
+const fileUploadedMsg = <p className={`${classes.green} ${classes.info}`}>Plik wysłany</p>;
 const fileUploadError = (
-  <p className={classes.red}>
+  <p className={`${classes.red} ${classes.info}`}>
     Wystąpił problem z wysłaniem pliku, spróbuj ponownie
   </p>
 );
@@ -72,7 +72,7 @@ export const DragAndDrop = ({ text }: Props) => {
               {selectedFiles && selectedFiles[0] && selectedFiles[0].name ? (
                 <div>{selectedFiles[0].name}</div>
               ) : (
-                "Przeciągnij i upuść plik lub kliknij i wybierz z dysku"
+                <p className={classes.text}>{text}</p>
               )}
             </div>
             <aside>
