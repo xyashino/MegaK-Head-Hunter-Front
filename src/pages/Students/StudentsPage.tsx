@@ -20,10 +20,9 @@ export const StudentsPage = () => {
   return (
     <FilterContextProvider>
       <QueryManagement
-        baseStudents={activeStudents}
         meta={meta}
         request={RequestPath.GetStudents}
-        updateStudents={updateStudents}
+        updateStudents={updateStudents as any}
       >
         <div className={classes.search_bar}>
           <SearchUsers />

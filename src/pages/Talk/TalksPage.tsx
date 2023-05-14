@@ -21,7 +21,7 @@ export const TalksPage = () => {
         meta={meta}
         request={RequestPath.GetInterview}
         updateStudents={(e) => {
-          setInterview(e as InterviewResponse[]);
+          setInterview(e as any);
         }}
       >
         <div className={classes.search_bar}>

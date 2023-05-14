@@ -21,6 +21,7 @@ const initialValue: QueryContextValue = {
       take: 10,
       pageCount: 1,
     },
+    refresh:false,
   },
   dispatchQuery: () => {},
 };
