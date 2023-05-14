@@ -8,14 +8,20 @@
 .drop_box {
     margin: 1rem auto;
     padding: 1rem;
-    border: 1px dashed var(--white);
+    border: 1px var(--white)  solid;
     max-width: 1200px;
     min-height: 140px;
     color: var(--white);
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    font-weight: bold;
     cursor: pointer;
     border-radius: 2px;
     transition: .2s;
+}
+
+.aside {
+    display: flex;
+    justify-content: center;
 }
 
 .text {
@@ -25,8 +31,8 @@
 }
 
 .info {
-    margin-top: 1rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .red {

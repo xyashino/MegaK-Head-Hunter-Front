@@ -5,6 +5,7 @@ import { AxiosProgressEvent } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
+import {Button} from "@componentsCommon/Button/Button";
 
 const fileUploadedMsg = <p className={`${classes.green} ${classes.info}`}>Plik wysłany</p>;
 const fileUploadError = (
@@ -52,13 +53,12 @@ export const DragAndDrop = ({ text ,secondText=''}: Props) => {
       uploadOnServer(currentFile)
         .then(() => {
           setMessage(fileUploadedMsg);
-          toast["success"](fileUploadedMsg);
+          toast.success(fileUploadedMsg);
         })
         .catch(() => {
           setMessage(fileUploadError);
-          toast["error"](fileUploadedMsg);
+          toast.error(fileUploadError);
         });
-
       setSelectedFiles(undefined);
     }
   };
@@ -76,14 +76,13 @@ export const DragAndDrop = ({ text ,secondText=''}: Props) => {
                 <p className={classes.text}>{text} <br/> {secondText}</p>
               )}
             </div>
-            <aside>
-              <button
-                className={classes.upload_btn}
-                disabled={!selectedFiles}
+            <aside className={classes.aside}>
+              <Button
+                status={!selectedFiles ? 'disabled' : 'active'}
                 onClick={upload}
               >
                 Prześlij
-              </button>
+              </Button>
             </aside>
           </section>
         )}

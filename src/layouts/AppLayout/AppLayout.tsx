@@ -12,10 +12,10 @@ import classes from "./AppLayout.module.css";
 export const AppLayout = () => {
   const { role, data, id } = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
-  const location = useLocation();
+  const {pathname} = useLocation();
 
   useLayoutEffect(() => {
-    if (location.pathname === PageRouter.Main) {
+    if (pathname === PageRouter.Main) {
       switch (role) {
         case "admin":
           return navigate(PageRouter.BaseAdmin);
@@ -27,7 +27,7 @@ export const AppLayout = () => {
           return navigate(PageRouter.Error);
       }
     }
-  }, [location]);
+  }, [pathname]);
 
   const fullName = role === "admin" ? "Admin" : data.fullName;
   const githubUsername = role === "student" ? data.githubUsername : undefined;
@@ -36,7 +36,7 @@ export const AppLayout = () => {
       <Navbar fullName={fullName} githubUsername={githubUsername} />
       <div
         className={`${classes.app_container} ${
-          location.pathname.includes(`/cv/`) ? "" : classes.app_container_gray
+          pathname.includes(`/cv/`) ? "" : classes.app_container_gray
         }`}
       >
         <Outlet context={{ role, id: data?.id ?? "", userId: id }} />
