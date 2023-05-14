@@ -3,7 +3,6 @@ import githubIcon from "@assets/github.svg";
 import mailIcon from "@assets/mail.svg";
 import phoneIcon from "@assets/phone.svg";
 import { Avatar } from "@componentsCommon/Avatar/Avatar";
-import { Button } from "@componentsCommon/Button/Button";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import { Text } from "@componentsCommon/Text/Text";
 import classes from "./StudentProfile.module.css";
@@ -20,21 +19,6 @@ type Props = {
 };
 
 const BASE_GH_URL = "https://github.com/";
-
-const Buttons = (
-  <>
-    <Button
-      style={{
-        width: "100%",
-        marginBottom: "0.75rem",
-      }}
-    >
-      Brak zainteresowania
-    </Button>
-    <Button style={{ width: "100%" }}>Zatrudniony</Button>
-  </>
-);
-
 export const StudentProfile = ({
   fullName,
   ghUsername,
