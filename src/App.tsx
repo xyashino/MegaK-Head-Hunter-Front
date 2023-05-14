@@ -1,3 +1,4 @@
+import React from "react";
 import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { Panel } from "@components/Panel/Panel";
 import { RegisterHrUser } from "@components/RegisterHrUser/RegisterHrUser";
@@ -22,7 +23,9 @@ import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegis
 import { checkAuth } from "@utils/checkAuth";
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import {ValidateHRUser} from "@components/ValidateHRUser/ValidateHRUser";
+import { ValidateHRUser } from "@components/ValidateHRUser/ValidateHRUser";
+import { StudentsPage } from "@pages/Students/StudentsPage";
+import { TalksPage } from "@pages/Talk/TalksPage";
 
 const routers = createBrowserRouter([
   {
@@ -36,7 +39,7 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop text="Test" />,
+            element: <DragAndDrop text="Przeciągni upuść plik"  secondText='LUB kliknij TUTAJ'/>,
           },
           {
             path: PageRouter.AdminHr,
@@ -64,11 +67,13 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.HrStudents,
-            element: <h1>Lista Studentów</h1>,
+            loader: () => getDataFrom(RequestPath.GetStudents),
+            element: <StudentsPage />,
           },
           {
             path: PageRouter.HrTalk,
-            element: <h1>Lista Rozmów</h1>,
+            loader: () => getDataFrom(RequestPath.GetInterview),
+            element: <TalksPage />,
           },
         ],
       },
@@ -78,14 +83,16 @@ const routers = createBrowserRouter([
       },
       {
         path: PageRouter.Cv,
-        loader: ({ params }) => getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+        loader: ({ params }) =>
+          getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
         element: <DisplayCvPage />,
       },
     ],
   },
   {
     path: PageRouter.StudentRegistration,
-    loader: ({ params }) => getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
+    loader: ({ params }) =>
+      getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
     element: <StudentRegistrationPage />,
   },
   {

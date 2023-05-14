@@ -1,6 +1,6 @@
+import React from "react";
 import classes from "./ShowRating.module.css";
 import { RatingInStars } from "@components/RatingInStars/RatingInStars";
-
 interface RatingProps {
   paragraphText: string;
   degree: number;

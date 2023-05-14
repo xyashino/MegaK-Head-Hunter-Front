@@ -1,14 +1,15 @@
-import { Button } from "@components/Button/Button";
-import { Input } from "@components/Input/Input";
-import { Text } from "@components/Text/Text";
+import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
+import { Button } from "@componentsCommon/Button/Button";
+import { Input } from "@componentsCommon/Input/Input";
+import { Text } from "@componentsCommon/Text/Text";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
-import { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { useOutletContext } from "react-router-dom";
 import { OutletData } from "../../types/OutletData";
 import classes from "./AccountPage.module.css";
+import { BackButton } from "@componentsCommon/BackButton/BackButton";
 enum InputName {
   OldPwd = "oldPwd",
   NewPwd = "newPwd",
@@ -87,49 +88,55 @@ export const AccountPage = () => {
   };
 
   return (
-    <div className={classes.account_page}>
-      <h1 style={{ margin: "20px" }}>
-        <Text weight="bold">Zarządzaj Kontem</Text>
-      </h1>
-      <form onSubmit={handleSubmit} className={classes.form}>
-        <h2>
-          <Text weight="bold">Zmiana Hasła:</Text>
-        </h2>
-        <Input
-          preview
-          value={oldPwd}
-          description="Stare Hasło"
-          errorMessage={oldPwdError.message}
-          hasError={oldPwdError.show}
-          name={InputName.OldPwd}
-          onChange={handleChange}
-        />
-        <Input
-          preview
-          value={newPwd}
-          description="Hasło"
-          errorMessage={newPwdError.message}
-          hasError={newPwdError.show}
-          name={InputName.NewPwd}
-          onChange={handleChange}
-        />
-        <Input
-          preview
-          value={confirmPwd}
-          description="Powtórz Hasło"
-          errorMessage={confirmPwdError.message}
-          hasError={confirmPwdError.show}
-          name={InputName.ConfirmPwd}
-          onChange={handleChange}
-        />
-        <Button
-          customClasses={classes.form_submit_btn}
-          loading={loading}
-          status={validForm ? "active" : "disabled"}
-        >
-          Zapisz Zmiany
-        </Button>
-      </form>
+    <div >
+      <div className={classes.back_btn}>
+        <BackButton />
+      </div>
+      <div className={classes.account_page}>
+        <h1 style={{ margin: "20px" }}>
+          <Text weight="bold">Zarządzaj Kontem</Text>
+        </h1>
+
+        <form onSubmit={handleSubmit} className={classes.form}>
+          <h2>
+            <Text weight="bold">Zmiana Hasła:</Text>
+          </h2>
+          <Input
+            preview
+            value={oldPwd}
+            description="Stare Hasło"
+            errorMessage={oldPwdError.message}
+            hasError={oldPwdError.show}
+            name={InputName.OldPwd}
+            onChange={handleChange}
+          />
+          <Input
+            preview
+            value={newPwd}
+            description="Hasło"
+            errorMessage={newPwdError.message}
+            hasError={newPwdError.show}
+            name={InputName.NewPwd}
+            onChange={handleChange}
+          />
+          <Input
+            preview
+            value={confirmPwd}
+            description="Powtórz Hasło"
+            errorMessage={confirmPwdError.message}
+            hasError={confirmPwdError.show}
+            name={InputName.ConfirmPwd}
+            onChange={handleChange}
+          />
+          <Button
+            customClasses={classes.form_submit_btn}
+            loading={loading}
+            status={validForm ? "active" : "disabled"}
+          >
+            Zapisz Zmiany
+          </Button>
+        </form>
+      </div>
     </div>
   );
 };

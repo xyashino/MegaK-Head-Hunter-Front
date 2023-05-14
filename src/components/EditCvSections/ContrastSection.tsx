@@ -1,7 +1,7 @@
+import React from "react";
 import { PropsWithChildren } from "react";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 import classes from "./EditCvSections.module.css";
-
 interface Props extends PropsWithChildren {
   title?: string;
 }

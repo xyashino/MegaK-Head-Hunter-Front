@@ -1,19 +1,16 @@
+import React from "react";
 import { ActiveStudentResponse } from "@backendTypes";
 import { ShowRating } from "@components/ShowRating/ShowRating";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
-import { Text } from "@components/Text/Text";
+import { Text } from "@componentsCommon/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
-import {Link, useLoaderData, useOutletContext} from "react-router-dom";
+import { Link, useLoaderData, useOutletContext } from "react-router-dom";
 import classes from "./DisplayCvPage.module.css";
 import { UrlContainer } from "@components/DisplayCvContainers/UrlCointainer";
 import { RateContainer } from "@components/DisplayCvContainers/RateCointainer";
-import {OutletData} from "../../types/OutletData";
+import { OutletData } from "../../types/OutletData";
 
-interface Props {
-  showButtons?: boolean;
-}
-
-export const DisplayCvPage = ({ showButtons = false }: Props) => {
+export const DisplayCvPage = () => {
   const studentData = useLoaderData() as ActiveStudentResponse;
   const outletContext = useOutletContext() as OutletData;
   return (
@@ -92,7 +89,11 @@ export const DisplayCvPage = ({ showButtons = false }: Props) => {
 
           <RateContainer
             description="Komercyjne doświadczenie w programowaniu"
-            value={studentData.monthsOfCommercialExp  ? `${studentData.monthsOfCommercialExp} miesięcy`: 'BRAK'}
+            value={
+              studentData.monthsOfCommercialExp
+                ? `${studentData.monthsOfCommercialExp} miesięcy`
+                : "BRAK"
+            }
           />
         </div>
         <div className={classes.title_gutter}>Edukacja</div>

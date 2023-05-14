@@ -1,4 +1,4 @@
-import { TextArea } from "@components/TextArea/TextArea";
+import { TextArea } from "@componentsCommon/TextArea/TextArea";
 import React,{ SyntheticEvent, useContext, useLayoutEffect, useState } from "react";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 

@@ -1,7 +1,7 @@
+import React from "react";
 import attachSvg from "@assets/attach_file.svg";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import classes from "./DisplayCvContainers.module.css";
-
 interface Props {
   title: string;
   array: string[];

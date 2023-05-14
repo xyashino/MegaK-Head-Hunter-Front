@@ -1,12 +1,12 @@
-import { Button } from "@components/Button/Button";
-import { Input } from "@components/Input/Input";
-import { Logo } from "@components/Logo/Logo";
-import { Text } from "@components/Text/Text";
+import React,{ SyntheticEvent } from "react";
+import { Button } from "@componentsCommon/Button/Button";
+import { Input } from "@componentsCommon/Input/Input";
+import { Logo } from "@componentsCommon/Logo/Logo";
+import { Text } from "@componentsCommon/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
-import { SyntheticEvent } from "react";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import classes from "./PwdResetPage.module.css";
@@ -51,7 +51,7 @@ export const PwdResetPage = () => {
 
     await fetchData(() => {
       toast["success"]("Hasło zostało zmienione");
-      navigate(PageRouter.Main);
+      navigate(PageRouter.Login);
     });
   };
 

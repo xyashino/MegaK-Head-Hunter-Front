@@ -19,11 +19,11 @@ export enum PageRouter {
   Hr = "/hr",
   HrStudents = "/hr/students",
   HrTalk = "/hr/talk",
-  HrRegistration= '/hr/register/:id',
+  HrRegistration = "/hr/register/:id",
 
   Cv = "/cv/:id",
-
+  GetCv = "/cv/",
   Error = "/error",
-  PwdForgot = '/password/forgot',
-  PwdReset='/password/reset'
+  PwdForgot = "/password/forgot",
+  PwdReset = "/password/reset",
 }

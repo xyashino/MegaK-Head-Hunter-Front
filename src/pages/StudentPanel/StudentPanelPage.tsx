@@ -1,5 +1,5 @@
-import { Button } from "@components/Button/Button";
-import { SyntheticEvent } from "react";
+import React, { SyntheticEvent } from "react";
+import { Button } from "@componentsCommon/Button/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { OutletData } from "../../types/OutletData";
 import { toast } from "react-hot-toast";
@@ -36,7 +36,7 @@ export const StudentPanelPage = () => {
   };
 
   return (
-    <div>
+    <div style={{alignSelf: 'start'}}>
       <Button
         onClick={navigateToCv}
         style={{ minWidth: "200px", margin: "30px" }}

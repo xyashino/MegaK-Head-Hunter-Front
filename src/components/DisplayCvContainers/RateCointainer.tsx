@@ -1,5 +1,5 @@
+import React from "react";
 import classes from "./DisplayCvContainers.module.css";
-
 interface Props {
   description: string;
   value: string;

@@ -1,17 +1,30 @@
-import React, { SyntheticEvent, useState } from "react";
+import React, {SyntheticEvent, useLayoutEffect, useState} from "react";
 import { useValidationState } from "@hooks/useValidationState";
-import { Input } from "@components/Input/Input";
-import { Button } from "@components/Button/Button";
+import { Input } from "@componentsCommon/Input/Input";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./ValidateHRUser.module.css";
 import { useAxios } from "@hooks/useAxios";
+import { toast } from "react-hot-toast";
+import { useNavigate, useParams } from "react-router-dom";
+import { PageRouter } from "@enums/page-router.enum";
+import { RequestPath } from "@enums/request-path.enum";
+import { RegisterHrRequestBody } from "@backendTypes";
 
+enum InputName {
+  pwd = "pwd",
+  confirmPwd = "confirmPwd",
+}
 export const ValidateHRUser = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+  const [isFormValid, setIsFormValid] = useState(false);
   const {
     value: passwordValue,
     error: passwordError,
     setValue: setPassword,
+    isValid: isPasswordValid,
   } = useValidationState("Hasło", {
-    minLength: 3,
+    minLength: 8,
     maxLength: 255,
   });
 
@@ -19,49 +32,74 @@ export const ValidateHRUser = () => {
     value: confirmPasswordValue,
     error: confirmPasswordError,
     setValue: setConfirmPassword,
-  } = useValidationState("Powtórz hasło", {
-    minLength: 3,
+      isValid:isConfirmPasswordValid
+  } = useValidationState("Hasło", {
+    minLength: 8,
     maxLength: 255,
     sameAs: passwordValue,
   });
 
-  const { response } = useAxios({
-    url: "/users",
+  useLayoutEffect(()=>{
+    setIsFormValid(isPasswordValid && isConfirmPasswordValid)
+  },[isPasswordValid,isConfirmPasswordValid])
+
+  const { fetchData, loading } = useAxios({
+    url: `${RequestPath.RegisterHr}${id}`,
     method: "POST",
     body: {
-      password: passwordValue,
-    },
+      pwd: passwordValue,
+    } as RegisterHrRequestBody,
   });
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    console.log(response?.data);
+    if(!isFormValid) return toast['error']('Uzupełnij Poprawnie Formularz')
+    fetchData(() => {
+      toast["success"]("Pomyślnie Aktywowano Konto");
+      navigate(PageRouter.Main);
+    });
+  };
+
+  const handleChange = (e: SyntheticEvent) => {
+    e.preventDefault();
+    const { value, name } = e.target as HTMLInputElement;
+    switch (name) {
+      case InputName.pwd:
+        setPassword(value);
+        break;
+      case InputName.confirmPwd:
+        setConfirmPassword(value);
+        break;
+      default:
+        return;
+    }
   };
 
   return (
     <form className={classes.validate_hr_form} onSubmit={handleSubmit}>
       <Input
-        type="password"
-        placeholder="Podaj hasło"
+        preview
+        name={InputName.pwd}
+        description="Podaj hasło"
+        placeholder="Hasło"
         value={passwordValue}
-        isError={passwordError.show}
-        message={passwordError.message}
-        onChange={(e: SyntheticEvent) =>
-          setPassword((e.target as HTMLInputElement).value as string)
-        }
+        hasError={passwordError.show}
+        errorMessage={passwordError.message}
+        onChange={handleChange}
       />
       <Input
-        type="password"
-        placeholder="Powtórz hasło"
+        preview
+        description="Powtórz hasło"
+        placeholder="Hasło"
+        name={InputName.confirmPwd}
         value={confirmPasswordValue}
-        isError={confirmPasswordError.show}
-        message={confirmPasswordError.message}
-        onChange={(e: SyntheticEvent) =>
-          setConfirmPassword((e.target as HTMLInputElement).value as string)
-        }
+        hasError={confirmPasswordError.show}
+        errorMessage={confirmPasswordError.message}
+        onChange={handleChange}
       />
-
-      <Button>Zapisz</Button> 
+      <Button loading={loading} status={isFormValid ? "active" : "disabled"}>
+        Zapisz
+      </Button>
     </form>
   );
 };

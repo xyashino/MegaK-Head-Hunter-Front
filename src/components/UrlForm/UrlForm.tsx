@@ -1,9 +1,9 @@
 import { useValidationState } from "@hooks/useValidationState";
 import { URL_REGEXP } from "@constants/Regexp";
 import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
-import { Text } from "@components/Text/Text";
-import { Input } from "@components/Input/Input";
-import { Button } from "@components/Button/Button";
+import { Text } from "@componentsCommon/Text/Text";
+import { Input } from "@componentsCommon/Input/Input";
+import { Button } from "@componentsCommon/Button/Button";
 import classes from "./UrlForm.module.css";
 
 interface Props {
