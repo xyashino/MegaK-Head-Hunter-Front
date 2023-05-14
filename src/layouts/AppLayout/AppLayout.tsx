@@ -1,4 +1,5 @@
-import React, {useEffect, useLayoutEffect} from "react";
+import React, {useEffect} from "react";
+
 import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
