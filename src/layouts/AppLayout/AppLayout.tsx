@@ -3,30 +3,37 @@ import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
 import {
+  NavigateFunction,
   Outlet,
   useLoaderData,
   useLocation,
   useNavigate,
 } from "react-router-dom";
 import classes from "./AppLayout.module.css";
+
+const navigator = (pathname:string,role:string, navigate:NavigateFunction) => {
+  if (pathname === PageRouter.Main) {
+    switch (role) {
+      case "admin":
+        return navigate(PageRouter.BaseAdmin);
+      case "student":
+        return navigate(PageRouter.BaseStudent);
+      case "hr":
+        return navigate(PageRouter.BaseHr);
+      default:
+        return navigate(PageRouter.Error);
+    }
+  }
+}
+
 export const AppLayout = () => {
   const { role, data, id } = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
   const {pathname} = useLocation();
 
+  navigator(pathname,role, navigate)
   useLayoutEffect(() => {
-    if (pathname === PageRouter.Main) {
-      switch (role) {
-        case "admin":
-          return navigate(PageRouter.BaseAdmin);
-        case "student":
-          return navigate(PageRouter.BaseStudent);
-        case "hr":
-          return navigate(PageRouter.BaseHr);
-        default:
-          return navigate(PageRouter.Error);
-      }
-    }
+    navigator(pathname,role, navigate)
   }, [pathname]);
 
   const fullName = role === "admin" ? "Admin" : data.fullName;
