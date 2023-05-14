@@ -24,8 +24,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { StudentsPage } from "@pages/Students/StudentsPage";
 import { TalksPage } from "@pages/Talk/TalksPage";
 import { DragAndDropPage } from "@pages/DragAndDrop/DragAndDropPage";
-import { CreateHrPage } from "@pages/CreateHrPage/CreateHrPage";
-import { RegisterHrPage } from "@pages/RegisterHrPage/RegisterHrPage";
+import { CreateHrPage } from "@pages/CreateHr/CreateHrPage";
+import { RegisterHrPage } from "@pages/RegisterHr/RegisterHrPage";
 
 const routers = createBrowserRouter([
   {
