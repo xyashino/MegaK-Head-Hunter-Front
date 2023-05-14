@@ -94,9 +94,9 @@ export const EditCvPage = () => {
         message =
           e.response?.data.message ?? e.response?.data.error ?? e.message;
       }
-      toast["error"](Array.isArray(message) ? message.join("\n") : message);
+      toast.error(Array.isArray(message) ? message.join("\n") : message);
     } finally {
-      toast["success"]("Zapisano zmiany");
+      toast.success("Zapisano zmiany");
     }
   };
 
