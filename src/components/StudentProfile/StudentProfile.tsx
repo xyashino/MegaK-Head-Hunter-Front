@@ -7,6 +7,8 @@ import { Button } from "@componentsCommon/Button/Button";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import { Text } from "@componentsCommon/Text/Text";
 import classes from "./StudentProfile.module.css";
+import { HiredButton } from "@components/HiredButton/HiredButton";
+import { RemoveInterviewButton } from "@components/InterviewButton/RemoveInterviewButton";
 type Props = {
   fullName: string;
   ghUsername: string;
@@ -14,6 +16,7 @@ type Props = {
   mail: string;
   aboutMe: string | null;
   showButtons: boolean;
+  id: string;
 };
 
 const BASE_GH_URL = "https://github.com/";
@@ -38,6 +41,7 @@ export const StudentProfile = ({
   phone,
   mail,
   aboutMe,
+  id,
   showButtons = false,
 }: Props) => {
   return (
@@ -88,7 +92,16 @@ export const StudentProfile = ({
           </>
         )}
 
-        {showButtons ? Buttons : undefined}
+        {showButtons && (
+          <>
+            <HiredButton studentId={id} customClasses={classes.button} />
+            <RemoveInterviewButton
+              studentId={id}
+              navigateToMain
+              customClasses={classes.button}
+            />
+          </>
+        )}
       </div>
     </div>
   );
