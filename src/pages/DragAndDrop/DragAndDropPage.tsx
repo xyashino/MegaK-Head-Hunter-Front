@@ -1,6 +1,6 @@
 import React, { ReactNode, useState } from "react";
 import Dropzone from "react-dropzone";
-import classes from "./DragAndDrop.module.css";
+import classes from "./DragAndDropPage.module.css";
 import { AxiosProgressEvent } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
@@ -35,7 +35,7 @@ type Props = {
   secondText?:string
 };
 
-export const DragAndDrop = ({ text ,secondText=''}: Props) => {
+export const DragAndDropPage = ({ text ,secondText=''}: Props) => {
   const [selectedFiles, setSelectedFiles] = useState<File[] | undefined>(
     undefined
   );

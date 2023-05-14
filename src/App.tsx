@@ -1,7 +1,5 @@
 import React from "react";
-import { DragAndDrop } from "@components/DragAndDrop/DragAndDrop";
 import { Panel } from "@components/Panel/Panel";
-import { RegisterHrUser } from "@components/RegisterHrUser/RegisterHrUser";
 import {
   ADMIN_BOOKMARKS,
   HR_BOOKMARKS,
@@ -23,9 +21,11 @@ import { StudentRegistrationPage } from "@pages/StudentRegistration/StudentRegis
 import { checkAuth } from "@utils/checkAuth";
 import { getDataFrom } from "@utils/network/getDataFrom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ValidateHRUser } from "@components/ValidateHRUser/ValidateHRUser";
 import { StudentsPage } from "@pages/Students/StudentsPage";
 import { TalksPage } from "@pages/Talk/TalksPage";
+import { DragAndDropPage } from "@pages/DragAndDrop/DragAndDropPage";
+import { CreateHrPage } from "@pages/CreateHrPage/CreateHrPage";
+import { RegisterHrPage } from "@pages/RegisterHrPage/RegisterHrPage";
 
 const routers = createBrowserRouter([
   {
@@ -39,11 +39,16 @@ const routers = createBrowserRouter([
         children: [
           {
             path: PageRouter.AdminStudents,
-            element: <DragAndDrop text="Przeciągni upuść plik"  secondText='LUB kliknij TUTAJ'/>,
+            element: (
+              <DragAndDropPage
+                text="Przeciągni upuść plik"
+                secondText="LUB kliknij TUTAJ"
+              />
+            ),
           },
           {
             path: PageRouter.AdminHr,
-            element: <RegisterHrUser />,
+            element: <CreateHrPage />,
           },
         ],
       },
@@ -98,7 +103,7 @@ const routers = createBrowserRouter([
   {
     path: PageRouter.HrRegistration,
     loader: ({ params }) => getDataFrom(`${RequestPath.GetOneHr}${params.id}`),
-    element: <ValidateHRUser />,
+    element: <RegisterHrPage />,
   },
   {
     path: PageRouter.Error,
