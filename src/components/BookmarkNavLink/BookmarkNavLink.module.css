@@ -1,45 +1,54 @@
-.inactive {
+.nav_link {
+  position: relative;
   font: normal normal normal 14px/30px Catamaran;
   letter-spacing: 0;
   opacity: 1;
   padding: 23px 1.5vw 16px 1.5vw;
-  border-bottom: 3px solid var(--bgInput);
-  color: var(--inactiveBookmark);
-  border-bottom: 3px solid var(--bgInput);
   flex-grow: 1;
   text-align: center;
-  vertical-align: center;
+  z-index: 1;
+}
+
+.inactive {
+  color: var(--inactiveBookmark);
+  border-bottom: 3px solid var(--bgInput);
 }
 
 .active {
-  font: normal normal normal 14px/30px Catamaran;
-  letter-spacing: 0;
-  opacity: 1;
-  padding: 23px 1.5vw 16px 1.5vw;
-  border-bottom: 3px solid var(--bgInput);
   color: var(--white);
   border-bottom: 3px solid var(--megakRed);
-  flex-grow: 1;
-  text-align: center;
-  vertical-align: center;
 }
 
 @media (min-width: 1024px) {
-  .active {
-    font: normal normal normal 18px/30px Catamaran;
-  }
-  .inactive {
+  .nav_link {
     font: normal normal normal 18px/30px Catamaran;
   }
 }
 
 @media (min-width: 768px) {
-  .active {
+  .nav_link {
     flex-grow: 0;
     text-align: left;
   }
-  .inactive {
-    flex-grow: 0;
-    text-align: left;
-  }
+}
+
+.nav_link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 0;
+  width: 100%;
+  background: var(--megakRed);
+  transition: height 0.3s;
+  z-index: -1;
+}
+
+.nav_link:hover::before {
+  height: 95%;
+  border-bottom: 3px solid var(--megakRed);
+}
+
+.nav_link:hover {
+  border-bottom: 3px solid var(--megakRed);
 }

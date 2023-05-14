@@ -6,6 +6,7 @@
   padding: 7px 17px;
   color: var(--colorInput);
   font: normal normal normal 16px/27px Catamaran;
+  transition: outline-color .4s;
 }
 
 .input::placeholder {
@@ -27,6 +28,7 @@
   padding: 0;
   margin: 0;
   font-weight: bolder;
+  animation: slideIn 0.3s ease-out;
 }
 
 .error_message {
@@ -61,4 +63,14 @@
   text-transform: uppercase;
   color: var(--inactiveBookmark);
   padding: 10px 5px 0;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

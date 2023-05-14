@@ -1,6 +1,5 @@
-import React,{ SyntheticEvent, useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import { Avatar } from "@componentsCommon/Avatar/Avatar";
-import { Button } from "@componentsCommon/Button/Button";
 import { Logo } from "@componentsCommon/Logo/Logo";
 import { Text } from "@componentsCommon/Text/Text";
 import { PageRouter } from "@enums/page-router.enum";
@@ -17,7 +16,10 @@ interface Props {
 export const Navbar = ({ githubUsername, fullName }: Props) => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
-  const { fetchData } = useAxios({ url: RequestPath.Logout, method: "DELETE" });
+  const { fetchData } = useAxios({
+    url: RequestPath.Logout,
+    method: "DELETE",
+  });
   const toggleMenu = () => {
     setShowMenu((prevState) => !prevState);
   };
@@ -34,12 +36,8 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
   };
 
   return (
-    <nav>
-      <div
-        className={`${classes.nav_container} ${
-          showMenu ? classes.showmenu : ""
-        }`}
-      >
+    <nav className={classes.nav}>
+      <div className={classes.nav_container}>
         <Logo
           style={{ marginBottom: 0, justifyContent: "start", height: "55px" }}
           navigateToMain
@@ -47,23 +45,20 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
         <div className={classes.nav_user}>
           <button className={classes.info} onClick={toggleMenu}>
             <Avatar githubUsername={githubUsername} />
-            <Text
-              style={{
-                font: "normal normal normal 18px/30px Catamaran",
-                marginRight: "auto",
-              }}
-            >
-              {fullName}
-            </Text>
+            <Text customClasses={classes.paragraph}>{fullName}</Text>
             <span className="material-icons" style={{ color: "#9e9e9e" }}>
               arrow_drop_down
             </span>
           </button>
           <div
-            className={`${classes.modal} ${showMenu ? classes.showmenu : ""}`}
+            className={`${classes.modal} ${showMenu ? classes.modal_show : ""}`}
           >
-            <Link to={PageRouter.Account}>Konto</Link>
-            <Button onClick={logoutUser}>Wyloguj</Button>
+            <Link to={PageRouter.Account} className={classes.link}>
+              Konto
+            </Link>
+            <a onClick={logoutUser} className={classes.link}>
+              Wyloguj
+            </a>
           </div>
         </div>
       </div>
