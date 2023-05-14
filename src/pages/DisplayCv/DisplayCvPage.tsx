@@ -32,6 +32,7 @@ export const DisplayCvPage = () => {
         mail={studentData.email}
         aboutMe={studentData.bio}
         showButtons={studentData.id !== outletContext.id}
+        id={studentData.id}
       />
 
       <div className={classes.details}>

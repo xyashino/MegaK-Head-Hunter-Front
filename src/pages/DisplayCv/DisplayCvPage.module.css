@@ -13,6 +13,11 @@
   max-width: 100%;
 }
 
+.button {
+  width: 100%;
+  margin: 10px 0;
+}
+
 .back a {
   display: flex;
   align-items: center;
