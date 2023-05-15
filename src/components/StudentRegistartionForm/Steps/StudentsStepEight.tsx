@@ -22,7 +22,7 @@ export const StudentsStepEight = () => {
   );
   const { id } = useParams();
   const navigate = useNavigate();
-  const { fetchData } = useAxios({
+  const { fetchData,loading } = useAxios({
     body: processStudentData(studentData),
     url: `${RequestPath.CreateStudent}${id}`,
     method: "POST",
@@ -32,7 +32,7 @@ export const StudentsStepEight = () => {
   const handleClick = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
-      toast['success']("Aktywowano konto");
+      toast.success("Aktywowano konto");
       navigate(PageRouter.Main);
     });
   };
@@ -56,7 +56,7 @@ export const StudentsStepEight = () => {
         description="Przebieg doświadczenia zawodowego"
         onChange={handleInputChange}
       />
-      <Button customClasses={classes.activate_btn}>
+      <Button customClasses={classes.activate_btn} loading={loading}>
         <Text weight="bold" onClick={handleClick}>
           Aktywuj konto
         </Text>

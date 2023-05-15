@@ -6,14 +6,14 @@ import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
 import { toast } from "react-hot-toast";
-import classes from "./RegisterHrUser.module.css";
+import classes from "./CreateHrPage.module.css";
 enum InputName {
   Email = "email",
   Company = "company",
   FullName = "fullName",
   MaxStudents = "maxStudents",
 }
-export const RegisterHrUser = () => {
+export const CreateHrPage = () => {
   const [isValidForm, setIsValidForm] = useState(false);
   const {
     value: emailValue,

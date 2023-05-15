@@ -1,3 +1,11 @@
 .stars {
     margin-left: 5%;
 }
+
+.star {
+    transition: scale .2s;
+}
+
+.star:hover {
+    scale: 1.5;
+}

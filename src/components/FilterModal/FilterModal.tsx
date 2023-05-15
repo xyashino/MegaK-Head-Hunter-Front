@@ -70,10 +70,11 @@ export const FilterModal = () => {
       <Modal
         isOpen={isOpened}
         onRequestClose={closeFilterModal}
-        className={classes.filter_modal}
+        className={`${classes.filter_modal} ${isOpened ? '' : classes.modal_out}`}
         overlayClassName={classes.modal_container}
         contentLabel="Filter Modal"
-        closeTimeoutMS={50}
+        shouldCloseOnEsc
+        closeTimeoutMS={300}
       >
         <div>
           <FilterHeaderSection clearAll={clearAll} />

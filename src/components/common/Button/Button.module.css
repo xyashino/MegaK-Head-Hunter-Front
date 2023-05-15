@@ -12,7 +12,20 @@
   justify-content: space-around;
   align-items: center;
   min-height: 32px;
-  transition: filter .2s;
+  position: relative;
+  transition: background-color .4s , filter .2s;
+}
+
+.loading {
+  position: absolute;
+  top:50%;
+  right: 50%;
+  transform: translate(50%,-50%);
+  height: 100%;
+}
+
+.loading_text {
+  opacity: 0;
 }
 
 .button:hover {

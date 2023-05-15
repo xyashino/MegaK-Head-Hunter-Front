@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
 import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
@@ -13,7 +13,7 @@ import classes from "./AppLayout.module.css";
 export const AppLayout = () => {
   const { role, data, id } = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (pathname === PageRouter.Main) {

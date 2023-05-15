@@ -2,7 +2,7 @@ import React, {SyntheticEvent, useLayoutEffect, useState} from "react";
 import { useValidationState } from "@hooks/useValidationState";
 import { Input } from "@componentsCommon/Input/Input";
 import { Button } from "@componentsCommon/Button/Button";
-import classes from "./ValidateHRUser.module.css";
+import classes from "./RegisterHrPage.module.css";
 import { useAxios } from "@hooks/useAxios";
 import { toast } from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
@@ -14,7 +14,7 @@ enum InputName {
   pwd = "pwd",
   confirmPwd = "confirmPwd",
 }
-export const ValidateHRUser = () => {
+export const RegisterHrPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [isFormValid, setIsFormValid] = useState(false);

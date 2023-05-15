@@ -5,6 +5,8 @@ import { Text } from "@componentsCommon/Text/Text";
 import { Input } from "@componentsCommon/Input/Input";
 import { Button } from "@componentsCommon/Button/Button";
 import classes from "./UrlForm.module.css";
+import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
+import attachSvg from "@assets/attach_file.svg";
 
 interface Props {
   urlArray: string[];
@@ -14,7 +16,7 @@ interface Props {
 
 const Empty = (
   <Text weight="bold" customClasses={`${classes.url_form_empty}`}>
-    Brak żadnych linków :/
+    Brak żadnych linków &#128543;
   </Text>
 );
 
@@ -23,6 +25,7 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
     value: url,
     setValue: setUrl,
     error,
+    isValid,
   } = useValidationState("Url", {
     minLength: 1,
     includeSpace: true,
@@ -42,6 +45,7 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
 
   const addUrl = (e: SyntheticEvent) => {
     e.preventDefault();
+    if (!isValid) return;
     setUrls((prevState) => [...prevState, url]);
     setUrl("");
   };
@@ -56,7 +60,7 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
   };
 
   return (
-    <div className={classes.url_container}>
+    <form className={classes.url_container} onSubmit={addUrl}>
       <Text
         weight="bold"
         color="gray"
@@ -72,7 +76,10 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
           errorMessage={error.message}
           placeholder="Opcjonalne"
         >
-          <Button customClasses={`${classes.url_form_btn}`} onClick={addUrl}>
+          <Button
+            customClasses={`${classes.url_form_btn}`}
+            status={isValid ? "active" : "disabled"}
+          >
             <Text weight="bold">Dodaj</Text>
           </Button>
         </Input>
@@ -81,14 +88,18 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
         {urls.length === 0
           ? Empty
           : urls.map((el, i) => (
-              <div key={i}>
-                <a href={el} target="_blank" rel="noreferrer" className={classes.url_form_url}>
-                  {el}
-                </a>
-                <button onClick={(e) => removeUrl(i, e)}>Usuń</button>
+              <div key={i} className={classes.url_wrapper}>
+                <LinkWithIcon
+                  to={el}
+                  text={el}
+                  icon={attachSvg}
+                  style={{ padding: "0.5rem 1rem" }}
+                  key={crypto.randomUUID()}
+                />
+                <Button onClick={(e) => removeUrl(i, e)}> &#10008;</Button>
               </div>
             ))}
       </div>
-    </div>
+    </form>
   );
 };

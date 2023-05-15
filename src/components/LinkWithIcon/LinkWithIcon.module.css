@@ -6,6 +6,7 @@
   font-weight: 500;
   color: var(--megakBlue);
   overflow-wrap: anywhere;
+  padding: 3px 5px;
 }
 
 .icon_link {

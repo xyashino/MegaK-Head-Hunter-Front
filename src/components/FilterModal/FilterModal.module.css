@@ -21,9 +21,12 @@
   letter-spacing: 0;
   color: #f7f7f7;
   z-index: 10;
-  animation: modal-animation 0.3s ease-out forwards;
+  animation: modal-in 0.4s ease-out forwards;
 }
 
+.modal_out {
+  animation: modal-out 0.4s ease-out forwards;
+}
 .filter_modal_btns {
   display: flex;
   justify-content: flex-end;
@@ -221,13 +224,24 @@ input[type="radio"]:checked + label:before {
   }
 }
 
-@keyframes modal-animation {
+@keyframes modal-in {
   0% {
     opacity: 0;
-    transform: scale(0.7);
+    transform: scale(0.5);
   }
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes modal-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5);
   }
 }

@@ -1,0 +1,68 @@
+.modal_container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  background-color: rgba(30, 30, 31, 90%);
+  transition: background-color 0.4s;
+}
+
+.confirm_modal {
+  background: #0a0a0a 0 0 no-repeat padding-box;
+  position: absolute;
+  top: -20%;
+  right: 50%;
+  transform: translate(50%, -50%) scale(0);
+  padding: 2rem 1.5rem;
+  width: 95%;
+  text-align: left;
+  color: #f7f7f7;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  animation: modal-in 0.4s ease-out forwards;
+}
+
+.modal_out {
+  animation: modal-out 0.4s ease-out forwards;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2rem;
+}
+
+.message {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem;
+  flex-grow: 1;
+}
+
+@media (min-width: 1024px) {
+  .confirm_modal {
+    width: 55%;
+  }
+}
+
+@keyframes modal-in {
+  100% {
+    top: 40%;
+    transform: translate(50%, -50%) scale(1);
+  }
+}
+
+@keyframes modal-out {
+  0% {
+    top: 40%;
+    transform: translate(50%, -50%) scale(1);
+  }
+  100% {
+    top: 110%;
+    transform: translate(50%, -50%) scale(0.3);
+  }
+}

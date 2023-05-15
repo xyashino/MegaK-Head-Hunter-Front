@@ -11,7 +11,7 @@
 }
 
 .btn_to_modal {
-  background: #1E1E1F 0% 0% no-repeat padding-box;
+  background: #1E1E1F 0 0 no-repeat padding-box;
   border: 0;
   color: var(--white);
   padding: 10px;

@@ -1,5 +1,6 @@
 .url_container {
-    width: 80%;
+    width: 100%;
+  padding: 8px;
 }
 
 
@@ -24,6 +25,14 @@
   align-items: center;
   width: 90%;
   margin: 10px 0;
+}
+
+.url_wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2px;
+  margin: 2px;
 }
 
 .url_form_empty {
