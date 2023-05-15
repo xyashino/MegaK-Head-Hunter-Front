@@ -5,6 +5,7 @@ import {Button} from "@componentsCommon/Button/Button";
 import {useContext} from "react";
 import {QueryContext} from "@context/QueryContext";
 import {QueryAction} from "@enums/query-action.enum";
+import classes from "./DropDownButton.module.css";
 
 interface Props {
   id:string;
@@ -22,7 +23,7 @@ export const CreateInterviewButton = ({ id }: Props) => {
 
   const createInterview = async () => {
     await fetchData(() => {
-      toast["success"]("Kursant został dodany do rozmowy");
+      toast.success("Kursant został dodany do rozmowy");
       dispatchQuery({type:QueryAction.Refresh})
     });
   };
@@ -32,7 +33,7 @@ export const CreateInterviewButton = ({ id }: Props) => {
   };
 
   return (
-    <Button loading={loading} onClick={handleClick}>
+    <Button loading={loading} onClick={handleClick} customClasses={`${classes.button}`}>
       Zarezerwuj rozmowę
     </Button>
   );

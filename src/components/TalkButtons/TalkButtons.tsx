@@ -1,9 +1,10 @@
 import { Button } from "@componentsCommon/Button/Button";
 import { PageRouter } from "@enums/page-router.enum";
-import { HiredButton } from "@components/HiredButton/HiredButton";
+import { HiredButton } from "@components/DropdownButtons/HiredButton";
 import React, { SyntheticEvent } from "react";
 import { useNavigate } from "react-router-dom";
-import { RemoveInterviewButton } from "@components/InterviewButton/RemoveInterviewButton";
+import { RemoveInterviewButton } from "@components/DropdownButtons/RemoveInterviewButton";
+import classes from "./TalkButtons.module.css";
 
 interface Props {
   id: string;
@@ -17,9 +18,9 @@ export const TalkButtons = ({ id }: Props) => {
   }
   return (
     <>
-      <Button onClick={navigateToMain}>Pokaż CV</Button>
-      <RemoveInterviewButton studentId={id}/>
-      <HiredButton studentId={id}/>
+      <Button onClick={navigateToMain} customClasses={classes.button}>Pokaż CV</Button>
+      <RemoveInterviewButton studentId={id} customClasses={classes.button}/>
+      <HiredButton studentId={id} customClasses={classes.button} />
     </>
   );
 };

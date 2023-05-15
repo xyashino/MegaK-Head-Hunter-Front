@@ -4,8 +4,9 @@ import arrow_down from "@assets/arrow_down.svg";
 import { DropdownContent } from "@components/DropdownContent/DropdownContent";
 import { Text } from "@componentsCommon/Text/Text";
 import { Avatar } from "@componentsCommon/Avatar/Avatar";
-import { CreateInterviewButton } from "@components/InterviewButton/CreateInterviewButton";
+import { CreateInterviewButton } from "@components/DropdownButtons/CreateInterviewButton";
 import { TalkButtons } from "@components/TalkButtons/TalkButtons";
+import {useWindowSize} from "@hooks/useWidowSize";
 
 interface DropdownProps {
   isTalks?: true;
@@ -26,7 +27,7 @@ interface DropdownProps {
     monthsOfCommercialExp: number;
   };
 }
-
+const MOBILE_WIDTH = 768;
 export const Dropdown: React.FC<DropdownProps> = ({
   isTalks,
   id,
@@ -36,6 +37,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   studentData,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const  {width} =useWindowSize();
 
   const toggleDropdown = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -58,11 +60,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </div>
         <div className={classes.buttons_row}>
           <div className={classes.hidden}>
-            {isTalks ? (
-              <TalkButtons id={id} />
-            ) : (
-              <CreateInterviewButton id={id} />
-            )}
+            {
+             width  > MOBILE_WIDTH && (isTalks ? <TalkButtons id={id} /> : <CreateInterviewButton id={id} />)
+            }
           </div>
           <button className={classes.dropdown_button} onClick={toggleDropdown}>
             <img
@@ -75,7 +75,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </div>
       </div>
       <div className={`${classes.dropdown_content_wrapper } ${isOpen ? classes.dropdown_content_wrapper_open : ''}`}>
-        <DropdownContent isOpen={isOpen} studentData={studentData} />
+        <DropdownContent isOpen={isOpen} studentData={studentData}>
+          {
+           width < MOBILE_WIDTH && (isTalks ? <TalkButtons id={id} /> : <CreateInterviewButton id={id} />)
+          }
+        </DropdownContent>
       </div>
     </>
   );

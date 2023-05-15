@@ -1,7 +1,7 @@
-import React from "react";
+import React, {PropsWithChildren} from "react";
 import classes from "./../Dropdown/Dropdown.module.css";
 import { DropdownContentRow } from "@components/DropdownContent/DropdownContentRow";
-interface DropdownProps {
+interface DropdownProps extends PropsWithChildren {
   isOpen: boolean;
   studentData: {
     courseCompletion: number;
@@ -31,13 +31,13 @@ export const DropdownContent: React.FC<DropdownProps> = ({
     expectedSalary,
     canTakeApprenticeship,
   },
+    children
 }) => {
   let months = "miesięcy";
   if (monthsOfCommercialExp >= 2 && monthsOfCommercialExp <= 4)
     months = "miesiące";
   if (monthsOfCommercialExp === 1) months = "miesiąc";
   return (
-    <>
       <div
         className={`${classes.dropdown_content} ${isOpen ? classes.dropdown_content_animated : ""}`}
       >
@@ -76,7 +76,7 @@ export const DropdownContent: React.FC<DropdownProps> = ({
               : "BRAK"}
           </b>
         </DropdownContentRow>
+        {children}
       </div>
-    </>
   );
 };

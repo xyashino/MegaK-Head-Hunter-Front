@@ -4,7 +4,7 @@ import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
 import {
-  Outlet,
+  Outlet, ScrollRestoration,
   useLoaderData,
   useLocation,
   useNavigate,
@@ -35,6 +35,7 @@ export const AppLayout = () => {
   return (
     <div className={classes.app_layout}>
       <Navbar fullName={fullName} githubUsername={githubUsername} />
+      <ScrollRestoration />
       <div
         className={`${classes.app_container} ${
           pathname.includes(`/cv/`) ? "" : classes.app_container_gray

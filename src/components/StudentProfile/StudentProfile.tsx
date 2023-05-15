@@ -6,8 +6,8 @@ import { Avatar } from "@componentsCommon/Avatar/Avatar";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
 import { Text } from "@componentsCommon/Text/Text";
 import classes from "./StudentProfile.module.css";
-import { HiredButton } from "@components/HiredButton/HiredButton";
-import { RemoveInterviewButton } from "@components/InterviewButton/RemoveInterviewButton";
+import { HiredButton } from "@components/DropdownButtons/HiredButton";
+import { RemoveInterviewButton } from "@components/DropdownButtons/RemoveInterviewButton";
 type Props = {
   fullName: string;
   ghUsername: string;
