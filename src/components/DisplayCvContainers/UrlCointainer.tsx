@@ -17,7 +17,7 @@ export const UrlContainer = ({ title, array }: Props) => {
               to={link}
               text={link}
               icon={attachSvg}
-              style={{ padding: "1.5rem 1.5rem 0.5rem" }}
+              style={{ padding: "0.5rem 1rem" }}
               key={crypto.randomUUID()}
             />
           ))
