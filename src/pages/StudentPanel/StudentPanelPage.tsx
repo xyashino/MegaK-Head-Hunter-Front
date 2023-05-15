@@ -7,6 +7,8 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentUpdateRequest } from "@backendTypes";
 import { PageRouter } from "@enums/page-router.enum";
+import {useConfirm} from "@hooks/useConfirm";
+import {Confirm} from "@components/Confirm/Confirm";
 
 export const StudentPanelPage = () => {
   const { id } = useOutletContext() as OutletData;
@@ -22,21 +24,24 @@ export const StudentPanelPage = () => {
     navigate(`/cv/${id}`);
   };
 
-  const changeStudentStatus = (e: SyntheticEvent) => {
-    e.preventDefault();
-    const result = confirm("Uwaga starcisz dostęp do aplikacji");
-    if (result) {
-      fetchData(() => {
-        toast["success"]("Oznaczono jako zatrudniony");
-        navigate(PageRouter.Login);
-      });
-      return;
-    }
-    toast["error"]("Anulowano");
+  const changeStudentStatus = () => {
+    fetchData(() => {
+      toast.success("Oznaczono jako zatrudniony");
+      navigate(PageRouter.Login);
+    });
   };
 
+  const  {showModal,...restConfirm} = useConfirm({
+    doAfterConfirm:changeStudentStatus,
+    confirmMessage: 'Czy na pewno chcesz to zrobić? Stracisz dostęp do aplikacji.',
+  })
+
+  const handleConfirm = (e:SyntheticEvent)=>{
+    e.preventDefault();
+    showModal()
+  }
   return (
-    <div style={{alignSelf: 'start'}}>
+    <div style={{ alignSelf: "start" }}>
       <Button
         onClick={navigateToCv}
         style={{ minWidth: "200px", margin: "30px" }}
@@ -44,12 +49,13 @@ export const StudentPanelPage = () => {
         Zobacz Swoje CV
       </Button>
       <Button
-        onClick={changeStudentStatus}
+        onClick={handleConfirm}
         style={{ minWidth: "200px", margin: "30px" }}
         loading={loading}
       >
         Jestem Zatrudniony !!
       </Button>
+      <Confirm {...restConfirm}/>
     </div>
   );
 };
