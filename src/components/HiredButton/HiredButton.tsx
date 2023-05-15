@@ -3,8 +3,10 @@ import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
 import { Button } from "@componentsCommon/Button/Button";
 import { QueryAction } from "@enums/query-action.enum";
-import { HTMLAttributes, useContext } from "react";
+import {HTMLAttributes, SyntheticEvent, useContext} from "react";
 import { QueryContext } from "@context/QueryContext";
+import {Confirm} from "@components/Confirm/Confirm";
+import {useConfirm} from "@hooks/useConfirm";
 
 interface Props extends HTMLAttributes<HTMLButtonElement> {
   studentId: string;
@@ -21,23 +23,28 @@ export const HiredButton = ({ studentId, ...rest }: Props) => {
     },
   });
   const hiredStudent = async () => {
-    const result = confirm("Czy na pewno chcesz zatrudnić kursanta?");
-
-    if (result) {
       await fetchData(() => {
         toast.success("Kursant został zatrudniony");
         dispatchQuery({ type: QueryAction.Refresh });
       });
-    }
   };
 
-  const handleClick = async () => {
-    await hiredStudent();
-  };
+  const {showModal, ...restConfirm} = useConfirm({
+    doAfterConfirm:hiredStudent,
+    confirmMessage:"Czy na pewno chcesz zatrudnić kursanta?",
+  })
+
+  const handleClick = (e:SyntheticEvent)=>{
+    e.preventDefault();
+    showModal();
+  }
 
   return (
-    <Button loading={loading} onClick={handleClick} {...rest}>
-      Zatrudniony
-    </Button>
+   <>
+     <Button loading={loading} onClick={handleClick} {...rest}>
+       Zatrudniony
+     </Button>
+     <Confirm {...restConfirm}/>
+   </>
   );
 };
