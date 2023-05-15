@@ -8,6 +8,8 @@ import { useAxios } from "@hooks/useAxios";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./Navbar.module.css";
+import { Confirm } from "@components/Confirm/Confirm";
+import { useConfirm } from "@hooks/useConfirm";
 
 interface Props {
   githubUsername?: string;
@@ -20,48 +22,60 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
     url: RequestPath.Logout,
     method: "DELETE",
   });
+
+  const logoutUser = async () => {
+    await fetchData(() => {
+      toast.success("Wylogowano");
+      navigate(PageRouter.Login);
+    });
+  };
+
+  const { showModal, ...restConfirm } = useConfirm({
+    confirmMessage: "Czy na pewno chcesz się wylogować?",
+    doAfterConfirm: logoutUser,
+  });
+
   const toggleMenu = () => {
     setShowMenu((prevState) => !prevState);
   };
 
-  const logoutUser = async (e: SyntheticEvent) => {
+  const handleConfirm = (e:SyntheticEvent)=>{
     e.preventDefault();
-    const result = confirm("Czy na pewno chcesz się wylogowac?");
-    if (result) {
-      await fetchData(() => {
-        toast["success"]("Wylogowano");
-        navigate(PageRouter.Login);
-      });
-    }
-  };
+    showModal()
+  }
 
   return (
-    <nav className={classes.nav}>
-      <div className={classes.nav_container}>
-        <Logo
-          style={{ marginBottom: 0, justifyContent: "start", height: "55px" }}
-          navigateToMain
-        />
-        <div className={classes.nav_user}>
-          <button className={classes.info} onClick={toggleMenu}>
-            <Avatar githubUsername={githubUsername} />
-            <Text customClasses={classes.paragraph}>{fullName}</Text>
-            <span className="material-icons" style={{ color: "#9e9e9e" }}>
-              arrow_drop_down
-            </span>
-          </button>
-          <div
-            className={`${classes.modal} ${showMenu ? classes.modal_show : ""}`}
-          >
-            <Link to={PageRouter.Account} className={classes.link}>
-              Konto
-            </Link>
-            <a onClick={logoutUser} className={classes.link}>
-              Wyloguj
-            </a>
+    <>
+      <nav className={classes.nav}>
+        <div className={classes.nav_container}>
+          <Logo
+            style={{ marginBottom: 0, justifyContent: "start", height: "55px" }}
+            navigateToMain
+          />
+          <div className={classes.nav_user}>
+            <button className={classes.info} onClick={toggleMenu}>
+              <Avatar githubUsername={githubUsername} />
+              <Text customClasses={classes.paragraph}>{fullName}</Text>
+              <span className="material-icons" style={{ color: "#9e9e9e" }}>
+                arrow_drop_down
+              </span>
+            </button>
+            <div
+              className={`${classes.modal} ${
+                showMenu ? classes.modal_show : ""
+              }`}
+            >
+              <Link to={PageRouter.Account} className={classes.link} draggable={false}>
+                Konto
+              </Link>
+              <a onClick={handleConfirm} className={classes.link} draggable={false}>
+                Wyloguj
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <Confirm {...restConfirm} />
+    </>
   );
 };
