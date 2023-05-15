@@ -21,7 +21,7 @@ export const Button = ({
       {...rest}
       className={`${classes.button} ${classes[status]} ${customClasses}`}
     >
-      {!loading && children}
+      <p className={ loading ? classes.loading_text : ''}>{children}</p>
       {loading ? (
         <img
           src={Loading}
