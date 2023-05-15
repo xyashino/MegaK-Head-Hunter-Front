@@ -9,21 +9,14 @@ import classes from "./DisplayCvPage.module.css";
 import { UrlContainer } from "@components/DisplayCvContainers/UrlCointainer";
 import { RateContainer } from "@components/DisplayCvContainers/RateCointainer";
 import { OutletData } from "../../types/OutletData";
+import { BackButton } from "@componentsCommon/BackButton/BackButton";
 
 export const DisplayCvPage = () => {
   const studentData = useLoaderData() as ActiveStudentResponse;
   const outletContext = useOutletContext() as OutletData;
   return (
     <div className={classes.container}>
-      <div className={classes.back}>
-        <Link to={PageRouter.Main}>
-          <span className="material-icons" style={{ color: "#9e9e9e" }}>
-            arrow_back_ios
-          </span>
-          {""}
-          Wróć
-        </Link>
-      </div>
+      <BackButton />
 
       <StudentProfile
         fullName={`${studentData.firstname} ${studentData.lastname}`}
