@@ -59,8 +59,13 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
     });
   };
 
+  const handleKeyDown = (e: SyntheticEvent) => {
+    if ((e as unknown as KeyboardEvent).key === "Enter")
+      return addUrl(e as SyntheticEvent);
+  };
+
   return (
-    <form className={classes.url_container} onSubmit={addUrl}>
+    <div className={classes.url_container}>
       <Text
         weight="bold"
         color="gray"
@@ -75,10 +80,12 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
           hasError={error.show}
           errorMessage={error.message}
           placeholder="Opcjonalne"
+          onKeyDown={handleKeyDown}
         >
           <Button
             customClasses={`${classes.url_form_btn}`}
             status={isValid ? "active" : "disabled"}
+            onClick={addUrl}
           >
             <Text weight="bold">Dodaj</Text>
           </Button>
@@ -100,6 +107,6 @@ export const UrlForm = ({ urlArray, description, updateState }: Props) => {
               </div>
             ))}
       </div>
-    </form>
+    </div>
   );
 };
