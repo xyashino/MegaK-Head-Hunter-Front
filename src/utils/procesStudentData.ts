@@ -9,5 +9,6 @@ export const processStudentData = <T extends StudentRegisterRequest | StudentUpd
         }
     }
     filteredStudentData.canTakeApprenticeship ??= false;
+    filteredStudentData.monthsOfCommercialExp ??= 0;
     return filteredStudentData;
 };
