@@ -14,7 +14,7 @@ export const LinkWithIcon: React.FC<LinkProps> = ({
   style,
 }) => {
   return (
-    <a href={to} className={`${classes.container_link}`} style={style} target="_blank" rel="noreferrer">
+    <a href={to} className={`${classes.container_link}`} style={style} target="_blank" rel="noreferrer" draggable={false}>
       <img className={`${classes.icon_link}`} src={icon}  alt='Url Icon'/>
       {text}
     </a>
