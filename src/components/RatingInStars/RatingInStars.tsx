@@ -11,7 +11,7 @@ export const RatingInStars = ({ numberOfStars }: RatingInStarsProps) => {
     <span className={classes.stars}>
       {[...Array(5)].map((star, i) => (
         <span key={i}>
-          <Star color={i + 1 >= numberOfStars ? "grey" : "#e02635"} fontSize={'24px'}/>
+          <Star color={i + 1 >= numberOfStars ? "grey" : "#e02635"} fontSize={'24px'} className={classes.star}/>
         </span>
       ))}
     </span>
