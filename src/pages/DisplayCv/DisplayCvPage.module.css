@@ -41,6 +41,7 @@
   font-size: 14px;
   gap: 1.5rem;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  word-break: break-all;
 }
 
 .rate_title {

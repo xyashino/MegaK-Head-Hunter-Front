@@ -9,6 +9,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { RegisterHrRequestBody } from "@backendTypes";
+import {Logo} from "@componentsCommon/Logo/Logo";
 
 enum InputName {
   pwd = "pwd",
@@ -77,6 +78,7 @@ export const RegisterHrPage = () => {
 
   return (
     <form className={classes.validate_hr_form} onSubmit={handleSubmit}>
+      <Logo/>
       <Input
         preview
         name={InputName.pwd}
