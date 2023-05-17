@@ -13,7 +13,7 @@ type AxiosMethod = (
   url: string,
   data?: any,
   config?: any
-) => Promise<AxiosResponse<any>>;
+) => Promise<AxiosResponse<unknown>>;
 
 const getAxiosMethod = (method: AxiosProps["method"]): AxiosMethod => {
   switch (method) {
@@ -44,7 +44,7 @@ export const useAxios = ({
   const axiosMethod = getAxiosMethod(method);
 
   const requestLogic = async (
-    fetchMethod: () => Promise<AxiosResponse<any, any>>,
+    fetchMethod: () => Promise<AxiosResponse<unknown>>,
     afterSuccessMethod?: () => void,
     afterErrorMethod?: () => void
   ) => {
@@ -63,7 +63,7 @@ export const useAxios = ({
           error.response?.data.error ??
           error.message;
       }
-      toast["error"](Array.isArray(message) ? message.join("\n") : message);
+      toast.error(Array.isArray(message) ? message.join("\n") : message);
       setError({ show: true, msg: message, type: "error" });
       setLoading(false);
       if (afterErrorMethod) {

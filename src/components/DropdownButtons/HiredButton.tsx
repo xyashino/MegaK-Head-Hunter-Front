@@ -1,9 +1,9 @@
+import React,{HTMLAttributes, SyntheticEvent, useContext} from "react";
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
 import { Button } from "@componentsCommon/Button/Button";
 import { QueryAction } from "@enums/query-action.enum";
-import {HTMLAttributes, SyntheticEvent, useContext} from "react";
 import { QueryContext } from "@context/QueryContext";
 import {Confirm} from "@components/Confirm/Confirm";
 import {useConfirm} from "@hooks/useConfirm";

@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import {
     InterviewFindResponse,
-    InterviewResponse,
 } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import React, { useState } from "react";

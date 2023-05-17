@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation , Outlet, useLoaderData} from "react-router-dom";
 import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
-import { Outlet, useLoaderData } from "react-router-dom";
 import classes from "./AppLayout.module.css";
 
 export const AppLayout = () => {

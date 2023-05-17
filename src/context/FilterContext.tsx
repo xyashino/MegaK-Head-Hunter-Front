@@ -1,4 +1,4 @@
-import { createContext, Dispatch, PropsWithChildren, useReducer } from "react";
+import React, { createContext, Dispatch, PropsWithChildren, useReducer } from "react";
 import { FilterData } from "../types/FilterData";
 import { DEFAULT_FILTER_DATA } from "@constants/DefaultFilterData";
 import { FilterActionData } from "../types/FilterActionData";
@@ -10,7 +10,7 @@ interface FilterContextValue {
 
 const initialValue: FilterContextValue = {
   filter: DEFAULT_FILTER_DATA,
-  dispatchFilter: () => {},
+  dispatchFilter: () => ({}),
 };
 
 export const FilterContext = createContext<FilterContextValue>(initialValue);

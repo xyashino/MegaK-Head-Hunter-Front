@@ -17,7 +17,7 @@ const fileUploadError = (
 const uploadOnServer = (
   file: File,
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void
-): Promise<any> => {
+): Promise<unknown> => {
   const formData = new FormData();
 
   formData.append("uploadStudents", file);

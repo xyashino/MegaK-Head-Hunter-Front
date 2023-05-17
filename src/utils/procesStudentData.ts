@@ -3,7 +3,7 @@ const nullableKeys = ['workExperience', 'education', 'expectedSalary', 'targetWo
 export const processStudentData = <T extends StudentRegisterRequest | StudentUpdateRequest>(obj: T): Partial<T> => {
     const filteredStudentData: Partial<T> = {};
     for (const key in obj) {
-        if(nullableKeys.includes(key)) filteredStudentData[key] = null as any;
+        if(nullableKeys.includes(key)) filteredStudentData[key] = undefined;
         if (obj[key]) {
             filteredStudentData[key] = obj[key];
         }

@@ -21,6 +21,7 @@ import { Paginator } from "@components/Paginator/Paginator";
 import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
+import { isAxiosError } from "axios";
 
 interface Props extends PropsWithChildren {
   request: RequestPath;
@@ -59,19 +60,26 @@ export const QueryManagement = ({
     (async () => {
       try {
         const { meta, data } = (
-          await AxiosSetup.get<ManyStudentResponse | InterviewFindResponse>(queryData.url)
+          await AxiosSetup.get<ManyStudentResponse | InterviewFindResponse>(
+            queryData.url
+          )
         ).data;
         updateStudents(data);
         dispatchQuery({ type: QueryAction.PaginationUpdate, payload: meta });
-      } catch (e: any) {
-        toast.error(
-          e.response?.data.message ?? e.response?.data.error ?? e.message
-        );
+      } catch (error) {
+        let message = "Nieznany błąd";
+        if (isAxiosError(error)) {
+          message =
+            error.response?.data.message ??
+            error.response?.data.error ??
+            error.message;
+        }
+        toast.error(message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [queryData.url,queryData.refresh]);
+  }, [queryData.url, queryData.refresh]);
 
   return (
     <QueryContext.Provider value={{ queryData, dispatchQuery }}>

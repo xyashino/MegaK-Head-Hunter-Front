@@ -23,7 +23,7 @@ const initialValue: QueryContextValue = {
     },
     refresh:false,
   },
-  dispatchQuery: () => {},
+  dispatchQuery: () => ({}),
 };
 
 export const QueryContext = createContext<QueryContextValue>(initialValue);

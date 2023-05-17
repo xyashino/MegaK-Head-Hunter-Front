@@ -22,7 +22,6 @@ export interface PreviewPasswordProps
 
 export const PreviewPassword = ({
   isError,
-  type,
   value,
   customClasses,
   messageType,
@@ -56,6 +55,7 @@ export const PreviewPassword = ({
           className={classes.preview_password_icon}
           draggable={false}
           onClick={handlePreview}
+
         />
       </div>
   );

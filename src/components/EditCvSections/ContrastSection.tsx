@@ -1,5 +1,4 @@
-import React from "react";
-import { PropsWithChildren } from "react";
+import React ,{ PropsWithChildren } from "react";
 import { Text } from "@componentsCommon/Text/Text";
 import classes from "./EditCvSections.module.css";
 interface Props extends PropsWithChildren {

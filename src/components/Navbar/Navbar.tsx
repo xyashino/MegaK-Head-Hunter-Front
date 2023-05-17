@@ -66,9 +66,9 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
               <Link to={PageRouter.Account} className={classes.link} draggable={false}>
                 Konto
               </Link>
-              <a onClick={handleConfirm} className={classes.link} draggable={false}>
+              <button onClick={handleConfirm} className={classes.link} draggable={false}>
                 Wyloguj
-              </a>
+              </button>
             </div>
           </div>
         </div>
