@@ -1,12 +1,14 @@
-import React,{ SyntheticEvent, useLayoutEffect, useState } from "react";
-import { CreateHrRequestBody } from "@backendTypes";
-import { Button } from "@componentsCommon/Button/Button";
-import { Input } from "@componentsCommon/Input/Input";
+import React, { SyntheticEvent, useState } from "react";
 import { RequestPath } from "@enums/request-path.enum";
+import {CreateHrRequestBody} from "@backendTypes";
 import { useAxios } from "@hooks/useAxios";
 import { useValidationState } from "@hooks/useValidationState";
+import { useValidationForm } from "@hooks/useValidationForm";
 import { toast } from "react-hot-toast";
+import { Button } from "@componentsCommon/Button/Button";
+import { Input } from "@componentsCommon/Input/Input";
 import classes from "./CreateHrPage.module.css";
+
 enum InputName {
   Email = "email",
   Company = "company",
@@ -14,7 +16,6 @@ enum InputName {
   MaxStudents = "maxStudents",
 }
 export const CreateHrPage = () => {
-  const [isValidForm, setIsValidForm] = useState(false);
   const {
     value: emailValue,
     error: emailError,
@@ -60,15 +61,13 @@ export const CreateHrPage = () => {
     } as CreateHrRequestBody,
   });
 
-  useLayoutEffect(() => {
-    setIsValidForm(isEmailValid && isCompanyValid && isFullNameValid);
-  }, [isEmailValid, isCompanyValid, isFullNameValid]);
+  const isValidForm = useValidationForm({isValidInputs:[isEmailValid,isCompanyValid,isFullNameValid]})
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!isValidForm) return toast["error"]("Uzupełnij Poprawnie Formularz ! ");
+    if (!isValidForm) return toast.error("Uzupełnij Poprawnie Formularz ! ");
     fetchData(() => {
-      toast["success"]("Dodano HR");
+      toast.success("Dodano HR");
     });
   };
 
