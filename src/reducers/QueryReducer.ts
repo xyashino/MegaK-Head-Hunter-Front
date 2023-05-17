@@ -2,7 +2,7 @@ import { QueryData } from "../types/QueryData";
 import { QueryActionData } from "../types/QueryActionData";
 import { QueryAction } from "@enums/query-action.enum";
 import { PageMeta } from "@backendTypes";
-import {buildQueryUrl} from "@utils/query/buildQuery";
+import { buildQueryUrl } from "@utils/query/buildQuery";
 
 type Reducer = (state: QueryData, action: QueryActionData) => QueryData;
 

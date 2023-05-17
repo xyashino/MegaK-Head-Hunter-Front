@@ -23,7 +23,7 @@ export const StudentsPage = () => {
       <QueryManagement
         meta={meta}
         request={RequestPath.GetStudents}
-        updateStudents={updateStudents as any}
+        update={updateStudents}
       >
         <div className={classes.search_bar}>
           <SearchUsers />

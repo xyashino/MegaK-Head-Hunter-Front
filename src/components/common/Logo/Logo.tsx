@@ -24,6 +24,7 @@ export const Logo = ({
       className={`${classes.div_img_wrapper} ${customClasses}`}
       {...rest}
       onClick={handleClick}
+      aria-hidden={true}
     >
       <img
         className={classes.img_logo}

@@ -17,24 +17,26 @@ export const SalarySection = () => {
   }, [salary]);
 
   return (
-    <div>
-      <p>Oczekiwane wynagrodzenie miesięczne netto</p>
-      <div className={classes.input_filter_modal_smaller}>
-        <label htmlFor="">Od</label>
-        <input
-          placeholder="np. 1000 zł"
-          value={`${salary.min}`}
-          name="min"
-          onChange={handleInputChange}
-        />
-        <label htmlFor="">Do</label>
-        <input
-          placeholder="np. 10000 zł"
-          value={`${salary.max}`}
-          name="max"
-          onChange={handleInputChange}
-        />
+      <div>
+        <p>Oczekiwane wynagrodzenie miesięczne netto</p>
+        <div className={classes.input_filter_modal_smaller}>
+          <label htmlFor="minSalary">Od</label>
+          <input
+              id="minSalary"
+              placeholder="np. 1000 zł"
+              value={`${salary.min}`}
+              name="min"
+              onChange={handleInputChange}
+          />
+          <label htmlFor="maxSalary">Do</label>
+          <input
+              id="maxSalary"
+              placeholder="np. 10000 zł"
+              value={`${salary.max}`}
+              name="max"
+              onChange={handleInputChange}
+          />
+        </div>
       </div>
-    </div>
   );
 };

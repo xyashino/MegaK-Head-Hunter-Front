@@ -55,7 +55,7 @@ export const PreviewPassword = ({
           className={classes.preview_password_icon}
           draggable={false}
           onClick={handlePreview}
-
+          aria-hidden={true}
         />
       </div>
   );

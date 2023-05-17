@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import {
-    InterviewFindResponse,
+  InterviewFindResponse,
+  InterviewRelationResponse,
 } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import React, { useState } from "react";
@@ -12,16 +13,20 @@ import { FilterContextProvider } from "@context/FilterContext";
 import { Dropdown } from "@components/Dropdown/Dropdown";
 
 export const TalksPage = () => {
-  const { data: interviewResponse, meta } = useLoaderData() as InterviewFindResponse;
+  const { data: interviewResponse, meta } =
+    useLoaderData() as InterviewFindResponse;
   const [interview, setInterview] = useState(interviewResponse);
+
+  const updateTalks = (e: InterviewRelationResponse[]) => {
+    setInterview(e);
+  };
+
   return (
     <FilterContextProvider>
       <QueryManagement
         meta={meta}
         request={RequestPath.GetInterview}
-        updateStudents={(e) => {
-          setInterview(e as any);
-        }}
+        update={updateTalks}
       >
         <div className={classes.search_bar}>
           <SearchUsers />

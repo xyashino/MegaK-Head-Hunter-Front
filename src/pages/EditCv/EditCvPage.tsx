@@ -87,7 +87,7 @@ export const EditCvPage = () => {
     try {
       await AxiosSetup.patch(
         `${RequestPath.GetOneStudent}${id}`,
-        processStudentData(rest as any)
+        processStudentData(rest)
       );
     } catch (e) {
       let message = "Unknown ErrorElement";

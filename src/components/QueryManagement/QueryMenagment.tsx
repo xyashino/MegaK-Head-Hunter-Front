@@ -12,7 +12,9 @@ import { queryReducer } from "@reducers/QueryReducer";
 import { RequestPath } from "@enums/request-path.enum";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import {
+  ActiveStudentResponse,
   InterviewFindResponse,
+  InterviewRelationResponse,
   ManyStudentResponse,
   PageMeta,
 } from "@backendTypes";
@@ -23,19 +25,18 @@ import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
 import { isAxiosError } from "axios";
 
-interface Props extends PropsWithChildren {
+interface PageProps extends PropsWithChildren {
   request: RequestPath;
   meta: PageMeta;
-  updateStudents: <T extends ManyStudentResponse | InterviewFindResponse>(
-    e: T["data"]
-  ) => void;
+  update: (e: InterviewRelationResponse[] | ActiveStudentResponse[]) => void;
 }
+
 export const QueryManagement = ({
   children,
   request,
   meta,
-  updateStudents,
-}: Props) => {
+  update,
+}: PageProps) => {
   const { dispatchFilter } = useContext(FilterContext);
 
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
@@ -64,7 +65,7 @@ export const QueryManagement = ({
             queryData.url
           )
         ).data;
-        updateStudents(data);
+        update(data);
         dispatchQuery({ type: QueryAction.PaginationUpdate, payload: meta });
       } catch (error) {
         let message = "Nieznany błąd";
