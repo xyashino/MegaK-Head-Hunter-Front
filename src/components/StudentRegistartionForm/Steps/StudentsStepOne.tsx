@@ -1,8 +1,10 @@
-import { Input } from "@componentsCommon/Input/Input";
-import { useValidationState } from "@hooks/useValidationState";
 import React, { SyntheticEvent, useContext, useLayoutEffect } from "react";
 import { StudentRegistrationContext } from "@context/StudentRegistrationContext";
 import { StepAction } from "@enums/step-action.enum";
+import { useValidationState } from "@hooks/useValidationState";
+import { useValidationForm } from "@hooks/useValidationForm";
+import { Input } from "@componentsCommon/Input/Input";
+
 enum InputName {
   Firstname = "firstname",
   Lastname = "lastname",
@@ -74,12 +76,16 @@ export const StudentsStepOne = () => {
     studentData.pwd
   );
 
+  const isValidForm = useValidationForm({
+    isValidInputs: [isNameValid, isPwdValid, isLastnameValid, isConfirmValid],
+  });
+
   useLayoutEffect(() => {
     dispatchStep({
       type: StepAction.CanGetNextStep,
-      payload: isNameValid && isPwdValid && isLastnameValid && isConfirmValid,
+      payload: isValidForm,
     });
-  }, [isNameValid, isPwdValid, isLastnameValid, isConfirmValid]);
+  }, [isValidForm]);
 
   useLayoutEffect(() => {
     setStudentData((prevState) => {

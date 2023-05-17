@@ -1,10 +1,8 @@
-import { useOutletContext } from "react-router-dom";
 import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { StudentResponse } from "@backendTypes";
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { Text } from "@componentsCommon/Text/Text";
-import classes from "./EditCvPage.module.css";
 import { Button } from "@componentsCommon/Button/Button";
 import { TextArea } from "@componentsCommon/TextArea/TextArea";
 import { UrlForm } from "@components/UrlForm/UrlForm";
@@ -14,11 +12,14 @@ import { PersonalSection } from "@components/EditCvSections/PersonalSection";
 import { GithubSection } from "@components/EditCvSections/GithubSection";
 import { PreferenceSection } from "@components/EditCvSections/PreferenceSection";
 import { isAxiosError } from "axios";
+import { useOutletContext } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { UpdateStudentData } from "../../types/UpdateStudentData";
 import { UpdateOptionName } from "@enums/option-name.enum";
 import { ContrastSection } from "@components/EditCvSections/ContrastSection";
 import { DEFAULT_UPDATE_STUDENT_DATA } from "@constants/DefaultUpdateStudentData";
+import classes from "./EditCvPage.module.css";
+
 export const EditCvPage = () => {
   const { id } = useOutletContext() as { id: string };
   const { fetchData, loading } = useAxios({

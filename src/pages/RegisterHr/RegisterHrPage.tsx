@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useLayoutEffect, useState} from "react";
+import React, {SyntheticEvent} from "react";
 import { useValidationState } from "@hooks/useValidationState";
 import { Input } from "@componentsCommon/Input/Input";
 import { Button } from "@componentsCommon/Button/Button";
@@ -10,6 +10,7 @@ import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { RegisterHrRequestBody } from "@backendTypes";
 import {Logo} from "@componentsCommon/Logo/Logo";
+import {useValidationForm} from "@hooks/useValidationForm";
 
 enum InputName {
   pwd = "pwd",
@@ -18,7 +19,6 @@ enum InputName {
 export const RegisterHrPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [isFormValid, setIsFormValid] = useState(false);
   const {
     value: passwordValue,
     error: passwordError,
@@ -39,11 +39,7 @@ export const RegisterHrPage = () => {
     maxLength: 255,
     sameAs: passwordValue,
   });
-
-  useLayoutEffect(()=>{
-    setIsFormValid(isPasswordValid && isConfirmPasswordValid)
-  },[isPasswordValid,isConfirmPasswordValid])
-
+  const isFormValid = useValidationForm({isValidInputs:[isPasswordValid,isConfirmPasswordValid]})
   const { fetchData, loading } = useAxios({
     url: `${RequestPath.RegisterHr}${id}`,
     method: "POST",
@@ -54,9 +50,9 @@ export const RegisterHrPage = () => {
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if(!isFormValid) return toast['error']('Uzupełnij Poprawnie Formularz')
+    if(!isFormValid) return toast.error('Uzupełnij Poprawnie Formularz')
     fetchData(() => {
-      toast["success"]("Pomyślnie Aktywowano Konto");
+      toast.success("Pomyślnie Aktywowano Konto");
       navigate(PageRouter.Main);
     });
   };

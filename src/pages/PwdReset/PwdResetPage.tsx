@@ -1,4 +1,4 @@
-import React,{ SyntheticEvent } from "react";
+import React, { SyntheticEvent } from "react";
 import { Button } from "@componentsCommon/Button/Button";
 import { Input } from "@componentsCommon/Input/Input";
 import { Logo } from "@componentsCommon/Logo/Logo";
@@ -10,7 +10,12 @@ import { useValidationState } from "@hooks/useValidationState";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import classes from "./PwdResetPage.module.css";
+import { useValidationForm } from "@hooks/useValidationForm";
 
+enum InputName {
+  pwd = "pwd",
+  confirmPwd = "confirmPwd",
+}
 export const PwdResetPage = () => {
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(window.location.search);
@@ -21,6 +26,7 @@ export const PwdResetPage = () => {
     value: pwdValue,
     error: pwdError,
     setValue: setPwd,
+    isValid: isPwdValid,
   } = useValidationState("Hasło", {
     minLength: 8,
     maxLength: 255,
@@ -30,13 +36,18 @@ export const PwdResetPage = () => {
     value: confirmPwdValue,
     error: confirmPwdError,
     setValue: confirmSetPwd,
+    isValid: isConfirmValid,
   } = useValidationState("Hasło", {
     minLength: 8,
     maxLength: 255,
     sameAs: pwdValue,
   });
 
-  const { fetchData ,loading} = useAxios({
+  const isValid = useValidationForm({
+    isValidInputs: [isPwdValid, isConfirmValid],
+  });
+
+  const { fetchData, loading } = useAxios({
     url: RequestPath.PasswordReset,
     method: "POST",
     body: {
@@ -48,11 +59,26 @@ export const PwdResetPage = () => {
 
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-
+    if (!isValid) return toast.error("Uzupełnij poprawnie formularz! ");
     await fetchData(() => {
-      toast["success"]("Hasło zostało zmienione");
+      toast.success("Hasło zostało zmienione");
       navigate(PageRouter.Login);
     });
+  };
+
+  const handleChange = (e: SyntheticEvent) => {
+    e.preventDefault();
+    const { name, value } = e.target as HTMLInputElement;
+    switch (name) {
+      case InputName.pwd:
+        setPwd(value);
+        break;
+      case InputName.confirmPwd:
+        confirmSetPwd(value);
+        break;
+      default:
+        break;
+    }
   };
 
   return (
@@ -65,9 +91,8 @@ export const PwdResetPage = () => {
         value={pwdValue}
         errorMessage={pwdError.message}
         hasError={pwdError.show}
-        onChange={(e: SyntheticEvent) =>
-          setPwd((e.target as HTMLInputElement).value as string)
-        }
+        name={InputName.pwd}
+        onChange={handleChange}
       />
       <Input
         preview
@@ -76,9 +101,8 @@ export const PwdResetPage = () => {
         value={confirmPwdValue}
         errorMessage={confirmPwdError.message}
         hasError={confirmPwdError.show}
-        onChange={(e: SyntheticEvent) =>
-          confirmSetPwd((e.target as HTMLInputElement).value as string)
-        }
+        name={InputName.confirmPwd}
+        onChange={handleChange}
       />
       <div className={classes.text_section}>
         <Text>Po zapisaniu Twoje hasło zostanie zmienione</Text>

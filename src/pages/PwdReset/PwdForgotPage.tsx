@@ -35,10 +35,13 @@ export const PwdForgotPage = () => {
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     await fetchData(() => {
-      toast["success"]("Email został wysłany");
+      toast.success("Email został wysłany");
       navigate(PageRouter.Login);
     });
   };
+
+  const handleChange = (e: SyntheticEvent) =>
+    setEmail((e.target as HTMLInputElement).value as string);
 
   return (
     <form className={classes.form} onSubmit={handleSubmit}>
@@ -49,9 +52,7 @@ export const PwdForgotPage = () => {
         errorMessage={emailError.message}
         value={emailValue}
         type="email"
-        onChange={(e: SyntheticEvent) =>
-          setEmail((e.target as HTMLInputElement).value as string)
-        }
+        onChange={handleChange}
       />
       <div className={classes.text_section}>
         {loading && <Text>Wysyłanie...</Text>}

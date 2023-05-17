@@ -1,15 +1,17 @@
-import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
+import React, { SyntheticEvent } from "react";
 import { Button } from "@componentsCommon/Button/Button";
 import { Input } from "@componentsCommon/Input/Input";
 import { Text } from "@componentsCommon/Text/Text";
-import { RequestPath } from "@enums/request-path.enum";
-import { useAxios } from "@hooks/useAxios";
-import { useValidationState } from "@hooks/useValidationState";
 import { toast } from "react-hot-toast";
+import { useAxios } from "@hooks/useAxios";
 import { useOutletContext } from "react-router-dom";
 import { OutletData } from "../../types/OutletData";
+import { RequestPath } from "@enums/request-path.enum";
+import { useValidationState } from "@hooks/useValidationState";
+import { useValidationForm } from "@hooks/useValidationForm";
 import classes from "./AccountPage.module.css";
 import { BackButton } from "@componentsCommon/BackButton/BackButton";
+
 enum InputName {
   OldPwd = "oldPwd",
   NewPwd = "newPwd",
@@ -17,7 +19,6 @@ enum InputName {
 }
 export const AccountPage = () => {
   const { userId } = useOutletContext() as OutletData;
-  const [validForm, setValidForm] = useState(false);
   const {
     value: oldPwd,
     setValue: setOldPwd,
@@ -48,6 +49,10 @@ export const AccountPage = () => {
     sameAs: newPwd,
   });
 
+  const isValidForm = useValidationForm({
+    isValidInputs: [validNewPwd, validOldPwd, validConfirmPwd],
+  });
+
   const handleChange = (e: SyntheticEvent) => {
     e.preventDefault();
     const { name, value } = e.target as HTMLInputElement;
@@ -75,20 +80,16 @@ export const AccountPage = () => {
     },
   });
 
-  useLayoutEffect(() => {
-    setValidForm(validNewPwd && validOldPwd && validConfirmPwd);
-  }, [validNewPwd, validOldPwd, validConfirmPwd]);
-
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
-    if (!validForm) return toast["error"]("Uzupełnij poprawnie Formularz ! ");
+    if (!isValidForm) return toast.error("Uzupełnij poprawnie Formularz !");
     fetchData(() => {
-      toast["success"]("Zmieniono Hasło");
+      toast.success("Zmieniono Hasło");
     });
   };
 
   return (
-    <div >
+    <div>
       <div className={classes.back_btn}>
         <BackButton />
       </div>
@@ -131,7 +132,7 @@ export const AccountPage = () => {
           <Button
             customClasses={classes.form_submit_btn}
             loading={loading}
-            status={validForm ? "active" : "disabled"}
+            status={isValidForm ? "active" : "disabled"}
           >
             Zapisz Zmiany
           </Button>

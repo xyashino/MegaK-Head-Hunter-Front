@@ -1,8 +1,8 @@
+import React, { SyntheticEvent } from "react";
 import Modal from "react-modal";
-
 import classes from "./Confirm.module.css";
 import { Button } from "@componentsCommon/Button/Button";
-import { SyntheticEvent } from "react";
+
 
 interface Props {
   hideModal: () => void;

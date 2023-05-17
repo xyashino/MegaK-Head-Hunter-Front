@@ -8,19 +8,19 @@ import React, {
 import Modal from "react-modal";
 import classes from "./FilterModal.module.css";
 import { QueryContext } from "@context/QueryContext";
-import { SalarySection } from "@components/FilterModal/Sections/SalarySection";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
+import { QueryAction } from "@enums/query-action.enum";
+import { buildFilterQuery } from "@utils/query/buildFilterQuery";
+import { SalarySection } from "@components/FilterModal/Sections/SalarySection";
 import { RatingSection } from "@components/FilterModal/Sections/RatingSection";
 import { ContractSection } from "@components/FilterModal/Sections/ContractSection";
 import { WorkSection } from "@components/FilterModal/Sections/WorkSection";
 import { ApprenticeshipSection } from "@components/FilterModal/Sections/ApprenticeshipSection";
 import { MonthSection } from "@components/FilterModal/Sections/MonthSection";
-import { QueryAction } from "@enums/query-action.enum";
 import { FilterModalBtn } from "@components/FilterModal/FilterModalBtn";
 import { FilterHeaderSection } from "@components/FilterModal/Sections/FilterHeaderSection";
 import { FilterButtonsSection } from "@components/FilterModal/Sections/FilterButtonsSection";
-import { buildFilterQuery } from "@utils/query/buildFilterQuery";
 
 Modal.setAppElement("#root");
 
@@ -70,7 +70,9 @@ export const FilterModal = () => {
       <Modal
         isOpen={isOpened}
         onRequestClose={closeFilterModal}
-        className={`${classes.filter_modal} ${isOpened ? '' : classes.modal_out}`}
+        className={`${classes.filter_modal} ${
+          isOpened ? "" : classes.modal_out
+        }`}
         overlayClassName={classes.modal_container}
         contentLabel="Filter Modal"
         shouldCloseOnEsc

@@ -1,12 +1,13 @@
-import { useValidationState } from "@hooks/useValidationState";
-import { URL_REGEXP } from "@constants/Regexp";
 import React, { SyntheticEvent, useLayoutEffect, useState } from "react";
 import { Text } from "@componentsCommon/Text/Text";
 import { Input } from "@componentsCommon/Input/Input";
 import { Button } from "@componentsCommon/Button/Button";
-import classes from "./UrlForm.module.css";
 import { LinkWithIcon } from "@components/LinkWithIcon/LinkWithIcon";
+import { useValidationState } from "@hooks/useValidationState";
+import { URL_REGEXP } from "@constants/Regexp";
+import classes from "./UrlForm.module.css";
 import attachSvg from "@assets/attach_file.svg";
+
 
 interface Props {
   urlArray: string[];
