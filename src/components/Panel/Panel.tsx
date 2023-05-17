@@ -19,7 +19,7 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
 
   useLayoutEffect(() => {
     if (role !== accessRole) {
-      toast["error"]("Brak uprawnień");
+      toast.error("Brak uprawnień");
       navigate(PageRouter.Main);
     }
   }, [role]);

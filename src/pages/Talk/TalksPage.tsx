@@ -1,6 +1,5 @@
 import { useLoaderData } from "react-router-dom";
 import {
-  ActiveStudentResponse,
   InterviewFindResponse,
   InterviewRelationResponse,
 } from "@backendTypes";
