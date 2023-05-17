@@ -1,0 +1,76 @@
+.input {
+  background: var(--bgInput) 0 0 no-repeat padding-box;
+  opacity: 1;
+  border: 0;
+  width: 100%;
+  padding: 7px 17px;
+  color: var(--colorInput);
+  font: normal normal normal 16px/27px Catamaran;
+  transition: outline-color .4s;
+}
+
+.input::placeholder {
+  color: var(--colorInput);
+  font-weight: 200;
+  opacity: 0.5;
+}
+
+.error {
+  outline: 3px solid var(--megakRed);
+  color: var(--colorInput);
+}
+.warning {
+  outline: 3px solid #c59601;
+  color: var(--colorInput);
+}
+
+.message {
+  padding: 0;
+  margin: 0;
+  font-weight: bolder;
+  animation: slideIn 0.3s ease-out;
+}
+
+.error_message {
+  color: var(--megakRed);
+}
+
+.warning_message {
+  color:#c59601;
+}
+
+.preview_password {
+  position: relative;
+  width: 100%;
+}
+
+.preview_password_icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+  height: 80%;
+  fill: var(--white);
+}
+.input_group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--inactiveBookmark);
+  padding: 10px 5px 0;
+}
+@keyframes slideIn {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

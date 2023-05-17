@@ -1,0 +1,11 @@
+.button {
+  width: 70%;
+  margin: 10px auto;
+}
+
+@media (min-width: 768px) {
+  .button {
+    width: auto;
+    margin: 0;
+  }
+}

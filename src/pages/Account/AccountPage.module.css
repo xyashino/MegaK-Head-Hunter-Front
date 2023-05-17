@@ -1,0 +1,48 @@
+.account_page {
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.back_btn {
+  margin: 20px;
+  width: 100%;
+}
+
+.form {
+  background-color: var(--navBorder);
+  padding: 10px 10px;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form_submit_btn {
+  margin: 20px;
+  min-width: 100px;
+}
+@media (min-width: 768px) {
+  .account_page {
+    padding: 5px;
+  }
+  .form {
+    width: 90%;
+    padding: 20px 70px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .form {
+    width: 40%;
+  }
+}

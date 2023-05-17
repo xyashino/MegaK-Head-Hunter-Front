@@ -1,0 +1,38 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.message {
+  margin: 10px;
+  font-size: 1.5rem;
+  color: var(--megakRed);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.link a {
+  color: var(--white);
+  border: 1px solid;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 5px 20px;
+  border-radius: 5px;
+  transition: color , font-weight 0.3s ease-in-out;
+}
+
+.link a:hover {
+  color: var(--megakRed);
+  font-weight: bold;
+}
+
+@media (min-width: 768px) {
+  .message {
+    font-size: 3rem;
+  }
+  .link a {
+    font-size: 1.2rem;
+  }
+}

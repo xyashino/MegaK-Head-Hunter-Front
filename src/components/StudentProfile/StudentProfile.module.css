@@ -1,0 +1,50 @@
+.profile {
+  flex: 2;
+  background-color: var(--bgInput);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  max-width: 100%;
+  height: fit-content;
+}
+
+.contact {
+  text-align: left;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.contact a {
+  font-weight: 200;
+  color: var(--white);
+  margin-bottom: 0.25rem;
+}
+
+.name {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.aboutMe {
+  color: grey;
+  margin-top: 1.5rem;
+}
+
+.aboutMeDesc {
+  color: #f7f7f7;
+  margin-bottom: 1.5rem;
+  font-weight: 200;
+}
+
+.button {
+  margin: 20px 5px;
+  width: 100%;
+}
+
+.disinterest {
+  width: 100%;
+  margin-bottom: 0.75rem;
+}

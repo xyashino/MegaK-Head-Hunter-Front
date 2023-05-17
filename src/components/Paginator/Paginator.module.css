@@ -1,0 +1,8 @@
+.pagination_controls {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  margin: 20px;
+}

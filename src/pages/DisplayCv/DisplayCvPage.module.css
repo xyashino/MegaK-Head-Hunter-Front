@@ -1,0 +1,80 @@
+.container {
+  width: 100%;
+  margin: 1rem auto;
+  display: flex;
+  padding-inline: 1rem;
+  gap: 10px;
+  flex-direction: column;
+  word-wrap: break-word;
+}
+
+.button {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.details {
+  flex: 10;
+}
+
+.title_gutter {
+  background-color: var(--bgInput);
+  font-size: 20px;
+  color: var(--white);
+  font-weight: 600;
+  padding: 14px 26px;
+}
+
+.details > p {
+  font-size: 16px;
+  font-weight: 200;
+  color: var(--inactiveBookmark);
+  margin-bottom: 0.5rem;
+  padding: 14px 26px;
+}
+
+.content_gutter {
+  padding: 1.5rem;
+  color: var(--inactiveBookmark);
+  font-weight: 200;
+  display: grid;
+  font-size: 14px;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  word-break: break-all;
+}
+
+.rate_title {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.stars_row {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .profile,
+  .back {
+    max-width: 250px;
+  }
+  .back a {
+    justify-content: center;
+  }
+
+  .expectations_title {
+    min-height: 60px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+}

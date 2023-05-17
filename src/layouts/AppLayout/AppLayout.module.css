@@ -1,0 +1,32 @@
+.app_layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+.app_container_gray {
+  background-color: var(--bgInput);
+}
+
+.app_container {
+  padding: 0 1em;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.app_footer {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .app_container {
+    width: 80%;
+    flex-grow: 1;
+    margin: 2em 0;
+  }
+  .app_footer {
+    width: 80%;
+  }
+}

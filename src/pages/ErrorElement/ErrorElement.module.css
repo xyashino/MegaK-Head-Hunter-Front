@@ -1,0 +1,80 @@
+.ErrorPage {
+  min-height: 100vh;
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  margin: 20px;
+  color: var(--white);
+}
+
+.message {
+  margin: 10px;
+  text-align: center;
+  color: var(--white);
+}
+
+.default {
+  cursor: default;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  align-self: center;
+  text-align: center;
+  margin: 0 10px;
+  color: var(--white);
+  font-size: 1.2rem;
+}
+
+.link a {
+  padding: 10px 20px;
+  color: var(--white);
+  border: 2px solid;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: color , scale  .3s ease-in-out
+}
+
+.link a:hover {
+  color: var(--megakRed);
+}
+
+.image_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 167px);
+}
+
+.image {
+  width: 90%;
+  max-width: 600px;
+  transition: scale .2s ease-in-out;
+}
+
+.image:hover {
+  scale: 1.2;
+}
+
+@media (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
+  }
+
+  .link {
+    align-self: flex-start;
+  }
+
+  .link:hover {
+    background-color: transparent;
+  }
+}

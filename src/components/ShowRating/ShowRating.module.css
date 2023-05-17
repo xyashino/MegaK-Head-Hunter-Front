@@ -1,0 +1,12 @@
+.rating {
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 160px;
+}
+
+.degree {
+    color: white;
+    font-weight: bold;
+}

@@ -1,0 +1,28 @@
+.back_button {
+  border: 0;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+  flex: 1;
+  max-width: 100%;
+  user-select: none;
+  background-color: transparent;
+  color: var(--white);
+  align-self: start;
+  font-size: 15px;
+  transition: filter, font-weight 0.2s linear;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back_button:hover {
+  filter: brightness(120);
+  font-weight: bold;
+}
+.back_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

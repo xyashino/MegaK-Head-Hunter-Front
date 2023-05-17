@@ -1,0 +1,81 @@
+.box {
+    align-self: start;
+    margin: 0 auto;
+    width: 100%;
+    font-size: 0.9rem;
+    text-align: center;
+}
+.drop_box {
+    margin: 1rem auto;
+    padding: 1rem;
+    border: 1px var(--white)  solid;
+    max-width: 1200px;
+    min-height: 140px;
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: .2s;
+}
+
+.aside {
+    display: flex;
+    justify-content: center;
+}
+
+.text {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.info {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.red {
+    color: var(--megakRed);
+}
+.green {
+    color: #008000;
+}
+.upload_btn {
+  background-color: var(--megakRed);
+  border-radius: 2px;
+  border-width: 0;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 10px 24px;
+  text-align: center;
+  transition: all 200ms;
+  vertical-align: baseline;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+@media (min-width: 768px) {
+    .text {
+        font-size: 1.4rem;
+    }
+
+    .info {
+        font-size: 1.2rem;
+    }
+
+    .upload_btn {
+        font-size: 18px;
+    }
+
+    .drop_box:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
