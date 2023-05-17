@@ -27,7 +27,7 @@ export const RemoveInterviewButton = ({
 
   const handleClick = async () => {
     await fetchData(() => {
-      toast["success"]("Użytkownik został usunięty z listy rozmów");
+      toast.success("Użytkownik został usunięty z listy rozmów");
       dispatchQuery({ type: QueryAction.Refresh });
     });
     if (navigateToMain) navigate(PageRouter.Main);
