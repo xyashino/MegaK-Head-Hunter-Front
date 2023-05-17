@@ -1,12 +1,12 @@
 import React, { useLayoutEffect } from "react";
-import classes from "./Panel.module.css";
-import { BookmarkNavLink } from "@components/BookmarkNavLink/BookmarkNavLink";
 import { Outlet, useNavigate, useOutletContext } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
 import { UserResponse } from "@backendTypes";
 import { toast } from "react-hot-toast";
-import {BookmarkData} from "../../types/BookmarkData";
-import {OutletData} from "../../types/OutletData";
+import { BookmarkNavLink } from "@components/BookmarkNavLink/BookmarkNavLink";
+import classes from "./Panel.module.css";
+import { BookmarkData } from "../../types/BookmarkData";
+import { OutletData } from "../../types/OutletData";
 
 interface Props {
   accessRole: UserResponse["role"];
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const Panel = ({ accessRole, bookmarks }: Props) => {
-  const { role, id ,userId} = useOutletContext() as OutletData;
+  const { role, id, userId } = useOutletContext() as OutletData;
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
@@ -26,18 +26,14 @@ export const Panel = ({ accessRole, bookmarks }: Props) => {
 
   return (
     <>
-      <div  className={classes.panel}>
+      <div className={classes.panel}>
         <header className={classes.panel_header}>
-          {bookmarks.map(({to,text},index) => (
-            <BookmarkNavLink
-              text={text}
-              to={to}
-              key={index}
-            />
+          {bookmarks.map(({ to, text }, index) => (
+            <BookmarkNavLink text={text} to={to} key={index} />
           ))}
         </header>
         <div className={classes.panel_main}>
-          <Outlet context={{ role, id , userId }} />
+          <Outlet context={{ role, id, userId }} />
         </div>
       </div>
     </>
