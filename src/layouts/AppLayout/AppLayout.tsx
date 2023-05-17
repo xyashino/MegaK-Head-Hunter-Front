@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
-import {
-  Outlet, ScrollRestoration,
-  useLoaderData,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Outlet, ScrollRestoration, useLoaderData } from "react-router-dom";
 import classes from "./AppLayout.module.css";
+
 export const AppLayout = () => {
   const { role, data, id } = useLoaderData() as CurrentUserResponse;
   const navigate = useNavigate();
@@ -19,26 +15,31 @@ export const AppLayout = () => {
     if (pathname === PageRouter.Main) {
       switch (role) {
         case "admin":
-          return navigate(PageRouter.BaseAdmin);
+          navigate(PageRouter.BaseAdmin);
+          break;
         case "student":
-          return navigate(PageRouter.BaseStudent);
+          navigate(PageRouter.BaseStudent);
+          break;
         case "hr":
-          return navigate(PageRouter.BaseHr);
+          navigate(PageRouter.BaseHr);
+          break;
         default:
-          return navigate(PageRouter.Error);
+          navigate(PageRouter.Error);
+          break;
       }
     }
-  }, [pathname]);
+  }, [pathname, role, navigate]);
 
-  const fullName = role === "admin" ? "Admin" : data.fullName;
-  const githubUsername = role === "student" ? data.githubUsername : undefined;
+  const fullName = role === "admin" ? "Admin" : data?.fullName;
+  const githubUsername = role === "student" ? data?.githubUsername : undefined;
+
   return (
     <div className={classes.app_layout}>
       <Navbar fullName={fullName} githubUsername={githubUsername} />
       <ScrollRestoration />
       <div
         className={`${classes.app_container} ${
-          pathname.includes(`/cv/`) ? "" : classes.app_container_gray
+          pathname.includes("/cv/") ? "" : classes.app_container_gray
         }`}
       >
         <Outlet context={{ role, id: data?.id ?? "", userId: id }} />
