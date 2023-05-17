@@ -1,4 +1,4 @@
-import React, {SyntheticEvent, useCallback, useState} from "react";
+import React, { SyntheticEvent, useCallback, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { PageRouter } from "@enums/page-router.enum";
@@ -39,10 +39,10 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
     setShowMenu((prevState) => !prevState);
   }, [setShowMenu]);
 
-  const handleConfirm = (e:SyntheticEvent)=>{
+  const handleConfirm = (e: SyntheticEvent) => {
     e.preventDefault();
-    showModal()
-  }
+    showModal();
+  };
 
   return (
     <>
@@ -61,12 +61,22 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
               </span>
             </button>
             <div
-              className={`${classes.modal} ${showMenu ? classes.modal_show : ""}`}
+              className={`${classes.modal} ${
+                showMenu ? classes.modal_show : ""
+              }`}
             >
-              <Link to={PageRouter.Account} className={classes.link} draggable={false}>
+              <Link
+                to={PageRouter.Account}
+                className={classes.link}
+                draggable={false}
+              >
                 Konto
               </Link>
-              <button onClick={handleConfirm} className={classes.link} draggable={false}>
+              <button
+                onClick={handleConfirm}
+                className={`${classes.button} ${classes.link}`}
+                draggable={false}
+              >
                 Wyloguj
               </button>
             </div>
