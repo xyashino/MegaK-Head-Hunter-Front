@@ -11,7 +11,7 @@ import { AppLayout } from "@layouts/AppLayout/AppLayout";
 import { AccountPage } from "@pages/Account/AccountPage";
 import { DisplayCvPage } from "@pages/DisplayCv/DisplayCvPage";
 import { EditCvPage } from "@pages/EditCv/EditCvPage";
-import { ErrorPage } from "@pages/Error/ErrorPage";
+import { ErrorElement } from "@pages/ErrorElement/ErrorElement";
 import { LoginPage } from "@pages/Login/LoginPage";
 import { NotFoundPage } from "@pages/NotFound/NotFoundPage";
 import { PwdForgotPage } from "@pages/PwdReset/PwdForgotPage";
@@ -26,12 +26,14 @@ import { TalksPage } from "@pages/Talk/TalksPage";
 import { DragAndDropPage } from "@pages/DragAndDrop/DragAndDropPage";
 import { CreateHrPage } from "@pages/CreateHr/CreateHrPage";
 import { RegisterHrPage } from "@pages/RegisterHr/RegisterHrPage";
+import {DEFAULT_ERROR_MESSAGE, URL_ERROR_MESSAGE} from "@constants/ErrorElementData";
 
 const routers = createBrowserRouter([
   {
     path: PageRouter.Main,
     loader: checkAuth,
     element: <AppLayout />,
+    errorElement: <ErrorElement {...DEFAULT_ERROR_MESSAGE}/>,
     children: [
       {
         path: PageRouter.Admin,
@@ -99,37 +101,32 @@ const routers = createBrowserRouter([
     loader: ({ params }) =>
       getDataFrom(`${RequestPath.GetOneStudent}${params.id}`),
     element: <StudentRegistrationPage />,
+    errorElement: <ErrorElement {...URL_ERROR_MESSAGE}/>,
   },
   {
     path: PageRouter.HrRegistration,
     loader: ({ params }) => getDataFrom(`${RequestPath.GetOneHr}${params.id}`),
     element: <RegisterHrPage />,
-  },
-  {
-    path: PageRouter.Error,
-    element: (
-      <ErrorPage
-        title="Błąd 500"
-        message="Wystąpił problem, spróbuj ponownie za chwilę."
-        buttonMessage="Powrót do strony głównej"
-      />
-    ),
+    errorElement: <ErrorElement {...URL_ERROR_MESSAGE}/>,
   },
   {
     path: PageRouter.Login,
     element: <LoginPage />,
+    errorElement: <ErrorElement {...DEFAULT_ERROR_MESSAGE}/>,
   },
   {
     path: PageRouter.PwdForgot,
     element: <PwdForgotPage />,
+    errorElement: <ErrorElement {...DEFAULT_ERROR_MESSAGE}/>,
   },
   {
     path: PageRouter.PwdReset,
     element: <PwdResetPage />,
+    errorElement:<ErrorElement {...DEFAULT_ERROR_MESSAGE}/>,
   },
   {
     path: PageRouter.Everything,
-    element: <NotFoundPage message="Page not found - 404" />,
+    element: <NotFoundPage message="Nie znaleziono strony - 404" />,
   },
 ]);
 export const App = () => <RouterProvider router={routers} />;

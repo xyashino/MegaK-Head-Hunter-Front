@@ -90,7 +90,7 @@ export const EditCvPage = () => {
         processStudentData(rest as any)
       );
     } catch (e) {
-      let message = "Unknown Error";
+      let message = "Unknown ErrorElement";
       if (isAxiosError(e)) {
         message =
           e.response?.data.message ?? e.response?.data.error ?? e.message;

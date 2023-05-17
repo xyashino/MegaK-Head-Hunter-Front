@@ -56,7 +56,7 @@ export const useAxios = ({
       setLoading(false);
       return res.data;
     } catch (error) {
-      let message = "Unknown Error";
+      let message = "Nieznany błąd";
       if (isAxiosError(error)) {
         message =
           error.response?.data.message ??

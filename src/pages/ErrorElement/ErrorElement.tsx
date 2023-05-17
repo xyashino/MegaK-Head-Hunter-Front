@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom"
-import classes from "./ErrorPage.module.css"
+import classes from "./ErrorElement.module.css"
 import img from "@assets/error-image.png"
 import {PageRouter} from "@enums/page-router.enum";
 
@@ -9,7 +9,7 @@ type Props = {
   message: string,
 }
 
-export const ErrorPage = ({title, message}: Props) => {
+export const ErrorElement = ({title, message}: Props) => {
   return <div className={classes.ErrorPage}>
     <div className={classes.title}><h2 className={classes.default}>{title}</h2></div>
     <hr />
