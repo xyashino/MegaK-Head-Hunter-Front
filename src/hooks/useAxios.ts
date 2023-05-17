@@ -1,18 +1,18 @@
-import {useState } from "react";
-import { AxiosResponse, isAxiosError } from "axios";
+import { useState } from "react";
+import { AxiosRequestConfig, AxiosResponse, isAxiosError } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { toast } from "react-hot-toast";
 interface AxiosProps {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  body?: object | null;
-  headers?: object | null;
+  body?: Record<string, unknown> | null;
+  headers?: Record<string, string> | null;
 }
 
 type AxiosMethod = (
   url: string,
-  data?: any,
-  config?: any
+  data?: Record<string, unknown>,
+  config?: AxiosRequestConfig
 ) => Promise<AxiosResponse<unknown>>;
 
 const getAxiosMethod = (method: AxiosProps["method"]): AxiosMethod => {
@@ -66,9 +66,7 @@ export const useAxios = ({
       toast.error(Array.isArray(message) ? message.join("\n") : message);
       setError({ show: true, msg: message, type: "error" });
       setLoading(false);
-      if (afterErrorMethod) {
-        afterErrorMethod();
-      }
+      afterErrorMethod && afterErrorMethod();
     }
   };
 
