@@ -1,5 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import {
+  ActiveStudentResponse,
   InterviewFindResponse,
   InterviewRelationResponse,
 } from "@backendTypes";
@@ -17,8 +18,8 @@ export const TalksPage = () => {
     useLoaderData() as InterviewFindResponse;
   const [interview, setInterview] = useState(interviewResponse);
 
-  const updateTalks = (e: InterviewRelationResponse[]) => {
-    setInterview(e);
+  const updateTalks = (e:unknown) => {
+    setInterview(e as  InterviewRelationResponse[]);
   };
 
   return (

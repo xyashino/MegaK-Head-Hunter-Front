@@ -14,8 +14,8 @@ export const StudentsPage = () => {
   const [students, setStudents] =
     useState<ActiveStudentResponse[]>(activeStudents);
 
-  const updateStudents = (e: ActiveStudentResponse[]) => {
-    setStudents(e);
+  const updateStudents = (e: unknown) => {
+    setStudents(e as ActiveStudentResponse[]);
   };
 
   return (

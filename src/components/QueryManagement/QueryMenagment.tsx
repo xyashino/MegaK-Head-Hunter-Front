@@ -28,7 +28,7 @@ import { isAxiosError } from "axios";
 interface PageProps extends PropsWithChildren {
   request: RequestPath;
   meta: PageMeta;
-  update: (e: InterviewRelationResponse[] | ActiveStudentResponse[]) => void;
+  update: <T extends ActiveStudentResponse[] | InterviewRelationResponse[]>(e: T) => void;
 }
 
 export const QueryManagement = ({
