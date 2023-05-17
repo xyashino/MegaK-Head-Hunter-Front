@@ -10,12 +10,14 @@ import { Toggle } from "@componentsCommon/Toggle/Toggle";
 import classes from "./EditCvSections.module.css";
 import { ContrastSection } from "@components/EditCvSections/ContrastSection";
 
+type ObjectType = { defaultValue: string; name: string };
+
 interface Props {
-  expectedContractType: { defaultValue: string; name: string };
-  expectedTypeWork: { defaultValue: string; name: string };
-  targetWorkCity: { defaultValue: string; name: string };
-  monthsOfCommercialExp: { defaultValue: string; name: string };
-  expectedSalary: { defaultValue: string; name: string };
+  expectedContractType: ObjectType;
+  expectedTypeWork: ObjectType;
+  targetWorkCity: ObjectType;
+  monthsOfCommercialExp: ObjectType;
+  expectedSalary: ObjectType;
   onChange: (e: SyntheticEvent) => void;
   toggle: {
     defaultValue: boolean;

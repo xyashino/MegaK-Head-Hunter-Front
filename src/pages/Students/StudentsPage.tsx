@@ -1,20 +1,21 @@
+import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ManyStudentResponse, ActiveStudentResponse } from "@backendTypes";
 import { RequestPath } from "@enums/request-path.enum";
 import { QueryManagement } from "@components/QueryManagement/QueryMenagment";
 import { Dropdown } from "@components/Dropdown/Dropdown";
 import { SearchUsers } from "@componentsCommon/Search/Search";
-import classes from "./StudentsPage.module.css";
 import { FilterModal } from "@components/FilterModal/FilterModal";
 import { FilterContextProvider } from "@context/FilterContext";
-import { useState } from "react";
+import classes from "./StudentsPage.module.css";
+
 export const StudentsPage = () => {
   const { meta, data: activeStudents } = useLoaderData() as ManyStudentResponse;
   const [students, setStudents] =
     useState<ActiveStudentResponse[]>(activeStudents);
 
-  const updateStudents = (e: ActiveStudentResponse[]) => {
-    setStudents(e);
+  const updateStudents = (e: unknown) => {
+    setStudents(e as ActiveStudentResponse[]);
   };
 
   return (
@@ -22,7 +23,7 @@ export const StudentsPage = () => {
       <QueryManagement
         meta={meta}
         request={RequestPath.GetStudents}
-        updateStudents={updateStudents as any}
+        update={updateStudents}
       >
         <div className={classes.search_bar}>
           <SearchUsers />

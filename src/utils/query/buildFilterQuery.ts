@@ -1,7 +1,8 @@
 import {FilterData} from "../../types/FilterData";
 import {Rating} from "@enums/rating.enum";
+import {QueryFiltration} from "../../types/QueryData";
 
-export const buildFilterQuery = (filter: FilterData) => {
+export const buildFilterQuery = (filter: FilterData):QueryFiltration => {
     return {
         courseCompletion:
             filter.rating.find((el) => el.name === Rating.course)?.value ?? "",

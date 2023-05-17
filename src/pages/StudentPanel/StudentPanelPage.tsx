@@ -1,14 +1,14 @@
 import React, { SyntheticEvent } from "react";
-import { Button } from "@componentsCommon/Button/Button";
 import { useNavigate, useOutletContext } from "react-router-dom";
-import { OutletData } from "../../types/OutletData";
 import { toast } from "react-hot-toast";
 import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { StudentUpdateRequest } from "@backendTypes";
+import { Button } from "@componentsCommon/Button/Button";
 import { PageRouter } from "@enums/page-router.enum";
-import {useConfirm} from "@hooks/useConfirm";
-import {Confirm} from "@components/Confirm/Confirm";
+import { useConfirm } from "@hooks/useConfirm";
+import { Confirm } from "@components/Confirm/Confirm";
+import { OutletData } from "../../types/OutletData";
 
 export const StudentPanelPage = () => {
   const { id } = useOutletContext() as OutletData;
@@ -24,22 +24,23 @@ export const StudentPanelPage = () => {
     navigate(`/cv/${id}`);
   };
 
-  const changeStudentStatus = () => {
+  const markAsEmployed = () => {
     fetchData(() => {
       toast.success("Oznaczono jako zatrudniony");
       navigate(PageRouter.Login);
     });
   };
 
-  const  {showModal,...restConfirm} = useConfirm({
-    doAfterConfirm:changeStudentStatus,
-    confirmMessage: 'Czy na pewno chcesz to zrobić? Stracisz dostęp do aplikacji.',
-  })
+  const { showModal, ...restConfirm } = useConfirm({
+    doAfterConfirm: markAsEmployed,
+    confirmMessage:
+      "Czy na pewno chcesz to zrobić? Stracisz dostęp do aplikacji.",
+  });
 
-  const handleConfirm = (e:SyntheticEvent)=>{
+  const handleConfirmationButtonClick = (e: SyntheticEvent) => {
     e.preventDefault();
-    showModal()
-  }
+    showModal();
+  };
   return (
     <div style={{ alignSelf: "start" }}>
       <Button
@@ -49,13 +50,13 @@ export const StudentPanelPage = () => {
         Zobacz Swoje CV
       </Button>
       <Button
-        onClick={handleConfirm}
+        onClick={handleConfirmationButtonClick}
         style={{ minWidth: "200px", margin: "30px" }}
         loading={loading}
       >
         Jestem Zatrudniony !!
       </Button>
-      <Confirm {...restConfirm}/>
+      <Confirm {...restConfirm} />
     </div>
   );
 };

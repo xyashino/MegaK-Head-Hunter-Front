@@ -1,11 +1,11 @@
 import React, { ReactNode, useState } from "react";
-import Dropzone from "react-dropzone";
-import classes from "./DragAndDropPage.module.css";
 import { AxiosProgressEvent } from "axios";
+import Dropzone from "react-dropzone";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { RequestPath } from "@enums/request-path.enum";
 import { toast } from "react-hot-toast";
-import {Button} from "@componentsCommon/Button/Button";
+import { Button } from "@componentsCommon/Button/Button";
+import classes from "./DragAndDropPage.module.css";
 
 const fileUploadedMsg = <p className={`${classes.green} ${classes.info}`}>Plik wysłany</p>;
 const fileUploadError = (
@@ -17,7 +17,7 @@ const fileUploadError = (
 const uploadOnServer = (
   file: File,
   onUploadProgress?: (progressEvent: AxiosProgressEvent) => void
-): Promise<any> => {
+): Promise<unknown> => {
   const formData = new FormData();
 
   formData.append("uploadStudents", file);

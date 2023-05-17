@@ -3,8 +3,7 @@ import { ActiveStudentResponse } from "@backendTypes";
 import { ShowRating } from "@components/ShowRating/ShowRating";
 import { StudentProfile } from "@components/StudentProfile/StudentProfile";
 import { Text } from "@componentsCommon/Text/Text";
-import { PageRouter } from "@enums/page-router.enum";
-import { Link, useLoaderData, useOutletContext } from "react-router-dom";
+import { useLoaderData, useOutletContext } from "react-router-dom";
 import classes from "./DisplayCvPage.module.css";
 import { UrlContainer } from "@components/DisplayCvContainers/UrlCointainer";
 import { RateContainer } from "@components/DisplayCvContainers/RateCointainer";
@@ -91,11 +90,11 @@ export const DisplayCvPage = () => {
           />
         </div>
         <div className={classes.title_gutter}>Edukacja</div>
-        <Text className={classes.content_gutter}>{studentData.education}</Text>
+        <Text customClasses={classes.content_gutter}>{studentData.education}</Text>
         <div className={classes.title_gutter}>Kursy</div>
-        <Text className={classes.content_gutter}>{studentData.courses}</Text>
+        <Text customClasses={classes.content_gutter}>{studentData.courses}</Text>
         <div className={classes.title_gutter}>Doświadczenie zawodowe</div>
-        <Text className={classes.content_gutter}>
+        <Text customClasses={classes.content_gutter}>
           {studentData.workExperience}
         </Text>
         <UrlContainer title="Portfolio" array={studentData.portfolioUrls} />

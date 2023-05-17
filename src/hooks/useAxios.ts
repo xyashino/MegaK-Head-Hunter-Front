@@ -1,19 +1,19 @@
-import {useState } from "react";
-import { AxiosResponse, isAxiosError } from "axios";
+import { useState } from "react";
+import { AxiosRequestConfig, AxiosResponse, isAxiosError } from "axios";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import { toast } from "react-hot-toast";
 interface AxiosProps {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  body?: object | null;
-  headers?: object | null;
+  body?: Record<string, any> | null;
+  headers?: Record<string, string> | null;
 }
 
 type AxiosMethod = (
   url: string,
-  data?: any,
-  config?: any
-) => Promise<AxiosResponse<any>>;
+  data?: Record<string, any>,
+  config?: AxiosRequestConfig
+) => Promise<AxiosResponse<unknown>>;
 
 const getAxiosMethod = (method: AxiosProps["method"]): AxiosMethod => {
   switch (method) {
@@ -44,7 +44,7 @@ export const useAxios = ({
   const axiosMethod = getAxiosMethod(method);
 
   const requestLogic = async (
-    fetchMethod: () => Promise<AxiosResponse<any, any>>,
+    fetchMethod: () => Promise<AxiosResponse<unknown>>,
     afterSuccessMethod?: () => void,
     afterErrorMethod?: () => void
   ) => {
@@ -56,19 +56,17 @@ export const useAxios = ({
       setLoading(false);
       return res.data;
     } catch (error) {
-      let message = "Unknown Error";
+      let message = "Nieznany błąd";
       if (isAxiosError(error)) {
         message =
           error.response?.data.message ??
           error.response?.data.error ??
           error.message;
       }
-      toast["error"](Array.isArray(message) ? message.join("\n") : message);
+      toast.error(Array.isArray(message) ? message.join("\n") : message);
       setError({ show: true, msg: message, type: "error" });
       setLoading(false);
-      if (afterErrorMethod) {
-        afterErrorMethod();
-      }
+      afterErrorMethod && afterErrorMethod();
     }
   };
 

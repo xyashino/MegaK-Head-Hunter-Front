@@ -12,7 +12,9 @@ import { queryReducer } from "@reducers/QueryReducer";
 import { RequestPath } from "@enums/request-path.enum";
 import { AxiosSetup } from "@utils/network/AxiosSetup";
 import {
+  ActiveStudentResponse,
   InterviewFindResponse,
+  InterviewRelationResponse,
   ManyStudentResponse,
   PageMeta,
 } from "@backendTypes";
@@ -21,20 +23,20 @@ import { Paginator } from "@components/Paginator/Paginator";
 import { DEFAULT_QUERY_FILTERS } from "@constants/DefaultQueruFilters";
 import { FilterContext } from "@context/FilterContext";
 import { FilterAction } from "@enums/filter-action.enum";
+import { isAxiosError } from "axios";
 
-interface Props extends PropsWithChildren {
+interface PageProps extends PropsWithChildren {
   request: RequestPath;
   meta: PageMeta;
-  updateStudents: <T extends ManyStudentResponse | InterviewFindResponse>(
-    e: T["data"]
-  ) => void;
+  update: <T extends ActiveStudentResponse[] | InterviewRelationResponse[]>(e: T) => void;
 }
+
 export const QueryManagement = ({
   children,
   request,
   meta,
-  updateStudents,
-}: Props) => {
+  update,
+}: PageProps) => {
   const { dispatchFilter } = useContext(FilterContext);
 
   const [queryData, dispatchQuery] = useReducer(queryReducer, {
@@ -59,19 +61,26 @@ export const QueryManagement = ({
     (async () => {
       try {
         const { meta, data } = (
-          await AxiosSetup.get<ManyStudentResponse | InterviewFindResponse>(queryData.url)
+          await AxiosSetup.get<ManyStudentResponse | InterviewFindResponse>(
+            queryData.url
+          )
         ).data;
-        updateStudents(data);
+        update(data);
         dispatchQuery({ type: QueryAction.PaginationUpdate, payload: meta });
-      } catch (e: any) {
-        toast.error(
-          e.response?.data.message ?? e.response?.data.error ?? e.message
-        );
+      } catch (error) {
+        let message = "Nieznany błąd";
+        if (isAxiosError(error)) {
+          message =
+            error.response?.data.message ??
+            error.response?.data.error ??
+            error.message;
+        }
+        toast.error(message);
       } finally {
         setIsLoading(false);
       }
     })();
-  }, [queryData.url,queryData.refresh]);
+  }, [queryData.url, queryData.refresh]);
 
   return (
     <QueryContext.Provider value={{ queryData, dispatchQuery }}>

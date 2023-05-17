@@ -22,7 +22,7 @@ export const Paginator = () => {
     e.preventDefault();
     dispatchQuery({
       type: QueryAction.PaginationChangeTake,
-      payload: (e.target as HTMLSelectElement).value,
+      payload: Number((e.target as HTMLSelectElement).value),
     });
   };
 

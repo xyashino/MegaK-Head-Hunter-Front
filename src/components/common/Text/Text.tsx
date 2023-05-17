@@ -2,7 +2,7 @@ import React, { HTMLAttributes, PropsWithChildren } from "react";
 import classes from "./Text.module.css";
 
 interface Props
-  extends HTMLAttributes<HTMLParagraphElement>,
+  extends Omit<HTMLAttributes<HTMLParagraphElement>, 'className'>,
     PropsWithChildren {
   customClasses?: string;
   weight?: "bold" | "normal" | "light";
@@ -10,7 +10,6 @@ interface Props
 }
 
 export const Text = ({
-  className,
   children,
   customClasses = "",
   weight = "normal",

@@ -9,7 +9,8 @@ import { useAxios } from "@hooks/useAxios";
 import { RequestPath } from "@enums/request-path.enum";
 import { useNavigate } from "react-router-dom";
 import { PageRouter } from "@enums/page-router.enum";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import { useValidationForm } from "@hooks/useValidationForm";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ export const LoginPage = () => {
     value: emailValue,
     error: emailError,
     setValue: setEmail,
+    isValid: isEmailValid,
   } = useValidationState("Email", {
     minLength: 3,
     specialChars: ["@"],
@@ -27,12 +29,13 @@ export const LoginPage = () => {
     value: pwdValue,
     error: pwdError,
     setValue: setPwd,
+    isValid: isPwdValid,
   } = useValidationState("Hasło", {
     minLength: 8,
     maxLength: 255,
   });
 
-  const { fetchData ,loading} = useAxios({
+  const { fetchData, loading } = useAxios({
     url: RequestPath.Login,
     method: "POST",
     body: {
@@ -41,10 +44,14 @@ export const LoginPage = () => {
     },
   });
 
+  const isValidForm = useValidationForm({
+    isValidInputs: [isEmailValid, isPwdValid],
+  });
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
+    if (!isValidForm) return toast.error("Uzpełnij poprawnie Formularz");
     await fetchData(() => {
-      toast['success']('Zalogowano');
+      toast.success("Zalogowano");
       navigate(PageRouter.Main);
     });
   };
@@ -77,8 +84,16 @@ export const LoginPage = () => {
           setPwd((e.target as HTMLInputElement).value as string)
         }
       />
-      <Text style={{ marginLeft: "auto", cursor: "pointer", textDecoration: "underline" }}
-            onClick={() => navigate(PageRouter.PwdForgot)}>Zapomniałeś hasła?</Text>
+      <Text
+        style={{
+          marginLeft: "auto",
+          cursor: "pointer",
+          textDecoration: "underline",
+        }}
+        onClick={() => navigate(PageRouter.PwdForgot)}
+      >
+        Zapomniałeś hasła?
+      </Text>
       <div className={classes.login_text_container}>
         <Text>
           Nie masz konta?{" "}

@@ -22,7 +22,6 @@ export interface PreviewPasswordProps
 
 export const PreviewPassword = ({
   isError,
-  type,
   value,
   customClasses,
   messageType,
@@ -40,7 +39,6 @@ export const PreviewPassword = ({
   };
 
   return (
-    <>
       <div className={classes.preview_password}>
         <input
           className={`${classes.input} ${
@@ -53,12 +51,12 @@ export const PreviewPassword = ({
         />
         <img
           src={isPreview ? previewIcon : offPreviewIcon}
-          alt={isPreview ? "preview icon" : "off preview icon"}
+          alt="preview icon"
           className={classes.preview_password_icon}
           draggable={false}
           onClick={handlePreview}
+          aria-hidden={true}
         />
       </div>
-    </>
   );
 };

@@ -1,15 +1,15 @@
-import React, { SyntheticEvent, useState } from "react";
-import { Avatar } from "@componentsCommon/Avatar/Avatar";
-import { Logo } from "@componentsCommon/Logo/Logo";
-import { Text } from "@componentsCommon/Text/Text";
+import React, { SyntheticEvent, useCallback, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
-import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import classes from "./Navbar.module.css";
 import { Confirm } from "@components/Confirm/Confirm";
 import { useConfirm } from "@hooks/useConfirm";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
+import { Logo } from "@componentsCommon/Logo/Logo";
+import { Text } from "@componentsCommon/Text/Text";
+import classes from "./Navbar.module.css";
 
 interface Props {
   githubUsername?: string;
@@ -35,14 +35,14 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
     doAfterConfirm: logoutUser,
   });
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setShowMenu((prevState) => !prevState);
-  };
+  }, [setShowMenu]);
 
-  const handleConfirm = (e:SyntheticEvent)=>{
+  const handleConfirm = (e: SyntheticEvent) => {
     e.preventDefault();
-    showModal()
-  }
+    showModal();
+  };
 
   return (
     <>
@@ -65,12 +65,20 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
                 showMenu ? classes.modal_show : ""
               }`}
             >
-              <Link to={PageRouter.Account} className={classes.link} draggable={false}>
+              <Link
+                to={PageRouter.Account}
+                className={classes.link}
+                draggable={false}
+              >
                 Konto
               </Link>
-              <a onClick={handleConfirm} className={classes.link} draggable={false}>
+              <button
+                onClick={handleConfirm}
+                className={`${classes.button} ${classes.link}`}
+                draggable={false}
+              >
                 Wyloguj
-              </a>
+              </button>
             </div>
           </div>
         </div>

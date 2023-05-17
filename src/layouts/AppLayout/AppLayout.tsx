@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation , Outlet, useLoaderData} from "react-router-dom";
 import { CurrentUserResponse } from "@backendTypes";
 import { Navbar } from "@components/Navbar/Navbar";
 import { PageRouter } from "@enums/page-router.enum";
-import { Outlet, ScrollRestoration, useLoaderData } from "react-router-dom";
 import classes from "./AppLayout.module.css";
 
 export const AppLayout = () => {
@@ -36,7 +35,6 @@ export const AppLayout = () => {
   return (
     <div className={classes.app_layout}>
       <Navbar fullName={fullName} githubUsername={githubUsername} />
-      <ScrollRestoration />
       <div
         className={`${classes.app_container} ${
           pathname.includes("/cv/") ? "" : classes.app_container_gray

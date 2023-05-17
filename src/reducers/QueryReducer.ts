@@ -2,7 +2,7 @@ import { QueryData } from "../types/QueryData";
 import { QueryActionData } from "../types/QueryActionData";
 import { QueryAction } from "@enums/query-action.enum";
 import { PageMeta } from "@backendTypes";
-import {buildQueryUrl} from "@utils/query/buildQuery";
+import { buildQueryUrl } from "@utils/query/buildQuery";
 
 type Reducer = (state: QueryData, action: QueryActionData) => QueryData;
 
@@ -55,18 +55,19 @@ export const queryReducer: Reducer = (state, action) => {
       return copyState;
     case QueryAction.FilterStudent:
       copyState.filtration = action.payload;
+      const filtration = copyState.filtration;
       copyState.pagination.page = 1;
       copyState.url = buildQueryUrl(copyState.url, {
-        courseCompletion: copyState.filtration.courseCompletion ?? "",
-        courseEngagement: copyState.filtration.courseEngagement ?? "",
-        projectDegree: copyState.filtration.projectDegree ?? "",
-        teamProjectDegree: copyState.filtration.teamProjectDegree ?? "",
-        expectedTypeWork: copyState.filtration.expectedTypeWork ?? "",
-        expectedContractType: copyState.filtration.expectedContractType ?? "",
-        minSalary: copyState.filtration.minSalary,
-        maxSalary: copyState.filtration.maxSalary,
-        canTakeApprenticeship: copyState.filtration.canTakeApprenticeship,
-        monthsOfCommercialExp: copyState.filtration.monthsOfCommercialExp,
+        courseCompletion: filtration.courseCompletion ?? "",
+        courseEngagement: filtration.courseEngagement ?? "",
+        projectDegree: filtration.projectDegree ?? "",
+        teamProjectDegree:filtration.teamProjectDegree ?? "",
+        expectedTypeWork: filtration.expectedTypeWork ?? "",
+        expectedContractType: filtration.expectedContractType ?? "",
+        minSalary: filtration.minSalary,
+        maxSalary: filtration.maxSalary,
+        canTakeApprenticeship: filtration.canTakeApprenticeship,
+        monthsOfCommercialExp: filtration.monthsOfCommercialExp,
       });
       return copyState;
     default:

@@ -1,4 +1,4 @@
-import React,{ useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import classes from "./Toggle.module.css";
 
 interface Props {
@@ -12,6 +12,7 @@ export const Toggle = ({ runAfterChange, defaultValue = false }: Props) => {
   useLayoutEffect(() => {
     runAfterChange(isOn);
   }, [isOn]);
+
   const handleChange = () => {
     setIsOn((prevIsOn) => !prevIsOn);
   };
@@ -24,7 +25,7 @@ export const Toggle = ({ runAfterChange, defaultValue = false }: Props) => {
         onChange={handleChange}
         id="toggle-switch"
       />
-      <label htmlFor="toggle-switch"></label>
+      <label htmlFor="toggle-switch">Toggle</label>
     </div>
   );
 };

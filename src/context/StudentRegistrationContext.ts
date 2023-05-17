@@ -13,9 +13,9 @@ interface StudentRegistrationContextValue {
 
 const initialValue: StudentRegistrationContextValue = {
     step: {currentStep:1,maxStep:99,canProceedToNextStep:true,lastStep:1},
-    dispatchStep: ()=>{},
+    dispatchStep: ()=>({}),
     studentData: DEFAULT_STUDENT_DATA,
-    setStudentData:()=> {} ,
+    setStudentData:()=> ({}) ,
 };
 
 export const  StudentRegistrationContext = createContext<StudentRegistrationContextValue>(initialValue);
