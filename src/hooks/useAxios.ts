@@ -5,13 +5,13 @@ import { toast } from "react-hot-toast";
 interface AxiosProps {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-  body?: Record<string, unknown> | null;
+  body?: Record<string, any> | null;
   headers?: Record<string, string> | null;
 }
 
 type AxiosMethod = (
   url: string,
-  data?: Record<string, unknown>,
+  data?: Record<string, any>,
   config?: AxiosRequestConfig
 ) => Promise<AxiosResponse<unknown>>;
 

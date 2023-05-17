@@ -1,5 +1,6 @@
 import {QueryAction} from "@enums/query-action.enum";
-import {Filtration, PageMeta} from "@backendTypes";
+import {PageMeta} from "@backendTypes";
+import {QueryFiltration} from "./QueryData";
 
 export type QueryActionData =   {
     type: QueryAction.PaginationPrevStep | QueryAction.PaginationNextStep | QueryAction.Refresh;
@@ -14,5 +15,5 @@ export type QueryActionData =   {
   payload: string;
 } | {
   type: QueryAction.FilterStudent;
-  payload: Filtration;
+  payload: QueryFiltration;
 }

@@ -1,12 +1,12 @@
-import {Filtration} from "@backendTypes";
+import {QueryFiltration} from "../types/QueryData";
 
-export const DEFAULT_QUERY_FILTERS: Filtration = {
+export const DEFAULT_QUERY_FILTERS: QueryFiltration = {
     courseCompletion: "",
     courseEngagement: "",
     projectDegree: "",
     teamProjectDegree: "",
-    expectedTypeWork: "",
-    expectedContractType: "",
+    expectedTypeWork: [],
+    expectedContractType: [],
     minSalary: "",
     maxSalary: "",
     canTakeApprenticeship: "",
