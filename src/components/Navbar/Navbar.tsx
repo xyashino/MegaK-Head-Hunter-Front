@@ -1,15 +1,15 @@
-import React, { SyntheticEvent, useState } from "react";
-import { Avatar } from "@componentsCommon/Avatar/Avatar";
-import { Logo } from "@componentsCommon/Logo/Logo";
-import { Text } from "@componentsCommon/Text/Text";
+import React, {SyntheticEvent, useCallback, useState} from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { PageRouter } from "@enums/page-router.enum";
 import { RequestPath } from "@enums/request-path.enum";
 import { useAxios } from "@hooks/useAxios";
-import { toast } from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom";
-import classes from "./Navbar.module.css";
 import { Confirm } from "@components/Confirm/Confirm";
 import { useConfirm } from "@hooks/useConfirm";
+import { Avatar } from "@componentsCommon/Avatar/Avatar";
+import { Logo } from "@componentsCommon/Logo/Logo";
+import { Text } from "@componentsCommon/Text/Text";
+import classes from "./Navbar.module.css";
 
 interface Props {
   githubUsername?: string;
@@ -35,9 +35,9 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
     doAfterConfirm: logoutUser,
   });
 
-  const toggleMenu = () => {
+  const toggleMenu = useCallback(() => {
     setShowMenu((prevState) => !prevState);
-  };
+  }, [setShowMenu]);
 
   const handleConfirm = (e:SyntheticEvent)=>{
     e.preventDefault();
@@ -61,9 +61,7 @@ export const Navbar = ({ githubUsername, fullName }: Props) => {
               </span>
             </button>
             <div
-              className={`${classes.modal} ${
-                showMenu ? classes.modal_show : ""
-              }`}
+              className={`${classes.modal} ${showMenu ? classes.modal_show : ""}`}
             >
               <Link to={PageRouter.Account} className={classes.link} draggable={false}>
                 Konto
