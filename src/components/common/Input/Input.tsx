@@ -28,6 +28,7 @@ interface Props
 }
 
 export const Input = ({
+                        type,
   children,
   preview = false,
   description,
@@ -54,6 +55,7 @@ export const Input = ({
       ) : (
         <input
           {...rest}
+            type={type}
           className={`${classes.input} ${customClasses} ${
             hasError && classes[messageType]
           }`}
