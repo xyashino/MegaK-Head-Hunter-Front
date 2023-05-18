@@ -56,7 +56,7 @@ Each user can:
     <img src="demo/mobile.gif" alt="DEMO"/>
 </p>
 
-## You can test the demo yourself: [HERE](https://megak.yashino.live/)
+## You can test the demo yourself: <a href="https://megak.yashino.live/" target="_blank">HERE</a>
 
 Login credentials:
 
@@ -86,5 +86,5 @@ If you want to test the application locally, follow these steps:
 ```
    yarn dev
  ```
-### To ensure the proper functioning of the application, you also need the backend, which you can find [HERE](https://github.com/xyashino/MegaK-Head-Hunter-BACK)
+### To ensure the proper functioning of the application, you also need the backend, which you can find <a href="https://megak.yashino.live/](https://github.com/xyashino/MegaK-Head-Hunter-BACK" target="_blank">HERE</a>
 #### In the `tsconfig.json` file, there is an alias `@backendTypes`, which points to the path of the backend type files. I recommend cloning the backend in the same folder as the frontend to avoid unnecessary configuration.
