@@ -86,5 +86,5 @@ If you want to test the application locally, follow these steps:
 ```
    yarn dev
  ```
-### To ensure the proper functioning of the application, you also need the backend, which you can find <a href="https://megak.yashino.live/](https://github.com/xyashino/MegaK-Head-Hunter-BACK" target="_blank">HERE</a>
+### To ensure the proper functioning of the application, you also need the backend, which you can find <a href="https://github.com/xyashino/MegaK-Head-Hunter-BACK" target="_blank">HERE</a>
 #### In the `tsconfig.json` file, there is an alias `@backendTypes`, which points to the path of the backend type files. I recommend cloning the backend in the same folder as the frontend to avoid unnecessary configuration.
