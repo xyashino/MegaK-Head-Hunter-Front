@@ -1,3 +1,5 @@
+# MegaK-Head-Hunter-Front
+
 **MegaK-Head-Hunter** - It is a full-stack web application that allows headhunters to browse student profiles, add them to conversations, and hire them. The application was created as part of the MegaK course.
 
 The application is divided into three roles: Admin, Student, and HeadHunter. Each of these roles has access to different functionalities.
@@ -25,12 +27,12 @@ Each user can:
 - Change their password,
 - Reset their password (they receive an email with a password reset link).
 
-### Repositories
+## Repositories
 
 - [FRONTEND](https://github.com/xyashino/MegaK-Head-Hunter-Front)
 - [BACKEND](https://github.com/xyashino/MegaK-Head-Hunter-BACK)
 
-You are currently browsing the FRONTEND REPOSITORY.
+#### You are currently browsing the **FRONTEND REPOSITORY**.
 
 **MegaK-Head-Hunter-Front** - This repository contains the frontend code for the MegaK-Head-Hunter application. It includes:
 
@@ -42,7 +44,7 @@ You are currently browsing the FRONTEND REPOSITORY.
 - Communication with the backend,
 - Real-time form validation.
 
-### DEMO FROM THE HEADHUNTER'S WEBSITE
+## DEMO FROM THE HEADHUNTER'S WEBSITE
 
 <p align="center">
     <img src="demo/desktop.gif" alt="DEMO"/>
