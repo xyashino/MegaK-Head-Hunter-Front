@@ -76,7 +76,6 @@ export const LoginPage = () => {
       <Input
         preview
         placeholder="Password"
-        type="password"
         value={pwdValue}
         errorMessage={pwdError.message}
         hasError={pwdError.show}

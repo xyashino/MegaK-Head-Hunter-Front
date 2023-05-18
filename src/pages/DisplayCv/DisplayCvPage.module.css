@@ -5,7 +5,7 @@
   padding-inline: 1rem;
   gap: 10px;
   flex-direction: column;
-  word-wrap: break-word;
+  word-wrap: normal;
 }
 
 .button {
