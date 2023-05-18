@@ -37,7 +37,7 @@ Each user can:
 - [FRONTEND](https://github.com/xyashino/MegaK-Head-Hunter-Front)
 - [BACKEND](https://github.com/xyashino/MegaK-Head-Hunter-BACK)
 
-You are currently browsing the FRONTEND REPOSITORY.
+You are currently browsing the **FRONTEND REPOSITORY**.
 
 **MegaK-Head-Hunter-Front** - This repository contains the frontend code for the MegaK-Head-Hunter application. It includes:
 
